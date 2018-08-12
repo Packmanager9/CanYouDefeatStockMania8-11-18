@@ -1,0 +1,8 @@
+apply plugin: 'com.android.instantapp'
+
+dependencies {
+    // implementation 'com.jjoe64:graphview:4.2.2'
+    implementation project(':feature2')
+    implementation project(':base')
+    implementation files('libs/GraphView-4.2.1.jar')
+}
