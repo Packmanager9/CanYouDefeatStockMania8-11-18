@@ -743,8 +743,8 @@ double Realdown = 999990000;
                 }
 
 
-                NextGameCounter = 0;
-                resetCounter = 0;
+              //  NextGameCounter = 0;
+              //  resetCounter = 0;
                 Day = Day + 1;
 
 

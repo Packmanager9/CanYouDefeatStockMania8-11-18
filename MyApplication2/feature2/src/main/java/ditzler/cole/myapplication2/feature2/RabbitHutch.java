@@ -29,8 +29,12 @@ import java.util.Random;
 
 public class RabbitHutch extends AppCompatActivity {
 
+ int Pageinitializer = 0;
+    int PagesCounter = 0;
+    int PagesMin = 0;
+    int PagesMax = 1;
     String catchname = "%s%s";
-    int babydisplaycounter, babycounter, ReverseCheckCounter = 0;
+    int Truebabydisplaycounter, babydisplaycounter, ReverseCheckCounter, Occurence = 0; int babycounter = 0;
     String Male = "Male";
     ImageView DisplayBodyTwo, DisplayEarsTwo, DisplayEyesTwo, DisplayBodyThree, DisplayEarsThree, DisplayEyesThree, DisplayBodyFour, DisplayEarsFour, DisplayEyesFour, DisplayBodyFive, DisplayEarsFive, DisplayEyesFive, DisplayBodySix, DisplayEarsSix, DisplayEyesSix, DisplayBodySeven, DisplayEarsSeven, DisplayEyesSeven, DisplayBodyEight, DisplayEarsEight, DisplayEyesEight, DisplayBodyNine, DisplayEarsNine, DisplayEyesNine, DisplayBodyTen, DisplayEarsTen, DisplayEyesTen, DisplayBodyEleven, DisplayEarsEleven, DisplayEyesEleven,  DisplayBodyThirteen, DisplayEarsThirteen, DisplayEyesThirteen, DisplayBodyFourteen, DisplayEarsFourteen, DisplayEyesFourteen, DisplayBodyFifteen, DisplayEarsFifteen, DisplayEyesFifteen ,DisplayBodySixteen, DisplayEarsSixteen, DisplayEyesSixteen;
     ImageButton DisplayTailSelectedOne, DisplayBodyOne, DisplayEarsOne, DisplayTailOne, DisplayTailTwo,DisplayTailThree, DisplayTailFour, DisplayTailFive, DisplayBodyTwelve, DisplayEarsTwelve, DisplayEyesTwelve, DisplayTailSix, DisplayTailSeven, DisplayTailEight, DisplayTailNine, DisplayTailTen,DisplayTailEleven, DisplayTailTwelve, DisplayTailThirteen, DisplayTailFourteen, DisplayTailFifteen, DisplayTailSixteen, DisplayEyesOne, DisplayBodySelectedOne, DisplayEarsSelectedOne, DisplayEyesSelectedOne;
@@ -45,7 +49,7 @@ TextView DisplaySelectedSex;
     private Integer Tail[] = {R.drawable.rabbitfluffytailflat, R.drawable.rabbitfluffytail, R.drawable.rabbitfluffytailwide, R.drawable.rabbitfeathertail, R.drawable.rabbitfeathertailnarrow, R.drawable.rabbitfeathertailtwo, R.drawable.rabbitfluffytailwide, R.drawable.rabbitfluffytail, R.drawable.rabbitfluffytailwide, R.drawable.rabbitfluffytail, R.drawable.rabbitfluffytailwide, R.drawable.rabbitfluffytail, R.drawable.rabbitfluffytailwide};
 
 
-    HareSplitting.Hare BabyButtonOneSelecterHare, BabyButtonTwoSelecterHare, BabyButtonThreeSelecterHare, BabyButtonFourSelecterHare, BabyButtonFiveSelecterHare, BabyButtonSixSelecterHare, BabyButtonSevenSelecterHare, BabyButtonEightSelecterHare,BabyButtonNineSelecterHare,BabyButtonTenSelecterHare,BabyButtonElevenSelecterHare,BabyButtonTwelveSelecterHare,BabyButtonThirteenSelecterHare,BabyButtonFourteenSelecterHare,BabyButtonFifteenSelecterHare,BabyButtonSixteenSelecterHare= null;
+    HareSplitting.Hare Hairy, Lola, BabyButtonOneSelecterHare, BabyButtonTwoSelecterHare, BabyButtonThreeSelecterHare, BabyButtonFourSelecterHare, BabyButtonFiveSelecterHare, BabyButtonSixSelecterHare, BabyButtonSevenSelecterHare, BabyButtonEightSelecterHare,BabyButtonNineSelecterHare,BabyButtonTenSelecterHare,BabyButtonElevenSelecterHare,BabyButtonTwelveSelecterHare,BabyButtonThirteenSelecterHare,BabyButtonFourteenSelecterHare,BabyButtonFifteenSelecterHare,BabyButtonSixteenSelecterHare= null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,8 +113,10 @@ TextView DisplaySelectedSex;
                 String catchname = "%s%s";
                 String babyharecallnameOne = String.format(catchname, "NewHare", babycounter);
                 HareSplitting.Hare HareOne = (HareSplitting.Hare) intentHutch.getSerializableExtra(babyharecallnameOne);
-                int StupidBabyNumber = (int) intentHutch.getDoubleExtra("StupidBabyNumber", 400);
-                HareSplitting.Hare BabyHares[] = new HareSplitting.Hare[StupidBabyNumber];
+                double StupidBabyNumber = intentHutch.getIntExtra("StupidBabyNumber", 402);
+                int IncrediblyRetardedBabyNumber = (int) StupidBabyNumber;
+
+                HareSplitting.Hare BabyHares[] = new HareSplitting.Hare[IncrediblyRetardedBabyNumber];
                 //  Hare HareOne = (Hare)intentHutch.getSerializableExtra(babyharecallname);
                 DisplayBodyOne = (ImageButton) findViewById(R.id.DisplayBabyOneBody);
                 DisplayEarsOne = (ImageButton) findViewById(R.id.DisplayBabyOneEars);
@@ -135,7 +141,7 @@ TextView DisplaySelectedSex;
                     int Greene2 = ((HareOne.eyeCt * 16) + HareOne.eyeDt);
                     int Bluee2 = ((HareOne.eyeEt * 16) + HareOne.eyeFt);
                     DisplayEyesOne.setColorFilter(Color.argb(HareOne.HareAlpha, Rede2, Greene2, Bluee2));
-                    babycounter = (babycounter + 1) % StupidBabyNumber;
+                    babycounter = (babycounter + 1) % IncrediblyRetardedBabyNumber;
                 }
 
 
@@ -163,7 +169,7 @@ TextView DisplaySelectedSex;
                     int TwoGreene2 = ((HareTwo.eyeCt * 16) + HareTwo.eyeDt);
                     int TwoBluee2 = ((HareTwo.eyeEt * 16) + HareTwo.eyeFt);
                     DisplayEyesTwo.setColorFilter(Color.argb(HareTwo.HareAlpha, TwoRede2, TwoGreene2, TwoBluee2));
-                    babycounter = (babycounter + 1) % StupidBabyNumber;
+                    babycounter = (babycounter + 1) % IncrediblyRetardedBabyNumber;
                 }
 
 
@@ -191,7 +197,7 @@ TextView DisplaySelectedSex;
                     int ThreeGreene2 = ((HareThree.eyeCt * 16) + HareThree.eyeDt);
                     int ThreeBluee2 = ((HareThree.eyeEt * 16) + HareThree.eyeFt);
                     DisplayEyesThree.setColorFilter(Color.argb(HareThree.HareAlpha, ThreeRede2, ThreeGreene2, ThreeBluee2));
-                    babycounter = (babycounter + 1) % StupidBabyNumber;
+                    babycounter = (babycounter + 1) % IncrediblyRetardedBabyNumber;
                 }
 
                 String babyharecallnameFour = String.format(catchname, "NewHare", babycounter);
@@ -218,7 +224,7 @@ TextView DisplaySelectedSex;
                     int FourGreene2 = ((HareFour.eyeCt * 16) + HareFour.eyeDt);
                     int FourBluee2 = ((HareFour.eyeEt * 16) + HareFour.eyeFt);
                     DisplayEyesFour.setColorFilter(Color.argb(HareFour.HareAlpha, FourRede2, FourGreene2, FourBluee2));
-                    babycounter = (babycounter + 1) % StupidBabyNumber;
+                    babycounter = (babycounter + 1) % IncrediblyRetardedBabyNumber;
                 }
 
 
@@ -246,7 +252,7 @@ TextView DisplaySelectedSex;
                     int FiveGreene2 = ((HareFive.eyeCt * 16) + HareFive.eyeDt);
                     int FiveBluee2 = ((HareFive.eyeEt * 16) + HareFive.eyeFt);
                     DisplayEyesFive.setColorFilter(Color.argb(HareFive.HareAlpha, FiveRede2, FiveGreene2, FiveBluee2));
-                    babycounter = (babycounter + 1) % StupidBabyNumber;
+                    babycounter = (babycounter + 1) % IncrediblyRetardedBabyNumber;
                 }
 
 
@@ -274,7 +280,7 @@ TextView DisplaySelectedSex;
                     int SixGreene2 = ((HareSix.eyeCt * 16) + HareSix.eyeDt);
                     int SixBluee2 = ((HareSix.eyeEt * 16) + HareSix.eyeFt);
                     DisplayEyesSix.setColorFilter(Color.argb(HareSix.HareAlpha, SixRede2, SixGreene2, SixBluee2));
-                    babycounter = (babycounter + 1) % StupidBabyNumber;
+                    babycounter = (babycounter + 1) % IncrediblyRetardedBabyNumber;
                 }
 
 
@@ -302,7 +308,7 @@ TextView DisplaySelectedSex;
                     int SevenGreene2 = ((HareSeven.eyeCt * 16) + HareSeven.eyeDt);
                     int SevenBluee2 = ((HareSeven.eyeEt * 16) + HareSeven.eyeFt);
                     DisplayEyesSeven.setColorFilter(Color.argb(HareSeven.HareAlpha, SevenRede2, SevenGreene2, SevenBluee2));
-                    babycounter = (babycounter + 1) % StupidBabyNumber;
+                    babycounter = (babycounter + 1) % IncrediblyRetardedBabyNumber;
                 }
 
 
@@ -330,7 +336,7 @@ TextView DisplaySelectedSex;
                     int EightGreene2 = ((HareEight.eyeCt * 16) + HareEight.eyeDt);
                     int EightBluee2 = ((HareEight.eyeEt * 16) + HareEight.eyeFt);
                     DisplayEyesEight.setColorFilter(Color.argb(HareEight.HareAlpha, EightRede2, EightGreene2, EightBluee2));
-                    babycounter = (babycounter + 1) % StupidBabyNumber;
+                    babycounter = (babycounter + 1) % IncrediblyRetardedBabyNumber;
                 }
 
 
@@ -360,9 +366,24 @@ TextView DisplaySelectedSex;
     public void ButtonImageScalerOne(HareSplitting.Hare Escape){
 
         if (Escape == null){
+
+            DisplayBodyOne.setImageResource(R.drawable.noerror);
+            DisplayEarsOne.setImageResource(R.drawable.noerror);
+            DisplayEyesOne.setImageResource(R.drawable.noerror);
+            DisplayTailOne.setImageResource(R.drawable.noerror);
+            DisplayBodyOne.setVisibility(View.INVISIBLE);
+            DisplayEarsOne.setVisibility(View.INVISIBLE);
+            DisplayEyesOne.setVisibility(View.INVISIBLE);
+            DisplayTailOne.setVisibility(View.INVISIBLE);
+            
             return;
         }
 
+
+        DisplayBodyOne.setVisibility(View.VISIBLE);
+        DisplayEarsOne.setVisibility(View.VISIBLE);
+        DisplayEyesOne.setVisibility(View.VISIBLE);
+        DisplayTailOne.setVisibility(View.VISIBLE);
 
         DisplayBodyOne.setImageResource(Bodies[Escape.BodyType]);
         DisplayEarsOne.setImageResource(Ears[Escape.EarsType]);
@@ -577,9 +598,22 @@ TextView DisplaySelectedSex;
     public void ButtonImageScalerTwo(HareSplitting.Hare Escape){
 
         if (Escape == null){
+
+            DisplayBodyTwo.setImageResource(R.drawable.noerror);
+            DisplayEarsTwo.setImageResource(R.drawable.noerror);
+            DisplayEyesTwo.setImageResource(R.drawable.noerror);
+            DisplayTailTwo.setImageResource(R.drawable.noerror);
+            DisplayBodyTwo.setVisibility(View.INVISIBLE);
+            DisplayEarsTwo.setVisibility(View.INVISIBLE);
+            DisplayEyesTwo.setVisibility(View.INVISIBLE);
+            DisplayTailTwo.setVisibility(View.INVISIBLE);
             return;
         }
 
+        DisplayBodyTwo.setVisibility(View.VISIBLE);
+        DisplayEarsTwo.setVisibility(View.VISIBLE);
+        DisplayEyesTwo.setVisibility(View.VISIBLE);
+        DisplayTailTwo.setVisibility(View.VISIBLE);
 
         DisplayBodyTwo.setImageResource(Bodies[Escape.BodyType]);
         DisplayEarsTwo.setImageResource(Ears[Escape.EarsType]);
@@ -638,8 +672,23 @@ TextView DisplaySelectedSex;
     public void ButtonImageScalerThree(HareSplitting.Hare Escape){
 
         if (Escape == null){
+
+            DisplayBodyThree.setImageResource(R.drawable.noerror);
+            DisplayEarsThree.setImageResource(R.drawable.noerror);
+            DisplayEyesThree.setImageResource(R.drawable.noerror);
+            DisplayTailThree.setImageResource(R.drawable.noerror);
+            DisplayBodyThree.setVisibility(View.INVISIBLE);
+            DisplayEarsThree.setVisibility(View.INVISIBLE);
+            DisplayEyesThree.setVisibility(View.INVISIBLE);
+            DisplayTailThree.setVisibility(View.INVISIBLE);
             return;
         }
+
+
+        DisplayBodyThree.setVisibility(View.VISIBLE);
+        DisplayEarsThree.setVisibility(View.VISIBLE);
+        DisplayEyesThree.setVisibility(View.VISIBLE);
+        DisplayTailThree.setVisibility(View.VISIBLE);
 
         DisplayBodyThree.setImageResource(Bodies[Escape.BodyType]);
         DisplayEarsThree.setImageResource(Ears[Escape.EarsType]);
@@ -695,9 +744,24 @@ TextView DisplaySelectedSex;
     public void ButtonImageScalerFour(HareSplitting.Hare Escape){
 
         if (Escape == null){
+
+            DisplayBodyFour.setImageResource(R.drawable.noerror);
+            DisplayEarsFour.setImageResource(R.drawable.noerror);
+            DisplayEyesFour.setImageResource(R.drawable.noerror);
+            DisplayTailFour.setImageResource(R.drawable.noerror);
+            DisplayBodyFour.setVisibility(View.INVISIBLE);
+            DisplayEarsFour.setVisibility(View.INVISIBLE);
+            DisplayEyesFour.setVisibility(View.INVISIBLE);
+            DisplayTailFour.setVisibility(View.INVISIBLE);
             return;
         }
 
+
+
+        DisplayBodyFour.setVisibility(View.VISIBLE);
+        DisplayEarsFour.setVisibility(View.VISIBLE);
+        DisplayEyesFour.setVisibility(View.VISIBLE);
+        DisplayTailFour.setVisibility(View.VISIBLE);
 
         DisplayBodyFour.setImageResource(Bodies[Escape.BodyType]);
         DisplayEarsFour.setImageResource(Ears[Escape.EarsType]);
@@ -756,8 +820,23 @@ TextView DisplaySelectedSex;
     public void ButtonImageScalerFive(HareSplitting.Hare Escape){
 
         if (Escape == null){
+
+            DisplayBodyFive.setImageResource(R.drawable.noerror);
+            DisplayEarsFive.setImageResource(R.drawable.noerror);
+            DisplayEyesFive.setImageResource(R.drawable.noerror);
+            DisplayTailFive.setImageResource(R.drawable.noerror);
+            DisplayBodyFive.setVisibility(View.INVISIBLE);
+            DisplayEarsFive.setVisibility(View.INVISIBLE);
+            DisplayEyesFive.setVisibility(View.INVISIBLE);
+            DisplayTailFive.setVisibility(View.INVISIBLE);
             return;
         }
+
+
+        DisplayBodyFive.setVisibility(View.VISIBLE);
+        DisplayEarsFive.setVisibility(View.VISIBLE);
+        DisplayEyesFive.setVisibility(View.VISIBLE);
+        DisplayTailFive.setVisibility(View.VISIBLE);
 
 
         DisplayBodyFive.setImageResource(Bodies[Escape.BodyType]);
@@ -814,8 +893,22 @@ TextView DisplaySelectedSex;
     public void ButtonImageScalerSix(HareSplitting.Hare Escape){
 
         if (Escape == null){
+
+            DisplayBodySix.setImageResource(R.drawable.noerror);
+            DisplayEarsSix.setImageResource(R.drawable.noerror);
+            DisplayEyesSix.setImageResource(R.drawable.noerror);
+            DisplayTailSix.setImageResource(R.drawable.noerror);
+            DisplayBodySix.setVisibility(View.INVISIBLE);
+            DisplayEarsSix.setVisibility(View.INVISIBLE);
+            DisplayEyesSix.setVisibility(View.INVISIBLE);
+            DisplayTailSix.setVisibility(View.INVISIBLE);
             return;
         }
+
+        DisplayBodySix.setVisibility(View.VISIBLE);
+        DisplayEarsSix.setVisibility(View.VISIBLE);
+        DisplayEyesSix.setVisibility(View.VISIBLE);
+        DisplayTailSix.setVisibility(View.VISIBLE);
 
 
         DisplayBodySix.setImageResource(Bodies[Escape.BodyType]);
@@ -874,8 +967,23 @@ TextView DisplaySelectedSex;
     public void ButtonImageScalerSeven(HareSplitting.Hare Escape){
 
         if (Escape == null){
+
+            DisplayBodySeven.setImageResource(R.drawable.noerror);
+            DisplayEarsSeven.setImageResource(R.drawable.noerror);
+            DisplayEyesSeven.setImageResource(R.drawable.noerror);
+            DisplayTailSeven.setImageResource(R.drawable.noerror);
+            DisplayBodySeven.setVisibility(View.INVISIBLE);
+            DisplayEarsSeven.setVisibility(View.INVISIBLE);
+            DisplayEyesSeven.setVisibility(View.INVISIBLE);
+            DisplayTailSeven.setVisibility(View.INVISIBLE);
             return;
         }
+
+
+        DisplayBodySeven.setVisibility(View.VISIBLE);
+        DisplayEarsSeven.setVisibility(View.VISIBLE);
+        DisplayEyesSeven.setVisibility(View.VISIBLE);
+        DisplayTailSeven.setVisibility(View.VISIBLE);
 
         DisplayBodySeven.setImageResource(Bodies[Escape.BodyType]);
         DisplayEarsSeven.setImageResource(Ears[Escape.EarsType]);
@@ -934,8 +1042,23 @@ TextView DisplaySelectedSex;
     public void ButtonImageScalerEight(HareSplitting.Hare Escape){
 
         if (Escape == null){
+
+            DisplayBodyEight.setImageResource(R.drawable.noerror);
+            DisplayEarsEight.setImageResource(R.drawable.noerror);
+            DisplayEyesEight.setImageResource(R.drawable.noerror);
+            DisplayTailEight.setImageResource(R.drawable.noerror);
+            DisplayBodyEight.setVisibility(View.INVISIBLE);
+            DisplayEarsEight.setVisibility(View.INVISIBLE);
+            DisplayEyesEight.setVisibility(View.INVISIBLE);
+            DisplayTailEight.setVisibility(View.INVISIBLE);
             return;
         }
+
+
+        DisplayBodyEight.setVisibility(View.VISIBLE);
+        DisplayEarsEight.setVisibility(View.VISIBLE);
+        DisplayEyesEight.setVisibility(View.VISIBLE);
+        DisplayTailEight.setVisibility(View.VISIBLE);
 
 
         DisplayBodyEight.setImageResource(Bodies[Escape.BodyType]);
@@ -1087,7 +1210,6 @@ TextView DisplaySelectedSex;
             DisplayTailTen.setVisibility(View.INVISIBLE);
             return;
         }
-
         DisplayBodyTen.setVisibility(View.VISIBLE);
         DisplayEarsTen.setVisibility(View.VISIBLE);
         DisplayEyesTen.setVisibility(View.VISIBLE);
@@ -1233,8 +1355,6 @@ TextView DisplaySelectedSex;
             DisplayTailTwelve.setVisibility(View.INVISIBLE);
             return;
         }
-
-
         DisplayBodyTwelve.setVisibility(View.VISIBLE);
         DisplayEarsTwelve.setVisibility(View.VISIBLE);
         DisplayEyesTwelve.setVisibility(View.VISIBLE);
@@ -1307,7 +1427,6 @@ TextView DisplaySelectedSex;
             return;
         }
 
-
         DisplayBodyThirteen.setVisibility(View.VISIBLE);
         DisplayEarsThirteen.setVisibility(View.VISIBLE);
         DisplayEyesThirteen.setVisibility(View.VISIBLE);
@@ -1379,7 +1498,6 @@ TextView DisplaySelectedSex;
             DisplayTailFourteen.setVisibility(View.INVISIBLE);
             return;
         }
-
         DisplayBodyFourteen.setVisibility(View.VISIBLE);
         DisplayEarsFourteen.setVisibility(View.VISIBLE);
         DisplayEyesFourteen.setVisibility(View.VISIBLE);
@@ -1459,6 +1577,7 @@ TextView DisplaySelectedSex;
         DisplayEarsFifteen.setVisibility(View.VISIBLE);
         DisplayEyesFifteen.setVisibility(View.VISIBLE);
         DisplayTailFifteen.setVisibility(View.VISIBLE);
+
         DisplayBodyFifteen.setImageResource(Bodies[Escape.BodyType]);
         DisplayEarsFifteen.setImageResource(Ears[Escape.EarsType]);
         DisplayEyesFifteen.setImageResource(Eyes[Escape.EyesType]);
@@ -1614,6 +1733,36 @@ TextView DisplaySelectedSex;
         int NewHairyDT = NewHairy.Dt;
         int NewHairyET = NewHairy.Et;
         int NewHairyFT = NewHairy.Ft;
+        int NewHairyAT0 = NewHairy.At0;
+        int NewHairyBT0 = NewHairy.Bt0;
+        int NewHairyCT0 = NewHairy.Ct0;
+        int NewHairyDT0 = NewHairy.Dt0;
+        int NewHairyET0 = NewHairy.Et0;
+        int NewHairyFT0 = NewHairy.Ft0;
+        int NewHairyAT1 = NewHairy.At1;
+        int NewHairyBT1 = NewHairy.Bt1;
+        int NewHairyCT1 = NewHairy.Ct1;
+        int NewHairyDT1 = NewHairy.Dt1;
+        int NewHairyET1 = NewHairy.Et1;
+        int NewHairyFT1 = NewHairy.Ft1;
+        int NewHairyAT2 = NewHairy.At2;
+        int NewHairyBT2 = NewHairy.Bt2;
+        int NewHairyCT2 = NewHairy.Ct2;
+        int NewHairyDT2 = NewHairy.Dt2;
+        int NewHairyET2 = NewHairy.Et2;
+        int NewHairyFT2 = NewHairy.Ft2;
+        int NewHairyAT3 = NewHairy.At3;
+        int NewHairyBT3 = NewHairy.Bt3;
+        int NewHairyCT3 = NewHairy.Ct3;
+        int NewHairyDT3 = NewHairy.Dt3;
+        int NewHairyET3 = NewHairy.Et3;
+        int NewHairyFT3 = NewHairy.Ft3;
+        int NewHairyAT4 = NewHairy.At4;
+        int NewHairyBT4 = NewHairy.Bt4;
+        int NewHairyCT4 = NewHairy.Ct4;
+        int NewHairyDT4 = NewHairy.Dt4;
+        int NewHairyET4 = NewHairy.Et4;
+        int NewHairyFT4 = NewHairy.Ft4;
         int NewHairyearAT = NewHairy.earAt;
         int NewHairyearBT = NewHairy.earBt;
         int NewHairyearCT = NewHairy.earCt;
@@ -1632,6 +1781,96 @@ TextView DisplaySelectedSex;
         int NewHairytailDT = NewHairy.tailDt;
         int NewHairytailET = NewHairy.tailEt;
         int NewHairytailFT = NewHairy.tailFt;
+        int NewHairyearAT0 = NewHairy.earAt0;
+        int NewHairyearBT0 = NewHairy.earBt0;
+        int NewHairyearCT0 = NewHairy.earCt0;
+        int NewHairyearDT0 = NewHairy.earDt0;
+        int NewHairyearET0 = NewHairy.earEt0;
+        int NewHairyearFT0 = NewHairy.earFt0;
+        int NewHairyeyeAT0 = NewHairy.eyeAt0;
+        int NewHairyeyeBT0 = NewHairy.eyeBt0;
+        int NewHairyeyeCT0 = NewHairy.eyeCt0;
+        int NewHairyeyeDT0 = NewHairy.eyeDt0;
+        int NewHairyeyeET0 = NewHairy.eyeEt0;
+        int NewHairyeyeFT0 = NewHairy.eyeFt0;
+        int NewHairytailAT0 = NewHairy.tailAt0;
+        int NewHairytailBT0 = NewHairy.tailBt0;
+        int NewHairytailCT0 = NewHairy.tailCt0;
+        int NewHairytailDT0 = NewHairy.tailDt0;
+        int NewHairytailET0 = NewHairy.tailEt0;
+        int NewHairytailFT0 = NewHairy.tailFt0;
+        int NewHairyearAT1 = NewHairy.earAt1;
+        int NewHairyearBT1 = NewHairy.earBt1;
+        int NewHairyearCT1 = NewHairy.earCt1;
+        int NewHairyearDT1 = NewHairy.earDt1;
+        int NewHairyearET1 = NewHairy.earEt1;
+        int NewHairyearFT1 = NewHairy.earFt1;
+        int NewHairyeyeAT1 = NewHairy.eyeAt1;
+        int NewHairyeyeBT1 = NewHairy.eyeBt1;
+        int NewHairyeyeCT1 = NewHairy.eyeCt1;
+        int NewHairyeyeDT1 = NewHairy.eyeDt1;
+        int NewHairyeyeET1 = NewHairy.eyeEt1;
+        int NewHairyeyeFT1 = NewHairy.eyeFt1;
+        int NewHairytailAT1 = NewHairy.tailAt1;
+        int NewHairytailBT1 = NewHairy.tailBt1;
+        int NewHairytailCT1 = NewHairy.tailCt1;
+        int NewHairytailDT1 = NewHairy.tailDt1;
+        int NewHairytailET1 = NewHairy.tailEt1;
+        int NewHairytailFT1 = NewHairy.tailFt1;
+        int NewHairyearAT2 = NewHairy.earAt2;
+        int NewHairyearBT2 = NewHairy.earBt2;
+        int NewHairyearCT2 = NewHairy.earCt2;
+        int NewHairyearDT2 = NewHairy.earDt2;
+        int NewHairyearET2 = NewHairy.earEt2;
+        int NewHairyearFT2 = NewHairy.earFt2;
+        int NewHairyeyeAT2 = NewHairy.eyeAt2;
+        int NewHairyeyeBT2 = NewHairy.eyeBt2;
+        int NewHairyeyeCT2 = NewHairy.eyeCt2;
+        int NewHairyeyeDT2 = NewHairy.eyeDt2;
+        int NewHairyeyeET2 = NewHairy.eyeEt2;
+        int NewHairyeyeFT2 = NewHairy.eyeFt2;
+        int NewHairytailAT2 = NewHairy.tailAt2;
+        int NewHairytailBT2 = NewHairy.tailBt2;
+        int NewHairytailCT2 = NewHairy.tailCt2;
+        int NewHairytailDT2 = NewHairy.tailDt2;
+        int NewHairytailET2 = NewHairy.tailEt2;
+        int NewHairytailFT2 = NewHairy.tailFt2;
+        int NewHairyearAT3 = NewHairy.earAt3;
+        int NewHairyearBT3 = NewHairy.earBt3;
+        int NewHairyearCT3 = NewHairy.earCt3;
+        int NewHairyearDT3 = NewHairy.earDt3;
+        int NewHairyearET3 = NewHairy.earEt3;
+        int NewHairyearFT3 = NewHairy.earFt3;
+        int NewHairyeyeAT3 = NewHairy.eyeAt3;
+        int NewHairyeyeBT3 = NewHairy.eyeBt3;
+        int NewHairyeyeCT3 = NewHairy.eyeCt3;
+        int NewHairyeyeDT3 = NewHairy.eyeDt3;
+        int NewHairyeyeET3 = NewHairy.eyeEt3;
+        int NewHairyeyeFT3 = NewHairy.eyeFt3;
+        int NewHairytailAT3 = NewHairy.tailAt3;
+        int NewHairytailBT3 = NewHairy.tailBt3;
+        int NewHairytailCT3 = NewHairy.tailCt3;
+        int NewHairytailDT3 = NewHairy.tailDt3;
+        int NewHairytailET3 = NewHairy.tailEt3;
+        int NewHairytailFT3 = NewHairy.tailFt3;
+        int NewHairyearAT4 = NewHairy.earAt4;
+        int NewHairyearBT4 = NewHairy.earBt4;
+        int NewHairyearCT4 = NewHairy.earCt4;
+        int NewHairyearDT4 = NewHairy.earDt4;
+        int NewHairyearET4 = NewHairy.earEt4;
+        int NewHairyearFT4 = NewHairy.earFt4;
+        int NewHairyeyeAT4 = NewHairy.eyeAt4;
+        int NewHairyeyeBT4 = NewHairy.eyeBt4;
+        int NewHairyeyeCT4 = NewHairy.eyeCt4;
+        int NewHairyeyeDT4 = NewHairy.eyeDt4;
+        int NewHairyeyeET4 = NewHairy.eyeEt4;
+        int NewHairyeyeFT4 = NewHairy.eyeFt4;
+        int NewHairytailAT4 = NewHairy.tailAt4;
+        int NewHairytailBT4 = NewHairy.tailBt4;
+        int NewHairytailCT4 = NewHairy.tailCt4;
+        int NewHairytailDT4 = NewHairy.tailDt4;
+        int NewHairytailET4 = NewHairy.tailEt4;
+        int NewHairytailFT4 = NewHairy.tailFt4;
 
 
         String NewHairySex = NewHairy.Sex;
@@ -1655,6 +1894,36 @@ TextView DisplaySelectedSex;
         F.putExtra("HairyDT", NewHairyDT);
         F.putExtra("HairyET", NewHairyET);
         F.putExtra("HairyFT", NewHairyFT);
+        F.putExtra("HairyAT0", NewHairyAT0);
+        F.putExtra("HairyBT0", NewHairyBT0);
+        F.putExtra("HairyCT0", NewHairyCT0);
+        F.putExtra("HairyDT0", NewHairyDT0);
+        F.putExtra("HairyET0", NewHairyET0);
+        F.putExtra("HairyFT0", NewHairyFT0);
+        F.putExtra("HairyAT1", NewHairyAT1);
+        F.putExtra("HairyBT1", NewHairyBT1);
+        F.putExtra("HairyCT1", NewHairyCT1);
+        F.putExtra("HairyDT1", NewHairyDT1);
+        F.putExtra("HairyET1", NewHairyET1);
+        F.putExtra("HairyFT1", NewHairyFT1);
+        F.putExtra("HairyAT2", NewHairyAT2);
+        F.putExtra("HairyBT2", NewHairyBT2);
+        F.putExtra("HairyCT2", NewHairyCT2);
+        F.putExtra("HairyDT2", NewHairyDT2);
+        F.putExtra("HairyET2", NewHairyET2);
+        F.putExtra("HairyFT2", NewHairyFT2);
+        F.putExtra("HairyAT3", NewHairyAT3);
+        F.putExtra("HairyBT3", NewHairyBT3);
+        F.putExtra("HairyCT3", NewHairyCT3);
+        F.putExtra("HairyDT3", NewHairyDT3);
+        F.putExtra("HairyET3", NewHairyET3);
+        F.putExtra("HairyFT3", NewHairyFT3);
+        F.putExtra("HairyAT4", NewHairyAT4);
+        F.putExtra("HairyBT4", NewHairyBT4);
+        F.putExtra("HairyCT4", NewHairyCT4);
+        F.putExtra("HairyDT4", NewHairyDT4);
+        F.putExtra("HairyET4", NewHairyET4);
+        F.putExtra("HairyFT4", NewHairyFT4);
         F.putExtra("HairyearAT", NewHairyearAT);
         F.putExtra("HairyearBT", NewHairyearBT);
         F.putExtra("HairyearCT", NewHairyearCT);
@@ -1673,6 +1942,96 @@ TextView DisplaySelectedSex;
         F.putExtra("HairytailDT", NewHairytailDT);
         F.putExtra("HairytailET", NewHairytailET);
         F.putExtra("HairytailFT", NewHairytailFT);
+        F.putExtra("HairyearAT0", NewHairyearAT0);
+        F.putExtra("HairyearBT0", NewHairyearBT0);
+        F.putExtra("HairyearCT0", NewHairyearCT0);
+        F.putExtra("HairyearDT0", NewHairyearDT0);
+        F.putExtra("HairyearET0", NewHairyearET0);
+        F.putExtra("HairyearFT0", NewHairyearFT0);
+        F.putExtra("HairyeyeAT0", NewHairyeyeAT0);
+        F.putExtra("HairyeyeBT0", NewHairyeyeBT0);
+        F.putExtra("HairyeyeCT0", NewHairyeyeCT0);
+        F.putExtra("HairyeyeDT0", NewHairyeyeDT0);
+        F.putExtra("HairyeyeET0", NewHairyeyeET0);
+        F.putExtra("HairyeyeFT0", NewHairyeyeFT0);
+        F.putExtra("HairytailAT0", NewHairytailAT0);
+        F.putExtra("HairytailBT0", NewHairytailBT0);
+        F.putExtra("HairytailCT0", NewHairytailCT0);
+        F.putExtra("HairytailDT0", NewHairytailDT0);
+        F.putExtra("HairytailET0", NewHairytailET0);
+        F.putExtra("HairytailFT0", NewHairytailFT0);
+        F.putExtra("HairyearAT1", NewHairyearAT1);
+        F.putExtra("HairyearBT1", NewHairyearBT1);
+        F.putExtra("HairyearCT1", NewHairyearCT1);
+        F.putExtra("HairyearDT1", NewHairyearDT1);
+        F.putExtra("HairyearET1", NewHairyearET1);
+        F.putExtra("HairyearFT1", NewHairyearFT1);
+        F.putExtra("HairyeyeAT1", NewHairyeyeAT1);
+        F.putExtra("HairyeyeBT1", NewHairyeyeBT1);
+        F.putExtra("HairyeyeCT1", NewHairyeyeCT1);
+        F.putExtra("HairyeyeDT1", NewHairyeyeDT1);
+        F.putExtra("HairyeyeET1", NewHairyeyeET1);
+        F.putExtra("HairyeyeFT1", NewHairyeyeFT1);
+        F.putExtra("HairytailAT1", NewHairytailAT1);
+        F.putExtra("HairytailBT1", NewHairytailBT1);
+        F.putExtra("HairytailCT1", NewHairytailCT1);
+        F.putExtra("HairytailDT1", NewHairytailDT1);
+        F.putExtra("HairytailET1", NewHairytailET1);
+        F.putExtra("HairytailFT1", NewHairytailFT1);
+        F.putExtra("HairyearAT2", NewHairyearAT2);
+        F.putExtra("HairyearBT2", NewHairyearBT2);
+        F.putExtra("HairyearCT2", NewHairyearCT2);
+        F.putExtra("HairyearDT2", NewHairyearDT2);
+        F.putExtra("HairyearET2", NewHairyearET2);
+        F.putExtra("HairyearFT2", NewHairyearFT2);
+        F.putExtra("HairyeyeAT2", NewHairyeyeAT2);
+        F.putExtra("HairyeyeBT2", NewHairyeyeBT2);
+        F.putExtra("HairyeyeCT2", NewHairyeyeCT2);
+        F.putExtra("HairyeyeDT2", NewHairyeyeDT2);
+        F.putExtra("HairyeyeET2", NewHairyeyeET2);
+        F.putExtra("HairyeyeFT2", NewHairyeyeFT2);
+        F.putExtra("HairytailAT2", NewHairytailAT2);
+        F.putExtra("HairytailBT2", NewHairytailBT2);
+        F.putExtra("HairytailCT2", NewHairytailCT2);
+        F.putExtra("HairytailDT2", NewHairytailDT2);
+        F.putExtra("HairytailET2", NewHairytailET2);
+        F.putExtra("HairytailFT2", NewHairytailFT2);
+        F.putExtra("HairyearAT3", NewHairyearAT3);
+        F.putExtra("HairyearBT3", NewHairyearBT3);
+        F.putExtra("HairyearCT3", NewHairyearCT3);
+        F.putExtra("HairyearDT3", NewHairyearDT3);
+        F.putExtra("HairyearET3", NewHairyearET3);
+        F.putExtra("HairyearFT3", NewHairyearFT3);
+        F.putExtra("HairyeyeAT3", NewHairyeyeAT3);
+        F.putExtra("HairyeyeBT3", NewHairyeyeBT3);
+        F.putExtra("HairyeyeCT3", NewHairyeyeCT3);
+        F.putExtra("HairyeyeDT3", NewHairyeyeDT3);
+        F.putExtra("HairyeyeET3", NewHairyeyeET3);
+        F.putExtra("HairyeyeFT3", NewHairyeyeFT3);
+        F.putExtra("HairytailAT3", NewHairytailAT3);
+        F.putExtra("HairytailBT3", NewHairytailBT3);
+        F.putExtra("HairytailCT3", NewHairytailCT3);
+        F.putExtra("HairytailDT3", NewHairytailDT3);
+        F.putExtra("HairytailET3", NewHairytailET3);
+        F.putExtra("HairytailFT3", NewHairytailFT3);
+        F.putExtra("HairyearAT4", NewHairyearAT4);
+        F.putExtra("HairyearBT4", NewHairyearBT4);
+        F.putExtra("HairyearCT4", NewHairyearCT4);
+        F.putExtra("HairyearDT4", NewHairyearDT4);
+        F.putExtra("HairyearET4", NewHairyearET4);
+        F.putExtra("HairyearFT4", NewHairyearFT4);
+        F.putExtra("HairyeyeAT4", NewHairyeyeAT4);
+        F.putExtra("HairyeyeBT4", NewHairyeyeBT4);
+        F.putExtra("HairyeyeCT4", NewHairyeyeCT4);
+        F.putExtra("HairyeyeDT4", NewHairyeyeDT4);
+        F.putExtra("HairyeyeET4", NewHairyeyeET4);
+        F.putExtra("HairyeyeFT4", NewHairyeyeFT4);
+        F.putExtra("HairytailAT4", NewHairytailAT4);
+        F.putExtra("HairytailBT4", NewHairytailBT4);
+        F.putExtra("HairytailCT4", NewHairytailCT4);
+        F.putExtra("HairytailDT4", NewHairytailDT4);
+        F.putExtra("HairytailET4", NewHairytailET4);
+        F.putExtra("HairytailFT4", NewHairytailFT4);
         F.putExtra("HairySex", NewHairySex);
         F.putExtra("HairyColor", NewHairyColor);
         F.putExtra("HairyHareAlpha", NewHairyHareAlpha);
@@ -1682,7 +2041,7 @@ TextView DisplaySelectedSex;
         F.putExtra("HairyTailType", NewHairyTailType);
         F.putExtra("HairyEarsLength", NewHairyEarsLength);
         F.putExtra("HairyEyesType", NewHairyEyesType);
-        F.putExtra("HairyEyesType", NewHairyPrice);
+        F.putExtra("HairyPrice", NewHairyPrice);
 
 
 
@@ -1692,8 +2051,329 @@ TextView DisplaySelectedSex;
 
     public void onSmackPressed(HareSplitting.Hare NewLola){
 
+
+
         int NewLolaSize = NewLola.size;
         int NewLolaAT = NewLola.At;
+        int NewLolaBT = NewLola.Bt;
+        int NewLolaCT = NewLola.Ct;
+        int NewLolaDT = NewLola.Dt;
+        int NewLolaET = NewLola.Et;
+        int NewLolaFT = NewLola.Ft;
+        int NewLolaAT0 = NewLola.At0;
+        int NewLolaBT0 = NewLola.Bt0;
+        int NewLolaCT0 = NewLola.Ct0;
+        int NewLolaDT0 = NewLola.Dt0;
+        int NewLolaET0 = NewLola.Et0;
+        int NewLolaFT0 = NewLola.Ft0;
+        int NewLolaAT1 = NewLola.At1;
+        int NewLolaBT1 = NewLola.Bt1;
+        int NewLolaCT1 = NewLola.Ct1;
+        int NewLolaDT1 = NewLola.Dt1;
+        int NewLolaET1 = NewLola.Et1;
+        int NewLolaFT1 = NewLola.Ft1;
+        int NewLolaAT2 = NewLola.At2;
+        int NewLolaBT2 = NewLola.Bt2;
+        int NewLolaCT2 = NewLola.Ct2;
+        int NewLolaDT2 = NewLola.Dt2;
+        int NewLolaET2 = NewLola.Et2;
+        int NewLolaFT2 = NewLola.Ft2;
+        int NewLolaAT3 = NewLola.At3;
+        int NewLolaBT3 = NewLola.Bt3;
+        int NewLolaCT3 = NewLola.Ct3;
+        int NewLolaDT3 = NewLola.Dt3;
+        int NewLolaET3 = NewLola.Et3;
+        int NewLolaFT3 = NewLola.Ft3;
+        int NewLolaAT4 = NewLola.At4;
+        int NewLolaBT4 = NewLola.Bt4;
+        int NewLolaCT4 = NewLola.Ct4;
+        int NewLolaDT4 = NewLola.Dt4;
+        int NewLolaET4 = NewLola.Et4;
+        int NewLolaFT4 = NewLola.Ft4;
+        int NewLolaearAT = NewLola.earAt;
+        int NewLolaearBT = NewLola.earBt;
+        int NewLolaearCT = NewLola.earCt;
+        int NewLolaearDT = NewLola.earDt;
+        int NewLolaearET = NewLola.earEt;
+        int NewLolaearFT = NewLola.earFt;
+        int NewLolaeyeAT = NewLola.eyeAt;
+        int NewLolaeyeBT = NewLola.eyeBt;
+        int NewLolaeyeCT = NewLola.eyeCt;
+        int NewLolaeyeDT = NewLola.eyeDt;
+        int NewLolaeyeET = NewLola.eyeEt;
+        int NewLolaeyeFT = NewLola.eyeFt;
+        int NewLolatailAT = NewLola.tailAt;
+        int NewLolatailBT = NewLola.tailBt;
+        int NewLolatailCT = NewLola.tailCt;
+        int NewLolatailDT = NewLola.tailDt;
+        int NewLolatailET = NewLola.tailEt;
+        int NewLolatailFT = NewLola.tailFt;
+        int NewLolaearAT0 = NewLola.earAt0;
+        int NewLolaearBT0 = NewLola.earBt0;
+        int NewLolaearCT0 = NewLola.earCt0;
+        int NewLolaearDT0 = NewLola.earDt0;
+        int NewLolaearET0 = NewLola.earEt0;
+        int NewLolaearFT0 = NewLola.earFt0;
+        int NewLolaeyeAT0 = NewLola.eyeAt0;
+        int NewLolaeyeBT0 = NewLola.eyeBt0;
+        int NewLolaeyeCT0 = NewLola.eyeCt0;
+        int NewLolaeyeDT0 = NewLola.eyeDt0;
+        int NewLolaeyeET0 = NewLola.eyeEt0;
+        int NewLolaeyeFT0 = NewLola.eyeFt0;
+        int NewLolatailAT0 = NewLola.tailAt0;
+        int NewLolatailBT0 = NewLola.tailBt0;
+        int NewLolatailCT0 = NewLola.tailCt0;
+        int NewLolatailDT0 = NewLola.tailDt0;
+        int NewLolatailET0 = NewLola.tailEt0;
+        int NewLolatailFT0 = NewLola.tailFt0;
+        int NewLolaearAT1 = NewLola.earAt1;
+        int NewLolaearBT1 = NewLola.earBt1;
+        int NewLolaearCT1 = NewLola.earCt1;
+        int NewLolaearDT1 = NewLola.earDt1;
+        int NewLolaearET1 = NewLola.earEt1;
+        int NewLolaearFT1 = NewLola.earFt1;
+        int NewLolaeyeAT1 = NewLola.eyeAt1;
+        int NewLolaeyeBT1 = NewLola.eyeBt1;
+        int NewLolaeyeCT1 = NewLola.eyeCt1;
+        int NewLolaeyeDT1 = NewLola.eyeDt1;
+        int NewLolaeyeET1 = NewLola.eyeEt1;
+        int NewLolaeyeFT1 = NewLola.eyeFt1;
+        int NewLolatailAT1 = NewLola.tailAt1;
+        int NewLolatailBT1 = NewLola.tailBt1;
+        int NewLolatailCT1 = NewLola.tailCt1;
+        int NewLolatailDT1 = NewLola.tailDt1;
+        int NewLolatailET1 = NewLola.tailEt1;
+        int NewLolatailFT1 = NewLola.tailFt1;
+        int NewLolaearAT2 = NewLola.earAt2;
+        int NewLolaearBT2 = NewLola.earBt2;
+        int NewLolaearCT2 = NewLola.earCt2;
+        int NewLolaearDT2 = NewLola.earDt2;
+        int NewLolaearET2 = NewLola.earEt2;
+        int NewLolaearFT2 = NewLola.earFt2;
+        int NewLolaeyeAT2 = NewLola.eyeAt2;
+        int NewLolaeyeBT2 = NewLola.eyeBt2;
+        int NewLolaeyeCT2 = NewLola.eyeCt2;
+        int NewLolaeyeDT2 = NewLola.eyeDt2;
+        int NewLolaeyeET2 = NewLola.eyeEt2;
+        int NewLolaeyeFT2 = NewLola.eyeFt2;
+        int NewLolatailAT2 = NewLola.tailAt2;
+        int NewLolatailBT2 = NewLola.tailBt2;
+        int NewLolatailCT2 = NewLola.tailCt2;
+        int NewLolatailDT2 = NewLola.tailDt2;
+        int NewLolatailET2 = NewLola.tailEt2;
+        int NewLolatailFT2 = NewLola.tailFt2;
+        int NewLolaearAT3 = NewLola.earAt3;
+        int NewLolaearBT3 = NewLola.earBt3;
+        int NewLolaearCT3 = NewLola.earCt3;
+        int NewLolaearDT3 = NewLola.earDt3;
+        int NewLolaearET3 = NewLola.earEt3;
+        int NewLolaearFT3 = NewLola.earFt3;
+        int NewLolaeyeAT3 = NewLola.eyeAt3;
+        int NewLolaeyeBT3 = NewLola.eyeBt3;
+        int NewLolaeyeCT3 = NewLola.eyeCt3;
+        int NewLolaeyeDT3 = NewLola.eyeDt3;
+        int NewLolaeyeET3 = NewLola.eyeEt3;
+        int NewLolaeyeFT3 = NewLola.eyeFt3;
+        int NewLolatailAT3 = NewLola.tailAt3;
+        int NewLolatailBT3 = NewLola.tailBt3;
+        int NewLolatailCT3 = NewLola.tailCt3;
+        int NewLolatailDT3 = NewLola.tailDt3;
+        int NewLolatailET3 = NewLola.tailEt3;
+        int NewLolatailFT3 = NewLola.tailFt3;
+        int NewLolaearAT4 = NewLola.earAt4;
+        int NewLolaearBT4 = NewLola.earBt4;
+        int NewLolaearCT4 = NewLola.earCt4;
+        int NewLolaearDT4 = NewLola.earDt4;
+        int NewLolaearET4 = NewLola.earEt4;
+        int NewLolaearFT4 = NewLola.earFt4;
+        int NewLolaeyeAT4 = NewLola.eyeAt4;
+        int NewLolaeyeBT4 = NewLola.eyeBt4;
+        int NewLolaeyeCT4 = NewLola.eyeCt4;
+        int NewLolaeyeDT4 = NewLola.eyeDt4;
+        int NewLolaeyeET4 = NewLola.eyeEt4;
+        int NewLolaeyeFT4 = NewLola.eyeFt4;
+        int NewLolatailAT4 = NewLola.tailAt4;
+        int NewLolatailBT4 = NewLola.tailBt4;
+        int NewLolatailCT4 = NewLola.tailCt4;
+        int NewLolatailDT4 = NewLola.tailDt4;
+        int NewLolatailET4 = NewLola.tailEt4;
+        int NewLolatailFT4 = NewLola.tailFt4;
+
+
+        String NewLolaSex = NewLola.Sex;
+        String NewLolaColor = NewLola.Color;
+        int NewLolaHareAlpha = NewLola.HareAlpha;
+        int NewLolaTailAlpha = NewLola.TailAlpha;
+        int NewLolaBodyType = NewLola.BodyType;
+        int NewLolaEarsType = NewLola.EarsType;
+        int NewLolaEarsLength = NewLola.EarsLength;
+        int NewLolaEyesType =  NewLola.EyesType;
+        int NewLolaTailType =  NewLola.TailType;
+        double NewLolaPrice = NewLola.Price;
+
+
+
+        Intent F = new Intent();
+        F.putExtra("Lolasize", NewLolaSize);
+        F.putExtra("LolaAT", NewLolaAT);
+        F.putExtra("LolaBT", NewLolaBT);
+        F.putExtra("LolaCT", NewLolaCT);
+        F.putExtra("LolaDT", NewLolaDT);
+        F.putExtra("LolaET", NewLolaET);
+        F.putExtra("LolaFT", NewLolaFT);
+        F.putExtra("LolaAT0", NewLolaAT0);
+        F.putExtra("LolaBT0", NewLolaBT0);
+        F.putExtra("LolaCT0", NewLolaCT0);
+        F.putExtra("LolaDT0", NewLolaDT0);
+        F.putExtra("LolaET0", NewLolaET0);
+        F.putExtra("LolaFT0", NewLolaFT0);
+        F.putExtra("LolaAT1", NewLolaAT1);
+        F.putExtra("LolaBT1", NewLolaBT1);
+        F.putExtra("LolaCT1", NewLolaCT1);
+        F.putExtra("LolaDT1", NewLolaDT1);
+        F.putExtra("LolaET1", NewLolaET1);
+        F.putExtra("LolaFT1", NewLolaFT1);
+        F.putExtra("LolaAT2", NewLolaAT2);
+        F.putExtra("LolaBT2", NewLolaBT2);
+        F.putExtra("LolaCT2", NewLolaCT2);
+        F.putExtra("LolaDT2", NewLolaDT2);
+        F.putExtra("LolaET2", NewLolaET2);
+        F.putExtra("LolaFT2", NewLolaFT2);
+        F.putExtra("LolaAT3", NewLolaAT3);
+        F.putExtra("LolaBT3", NewLolaBT3);
+        F.putExtra("LolaCT3", NewLolaCT3);
+        F.putExtra("LolaDT3", NewLolaDT3);
+        F.putExtra("LolaET3", NewLolaET3);
+        F.putExtra("LolaFT3", NewLolaFT3);
+        F.putExtra("LolaAT4", NewLolaAT4);
+        F.putExtra("LolaBT4", NewLolaBT4);
+        F.putExtra("LolaCT4", NewLolaCT4);
+        F.putExtra("LolaDT4", NewLolaDT4);
+        F.putExtra("LolaET4", NewLolaET4);
+        F.putExtra("LolaFT4", NewLolaFT4);
+        F.putExtra("LolaearAT", NewLolaearAT);
+        F.putExtra("LolaearBT", NewLolaearBT);
+        F.putExtra("LolaearCT", NewLolaearCT);
+        F.putExtra("LolaearDT", NewLolaearDT);
+        F.putExtra("LolaearET", NewLolaearET);
+        F.putExtra("LolaearFT", NewLolaearFT);
+        F.putExtra("LolaeyeAT", NewLolaeyeAT);
+        F.putExtra("LolaeyeBT", NewLolaeyeBT);
+        F.putExtra("LolaeyeCT", NewLolaeyeCT);
+        F.putExtra("LolaeyeDT", NewLolaeyeDT);
+        F.putExtra("LolaeyeET", NewLolaeyeET);
+        F.putExtra("LolaeyeFT", NewLolaeyeFT);
+        F.putExtra("LolatailAT", NewLolatailAT);
+        F.putExtra("LolatailBT", NewLolatailBT);
+        F.putExtra("LolatailCT", NewLolatailCT);
+        F.putExtra("LolatailDT", NewLolatailDT);
+        F.putExtra("LolatailET", NewLolatailET);
+        F.putExtra("LolatailFT", NewLolatailFT);
+        F.putExtra("LolaearAT0", NewLolaearAT0);
+        F.putExtra("LolaearBT0", NewLolaearBT0);
+        F.putExtra("LolaearCT0", NewLolaearCT0);
+        F.putExtra("LolaearDT0", NewLolaearDT0);
+        F.putExtra("LolaearET0", NewLolaearET0);
+        F.putExtra("LolaearFT0", NewLolaearFT0);
+        F.putExtra("LolaeyeAT0", NewLolaeyeAT0);
+        F.putExtra("LolaeyeBT0", NewLolaeyeBT0);
+        F.putExtra("LolaeyeCT0", NewLolaeyeCT0);
+        F.putExtra("LolaeyeDT0", NewLolaeyeDT0);
+        F.putExtra("LolaeyeET0", NewLolaeyeET0);
+        F.putExtra("LolaeyeFT0", NewLolaeyeFT0);
+        F.putExtra("LolatailAT0", NewLolatailAT0);
+        F.putExtra("LolatailBT0", NewLolatailBT0);
+        F.putExtra("LolatailCT0", NewLolatailCT0);
+        F.putExtra("LolatailDT0", NewLolatailDT0);
+        F.putExtra("LolatailET0", NewLolatailET0);
+        F.putExtra("LolatailFT0", NewLolatailFT0);
+        F.putExtra("LolaearAT1", NewLolaearAT1);
+        F.putExtra("LolaearBT1", NewLolaearBT1);
+        F.putExtra("LolaearCT1", NewLolaearCT1);
+        F.putExtra("LolaearDT1", NewLolaearDT1);
+        F.putExtra("LolaearET1", NewLolaearET1);
+        F.putExtra("LolaearFT1", NewLolaearFT1);
+        F.putExtra("LolaeyeAT1", NewLolaeyeAT1);
+        F.putExtra("LolaeyeBT1", NewLolaeyeBT1);
+        F.putExtra("LolaeyeCT1", NewLolaeyeCT1);
+        F.putExtra("LolaeyeDT1", NewLolaeyeDT1);
+        F.putExtra("LolaeyeET1", NewLolaeyeET1);
+        F.putExtra("LolaeyeFT1", NewLolaeyeFT1);
+        F.putExtra("LolatailAT1", NewLolatailAT1);
+        F.putExtra("LolatailBT1", NewLolatailBT1);
+        F.putExtra("LolatailCT1", NewLolatailCT1);
+        F.putExtra("LolatailDT1", NewLolatailDT1);
+        F.putExtra("LolatailET1", NewLolatailET1);
+        F.putExtra("LolatailFT1", NewLolatailFT1);
+        F.putExtra("LolaearAT2", NewLolaearAT2);
+        F.putExtra("LolaearBT2", NewLolaearBT2);
+        F.putExtra("LolaearCT2", NewLolaearCT2);
+        F.putExtra("LolaearDT2", NewLolaearDT2);
+        F.putExtra("LolaearET2", NewLolaearET2);
+        F.putExtra("LolaearFT2", NewLolaearFT2);
+        F.putExtra("LolaeyeAT2", NewLolaeyeAT2);
+        F.putExtra("LolaeyeBT2", NewLolaeyeBT2);
+        F.putExtra("LolaeyeCT2", NewLolaeyeCT2);
+        F.putExtra("LolaeyeDT2", NewLolaeyeDT2);
+        F.putExtra("LolaeyeET2", NewLolaeyeET2);
+        F.putExtra("LolaeyeFT2", NewLolaeyeFT2);
+        F.putExtra("LolatailAT2", NewLolatailAT2);
+        F.putExtra("LolatailBT2", NewLolatailBT2);
+        F.putExtra("LolatailCT2", NewLolatailCT2);
+        F.putExtra("LolatailDT2", NewLolatailDT2);
+        F.putExtra("LolatailET2", NewLolatailET2);
+        F.putExtra("LolatailFT2", NewLolatailFT2);
+        F.putExtra("LolaearAT3", NewLolaearAT3);
+        F.putExtra("LolaearBT3", NewLolaearBT3);
+        F.putExtra("LolaearCT3", NewLolaearCT3);
+        F.putExtra("LolaearDT3", NewLolaearDT3);
+        F.putExtra("LolaearET3", NewLolaearET3);
+        F.putExtra("LolaearFT3", NewLolaearFT3);
+        F.putExtra("LolaeyeAT3", NewLolaeyeAT3);
+        F.putExtra("LolaeyeBT3", NewLolaeyeBT3);
+        F.putExtra("LolaeyeCT3", NewLolaeyeCT3);
+        F.putExtra("LolaeyeDT3", NewLolaeyeDT3);
+        F.putExtra("LolaeyeET3", NewLolaeyeET3);
+        F.putExtra("LolaeyeFT3", NewLolaeyeFT3);
+        F.putExtra("LolatailAT3", NewLolatailAT3);
+        F.putExtra("LolatailBT3", NewLolatailBT3);
+        F.putExtra("LolatailCT3", NewLolatailCT3);
+        F.putExtra("LolatailDT3", NewLolatailDT3);
+        F.putExtra("LolatailET3", NewLolatailET3);
+        F.putExtra("LolatailFT3", NewLolatailFT3);
+        F.putExtra("LolaearAT4", NewLolaearAT4);
+        F.putExtra("LolaearBT4", NewLolaearBT4);
+        F.putExtra("LolaearCT4", NewLolaearCT4);
+        F.putExtra("LolaearDT4", NewLolaearDT4);
+        F.putExtra("LolaearET4", NewLolaearET4);
+        F.putExtra("LolaearFT4", NewLolaearFT4);
+        F.putExtra("LolaeyeAT4", NewLolaeyeAT4);
+        F.putExtra("LolaeyeBT4", NewLolaeyeBT4);
+        F.putExtra("LolaeyeCT4", NewLolaeyeCT4);
+        F.putExtra("LolaeyeDT4", NewLolaeyeDT4);
+        F.putExtra("LolaeyeET4", NewLolaeyeET4);
+        F.putExtra("LolaeyeFT4", NewLolaeyeFT4);
+        F.putExtra("LolatailAT4", NewLolatailAT4);
+        F.putExtra("LolatailBT4", NewLolatailBT4);
+        F.putExtra("LolatailCT4", NewLolatailCT4);
+        F.putExtra("LolatailDT4", NewLolatailDT4);
+        F.putExtra("LolatailET4", NewLolatailET4);
+        F.putExtra("LolatailFT4", NewLolatailFT4);
+        F.putExtra("LolaSex", NewLolaSex);
+        F.putExtra("LolaColor", NewLolaColor);
+        F.putExtra("LolaHareAlpha", NewLolaHareAlpha);
+        F.putExtra("LolaTailAlpha", NewLolaTailAlpha);
+        F.putExtra("LolaBodyType", NewLolaBodyType);
+        F.putExtra("LolaEarsType", NewLolaEarsType);
+        F.putExtra("LolaTailType", NewLolaTailType);
+        F.putExtra("LolaEarsLength", NewLolaEarsLength);
+        F.putExtra("LolaEyesType", NewLolaEyesType);
+        F.putExtra("LolaPrice", NewLolaPrice);
+
+        
+        /*
+        int NewLolaSize = NewLola.size;
+        int NewLolaAT = NewLola.hexRed1;
         int NewLolaBT = NewLola.Bt;
         int NewLolaCT = NewLola.Ct;
         int NewLolaDT = NewLola.Dt;
@@ -1768,8 +2448,8 @@ TextView DisplaySelectedSex;
         F.putExtra("LolaTailType", NewLolaTailType);
         F.putExtra("LolaEarsLength", NewLolaEarsLength);
         F.putExtra("LolaEyesType", NewLolaEyesType);
-        F.putExtra("LolaEyesType", NewLolaPrice);
-
+        F.putExtra("LolaPrice", NewLolaPrice);
+*/
 
 
         setResult(420, F);
@@ -1867,7 +2547,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonOneSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonOneSelecterHare); ButtonLargeImageScalerOne(BabyButtonOneSelecterHare);
 
@@ -1894,7 +2574,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonOneSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonOneSelecterHare); ButtonLargeImageScalerOne(BabyButtonOneSelecterHare);
 
@@ -1921,7 +2601,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonOneSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonOneSelecterHare); ButtonLargeImageScalerOne(BabyButtonOneSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -1943,7 +2623,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonOneSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonOneSelecterHare); ButtonLargeImageScalerOne(BabyButtonOneSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2000,7 +2680,7 @@ TextView DisplaySelectedSex;
                 PickOnHairy.setVisibility(View.VISIBLE);
                 DisplaySelectedStats(BabyButtonTwoSelecterHare); ButtonLargeImageScalerOne(BabyButtonTwoSelecterHare);
 
-                DisplaySelectedSex.setText(BabyButtonTwoSelecterHare.Sex);
+                
 
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2021,7 +2701,7 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
-                DisplaySelectedSex.setText(BabyButtonTwoSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonTwoSelecterHare); ButtonLargeImageScalerOne(BabyButtonTwoSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2043,7 +2723,7 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
-                DisplaySelectedSex.setText(BabyButtonTwoSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonTwoSelecterHare); ButtonLargeImageScalerOne(BabyButtonTwoSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2065,7 +2745,7 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
-                DisplaySelectedSex.setText(BabyButtonTwoSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonTwoSelecterHare); ButtonLargeImageScalerOne(BabyButtonTwoSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2087,7 +2767,7 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
-                DisplaySelectedSex.setText(BabyButtonThreeSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonThreeSelecterHare); ButtonLargeImageScalerOne(BabyButtonThreeSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2109,7 +2789,7 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
-                DisplaySelectedSex.setText(BabyButtonThreeSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonThreeSelecterHare); ButtonLargeImageScalerOne(BabyButtonThreeSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2130,7 +2810,7 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
-                DisplaySelectedSex.setText(BabyButtonThreeSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonThreeSelecterHare); ButtonLargeImageScalerOne(BabyButtonThreeSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2152,7 +2832,7 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
-                DisplaySelectedSex.setText(BabyButtonThreeSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonThreeSelecterHare); ButtonLargeImageScalerOne(BabyButtonThreeSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2174,7 +2854,7 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
-                DisplaySelectedSex.setText(BabyButtonFourSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonFourSelecterHare); ButtonLargeImageScalerOne(BabyButtonFourSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2198,7 +2878,7 @@ TextView DisplaySelectedSex;
                 PickOnHairy.setVisibility(View.VISIBLE);
 
                 DisplaySelectedStats(BabyButtonFourSelecterHare); ButtonLargeImageScalerOne(BabyButtonFourSelecterHare);
-                DisplaySelectedSex.setText(BabyButtonFourSelecterHare.Sex);
+                
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -2220,7 +2900,7 @@ TextView DisplaySelectedSex;
                 PickOnHairy.setVisibility(View.VISIBLE);
 
                 DisplaySelectedStats(BabyButtonFourSelecterHare); ButtonLargeImageScalerOne(BabyButtonFourSelecterHare);
-                DisplaySelectedSex.setText(BabyButtonFourSelecterHare.Sex);
+                
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -2242,7 +2922,7 @@ TextView DisplaySelectedSex;
                 PickOnHairy.setVisibility(View.VISIBLE);
 
                 DisplaySelectedStats(BabyButtonFourSelecterHare); ButtonLargeImageScalerOne(BabyButtonFourSelecterHare);
-                DisplaySelectedSex.setText(BabyButtonFourSelecterHare.Sex);
+                
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -2263,7 +2943,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFiveSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonFiveSelecterHare); ButtonLargeImageScalerOne(BabyButtonFiveSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2286,7 +2966,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFiveSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonFiveSelecterHare); ButtonLargeImageScalerOne(BabyButtonFiveSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2308,7 +2988,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFiveSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonFiveSelecterHare); ButtonLargeImageScalerOne(BabyButtonFiveSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2331,7 +3011,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFiveSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonFiveSelecterHare); ButtonLargeImageScalerOne(BabyButtonFiveSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2353,7 +3033,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSixSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonSixSelecterHare); ButtonLargeImageScalerOne(BabyButtonSixSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2375,7 +3055,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSixSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonSixSelecterHare); ButtonLargeImageScalerOne(BabyButtonSixSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2397,7 +3077,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSixSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonSixSelecterHare); ButtonLargeImageScalerOne(BabyButtonSixSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2419,7 +3099,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSixSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonSixSelecterHare); ButtonLargeImageScalerOne(BabyButtonSixSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2441,7 +3121,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSevenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonSevenSelecterHare); ButtonLargeImageScalerOne(BabyButtonSevenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2463,7 +3143,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSevenSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonSevenSelecterHare); ButtonLargeImageScalerOne(BabyButtonSevenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2486,7 +3166,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSevenSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonSevenSelecterHare); ButtonLargeImageScalerOne(BabyButtonSevenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2509,7 +3189,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSevenSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonSevenSelecterHare); ButtonLargeImageScalerOne(BabyButtonSevenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2532,7 +3212,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonEightSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonEightSelecterHare); ButtonLargeImageScalerOne(BabyButtonEightSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2555,7 +3235,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonEightSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonEightSelecterHare); ButtonLargeImageScalerOne(BabyButtonEightSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2577,7 +3257,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonEightSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonEightSelecterHare); ButtonLargeImageScalerOne(BabyButtonEightSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2600,7 +3280,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonEightSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonEightSelecterHare); ButtonLargeImageScalerOne(BabyButtonEightSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2623,7 +3303,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonNineSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonNineSelecterHare); ButtonLargeImageScalerOne(BabyButtonNineSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2646,7 +3326,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonNineSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonNineSelecterHare); ButtonLargeImageScalerOne(BabyButtonNineSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2668,7 +3348,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonNineSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonNineSelecterHare); ButtonLargeImageScalerOne(BabyButtonNineSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2691,7 +3371,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonNineSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonNineSelecterHare); ButtonLargeImageScalerOne(BabyButtonNineSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2713,7 +3393,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonTenSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonTenSelecterHare); ButtonLargeImageScalerOne(BabyButtonTenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2736,7 +3416,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonTenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonTenSelecterHare); ButtonLargeImageScalerOne(BabyButtonTenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2758,7 +3438,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonTenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonTenSelecterHare); ButtonLargeImageScalerOne(BabyButtonTenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2781,7 +3461,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonTenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonTenSelecterHare); ButtonLargeImageScalerOne(BabyButtonTenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2803,7 +3483,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonElevenSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonElevenSelecterHare); ButtonLargeImageScalerOne(BabyButtonElevenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2826,7 +3506,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonElevenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonElevenSelecterHare); ButtonLargeImageScalerOne(BabyButtonElevenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2848,7 +3528,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonElevenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonElevenSelecterHare); ButtonLargeImageScalerOne(BabyButtonElevenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2871,7 +3551,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonElevenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonElevenSelecterHare); ButtonLargeImageScalerOne(BabyButtonElevenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2893,7 +3573,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonTwelveSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonTwelveSelecterHare); ButtonLargeImageScalerOne(BabyButtonTwelveSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -2916,7 +3596,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonTwelveSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonTwelveSelecterHare); ButtonLargeImageScalerOne(BabyButtonTwelveSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2938,7 +3618,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonTwelveSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonTwelveSelecterHare); ButtonLargeImageScalerOne(BabyButtonTwelveSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2961,7 +3641,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonTwelveSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonTwelveSelecterHare); ButtonLargeImageScalerOne(BabyButtonTwelveSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -2983,7 +3663,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonThirteenSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonThirteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonThirteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -3006,7 +3686,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonThirteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonThirteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonThirteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3027,7 +3707,7 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
-                DisplaySelectedSex.setText(BabyButtonThirteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonThirteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonThirteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3050,7 +3730,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonThirteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonThirteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonThirteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3072,7 +3752,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFourteenSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonFourteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonFourteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -3095,7 +3775,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFourteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonFourteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonFourteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3117,7 +3797,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFourteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonFourteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonFourteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3140,7 +3820,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFourteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonFourteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonFourteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3162,7 +3842,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFifteenSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonFifteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonFifteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -3185,7 +3865,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFifteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonFifteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonFifteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3207,7 +3887,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFifteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonFifteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonFifteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3230,7 +3910,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonFifteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonFifteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonFifteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3252,7 +3932,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSixteenSelecterHare.Sex);
+                
 
                 DisplaySelectedStats(BabyButtonSixteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonSixteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
@@ -3275,7 +3955,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSixteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonSixteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonSixteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3297,7 +3977,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSixteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonSixteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonSixteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3320,7 +4000,7 @@ TextView DisplaySelectedSex;
                 PickOnLola.setVisibility(View.VISIBLE);
                 PickOnHairy.setVisibility(View.VISIBLE);
 
-                DisplaySelectedSex.setText(BabyButtonSixteenSelecterHare.Sex);
+                
                 DisplaySelectedStats(BabyButtonSixteenSelecterHare); ButtonLargeImageScalerOne(BabyButtonSixteenSelecterHare);
                 PickOnLola.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -3342,32 +4022,53 @@ TextView DisplaySelectedSex;
             public void onClick(View v) {
                 Intent intentHutch = getIntent();
                 String catchname = "%s%s";
-                String babyharecallname = String.format(catchname, "NewHare", babycounter);
+                //  String babyharecallname = String.format(catchname, "NewHare", babycounter);
 
-                HareSplitting.Hare HareOneDummy = (HareSplitting.Hare) intentHutch.getSerializableExtra(babyharecallname);
-                int StupidBabyNumber = (int) intentHutch.getDoubleExtra("StupidBabyNumber", 400);
-                HareSplitting.Hare BabyHares[] = new HareSplitting.Hare[StupidBabyNumber];
+                //  HareSplitting.Hare HareOneDummy = (HareSplitting.Hare) intentHutch.getSerializableExtra(babyharecallname);
+                int StupidBabyNumber = intentHutch.getIntExtra("StupidBabyNumber", 402);
+                int ReallyStupidBabyNumber = (int) StupidBabyNumber;
+                HareSplitting.Hare BabyHares[] = new HareSplitting.Hare[ReallyStupidBabyNumber];
                 //HareSplitting.Hare BabyHares[] = new HareSplitting.Hare[StupidBabyNumber];
                 //HareSplitting.Hare HareOneDummy = (HareSplitting.Hare)intentHutch.getSerializableExtra("NewHare1");
                 //  Hare HareOneDummy = (Hare)intentHutch.getSerializableExtra(babyharecallname);
 
+                     BabyHares[0] = (HareSplitting.Hare) intentHutch.getSerializableExtra("NewHare0");
+                     BabyHares[1] = (HareSplitting.Hare) intentHutch.getSerializableExtra("NewHare1");
+
                 String babyharecallnameloop;
                 int babynumberlooper = 0;
-                int babynumberlooper2 = 1;
+                int babynumberlooper2 = 0;
+                if (Occurence == 0) {
+                    for (babynumberlooper = 0; babynumberlooper < ReallyStupidBabyNumber; babynumberlooper++) {
 
-                for (babynumberlooper = 0; babynumberlooper < StupidBabyNumber; babynumberlooper++) {
-                    babyharecallnameloop = String.format(catchname, "NewHare", babycounter);
-                    BabyHares[babynumberlooper] = (HareSplitting.Hare) intentHutch.getSerializableExtra(babyharecallnameloop);
-                    babycounter = (babycounter + 1) % StupidBabyNumber;
+                        babyharecallnameloop = String.format(catchname, "NewHare", (babynumberlooper));
+                        BabyHares[babynumberlooper2] = (HareSplitting.Hare) intentHutch.getSerializableExtra(babyharecallnameloop);
+                        babycounter = (babycounter + 1)% ReallyStupidBabyNumber ;//
+                        babynumberlooper2 = babynumberlooper2 + 1;
+                    }
+                /* else {
+                    for (babynumberlooper = 0; babynumberlooper < ReallyStupidBabyNumber; babynumberlooper++) {
+                        babyharecallnameloop = String.format(catchname, "NewHare", (babycounter));
+                        BabyHares[babynumberlooper] = (HareSplitting.Hare) intentHutch.getSerializableExtra(babyharecallnameloop);
+                        babycounter = (babycounter + 1) ;//% ReallyStupidBabyNumber
 
-                    if (babycounter >= 9998) {
-                        for (babynumberlooper2 = 1; intentHutch.getSerializableExtra(babyharecallnameloop) != null; babynumberlooper2++) {
+                    }*/
+
+               /*     if (babycounter >= 9998) {
+                        for (babynumberlooper2 = 0; intentHutch.getSerializableExtra(babyharecallnameloop) != null; babynumberlooper2++) {
                             babyharecallnameloop = String.format(catchname, "NewHare", babynumberlooper2);
+
+                            BabyHares[0] = (HareSplitting.Hare) intentHutch.getSerializableExtra("HairyArk");
+
+                            BabyHares[1] = (HareSplitting.Hare) intentHutch.getSerializableExtra("LolaArk");
+
+
                             BabyHares[babynumberlooper2] = (HareSplitting.Hare) intentHutch.getSerializableExtra(babyharecallnameloop);
 
                         }
-                    }
+                    } */
                 }
+                //Occurence = 1 + Occurence;
 /*
 
 
@@ -3380,44 +4081,525 @@ TextView DisplaySelectedSex;
 */
 
 
+                Hairy = (HareSplitting.Hare) intentHutch.getSerializableExtra("HairyArk");
+
+                Lola = (HareSplitting.Hare) intentHutch.getSerializableExtra("LolaArk");
+
+                 HareSplitting.Hare TotalHareDummy = null;
+
+                //  if ((BabyHares[babydisplaycounter+1] != null)  || (BabyHares[babydisplaycounter+3] != null)) {
 
 
-
-
-                if (BabyHares[babydisplaycounter+1] != null) {
-                ButtonImageScalerOne(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerTwo(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerThree(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerFour(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerFive(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerSix(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerSeven(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerEight(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerNine(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerTen(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerEleven(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerTwelve(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerThirteen(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerFourteen(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerFifteen(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
-                ButtonImageScalerSixteen(BabyHares[babydisplaycounter]);
-                babydisplaycounter = (babydisplaycounter + 1) % StupidBabyNumber;
+            //    if (StupidBabyNumber <= 12){
+            //        Truebabydisplaycounter = 0;
+            //}
+                
+                /*
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerOne(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerOne(TotalHareDummy);
+                    ButtonImageScalerTwo(TotalHareDummy);
+                    ButtonImageScalerThree(TotalHareDummy);
+                    ButtonImageScalerFour(TotalHareDummy);
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
                 }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerTwo(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerThree(TotalHareDummy);
+                    ButtonImageScalerFour(TotalHareDummy);
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerThree(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerThree(TotalHareDummy);
+                    ButtonImageScalerFour(TotalHareDummy);
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerFour(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerFour(TotalHareDummy);
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerFive(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerSix(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerSeven(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerEight(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerNine(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerTen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerEleven(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerTwelve(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerThirteen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerFourteen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerFifteen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (Truebabydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerSixteen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));
+                    Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+
+                }else {
+Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+
+*/
+
+
+                if (PagesCounter < PagesMin) {
+                    PagesCounter = 0;
+                }
+
+          
+
+
+
+
+                if ((ReallyStupidBabyNumber%16) == 2){
+
+
+                    double PassPagesCheck = ReallyStupidBabyNumber/16;
+                    PagesMax = (int) Math.ceil(PassPagesCheck);
+                }
+
+                if ((ReallyStupidBabyNumber%16) == 10){
+
+
+                    double PassPagesCheck = ReallyStupidBabyNumber/16;
+                    PagesMax = (int) Math.ceil(PassPagesCheck);
+                }
+                if (PagesCounter > PagesMax) {
+
+                    PagesCounter = PagesMax;
+                }
+                if (Pageinitializer == 0) {
+                    babydisplaycounter = (PagesCounter * 16);
+                    Pageinitializer=1;
+                }else {
+                    babydisplaycounter = (PagesCounter * 16);
+                    PagesCounter = PagesCounter + 1;
+                    Pageinitializer=1;
+                }
+
+                DisplaySelectedSex = (TextView) findViewById(R.id.DisplaySex);
+                String PagesCounterS = String.format("Page: "+PagesCounter);DisplaySelectedSex.setText(PagesCounterS);
+
+             
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerOne(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerOne(TotalHareDummy);
+                    ButtonImageScalerTwo(TotalHareDummy);
+                    ButtonImageScalerThree(TotalHareDummy);
+                    ButtonImageScalerFour(TotalHareDummy);
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerTwo(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerThree(TotalHareDummy);
+                    ButtonImageScalerFour(TotalHareDummy);
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerThree(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerThree(TotalHareDummy);
+                    ButtonImageScalerFour(TotalHareDummy);
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerFour(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerFour(TotalHareDummy);
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerFive(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerFive(TotalHareDummy);
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerSix(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerSix(TotalHareDummy);
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerSeven(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerSeven(TotalHareDummy);
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerEight(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerEight(TotalHareDummy);
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerNine(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerNine(TotalHareDummy);
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerTen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerTen(TotalHareDummy);
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerEleven(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerEleven(TotalHareDummy);
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerTwelve(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerTwelve(TotalHareDummy);
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerThirteen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerThirteen(TotalHareDummy);
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerFourteen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerFourteen(TotalHareDummy);
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerFifteen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerFifteen(TotalHareDummy);
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+                if (babydisplaycounter < StupidBabyNumber) {
+                    ButtonImageScalerSixteen(BabyHares[babydisplaycounter]);
+                    babydisplaycounter = ((babydisplaycounter + 1));
+                    Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+
+                }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                    ButtonImageScalerSixteen(TotalHareDummy);
+                }
+
+
+
+
+                // if (BabyHares[babydisplaycounter] == null){
+
+              //      Truebabydisplaycounter = (Truebabydisplaycounter % ReallyStupidBabyNumber);
+
+               // }
+
+                //Truebabydisplaycounter = (int) Truebabydisplaycounter - ReallyStupidBabyNumber;
+             //   }
 
 /*
                 if(HareOneDummy == null || HareTwo == null || HareThree == null || HareFour == null || HareFive == null || HareSix == null || HareSeven == null || HareEight == null){
@@ -3425,6 +4607,18 @@ TextView DisplaySelectedSex;
                 }
 */
 
+/*
+                PassPagesCheck = (int) ReallyStupidBabyNumber/15;
+                PagesMax = (int) Math.ceil(PassPagesCheck+1);
+                if (PagesCounter > PagesMax) {
+                    PagesCounter = PagesMax;
+                }
+
+
+                if (PagesCounter < PagesMin) {
+                    PagesCounter = 0;
+                }
+*/
             }
         });
 
@@ -3434,10 +4628,51 @@ TextView DisplaySelectedSex;
             @Override
             public void onClick(View v) {
 
+
+                Intent intentHutch = getIntent();
+                int StupidBabyNumber = intentHutch.getIntExtra("StupidBabyNumber", babydisplaycounter);
+                int StupidBabyInt = (int) StupidBabyNumber;
+
+
+
+
+/*
+                PagesCounter = PagesCounter - 1;
+
+                if (PagesCounter < PagesMin) {
+                    PagesCounter = 0;
+                }
+
+
+
+
+
+
+                if ((StupidBabyInt%16) == 2){
+
+
+                    double PassPagesCheck = (int) StupidBabyInt/15;
+                    PagesMax = (int) Math.ceil(PassPagesCheck+1);
+                }
+
+                if ((StupidBabyInt%16) == 10){
+
+
+                    double PassPagesCheck = (int) StupidBabyInt/15;
+                    PagesMax = (int) Math.ceil(PassPagesCheck+1);
+                }
+                if (PagesCounter > PagesMax) {
+
+                    PagesCounter = PagesMax;
+                }
+
+                babydisplaycounter = ((StupidBabyInt) - ((PagesMax-(PagesMax - PagesCounter))*16));
+*/
+
                 if (babydisplaycounter > 0) {
-                    Intent intentHutch = getIntent();
-                    double StupidBabyNumber = intentHutch.getDoubleExtra("StupidBabyNumber", babydisplaycounter);
-                    int StupidBabyInt = (int) StupidBabyNumber;
+                    //Intent intentHutch = getIntent();
+                  //  double StupidBabyNumber = intentHutch.getIntExtra("StupidBabyNumber", babydisplaycounter);
+                   // int StupidBabyInt = (int) StupidBabyNumber;
                     int StupidBabyDisplayCounterInt = babydisplaycounter + 1;
                     HareSplitting.Hare BabyHares[] = new HareSplitting.Hare[StupidBabyInt];
                    // if (ReverseCheckCounter == 0) {
@@ -3451,59 +4686,588 @@ TextView DisplaySelectedSex;
                             babyharecallnameloop = String.format(catchname, "NewHare", babycounter);
                             BabyHares[babynumberlooper] = (HareSplitting.Hare) intentHutch.getSerializableExtra(babyharecallnameloop);
                             babycounter = (babycounter + 1) % StupidBabyInt;
-
+/*
                             if (babycounter >= StupidBabyDisplayCounterInt) {
-                                for (babynumberlooper2 = 1; intentHutch.getSerializableExtra(babyharecallnameloop) != null; babynumberlooper2++) {
+                                for (babynumberlooper2 = 0; intentHutch.getSerializableExtra(babyharecallnameloop) != null; babynumberlooper2++) {
                                     babyharecallnameloop = String.format(catchname, "NewHare", babynumberlooper2);
                                     BabyHares[babynumberlooper2] = (HareSplitting.Hare) intentHutch.getSerializableExtra(babyharecallnameloop);
 
                                 }
-                            }
+                            }*/
                         }
                     //    ReverseCheckCounter = ReverseCheckCounter + 1;
                    // }
 
-                    if ((BabyHares[babydisplaycounter-1] != null) || ((BabyHares[babydisplaycounter-9] != null) && (BabyHares[babydisplaycounter-1] == null))) {
+                    Hairy = (HareSplitting.Hare) intentHutch.getSerializableExtra("HairyArk");
+
+                    Lola = (HareSplitting.Hare) intentHutch.getSerializableExtra("LolaArk");
+
+
+                    HareSplitting.Hare TotalHareDummy = null;
 
 
 
 
-
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerSixteen(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerFifteen(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerFourteen(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerThirteen(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerTwelve(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerEleven(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerTen(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerNine(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerEight(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerSeven(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerSix(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerFive(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerFour(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerThree(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerTwo(BabyHares[babydisplaycounter]);
-                        babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
-                        ButtonImageScalerOne(BabyHares[babydisplaycounter]);
-                        
+                    PagesCounter = PagesCounter - 1;
+                    if (PagesCounter < PagesMin) {
+                        PagesCounter = 0;
                     }
 
+
+
+
+
+                    if ((StupidBabyInt%16) == 2){
+
+
+                        double PassPagesCheck = StupidBabyInt/16;
+                        PagesMax = (int) Math.ceil(PassPagesCheck);
+                    }
+
+                    if ((StupidBabyInt%16) == 10){
+
+
+                        double PassPagesCheck = (int) StupidBabyInt/16;
+                        PagesMax = (int) Math.ceil(PassPagesCheck);
+                    }
+                    if (PagesCounter > PagesMax) {
+
+                        PagesCounter = PagesMax;
+                    }
+                    if (Pageinitializer == 0) {
+                        babydisplaycounter = (PagesCounter * 16);
+                       // Pageinitializer=1;
+                    }else {
+
+
+                        babydisplaycounter = (PagesCounter * 16);
+
+                        Pageinitializer=1;
+                    }
+
+
+
+                    DisplaySelectedSex = (TextView) findViewById(R.id.DisplaySex);
+                    String PagesCounterS = String.format("Page: "+PagesCounter);DisplaySelectedSex.setText(PagesCounterS);
+
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerOne(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerOne(TotalHareDummy);
+                        ButtonImageScalerTwo(TotalHareDummy);
+                        ButtonImageScalerThree(TotalHareDummy);
+                        ButtonImageScalerFour(TotalHareDummy);
+                        ButtonImageScalerFive(TotalHareDummy);
+                        ButtonImageScalerSix(TotalHareDummy);
+                        ButtonImageScalerSeven(TotalHareDummy);
+                        ButtonImageScalerEight(TotalHareDummy);
+                        ButtonImageScalerNine(TotalHareDummy);
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerTwo(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerThree(TotalHareDummy);
+                        ButtonImageScalerFour(TotalHareDummy);
+                        ButtonImageScalerFive(TotalHareDummy);
+                        ButtonImageScalerSix(TotalHareDummy);
+                        ButtonImageScalerSeven(TotalHareDummy);
+                        ButtonImageScalerEight(TotalHareDummy);
+                        ButtonImageScalerNine(TotalHareDummy);
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerThree(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerThree(TotalHareDummy);
+                        ButtonImageScalerFour(TotalHareDummy);
+                        ButtonImageScalerFive(TotalHareDummy);
+                        ButtonImageScalerSix(TotalHareDummy);
+                        ButtonImageScalerSeven(TotalHareDummy);
+                        ButtonImageScalerEight(TotalHareDummy);
+                        ButtonImageScalerNine(TotalHareDummy);
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerFour(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerFour(TotalHareDummy);
+                        ButtonImageScalerFive(TotalHareDummy);
+                        ButtonImageScalerSix(TotalHareDummy);
+                        ButtonImageScalerSeven(TotalHareDummy);
+                        ButtonImageScalerEight(TotalHareDummy);
+                        ButtonImageScalerNine(TotalHareDummy);
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerFive(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerFive(TotalHareDummy);
+                        ButtonImageScalerSix(TotalHareDummy);
+                        ButtonImageScalerSeven(TotalHareDummy);
+                        ButtonImageScalerEight(TotalHareDummy);
+                        ButtonImageScalerNine(TotalHareDummy);
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerSix(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerSix(TotalHareDummy);
+                        ButtonImageScalerSeven(TotalHareDummy);
+                        ButtonImageScalerEight(TotalHareDummy);
+                        ButtonImageScalerNine(TotalHareDummy);
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerSeven(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerSeven(TotalHareDummy);
+                        ButtonImageScalerEight(TotalHareDummy);
+                        ButtonImageScalerNine(TotalHareDummy);
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerEight(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerEight(TotalHareDummy);
+                        ButtonImageScalerNine(TotalHareDummy);
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerNine(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerNine(TotalHareDummy);
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerTen(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerTen(TotalHareDummy);
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerEleven(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerEleven(TotalHareDummy);
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerTwelve(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerTwelve(TotalHareDummy);
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerThirteen(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerThirteen(TotalHareDummy);
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerFourteen(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerFourteen(TotalHareDummy);
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerFifteen(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerFifteen(TotalHareDummy);
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+                    if (babydisplaycounter < StupidBabyNumber) {
+                        ButtonImageScalerSixteen(BabyHares[babydisplaycounter]);
+                        babydisplaycounter = ((babydisplaycounter + 1));
+                        Truebabydisplaycounter = (Truebabydisplaycounter + 1);
+
+                    }else {Truebabydisplaycounter = (Truebabydisplaycounter + 1);babydisplaycounter = ((babydisplaycounter + 1));
+                        ButtonImageScalerSixteen(TotalHareDummy);
+                    }
+
+
+
+                  //  if (Truebabydisplaycounter < StupidBabyInt) {  //&& BabyHares[babydisplaycounter] != null
+                //    if (((BabyHares[babydisplaycounter] != null) || ((BabyHares[babydisplaycounter-9] != null)))) {
+
+
+                    /*
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerSixteen(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                            ButtonImageScalerEight(TotalHareDummy);
+                            ButtonImageScalerNine(TotalHareDummy);
+                            ButtonImageScalerTen(TotalHareDummy);
+                            ButtonImageScalerEleven(TotalHareDummy);
+                            ButtonImageScalerTwelve(TotalHareDummy);
+                            ButtonImageScalerThirteen(TotalHareDummy);
+                            ButtonImageScalerFourteen(TotalHareDummy);
+                            ButtonImageScalerFifteen(TotalHareDummy);
+                            ButtonImageScalerSixteen(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerFifteen(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                            ButtonImageScalerEight(TotalHareDummy);
+                            ButtonImageScalerNine(TotalHareDummy);
+                            ButtonImageScalerTen(TotalHareDummy);
+                            ButtonImageScalerEleven(TotalHareDummy);
+                            ButtonImageScalerTwelve(TotalHareDummy);
+                            ButtonImageScalerThirteen(TotalHareDummy);
+                            ButtonImageScalerFourteen(TotalHareDummy);
+                            ButtonImageScalerFifteen(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerFourteen(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                            ButtonImageScalerEight(TotalHareDummy);
+                            ButtonImageScalerNine(TotalHareDummy);
+                            ButtonImageScalerTen(TotalHareDummy);
+                            ButtonImageScalerEleven(TotalHareDummy);
+                            ButtonImageScalerTwelve(TotalHareDummy);
+                            ButtonImageScalerThirteen(TotalHareDummy);
+                            ButtonImageScalerFourteen(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerThirteen(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                            ButtonImageScalerEight(TotalHareDummy);
+                            ButtonImageScalerNine(TotalHareDummy);
+                            ButtonImageScalerTen(TotalHareDummy);
+                            ButtonImageScalerEleven(TotalHareDummy);
+                            ButtonImageScalerTwelve(TotalHareDummy);
+                            ButtonImageScalerThirteen(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerTwelve(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                            ButtonImageScalerEight(TotalHareDummy);
+                            ButtonImageScalerNine(TotalHareDummy);
+                            ButtonImageScalerTen(TotalHareDummy);
+                            ButtonImageScalerEleven(TotalHareDummy);
+                            ButtonImageScalerTwelve(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerEleven(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                            ButtonImageScalerEight(TotalHareDummy);
+                            ButtonImageScalerNine(TotalHareDummy);
+                            ButtonImageScalerTen(TotalHareDummy);
+                            ButtonImageScalerEleven(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerTen(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                            ButtonImageScalerEight(TotalHareDummy);
+                            ButtonImageScalerNine(TotalHareDummy);
+                            ButtonImageScalerTen(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerNine(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                            ButtonImageScalerEight(TotalHareDummy);
+                            ButtonImageScalerNine(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerEight(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                            ButtonImageScalerEight(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerSeven(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                            ButtonImageScalerSeven(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerSix(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                            ButtonImageScalerSix(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerFive(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                            ButtonImageScalerFive(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerFour(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                            ButtonImageScalerFour(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerThree(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                            ButtonImageScalerThree(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerTwo(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                            ButtonImageScalerTwo(TotalHareDummy);
+                        }
+                        if ( babydisplaycounter > 0 ) {
+                            babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(BabyHares[babydisplaycounter]);
+                            Truebabydisplaycounter = (Truebabydisplaycounter - 1);
+                        }else {
+Truebabydisplaycounter = (Truebabydisplaycounter - 1);babydisplaycounter = (babydisplaycounter - 1);
+                            ButtonImageScalerOne(TotalHareDummy);
+                        }
+*/
+
+
+
+
+
+
+                        /*
+                        if (babydisplaycounter != 15){
+                            babydisplaycounter = 15;
+                        }*/
+/*
+                        if (((BabyHares[babydisplaycounter-1] != null) || ((BabyHares[babydisplaycounter-9] != null)))) {
+                            babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
+                            ButtonImageScalerEight(BabyHares[babydisplaycounter]);
+                            babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
+                            ButtonImageScalerSeven(BabyHares[babydisplaycounter]);
+                            babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
+                            ButtonImageScalerSix(BabyHares[babydisplaycounter]);
+                            babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
+                            ButtonImageScalerFive(BabyHares[babydisplaycounter]);
+                            babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
+                            ButtonImageScalerFour(BabyHares[babydisplaycounter]);
+                            babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
+                            ButtonImageScalerThree(BabyHares[babydisplaycounter]);
+                            babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
+                            ButtonImageScalerTwo(BabyHares[babydisplaycounter]);
+                            babydisplaycounter = (babydisplaycounter - 1) % StupidBabyInt;
+                            ButtonImageScalerOne(BabyHares[babydisplaycounter]);
+                        }*/
+                    //}
+
+
+                }
+
+
+
+            //    double PassPagesCheck = (int) StupidBabyInt/15;
+             //   PagesMax = (int) Math.ceil(PassPagesCheck+1);
+                if (PagesCounter > PagesMax) {
+                    PagesCounter = PagesMax;
+                }
+
+                if (PagesCounter < PagesMin) {
+                    PagesCounter = 0;
                 }
             }
 });
@@ -3643,7 +5407,7 @@ TextView DisplaySelectedSex;
 
 
           //  String BodyColorFormat = "Body Color: %s,%s,%s,%s,%s,%s";
-          //  String BodyColorFormatF = String.format(BodyColorFormat, selected.At, selected.Bt, selected.Ct, selected.Dt, selected.Et, selected.Ft);
+          //  String BodyColorFormatF = String.format(BodyColorFormat, selected.hexRed1, selected.Bt, selected.Ct, selected.Dt, selected.Et, selected.Ft);
           //  selectedBodyColordisplay.setText(BodyColorFormatF);
 
 
@@ -3733,305 +5497,13 @@ selectedPricedisplay.setVisibility(View.INVISIBLE);
 
 
     public String FinalColorMethod(int A, int B, int C, int D, int E, int F) {
-        String As = null;
-        String Bs = null;
-        String Cs = null;
-        String Ds = null;
-        String Es = null;
-        String Fs = null;
-        String PassColor = "#%s%s%s%s%s%s";
-
-        if (A == 0) {
-            As = "0";
+            String PassColor = "#%s%s%s%s%s%s";
+            String As = Integer.toHexString(A).toUpperCase();
+            String Bs = Integer.toHexString(B).toUpperCase();
+            String Cs = Integer.toHexString(C).toUpperCase();
+            String Ds = Integer.toHexString(D).toUpperCase();
+            String Es = Integer.toHexString(E).toUpperCase();
+            String Fs = Integer.toHexString(F).toUpperCase();
+            return String.format(PassColor, As, Bs, Cs, Ds, Es, Fs);
         }
-        if (A == 1) {
-            As = "1";
-        }
-        if (A == 2) {
-            As = "2";
-        }
-        if (A == 3) {
-            As = "3";
-        }
-        if (A == 4) {
-            As = "4";
-        }
-        if (A == 5) {
-            As = "5";
-        }
-        if (A == 6) {
-            As = "6";
-        }
-        if (A == 7) {
-            As = "7";
-        }
-        if (A == 8) {
-            As = "8";
-        }
-        if (A == 9) {
-            As = "9";
-        }
-        if (A == 10) {
-            As = "A";
-        }
-        if (A == 11) {
-            As = "B";
-        }
-        if (A == 12) {
-            As = "C";
-        }
-        if (A == 13) {
-            As = "D";
-        }
-        if (A == 14) {
-            As = "E";
-        }
-        if (A == 15) {
-            As = "F";
-        }
-
-
-        if (B == 0) {
-            Bs = "0";
-        }
-        if (B == 1) {
-            Bs = "1";
-        }
-        if (B == 2) {
-            Bs = "2";
-        }
-        if (B == 3) {
-            Bs = "3";
-        }
-        if (B == 4) {
-            Bs = "4";
-        }
-        if (B == 5) {
-            Bs = "5";
-        }
-        if (B == 6) {
-            Bs = "6";
-        }
-        if (B == 7) {
-            Bs = "7";
-        }
-        if (B == 8) {
-            Bs = "8";
-        }
-        if (B == 9) {
-            Bs = "9";
-        }
-        if (B == 10) {
-            Bs = "A";
-        }
-        if (B == 11) {
-            Bs = "B";
-        }
-        if (B == 12) {
-            Bs = "C";
-        }
-        if (B == 13) {
-            Bs = "D";
-        }
-        if (B == 14) {
-            Bs = "E";
-        }
-        if (B == 15) {
-            Bs = "F";
-        }
-        if (C == 0) {
-            Cs = "0";
-        }
-        if (C == 1) {
-            Cs = "1";
-        }
-        if (C == 2) {
-            Cs = "2";
-        }
-        if (C == 3) {
-            Cs = "3";
-        }
-        if (C == 4) {
-            Cs = "4";
-        }
-        if (C == 5) {
-            Cs = "5";
-        }
-        if (C == 6) {
-            Cs = "6";
-        }
-        if (C == 7) {
-            Cs = "7";
-        }
-        if (C == 8) {
-            Cs = "8";
-        }
-        if (C == 9) {
-            Cs = "9";
-        }
-        if (C == 10) {
-            Cs = "C";
-        }
-        if (C == 11) {
-            Cs = "B";
-        }
-        if (C == 12) {
-            Cs = "C";
-        }
-        if (C == 13) {
-            Cs = "D";
-        }
-        if (C == 14) {
-            Cs = "E";
-        }
-        if (C == 15) {
-            Cs = "F";
-        }
-        if (D == 0) {
-            Ds = "0";
-        }
-        if (D == 1) {
-            Ds = "1";
-        }
-        if (D == 2) {
-            Ds = "2";
-        }
-        if (D == 3) {
-            Ds = "3";
-        }
-        if (D == 4) {
-            Ds = "4";
-        }
-        if (D == 5) {
-            Ds = "5";
-        }
-        if (D == 6) {
-            Ds = "6";
-        }
-        if (D == 7) {
-            Ds = "7";
-        }
-        if (D == 8) {
-            Ds = "8";
-        }
-        if (D == 9) {
-            Ds = "9";
-        }
-        if (D == 10) {
-            Ds = "D";
-        }
-        if (D == 11) {
-            Ds = "B";
-        }
-        if (D == 12) {
-            Ds = "C";
-        }
-        if (D == 13) {
-            Ds = "D";
-        }
-        if (D == 14) {
-            Ds = "E";
-        }
-        if (D == 15) {
-            Ds = "F";
-        }
-        if (E == 0) {
-            Es = "0";
-        }
-        if (E == 1) {
-            Es = "1";
-        }
-        if (E == 2) {
-            Es = "2";
-        }
-        if (E == 3) {
-            Es = "3";
-        }
-        if (E == 4) {
-            Es = "4";
-        }
-        if (E == 5) {
-            Es = "5";
-        }
-        if (E == 6) {
-            Es = "6";
-        }
-        if (E == 7) {
-            Es = "7";
-        }
-        if (E == 8) {
-            Es = "8";
-        }
-        if (E == 9) {
-            Es = "9";
-        }
-        if (E == 10) {
-            Es = "E";
-        }
-        if (E == 11) {
-            Es = "B";
-        }
-        if (E == 12) {
-            Es = "C";
-        }
-        if (E == 13) {
-            Es = "D";
-        }
-        if (E == 14) {
-            Es = "E";
-        }
-        if (E == 15) {
-            Es = "F";
-        }
-        if (F == 0) {
-            Fs = "0";
-        }
-        if (F == 1) {
-            Fs = "1";
-        }
-        if (F == 2) {
-            Fs = "2";
-        }
-        if (F == 3) {
-            Fs = "3";
-        }
-        if (F == 4) {
-            Fs = "4";
-        }
-        if (F == 5) {
-            Fs = "5";
-        }
-        if (F == 6) {
-            Fs = "6";
-        }
-        if (F == 7) {
-            Fs = "7";
-        }
-        if (F == 8) {
-            Fs = "8";
-        }
-        if (F == 9) {
-            Fs = "9";
-        }
-        if (F == 10) {
-            Fs = "F";
-        }
-        if (F == 11) {
-            Fs = "B";
-        }
-        if (F == 12) {
-            Fs = "C";
-        }
-        if (F == 13) {
-            Fs = "D";
-        }
-        if (F == 14) {
-            Fs = "E";
-        }
-        if (F == 15) {
-            Fs = "F";
-        }
-
-        return String.format(PassColor, As, Bs, Cs, Ds, Es, Fs);
-    }
 }

@@ -145,6 +145,15 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        //StereoscopePendulumOpen();
+        //AnimationOpen();
+        // NumbersPracticeOpen();
+      // RotationPracticeOpen();
+       // ShortOpen();
+       // LongOpen();
+        // AnalogClock();
+       // ProtomonMethod();
+        // CpracOpen();
         initializeElements();
         enableCountess();
         enableMultiply();
@@ -184,15 +193,74 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!(xI == 42 || xI == 9)) {
+
+                if (a == 389 && b == 59){
+                    ProtomonMethod();
+                }
+                if (a == 389 && b == 58){
+                    ProtomonsMethod();
+                }
+                if (a == 390 && b == 58){
+                    BalanceProto();
+                }
+                if (a == 390 && b == 59){
+                    ShortOpen();
+                }
+                if (a == 390 && b == 37){
+                    LongOpen();
+                }
+                if (a == 391 && b == 59){
+                    PrimeClock();
+                }
+                if (a == 392 && b == 59){
+                    OpenTiles();
+                }
+                if (a == 393 && b == 59){
+                    OpenFont();
+                }
+                if (a == 394 && b == 59){
+                    AnalogClock();
+                }
+                if (a == 395 && b == 59){
+                    StereoscopeOpen();
+                }
+                if (a == 396 && b == 59){
+                    StereoscopePendulumOpen();
+                }
+                if (a == 397 && b == 59){
+                    AnimationOpen();
+                }
+                if (a == 398 && b == 59){
+                    NumbersPracticeOpen();
+                }
+                if (a == 399 && b == 59){
+                    RotationPracticeOpen();
+                }
+                if (a == b && a == 1){
+                    OpenGraphs();
+                }
+                if ((a%2) == 0 && a == b && a>0 && (a%3) != 0){
+                    NarcSixty();
+                }else if ((a%2) == 0 && a == b && a>0 && (a%3) == 0){
+                    HappySixty();
+                }else if(a == b && a > 14) {
+                    OpenRedHerring();
+                }else if (!(xI == 42 || xI == 9) && a != 1 && a != 389&& a != 390&& a != 391 && a != 392 && a != 393 && a!= 394 && a!= 395 && a!= 396&& a!= 397&& a!= 398&& a!= 399) {
                     OpenStockMania();
                 }else if (XI == 9){
                     OpenStockManiaAutoplayer();
 
                     }else if(XI == 42) {
-                    OpenStockManiaPowerfulAutoplayer();
+
+                        if (uI != 42){
+                            OpenStockManiaPowerfulAutoplayer();
+                        }else{
+                            OpenStockManiaPowerfulAutoplayerTwo();
+                    }
                 }else{
+                    if(a != 1 && a != 389 && a != 390 && a != 391 && a != 392&& a != 393 && a!= 394 && a!= 395 && a!= 396&& a!= 397&& a!= 398&& a!= 399) {
                         OpenStockManiaWithTime();
+                    }
                     }
                 }
 
@@ -200,21 +268,107 @@ public class Main2Activity extends AppCompatActivity {
         btnImageChanger = (Button) findViewById(R.id.btnImageChanger);
         btnImageChangess = (Button) findViewById(R.id.btn2);
     }
+
+    private void BalanceProto() {
+        Intent go = new Intent(this, BalanceCalculator.class);
+        startActivity(go);
+    }
+    private void CpracOpen() {
+        Intent go = new Intent(this, Cprac.class);
+        startActivity(go);
+    }
+    private void ShortOpen() {
+        Intent go = new Intent(this, ShortPractice.class);
+        startActivity(go);
+    }
+    private void LongOpen() {
+        Intent go = new Intent(this, LongPractice.class);
+        startActivity(go);
+    }
+
+    public void ProtomonsMethod() {
+            Intent go = new Intent(this, protomons.class);
+                    startActivity(go);
+        }
+    public void ProtomonMethod() {
+            Intent go = new Intent(this, protomon.class);
+                    startActivity(go);
+        }
+    public void OpenRedHerring() {
+            Intent go = new Intent(this, CalculatorRedHerring.class);
+                    startActivity(go);
+        }
+        public void AnalogClock() {
+            Intent go = new Intent(this, AnalogSixtyClock.class);
+                    startActivity(go);
+        }
+        public void StereoscopeOpen() {
+            Intent go = new Intent(this, Stereoscope.class);
+                    startActivity(go);
+        }
+        public void StereoscopePendulumOpen() {
+            Intent go = new Intent(this, StereoscopePendulum.class);
+                    startActivity(go);
+        }
+        public void AnimationOpen() {
+            Intent go = new Intent(this, AnimationPractice.class);
+                    startActivity(go);
+        }
+        public void NumbersPracticeOpen() {
+            Intent go = new Intent(this, NumbersPractice.class);
+                    startActivity(go);
+        }
+        public void RotationPracticeOpen() {
+            Intent go = new Intent(this, RotationPractice.class);
+                    startActivity(go);
+        }
+        public void PrimeClock() {
+            Intent go = new Intent(this, AdobrasigianPrimeClock.class);
+                    startActivity(go);
+        }
+        public void OpenGraphs() {
+            Intent go = new Intent(this, StockManiaActivityGraphs.class);
+                    startActivity(go);
+        }
+        public void HappySixty() {
+            Intent go = new Intent(this, HappySixties.class);
+                    startActivity(go);
+        }
+        public void NarcSixty() {
+            Intent go = new Intent(this, NarcSixties.class);
+                    startActivity(go);
+        }
+        public void OpenBlueHerring() {
+            Intent go = new Intent(this, CalculatorBlueHerring.class);
+                    startActivity(go);
+        }
+        public void OpenFont() {
+            Intent go = new Intent(this, FontTile.class);
+                    startActivity(go);
+        }
+        public void OpenTiles() {
+            Intent go = new Intent(this, CounterTiles.class);
+                    startActivity(go);
+        }
         public void OpenStockMania() {
-            Intent intent = new Intent(this, StockManiaActivity.class);
-                    startActivity(intent);
+            Intent go = new Intent(this, StockManiaActivity.class);
+                    startActivity(go);
         }
         public void OpenStockManiaWithTime() {
-            Intent intent = new Intent(this, StockManiaActivityWithTime.class);
-            startActivity(intent);
+            Intent go = new Intent(this, StockManiaActivityWithTime.class);
+            startActivity(go);
         }
         public void OpenStockManiaAutoplayer() {
-            Intent intent = new Intent(this, StockManiaActivityAutoplayer.class);
-                    startActivity(intent);
+            Intent go = new Intent(this, StockManiaActivityAutoplayer.class);
+                    startActivity(go);
         }
         public void OpenStockManiaPowerfulAutoplayer() {
-            Intent intent = new Intent(this, StockManiaActivityPowerfulAutoplayer.class);
-                    startActivity(intent);
+            Intent go = new Intent(this, StockManiaActivityPowerfulAutoplayer.class);
+                    startActivity(go);
+        }
+        public void OpenStockManiaPowerfulAutoplayerTwo() {
+            Intent go = new Intent(this, StockManiaActivityPowerfulAutoplayerVersionTwo.class);
+                    startActivity(go);
         }
   public void onClick(View v) {
       Wipe.setOnClickListener(new View.OnClickListener() {

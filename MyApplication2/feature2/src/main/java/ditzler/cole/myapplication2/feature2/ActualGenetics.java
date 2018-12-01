@@ -1,5 +1,7 @@
 package ditzler.cole.myapplication2.feature2;
 
+import android.widget.TextView;
+
 public class ActualGenetics {
 
 
@@ -75,7 +77,25 @@ do this:
     this would lead to some more chaotic results toward the end of long chromosomes. This can be where the genes in high flux go, the more stable genes go toward the start.
      */
 
+/*
+    public void DoesYourHomework(int StarterInt) {
 
+        TextView TextViewOne;
+        TextViewOne = (TextView) findViewById(R.id.OnlyTextView);
+        double[] Output = new double[9];
 
+        int IntLength = String.valueOf(StarterInt).length();
+        int LoopCounter;
+        double ModCounter = Math.pow(10, IntLength);
 
+        for (LoopCounter = 0; LoopCounter < (IntLength + 1); LoopCounter++) {
+
+            Output[LoopCounter] = Math.floor(StarterInt / ModCounter);
+            ModCounter = ModCounter/10;
+
+        }
+        TextViewOne.setText(" " + Output[0] + " " + Output[1] + " " + Output[2] + " " + Output[3] + " " + Output[4] + " " + Output[5] + " " + Output[6] + " " + Output[7] + " " + Output[8]);
+
+    }
+*/
 }

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$/60Calc" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/GraphView" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/GraphView-Demos" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/GraphView-Demos/GraphView" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/SixtyCalc" vcs="Git" />
   </component>
 </project>

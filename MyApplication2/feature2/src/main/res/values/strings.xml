@@ -25,6 +25,10 @@
     <string name="X">= Inaccuracy warning</string>
     <string name="SG">Game</string>
     <string name="Buy">Buy</string>
+    <string name="Give">Grant Money</string>
+    <string name="TakeMoney">Reduce Money</string>
+    <string name="SellAll">Sell Stocks</string>
+    <string name="Crash">Crash Stocks</string>
     <string name="O">1</string>
     <string name="Sell">Sell</string>
     <string name="Progress">Progress</string>

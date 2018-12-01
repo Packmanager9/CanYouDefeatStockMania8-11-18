@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ditzler.cole.myapplication2.feature2">
 
+
     <application>
 
         <activity android:name=".Main2Activity">
@@ -24,6 +25,159 @@
             </intent-filter>
         </activity>
         <activity android:name=".StockManiaActivity">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".PrimeClock">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".AdobrasigianPrimeClock">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".CounterTiles">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".FontTile">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Stereoscope">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".StereoscopePendulum">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".AnalogSixtyClock">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AnimationPractice">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NumbersPractice">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RotationPractice">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".StockManiaActivityGraphs">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -80,6 +234,76 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".StockManiaActivityPowerfulAutoplayerVersionTwo">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".CalculatorRedHerring">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".HappySixties">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".NarcSixties">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".CalculatorBlueHerring">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
 
             <activity android:name=".DiceGame">
             <intent-filter android:order="1">
@@ -96,6 +320,63 @@
         </activity>
 
             <activity android:name=".MusicSoup">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+            <activity android:name=".Cprac">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+            <activity android:name=".BalanceCalculator">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+            <activity android:name=".protomon"
+                android:windowSoftInputMode="adjustNothing">
+
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+            <activity android:name=".protomons">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -138,7 +419,50 @@
             </intent-filter>
         </activity>
 
+
+            <activity android:name=".RabbitHutchBranch">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
             <activity android:name=".gumbler">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+            <activity android:name=".ShortPractice">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+            <activity android:name=".LongPractice">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 

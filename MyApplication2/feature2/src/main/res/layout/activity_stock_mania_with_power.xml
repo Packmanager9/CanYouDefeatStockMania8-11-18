@@ -9,6 +9,13 @@
     tools:context=".StockManiaActivity">
 
 
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentStart="true"/>
+
     <TextView
         android:id="@+id/TW06"
         android:layout_width="60dp"
@@ -201,7 +208,7 @@
                 android:layout_height="38dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="-10dp"
-                android:text="@string/Gamble"
+                android:text="Δ Mode"
                 android:textSize="10sp"
                 android:textStyle="bold" />
 
@@ -292,15 +299,6 @@
                 android:layout_marginTop="0dp"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/NextDay"
-                    android:layout_width="106dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:text="@string/Progress"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/Beg"
@@ -687,8 +685,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="60dp"
-
+                    android:layout_width="120dp"
                     android:layout_height="238dp"
                     android:layout_marginStart="7dp"
                     android:orientation="vertical">
@@ -696,170 +693,79 @@
 
                     <Button
                         android:id="@+id/buySINE"
-                        android:layout_width="60dp"
+                        android:layout_width="120dp"
 
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="-5dp"
-                        android:text="@string/Buy"
+                        android:text="@string/Give"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/buyTRTL"
-                        android:layout_width="60dp"
-
+                        android:layout_width="120dp"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:text="@string/Buy"
+                        android:text="@string/TakeMoney"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/buyDICE"
-                        android:layout_width="60dp"
-
+                        android:layout_width="120dp"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:text="@string/Buy"
+                        android:text="@string/SellAll"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
 
                     <Button
                         android:id="@+id/buyBTC"
-                        android:layout_width="60dp"
-
+                        android:layout_width="120dp"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:text="@string/Buy"
+                        android:text="@string/Crash"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/buyPLNT"
-                        android:layout_width="60dp"
-
+                        android:layout_width="120dp"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:text="@string/Buy"
+                        android:text="Give Stocks"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/buyLUZE"
-                        android:layout_width="60dp"
-
+                        android:layout_width="120dp"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:text="@string/Buy"
+                        android:text="Take Stocks"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/buyHARE"
-                        android:layout_width="60dp"
-
+                        android:layout_width="120dp"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:text="@string/Buy"
+                        android:text="Ø Safe Sell"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="60dp"
-
-                    android:layout_height="238dp"
-                    android:layout_marginEnd="0dp"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/sellSINE"
-                        android:layout_width="60dp"
-
-                        android:layout_height="35dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="-5dp"
-                        android:text="@string/Sell"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/sellTRTL"
-                        android:layout_width="60dp"
-
-                        android:layout_height="35dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:text="@string/Sell"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/sellDICE"
-                        android:layout_width="60dp"
-
-                        android:layout_height="35dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:text="@string/Sell"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/SellBTC"
-                        android:layout_width="60dp"
-
-                        android:layout_height="35dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:text="@string/Sell"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/sellPLNT"
-                        android:layout_width="60dp"
-
-                        android:layout_height="35dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:text="@string/Sell"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/sellLUZE"
-                        android:layout_width="60dp"
-
-                        android:layout_height="35dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:text="@string/Sell"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/SellHARE"
-                        android:layout_width="60dp"
-
-                        android:layout_height="35dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:text="@string/Sell"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
             </LinearLayout>
           </LinearLayout>
 

@@ -5,6 +5,7 @@ package ditzler.cole.myapplication2.feature2;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -39,7 +40,7 @@ double countdown = 1000000000;
 
 double Realdown = 999990000;
 double TotalValueCombined = 100;
-
+int Manipulated = 0 ;
   int  timercounter;
   int timercountercounter;
 
@@ -53,7 +54,7 @@ double TotalValueCombined = 100;
     double LOSSaverage = 1;
     double HAREaverage = 1;
 
-    double logincrement = 2;
+    double logincrement = 10;
     double logtobetested = 100;
 
     double SINEaveragesell = 1;
@@ -63,6 +64,8 @@ double TotalValueCombined = 100;
     double PLNTaveragesell = 1;
     double LOSSaveragesell = 1;
     double HAREaveragesell = 1;
+
+    int loopStart = 0;
 
 
     public void EscapeStockMania() {
@@ -134,7 +137,7 @@ double TotalValueCombined = 100;
     MediaPlayer StockMarketTrackPlayer;
     int BankMode = 0;
     int loopAI = 0;
-    TextView ColorCircle;
+    TextView ColorCircle, PortfolioValueViewNoName;
     TextView SmallCircle;
     TextView BigCircle;
     int Cheated;
@@ -408,7 +411,7 @@ double TotalValueCombined = 100;
 
 
 
-        StockMarketTrackPlayer = MediaPlayer.create(this, R.raw.stockmarketgametrack);
+        StockMarketTrackPlayer = MediaPlayer.create(this, R.raw.xylostocks);
         StockMarketTrackPlayer.setLooping(true);
         StockMarketTrackPlayer.start();
 
@@ -672,7 +675,7 @@ double TotalValueCombined = 100;
                 HAIR = "BNY";
             }
         }
-        setContentView(R.layout.activity_stock_mania_with_power);
+        setContentView(R.layout.activity_stock_mania_with_power_no_graph);
 
 
         NewStockArrowImageView = (ImageView) findViewById(R.id.SineArrow);
@@ -699,24 +702,16 @@ double TotalValueCombined = 100;
         TestBox = (TextView) findViewById(R.id.Text);
         BankView = (TextView) findViewById(R.id.BankView);
         BuyTRTLStock = (Button) findViewById((R.id.buyTRTL));
-        SellTRTLStock = (Button) findViewById((R.id.sellTRTL));
         BuySINEStock = (Button) findViewById((R.id.buySINE));
-        SellSINEStock = (Button) findViewById((R.id.sellSINE));
         BuyDICEStock = (Button) findViewById((R.id.buyDICE));
-        SellDICEStock = (Button) findViewById((R.id.sellDICE));
         BuyBTCStock = (Button) findViewById((R.id.buyBTC));
-        SellBTCStock = (Button) findViewById((R.id.SellBTC));
         BuyPLNTStock = (Button) findViewById((R.id.buyPLNT));
-        SellPLNTStock = (Button) findViewById((R.id.sellPLNT));
         BuyLUZEStock = (Button) findViewById((R.id.buyLUZE));
-        SellLUZEStock = (Button) findViewById((R.id.sellLUZE));
         BuyHAREStock = (Button) findViewById((R.id.buyHARE));
-        SellHAREStock = (Button) findViewById((R.id.SellHARE));
         ResetGame = (Button) findViewById ((R.id.Reset));
         NextGame = (Button) findViewById(R.id.NextGame);
         Gumble = (Button) findViewById(R.id.Gamble);
         Mute = (Button) findViewById((R.id.Mute));
-        Go = (Button) findViewById((R.id.NextDay));
         beg = (Button) findViewById((R.id.Beg));
         Bank = (Button) findViewById((R.id.bank));
         Take = (Button) findViewById((R.id.Take));
@@ -749,7 +744,7 @@ double TotalValueCombined = 100;
         Loan.setVisibility(View.INVISIBLE);
         BankView.setVisibility(View.INVISIBLE);
         Bank.setVisibility(View.INVISIBLE);
-        Gumble.setVisibility(View.INVISIBLE);
+        Gumble.setVisibility(View.VISIBLE);
         beg.setVisibility(View.INVISIBLE);
 
 
@@ -779,8 +774,8 @@ double TotalValueCombined = 100;
                 }
 
 
-                NextGameCounter = 0;
-                resetCounter = 0;
+               // NextGameCounter = 0;
+              //  resetCounter = 0;
                 Day = Day + 1;
 
 
@@ -2072,6 +2067,11 @@ double TotalValueCombined = 100;
               //  DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
 
 
+
+
+
+
+
         runOnUiThread(new Runnable() {
     @Override
     public void run() {
@@ -2202,7 +2202,7 @@ double TotalValueCombined = 100;
         }
         TextView displayInteger = (TextView) findViewById(R.id.Day);
         displayInteger.setText("Day " + Day);
-        Go.setVisibility(View.INVISIBLE);
+
         Bank.setVisibility(View.VISIBLE);
         timercounter = (timercounter + 1)%11;
         if (timercounter == 10){
@@ -2256,28 +2256,24 @@ double TotalValueCombined = 100;
         String Stringer = SINE;
 
         if(thishasnthappenedyet == 0) {
-             DICEBuyChecker = DicePrice + 3;
+             DICEBuyChecker = DicePrice + 1;
              TRTLBuyChecker = TurtlePrice + 3;
              SINEBuyChecker = NewStockPrice + 3;
              HAREBuyChecker = HARE + 3;
              PLNTBuyChecker = PlantPrice + 3;
              BTCBuyChecker = BitcoinPrice + 3;
              LOSSBuyChecker = LossLeaderPrice + 3;
-        
-             DICESellChecker = DicePrice - 3;
+
+             DICESellChecker = DicePrice - 1;
              TRTLSellChecker = TurtlePrice - 3;
              SINESellChecker = NewStockPrice - 3;
              HARESellChecker = HARE - 3;
              PLNTSellChecker = PlantPrice - 3;
              BTCSellChecker = BitcoinPrice - 3;
              LOSSSellChecker = LossLeaderPrice - 3;
-        
+
             thishasnthappenedyet = 1;
         }
-
-
-
-
 
 
 
@@ -2290,10 +2286,12 @@ double TotalValueCombined = 100;
 
             double total = 0;
 
-        for (loopAI = 0; loopAI < 10; loopAI++) {
+        for (loopAI = loopStart; loopAI < 11; loopAI++) {
+            PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
             TotalValueCombined = Money + PortfolioValue + 1;
-            double LogOfValue = Math.log(TotalValueCombined);
-            int IncreaseBuysAndSellsBy = (int) Math.abs((Math.floor(LogOfValue) - 2));
+           // double LogOfValue = Math.log(TotalValueCombined);
+            double LogOfValue = Math.log(TotalValueCombined)/Math.log(1.618);
+            int IncreaseBuysAndSellsBy = (int) Math.abs((Math.floor(LogOfValue) - 9));
             int PassRandomCarrier = 15+(IncreaseBuysAndSellsBy*5);
             double number = new Random().nextInt(PassRandomCarrier)+1;
             double SalesPitch = new Random().nextInt(5);
@@ -2328,7 +2326,7 @@ double TotalValueCombined = 100;
                             total = total / 100;
                             total = total / 100;
 
-                            if (Math.abs(TurtlePrice) < (TRTLBuyChecker/1.01)) {
+                            if (Math.abs(TurtlePrice) < (TRTLBuyChecker/1.15)) {
                                 if (Math.abs(total) <= Money) {
                                     TRTLNum = TRTLNum + number;
                                     String traded = String.format("%.0f", number);
@@ -2336,11 +2334,11 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
-
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     TRTLSellChecker = ((TRTLSellChecker*TRTLaverage)/(number+TRTLaverage)) +(Math.abs(TurtlePrice)*number/(TRTLaverage+number));
                                     TRTLaverage = TRTLaverage + number;
                                 } else {
-                                    displayPaper.setText(NotEnoughMoney);
+                                   // displayPaper.setText(NotEnoughMoney);
                                 }
                             }
                             double numberone = 1;
@@ -2364,7 +2362,7 @@ double TotalValueCombined = 100;
                             total = total / 100;
                             total = total / 100;
 
-                            int thisjobagain = new Random().nextInt(3);
+                            int thisjobagain = new Random().nextInt(6);
                             if (thisjobagain == 2) {
                                 if (Math.abs(total) <= Money) {
                                     TRTLNum = TRTLNum + numberone;
@@ -2373,10 +2371,11 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     TRTLSellChecker = ((TRTLSellChecker*TRTLaverage)/(numberone+TRTLaverage)) +(Math.abs(TurtlePrice)*numberone/(TRTLaverage+numberone));
                                     TRTLaverage = TRTLaverage + numberone;
                                 } else {
-                                    displayPaper.setText(NotEnoughMoney);
+                                   // displayPaper.setText(NotEnoughMoney);
                                 }
                             }
                         }
@@ -2415,7 +2414,7 @@ double TotalValueCombined = 100;
                             total = (Math.round(total));
                             total = total / 100;
                             total = total / 100;
-                            if (Math.abs(DicePrice) < (DICEBuyChecker/1.01)) {
+                            if (Math.abs(DicePrice) < (DICEBuyChecker/1.1)) {
                                 if (Math.abs(total) <= Money) {
                                     DICENum = DICENum + number;
                                     String traded = String.format("%.0f", number);
@@ -2423,10 +2422,11 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     DICESellChecker = ((DICESellChecker*DICEaverage)/(number+DICEaverage)) +(Math.abs(DicePrice)*number/(DICEaverage+number));
                                     DICEaverage = DICEaverage + number;
                                 } else {
-                                    displayPaper.setText(NotEnoughMoney);
+                                   // displayPaper.setText(NotEnoughMoney);
                                 }
                             }
 
@@ -2459,10 +2459,11 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     DICESellChecker = ((DICESellChecker*DICEaverage)/(numberone+DICEaverage)) +(Math.abs(DicePrice)*numberone/(DICEaverage+numberone));
                                     DICEaverage = DICEaverage + numberone;
                                 } else {
-                                    displayPaper.setText(NotEnoughMoney);
+                                   // displayPaper.setText(NotEnoughMoney);
                                 }
                             }
                         }
@@ -2500,7 +2501,7 @@ double TotalValueCombined = 100;
                             total = (Math.round(total));
                             total = total / 100;
                             total = total / 100;
-                            if (Math.abs(BitcoinPrice) < (BTCBuyChecker/1.01)) {
+                            if (Math.abs(BitcoinPrice) < (BTCBuyChecker/1.1)) {
                                 if (Math.abs(total) <= Money) {
 
                                     BTCNum = BTCNum + number;
@@ -2510,11 +2511,11 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
-
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     BTCSellChecker = ((BTCSellChecker*BTCaverage)/(number+BTCaverage)) +(Math.abs(BitcoinPrice)*number/(BTCaverage+number));
                                     BTCaverage = BTCaverage + number;
                                 } else {
-                                    displayPaper.setText(NotEnoughMoney);
+                                   // displayPaper.setText(NotEnoughMoney);
                                 }
                             }
                             double numberone = 1;
@@ -2550,10 +2551,11 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     BTCSellChecker = ((BTCSellChecker*BTCaverage)/(numberone+BTCaverage)) +(Math.abs(BitcoinPrice)*numberone/(BTCaverage+numberone));
                                     BTCaverage = BTCaverage + numberone;
                                 } else {
-                                    displayPaper.setText(NotEnoughMoney);
+                                   // displayPaper.setText(NotEnoughMoney);
                                 }
                             }
                         }
@@ -2570,7 +2572,7 @@ double TotalValueCombined = 100;
                         price = Math.abs(HARE);
 
                         if (Day >= 1) {
-                            
+
 
                             price = price * 100;
                             price = (Math.round(price));
@@ -2591,7 +2593,7 @@ double TotalValueCombined = 100;
                             total = (Math.round(total));
                             total = total / 100;
                             total = total / 100;
-                            if(Math.abs(HARE) < (HAREBuyChecker/1.01)) {
+                            if(Math.abs(HARE) < (HAREBuyChecker/1.15)) {
                                 if (Math.abs(total) <= Money) {
                                     HAIRNum = HAIRNum + number;
                                     String traded = String.format("%.0f", number);
@@ -2599,7 +2601,7 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
-
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     HARESellChecker = ((HARESellChecker*HAREaverage)/(number+HAREaverage)) +(Math.abs(HARE)*number/(HAREaverage+number));
                                     HAREaverage = HAREaverage + number;
                                 }
@@ -2627,7 +2629,7 @@ double TotalValueCombined = 100;
                             total = (Math.round(total));
                             total = total / 100;
                             total = total / 100;
-                            int thisjobagain = new Random().nextInt(3);
+                            int thisjobagain = new Random().nextInt(6);
                             if (thisjobagain == 2) {
                                 if (Math.abs(total) <= Money) {
                                     HAIRNum = HAIRNum + numberone;
@@ -2636,7 +2638,7 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
-
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     HARESellChecker = ((HARESellChecker*HAREaverage)/(numberone+HAREaverage)) +(Math.abs(HARE)*numberone/(HAREaverage+numberone));
                                     HAREaverage = HAREaverage + numberone;
                                 }
@@ -2672,7 +2674,7 @@ double TotalValueCombined = 100;
                             total = (Math.round(total));
                             total = total / 100;
                             total = total / 100;
-                            if (Math.abs(LossLeaderPrice) < (LOSSBuyChecker/1.01)) {
+                            if (Math.abs(LossLeaderPrice) < (LOSSBuyChecker/1.25)) {
                                 if (Math.abs(total) <= Money) {
                                     LUZENum = LUZENum + number;
                                     String traded = String.format("%.0f", number);
@@ -2680,7 +2682,7 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
-
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     LOSSSellChecker = ((LOSSSellChecker*LOSSaverage)/(number+LOSSaverage)) +(Math.abs(LossLeaderPrice)*number/(LOSSaverage+number));
                                     LOSSaverage = LOSSaverage + number;
                                 }
@@ -2715,7 +2717,7 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
-
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     LOSSSellChecker = ((LOSSSellChecker*LOSSaverage)/(numberone+LOSSaverage)) +(Math.abs(LossLeaderPrice)*numberone/(LOSSaverage+numberone));
                                     LOSSaverage = LOSSaverage + numberone;
                                 }
@@ -2750,7 +2752,7 @@ double TotalValueCombined = 100;
                             total = (Math.round(total));
                             total = total / 100;
                             total = total / 100;
-                            if(Math.abs(PlantPrice) < (PLNTBuyChecker/1.01)) {
+                            if(Math.abs(PlantPrice) < (PLNTBuyChecker/1.1)) {
                                 if (Math.abs(total) <= Money) {
                                     PLNTNum = PLNTNum + number;
                                     String traded = String.format("%.0f", number);
@@ -2758,7 +2760,7 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
-
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     PLNTSellChecker = ((PLNTSellChecker*PLNTaverage)/(number+PLNTaverage)) +(Math.abs(PlantPrice)*number/(PLNTaverage+number));
                                     PLNTaverage = PLNTaverage + number;
                                 }
@@ -2792,6 +2794,7 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     PLNTSellChecker = ((PLNTSellChecker*PLNTaverage)/(numberwon+PLNTaverage)) +(Math.abs(PlantPrice)*numberwon/(PLNTaverage+numberwon));
                                     PLNTaverage = PLNTaverage + numberwon;
                                 }
@@ -2829,7 +2832,7 @@ double TotalValueCombined = 100;
                             total = (Math.round(total));
                             total = total / 100;
                             total = total / 100;
-                            if (Math.abs(NewStockPrice) < (SINEBuyChecker/1.01)) {
+                            if (Math.abs(NewStockPrice) < (SINEBuyChecker/1.1)) {
                                 if (Math.abs(total) <= Money) {
                                     SINENum = SINENum + number;
                                     String traded = String.format("%.0f", number);
@@ -2837,11 +2840,12 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     SINESellChecker = ((SINESellChecker*SINEaverage)/(number+SINEaverage)) +(Math.abs(NewStockPrice)*number/(SINEaverage+number));
                                     SINEaverage = SINEaverage + number;
 
                                 } else {
-                                    displayPaper.setText(NotEnoughMoney);
+                                   // displayPaper.setText(NotEnoughMoney);
                                 }
                             }
                             double nvmberone = 1;
@@ -2864,7 +2868,7 @@ double TotalValueCombined = 100;
                             total = (Math.round(total));
                             total = total / 100;
                             total = total / 100;
-                            int thisjobagainsa = new Random().nextInt(3);
+                            int thisjobagainsa = new Random().nextInt(7);
                             if (thisjobagainsa == 2) {
                                 if (Math.abs(total) <= Money) {
                                     SINENum = SINENum + nvmberone;
@@ -2873,10 +2877,11 @@ double TotalValueCombined = 100;
                                     Money = ((Money - Math.abs(total)) * 100);
                                     Money = Math.round(Money);
                                     Money = Money / 100;
+                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     SINESellChecker = ((SINESellChecker*SINEaverage)/(nvmberone+SINEaverage)) +(Math.abs(NewStockPrice)*nvmberone/(SINEaverage+nvmberone));
                                     SINEaverage = SINEaverage + nvmberone;
                                 } else {
-                                    displayPaper.setText(NotEnoughMoney);
+                                   // displayPaper.setText(NotEnoughMoney);
                                 }
                             }
                         }
@@ -2892,18 +2897,20 @@ double TotalValueCombined = 100;
                 }
             }else {
 
-                number = Math.ceil(number/4);
+                number = Math.ceil(number/5);
                     switch (newrandom) {
 
                         case 0:
                             Stringer = TRTL;
                             price = Math.abs(TurtlePrice);
+                            double floorpass = Math.log(TRTLNum + 1);
+                            number = number + Math.floor(floorpass);
                             price = price * 100; price = (Math.round(price)); price = price/100;
                             total = Math.abs(price * number);
                             total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
                             total = total/100;
-                                if (TurtlePrice > (TRTLSellChecker*1.01)) {
-                                    number = number + Math.floor(Math.log10(TRTLNum));
+                                if (TurtlePrice > (TRTLSellChecker*1)) {
+
                                     if (TRTLNum >= number && TRTLNum >= 0 && (TRTLNum - number) >= 0) {
 
                                         TRTLNum = TRTLNum - number;
@@ -2915,8 +2922,9 @@ double TotalValueCombined = 100;
                                         Money = ((Money + Math.abs(total)) * 100);
                                         Money = Math.round(Money);
                                         Money = Money / 100;
+                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     } else {
-                                        displayPaper.setText(NotEnoughShares);
+                                       // displayPaper.setText(NotEnoughShares);
                                     }
                                 }
                             if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
@@ -2930,13 +2938,15 @@ double TotalValueCombined = 100;
                         case 1:
                             Stringer = DICE;
                             price = Math.abs((DicePrice));
+
+                            double floorpassz = Math.log(DICENum + 1);
+                            number = number + Math.floor(floorpassz);
                             price = price * 100; price = (Math.round(price)); price = price/100;
                             total = Math.abs(price * number);
                             total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
                             total = total/100;
-                                if (DicePrice > (DICESellChecker*1.01)) {
+                                if (DicePrice > (DICESellChecker*1.1)) {
 
-                                    number = number + Math.floor(Math.log10(DICENum));
                                     if (DICENum >= number && DICENum >= 0 && (DICENum - number) >= 0) {
 
                                         DICEBuyChecker = ((DICEBuyChecker*DICEaveragesell)/(DICEaveragesell+number)) +(Math.abs(DicePrice)*number/(DICEaveragesell+number));
@@ -2947,9 +2957,9 @@ double TotalValueCombined = 100;
                                         Money = ((Money + Math.abs(total)) * 100);
                                         Money = Math.round(Money);
                                         Money = Money / 100;
-
+                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     } else {
-                                        displayPaper.setText(NotEnoughShares);
+                                       // displayPaper.setText(NotEnoughShares);
                                     }
                             }
                             if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
@@ -2963,12 +2973,14 @@ double TotalValueCombined = 100;
                         case 2:
                             Stringer = BTC;
                             price = Math.abs(BitcoinPrice);
+
+                            double floorppass = Math.log(BTCNum + 1);
+                            number = number + Math.floor(floorppass);
                             price = price * 100; price = (Math.round(price)); price = price/100;
                             total = Math.abs(price * number);
                             total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
                             total = total/100;
-                                if (BitcoinPrice > (BTCSellChecker*1.01)) {
-                                    number = number + Math.floor(Math.log10(BTCNum));
+                                if (BitcoinPrice > (BTCSellChecker*1.1)) {
                                     if (BTCNum >= number && BTCNum >= 0 && (BTCNum - number) >= 0) {
 
                                         BTCBuyChecker = ((BTCBuyChecker*BTCaveragesell)/(BTCaveragesell+number)) +(Math.abs(BitcoinPrice)*number/(BTCaveragesell+number));
@@ -2979,9 +2991,10 @@ double TotalValueCombined = 100;
                                         Money = ((Money + Math.abs(total)) * 100);
                                         Money = Math.round(Money);
                                         Money = Money / 100;
+                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
 
                                     } else {
-                                        displayPaper.setText(NotEnoughShares);
+                                       // displayPaper.setText(NotEnoughShares);
                                     }
                                 }
                             if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
@@ -2995,12 +3008,14 @@ double TotalValueCombined = 100;
                         case 3:
                             Stringer = HAIR;
                             price = Math.abs(HARE);
+
+                            double floorrpass = Math.log(HAIRNum + 1);
+                            number = number + Math.floor(floorrpass);
                             price = price * 100; price = (Math.round(price)); price = price/100;
                             total = Math.abs(price * number);
                             total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
                             total = total/100;
-                                if (HARE > (HARESellChecker*1.01)) {
-                                    number = number + Math.floor(Math.log10(HAIRNum));
+                                if (HARE > (HARESellChecker*1)) {
                                     if (HAIRNum >= number && HAIRNum >= 0 && (HAIRNum - number) >= 0) {
 
                                         HAREBuyChecker = ((HAREBuyChecker*HAREaveragesell)/(HAREaveragesell+number)) +(Math.abs(HARE)*number/(HAREaveragesell+number));
@@ -3011,9 +3026,10 @@ double TotalValueCombined = 100;
                                         Money = ((Money + Math.abs(total)) * 100);
                                         Money = Math.round(Money);
                                         Money = Money / 100;
+                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
 
                                     } else {
-                                        displayPaper.setText(NotEnoughShares);
+                                       // displayPaper.setText(NotEnoughShares);
                                     }
                                 }
                             if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
@@ -3027,12 +3043,14 @@ double TotalValueCombined = 100;
                         case 4:
                             Stringer = LUZE;
                             price = Math.abs(LossLeaderPrice);
+                            double floorzpass = Math.log(LUZENum + 1);
+                            number = number + Math.floor(floorzpass);
                             price = price * 100; price = (Math.round(price)); price = price/100;
                             total = Math.abs(price * number);
                             total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
                             total = total/100;
-                                if (Math.abs(LossLeaderPrice) > (LOSSSellChecker*1.01)) {
-                                    number = number + Math.floor(Math.log10(LUZENum));
+                                if (Math.abs(LossLeaderPrice) > (LOSSSellChecker*1.25)) {
+
                                     if (LUZENum >= number && LUZENum >= 0 && (LUZENum - number) >= 0) {
 
 
@@ -3045,9 +3063,9 @@ double TotalValueCombined = 100;
                                         Money = ((Money + Math.abs(total)) * 100);
                                         Money = Math.round(Money);
                                         Money = Money / 100;
-
+                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     } else {
-                                        displayPaper.setText(NotEnoughShares);
+                                       // displayPaper.setText(NotEnoughShares);
                                     }
                                 }
                             if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
@@ -3061,12 +3079,13 @@ double TotalValueCombined = 100;
                         case 5:
                             Stringer = PLNT;
                             price = Math.abs(PlantPrice);
+                            double floorepass = Math.log(PLNTNum + 1);
+                            number = number + Math.floor(floorepass);
                             price = price * 100; price = (Math.round(price)); price = price/100;
                             total = Math.abs(price * number);
                             total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
                             total = total/100;
-                                if (PlantPrice > (PLNTSellChecker*1.015)) {
-                                    number = number + Math.floor(Math.log10(PLNTNum));
+                                if (PlantPrice > (PLNTSellChecker*1.15)) {
                                     if (PLNTNum >= number && PLNTNum >= 0 && (PLNTNum - number) >= 0) {
                                         PLNTNum = PLNTNum - number;
 
@@ -3077,9 +3096,9 @@ double TotalValueCombined = 100;
                                         Money = ((Money + Math.abs(total)) * 100);
                                         Money = Math.round(Money);
                                         Money = Money / 100;
-
+                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     } else {
-                                        displayPaper.setText(NotEnoughShares);
+                                       // displayPaper.setText(NotEnoughShares);
                                     }
                                 }
                             if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
@@ -3093,17 +3112,19 @@ double TotalValueCombined = 100;
                         case 6:
                             Stringer = SINE;
                             price = Math.abs(NewStockPrice);
+
+                            double floorapass = Math.log(SINENum + 1);
+                            number = number + Math.floor(floorapass);
                             price = price * 100; price = (Math.round(price)); price = price/100;
                             total = Math.abs(price * number);
                             total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
                             total = total/100;
-                                if (NewStockPrice > (SINESellChecker*1.01)) {
-                                    number = number + Math.floor(Math.log10(SINENum));
+                                if (NewStockPrice > (SINESellChecker*1.1)) {
                                     if (SINENum >= number && SINENum >= 0 && (SINENum - number) >= 0) {
-                                        
-                                        
+
+
                                         SINENum = SINENum - number;
-                                        
+
                                         SINEBuyChecker = ((SINEBuyChecker*SINEaveragesell)/(SINEaveragesell+number)) +(Math.abs(NewStockPrice)*number/(SINEaveragesell+number));
                                         SINEaveragesell = SINEaveragesell + number;
                                         String traded = String.format("%.0f", number);
@@ -3111,6 +3132,7 @@ double TotalValueCombined = 100;
                                         Money = ((Money + Math.abs(total)) * 100);
                                         Money = Math.round(Money);
                                         Money = Money / 100;
+                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
                                     }
                                 }
                             if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
@@ -3125,13 +3147,23 @@ double TotalValueCombined = 100;
                     }
 
                     }
-                
+
             }
-        loopAI = 0;
+
+        if (Money < 1000000000 ||  Manipulated != 1) {
+            loopAI = 0;
+        }else if (Manipulated == 0 && Money >= 1000000000){
+                loopStart = 12;
+                Tisl.setText("I Have Won By Earning $1,000,000,000! My Stack Is Currently $" + Money);
+            }
+        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
 
         logtobetested = (Money + PortfolioValue);
-        if ((Math.log10(logtobetested)) >= logincrement){
-            Money = Money + PortfolioValue;
+
+        logtobetested = Math.log(logtobetested)/Math.log(1.618);
+
+        if (logtobetested >= logincrement){
+            Money = (Money + PortfolioValue)*100;Money = Math.round(Money); Money = Money/100;
             TRTLNum = 0;
             SINENum = 0;
             DICENum = 0;
@@ -3140,6 +3172,7 @@ double TotalValueCombined = 100;
             LUZENum = 0;
             HAIRNum = 0;
             logincrement = logincrement + 1;
+            displayPaper.setText("Safe Sell!");
             if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
                 final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
                 PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
@@ -3147,6 +3180,7 @@ double TotalValueCombined = 100;
                 final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
                 PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
             Tisl.setText(Money$ + money);}
+
         }
 
 
@@ -3162,7 +3196,7 @@ double TotalValueCombined = 100;
             }
 
 
-        }, 100, 232);
+        }, 100, 250);
 
 
         Mute.setOnClickListener(new View.OnClickListener() {
@@ -3214,20 +3248,20 @@ double TotalValueCombined = 100;
                     }
                     TestBox.setVisibility(View.INVISIBLE);
                     BuyTRTLStock.setVisibility(View.INVISIBLE);
-                    SellTRTLStock.setVisibility(View.INVISIBLE);
+
                     BuySINEStock.setVisibility(View.INVISIBLE);
-                    SellSINEStock.setVisibility(View.INVISIBLE);
+
                     BuyDICEStock.setVisibility(View.INVISIBLE);
-                    SellDICEStock.setVisibility(View.INVISIBLE);
+
                     BuyBTCStock.setVisibility(View.INVISIBLE);
-                    SellBTCStock.setVisibility(View.INVISIBLE);
+
                     BuyPLNTStock.setVisibility(View.INVISIBLE);
-                    SellPLNTStock.setVisibility(View.INVISIBLE);
+
                     BuyLUZEStock.setVisibility(View.INVISIBLE);
-                    SellLUZEStock.setVisibility(View.INVISIBLE);
+
                     BuyHAREStock.setVisibility(View.INVISIBLE);
-                    SellHAREStock.setVisibility(View.INVISIBLE);
-                    Go.setVisibility(View.INVISIBLE);
+
+
                     beg.setVisibility(View.INVISIBLE);
                     DailyPapers.setVisibility(View.INVISIBLE);
                     TPV1.setVisibility(View.INVISIBLE);
@@ -3276,20 +3310,20 @@ double TotalValueCombined = 100;
 
                     TestBox.setVisibility(View.VISIBLE);
                     BuyTRTLStock.setVisibility(View.VISIBLE);
-                    SellTRTLStock.setVisibility(View.VISIBLE);
+
                     BuySINEStock.setVisibility(View.VISIBLE);
-                    SellSINEStock.setVisibility(View.VISIBLE);
+
                     BuyDICEStock.setVisibility(View.VISIBLE);
-                    SellDICEStock.setVisibility(View.VISIBLE);
+
                     BuyBTCStock.setVisibility(View.VISIBLE);
-                    SellBTCStock.setVisibility(View.VISIBLE);
+
                     BuyPLNTStock.setVisibility(View.VISIBLE);
-                    SellPLNTStock.setVisibility(View.VISIBLE);
+
                     BuyLUZEStock.setVisibility(View.VISIBLE);
-                    SellLUZEStock.setVisibility(View.VISIBLE);
+
                     BuyHAREStock.setVisibility(View.VISIBLE);
-                    SellHAREStock.setVisibility(View.VISIBLE);
-                  //  Go.setVisibility(View.VISIBLE);
+
+
                     DailyPapers.setVisibility(View.VISIBLE);
                     TPV1.setVisibility(View.VISIBLE);
                     TPV2.setVisibility(View.VISIBLE);
@@ -3566,6 +3600,7 @@ double TotalValueCombined = 100;
 
                 TextView NoCheat = (TextView) findViewById(R.id.pen4);
                 NoCheat.setText("");
+
                 Money = 100;
                 // Money = 1000000000;
                 Day = 1;
@@ -4045,1180 +4080,72 @@ double TotalValueCombined = 100;
             }
         });
 
-        Go.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        SellDICEStock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                
-                double BuyAmount = 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-                
-                
-                
-                if (resetCounter > 4){
-                    ResetGame.setVisibility(View.VISIBLE);
-                }
-                if (BuyAmount == 420 && Day == 0){
-                    PLNT = "WEED";
-                    BTC = "POT";
-                    TRTL = "JANE";
-                    HAIR = "PUFF";
-                    SINE = "MARY";
-                    DICE = "HASH";
-                    LUZE = "SMOK";
-                    Money = 100;
-                    debts = 0;
-                }
-
-                if (BuyAmount == 69 && Day == 0) {
-
-                    SexCheatCounter = SexCheatCounter + 1;
-                    if (SexCheatCounter == 3) {
-                        PLNT = "HUMP";
-                        BTC = "ASS";
-                        TRTL = "SUCK";
-                        HAIR = "BLOW";
-                        SINE = "BOOB";
-                        DICE = "KISS";
-                        LUZE = "LOVE";
-                        Money = 100;
-                        debts = 0;
-                        SexCheatCounter = 0;
-                    }
-
-                }
-                if (BuyAmount == 13 && Day == 0){
-
-                    SexCheatCounterD = SexCheatCounterD + 1;
-                    if (SexCheatCounterD == 13) {
-                        PlantPrice = 100.01;
-                        BitcoinPrice = 100.01;
-                        TurtlePrice = 100.01;
-                        HARE = 100.01;
-                        NewStockPrice = 100.01;
-                        LossLeaderPrice = 100.01;
-                        Money = 100;
-                        debts = .005;
-                        SexCheatCounterD = 0;
-                    }
-                }
-
-
-
-
-                if (BuyAmount == 0 && Day == 0){
-
-                    SexCheatCounterZ = SexCheatCounterZ + 1;
-                    if (SexCheatCounterZ == 3) {
-                        PlantPrice = 0;
-                        BitcoinPrice = 0;
-                        TurtlePrice = 0;
-                        HARE = 0;
-                        DicePrice = 0;
-                        NewStockPrice = 0;
-                        LossLeaderPrice = 0;
-                        debts = 0;
-                        Money = 100;
-                        SexCheatCounterZ = 0;
-                    }
-                }
-
-                if (BuyAmount == 1337 && Day == 0){
-                    PLNT = "P1N7";
-                    BTC = "87C";
-                    TRTL = "7R71";
-                    HAIR = "H4R3";
-                    SINE = "51N3";
-                    DICE = "D1C3";
-                    LUZE = "1UZ3";
-                    Money = 101;
-                    debts = 0;
-                }
-                if (BuyAmount == 1234567 && Day == 0){
-                    PLNT = "5";
-                    BTC = "4";
-                    TRTL = "2";
-                    HAIR = "7";
-                    SINE = "1";
-                    DICE = "3";
-                    LUZE = "6";
-                    Money = 100;
-                    debts = 0;
-
-                }
-                if (BuyAmount == 64 && Day == 0){
-                    PLNT = "DEKU";
-                    BTC = "ZLDA";
-                    TRTL = "BWSR";
-                    HAIR = "MRIO";
-                    SINE = "PECH";
-                    DICE = "YSHI";
-                    LUZE = "LNK";
-                    Money = 100;
-                    debts = 0;
-
-                }
-                if (BuyAmount == 525600 && Day == 0){
-                    SINE = "HOW";
-                    TRTL = "DO";
-                    DICE = "YOU";
-                    BTC = "MEAS";
-                    PLNT = "URE";
-                    Money = 100;
-                    debts = 0;
-                    LUZE = "A";
-                    HAIR = "YEAR";
-                }
-
-                if (BuyAmount == 53411 && Day == 0){
-                    SINE = "TINY";
-                    TRTL = "HANDS";
-                    DICE = "YOU";
-                    BTC = "LIMP";
-                    PLNT = "ORNG";
-                    LUZE = "A";
-                    HAIR = "HOLE";
-                    Money = 1000000;
-                    debts = (1000000/1.0149999);
-                }
-
-
-                if (BuyAmount == 12321 && Day == 0){
-                    SINE = "RADAR";
-                    TRTL = "DAD";
-                    DICE = "EYE";
-                    BTC = "GIG";
-                    PLNT = "NOON";
-                    LUZE = "POP";
-                    HAIR = "MOM";
-                    Money = 100;
-                    debts = 0;
-                }
-
-                if (BuyAmount == 305010 && Day == 0){
-                    SINE = "MY";
-                    TRTL = "DUR";
-                    DICE = "TEA";
-                    BTC = "SHI";
-                    PLNT = "FTY";
-                    LUZE = "FUR";
-                    HAIR = "END";
-                    Money = 100;
-                    debts = 0;
-                }
-
-                if (BuyAmount == 3995 && Day == 0){
-                    SINE = "MILK";
-                    TRTL = "EGGS";
-                    DICE = "TOST";
-                    BTC = "BAKN";
-                    PLNT = "JUCE";
-                    LUZE = "WAFL";
-                    HAIR = "COFE";
-                    Money = 100;
-                    debts = 0;
-                }
-
-                if (BuyAmount == 151 && Day == 0){
-                    SINE = "MEW";
-                    TRTL = "MUK";
-                    DICE = "PIKA";
-                    BTC = "EVEE";
-                    PLNT = "ABRA";
-                    LUZE = "JYNX";
-                    HAIR = "DITO";
-                    Money = 100;
-                    debts = 0;
-                }
-
-                if (BuyAmount == 404 && Day == 0){
-                    SINE = "       ";
-                    TRTL = "      ";
-                    DICE = "     ";
-                    BTC = "    ";
-                    PLNT = "   ";
-                    LUZE = "  ";
-                    HAIR = " ";
-                    Money = 100;
-                    debts = 0;
-                }
-
-                if (BuyAmount == 1776 && Day == 0){
-                    SINE = "THESE";
-                    TRTL = "RIGHTS";
-                    DICE = "SHALL";
-                    BTC = "NOT";
-                    PLNT = "BE";
-                    LUZE = "IN";
-                    HAIR = "FRINGED";
-                    Money = 100;
-                    debts = 0;
-                }
-
-
-
-
-
-                if (BuyAmount == 2468 && Day == 0){
-                    PLNT = "PREE";
-                    BTC = "UH";
-                    TRTL = "DO";
-                    HAIR = "ATE";
-                    SINE = "WHO";
-                    DICE = "WE";
-                    LUZE = "CEE";
-                    Money = 100;
-                    debts = 0;
-
-                }
-
-                if (BuyAmount == 42 && Day == 0){
-                    PLNT = "MANY";
-                    BTC = "HOW";
-                    TRTL = "PANIC";
-                    HAIR = "6*9";
-                    SINE = "DON'T";
-                    DICE = "TOWEL";
-                    LUZE = "ROADS";
-                    Money = 100;
-                    debts = 0;
-
-                }
-
-                if (BuyAmount == 987654321 && Day == 0){
-                    PLNT = "R̷̨̀͡U҉̨̛͟͢N̵̨";
-                    BTC = "Z͟͟͟͞A̶̧͘Ĺ̶G҉̷O̷";
-                    TRTL = "P̧͟͜À̴̷Ǹ̷͞͠I̸͜C̷̀";
-                    HAIR = "F̵̶҉͡E̴̡͝A̶̕͟R̵̛͝";
-                    SINE = "D̶͝I̛҉V҉̨͢҉E̶̡͜͏̨";
-                    DICE = "D҉̵I̡̛͘͢͜Ȩ͏̨͘";
-                    LUZE = "Ḩ̵̢̛Ę̀͠҉̢L̡͘Ṕ̶̸͢͝";
-                    Money = 100;
-                    debts = 0;
-
-                }
-
-                if (BuyAmount == 101 && Day == 0){
-                    dayskipmode = 1;
-
-                }
-
-
-
-
-                if (Day >= 1) {
-                    if (BuyAmount == 455){
-                        DisplayMoneyDebug();
-                        displaySellMethod(BuyAmount, DICE, DicePrice);
-
-                    }
-                    if (BuyAmount == 80085 && Day == 1){
-                        DisplaySeedsDebug();
-                        displaySellMethod(BuyAmount, DICE, DicePrice);
-                    }else{
-                        displaySellMethod(BuyAmount, DICE, DicePrice);
-
-
-                    }
-                } else {
-                    if (SexCheatCounterD == 13){
-                        TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                        displayPaper.setText(HardModeActivated);
-                    }else {
-                        TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                        displayPaper.setText(TheGameHasntStarted);
-                    }
-                }
-            }
-            
-            double BuyAmount = 1;
-            
-            
-            public void displaySellMethod(double number, String String, double price) {
-                double total;
-                price = price * 100; price = (Math.round(price)); price = price/100;
-                total = Math.abs(price * number);
-                total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                total = total/100;
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                double TESTDICE;
-                double DoubleTestDice;
-                TESTDICE = DICENum;
-                DoubleTestDice = TESTDICE - number;
-                if (Day >= 1) {
-                    if (DICENum >= number && DICENum >= 0 && DoubleTestDice >= 0) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum - number;
-                            displayFactoryMethod();
-                        } else {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Sold + traded  + " " + String);
-                        Money = ((Money + Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        resetCounter = resetCounter + 1;
-                        displayPaper.setText(NotEnoughShares);
-                    }
-                } else {
-                    if (SexCheatCounterD == 13){
-                        displayPaper.setText(HardModeActivated);
-                    }else {
-                        displayPaper.setText(TheGameHasntStarted);
-                    }
-                }
-            }
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
-                PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
-                if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-            public void DisplaySeedsDebug() {
-                final String SeedPrint = String.format(TestFree,"F" + Fandom, "N" +  Nandom,"W" + Wandom, "L" + LossLimiter, "G" + GameMode, "C" + TurtCeiling, "D" + TurtDiv, "P" + PDT, "S" + COSSINSwitch, "Y" + Cyclops, "M" + LossMinModeSetter, "R" + TurtSwitch);
-                TextView A = (TextView) findViewById(R.id.pen4);
-                A.setText(SeedPrint);
-                Cheated = 1;
-            }
-            public void DisplayMoneyDebug(){
-                Cheated = 1;
-                Money = Money*10;
-                displayMoneyMethod(Money);
-            }
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-            private void displayMethod(int number) {
-                TextView displayInteger = (TextView) findViewById(R.id.Day);
-                displayInteger.setText("Day " + number);
-            }
-            public void displayBuyMethod(double number, String String, double price) {
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    double total; price = (Math.round(price * 100));
-                    price = price/100;
-                    total = Math.abs(price * number);
-                    total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                    total = total/100;
-                    if (Math.abs(total) <= Money) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum + number;
-                            displayFactoryMethod();
-                        } else {
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Bought + traded  + " " + String);
-                        Money = ((Money - Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughMoney);
-                    }
-                } else {
-                    if (SexCheatCounterD == 13){
-                        displayPaper.setText(HardModeActivated);
-                    }else {
-                        displayPaper.setText(TheGameHasntStarted);
-                    }
-                }
-            }
-        });
-        SellTRTLStock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                double BuyAmount = 1;
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-                    displaySellMethod(BuyAmount, TRTL, TurtlePrice);
-            }
-
-            public void displaySellMethod(double number, String String, double price) {
-                double total;
-                price = price * 100; price = (Math.round(price)); price = price/100;
-                total = Math.abs(price * number);
-                total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                total = total/100;
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    if (TRTLNum >= number && TRTLNum >= 0 && (TRTLNum - number) >= 0) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum - number;
-                            displayFactoryMethod();
-
-
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum - number;
-                            displayFactoryMethod();
-
-                        } else {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Sold + traded  + " " + String);
-                        Money = ((Money + Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughShares);
-                    }
-                } else {
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-
-
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
-                PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
-                if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-
-
-
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-
-
-        });
         BuyTRTLStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double BuyAmount = 1;
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-                displayBuyMethod(BuyAmount, TRTL, TurtlePrice);
+                Money = ((Money/10)*100); Money = Math.round(Money); Money = Money/100;
 
-            }
-
-
-            public void displayBuyMethod(double number, String String, double price) {
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    double total; price = price * 100; price = (Math.round(price)); price = price * 100; price = (Math.round(price)); price = price/100;
-                    price = price/100;
-                    total = Math.abs(price * number);
-                    total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                    total = total/100;
-                    total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                    total = total/100;
-                    if (Math.abs(total) <= Money) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum + number;
-                            displayFactoryMethod();
-
-
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum + number;
-                            displayFactoryMethod();
-
-                        } else {
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Bought + traded  + " " + String);
-                        Money = ((Money - Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughMoney);
-                    }
-                } else {
-
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
                 PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
                 if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
+                }else{
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-
-
-
-            private void displayMethod(int number) {
-                TextView displayInteger = (TextView) findViewById(R.id.Day);
-                displayInteger.setText("Day " + number);
-
-            }
-
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
+                }
+                Manipulated = 1;
             }
         });
-        SellSINEStock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-                double BuyAmount = 1;
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-
-                if (Day >= 1) {
-                    displaySellMethod(BuyAmount, SINE, NewStockPrice);
-                } else {
-                    TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-
-            }
-
-
-            public void displaySellMethod(double number, String String, double price) {
-                double total;
-                price = price * 100; price = (Math.round(price)); price = price/100;
-                total = Math.abs(price * number);
-                total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                total = total/100;
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    if (SINENum >= number && SINENum >= 0 && (SINENum - number) >= 0) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum - number;
-                            displayFactoryMethod();
-
-
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum - number;
-                            displayFactoryMethod();
-
-                        } else {
-                            SINENum = SINENum - number;
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Sold + traded  + " " + String);
-                        Money = ((Money + Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughShares);
-                    }
-                } else {
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-
-
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
-                PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
-                if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-
-
-
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-
-
-        });
         BuySINEStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double BuyAmount = 1;
+               Money = (Money * 10)*100;Money = Math.round(Money); Money = Money/100;
 
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
+               if(Money < 0.01){
 
-                displayBuyMethod(BuyAmount, SINE, NewStockPrice);
+                   Money = 0.01;
+               }
 
-            }
-
-
-            public void displayBuyMethod(double number, String String, double price) {
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    double total; price = (Math.round(price * 100));
-                    price = price/100;
-                    total = Math.abs(price * number);
-                    total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                    total = total/100;
-
-                    if (Math.abs(total) <= Money) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum + number;
-                            displayFactoryMethod();
-
-
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum + number;
-                            displayFactoryMethod();
-
-                        } else {
-                            SINENum = SINENum + number;
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Bought + traded  + " " + String);
-                        Money = ((Money - Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughMoney);
-                    }
-                } else {
-
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
                 PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
                 if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
+                }else{
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
+                }
+                Manipulated = 1;
             }
-
-
-
-            private void displayMethod(int number) {
-                TextView displayInteger = (TextView) findViewById(R.id.Day);
-                displayInteger.setText("Day " + number);
-
-            }
-
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-
         });
         BuyDICEStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double BuyAmount = 1;
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-                displayBuyMethod(BuyAmount, DICE, DicePrice);
-
-            }
 
 
-            public void displayBuyMethod(double number, String String, double price) {
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    double total; price = (Math.round(price * 100));
-                    price = price/100;
-                    total = Math.abs(price * number);
-                    total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                    total = total/100;
-
-                    if (Math.abs(total) <= Money) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum + number;
-                            displayFactoryMethod();
-
-
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum + number;
-                            displayFactoryMethod();
-
-                        } else {
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Bought + traded  + " " + String);
-                        Money = ((Money - Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughMoney);
-                    }
-                } else {
-
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
                 PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
+                Money = (Money + PortfolioValue)*100;Money = Math.round(Money); Money = Money/100;
+                TRTLNum = 0;
+                SINENum = 0;
+                DICENum = 0;
+                BTCNum = 0;
+                PLNTNum = 0;
+                LUZENum = 0;
+                HAIRNum = 0;
                 if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
+                }else{
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-
-
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
+                }
+                Manipulated = 1;
             }
         });
 
@@ -5226,1096 +4153,132 @@ double TotalValueCombined = 100;
             @Override
             public void onClick(View v) {
 
-                double BuyAmount = 1;
-
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-                displayBuyMethod(BuyAmount, PLNT, PlantPrice);
-
-            }
-
-
-            public void displayBuyMethod(double number, String String, double price) {
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    double total; price = (Math.round(price * 100));
-                    price = price/100;
-                    total = Math.abs(price * number);
-                    total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                    total = total/100;
-                    if (Math.abs(total) <= Money) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum + number;
-                            displayFactoryMethod();
-                        } else {
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Bought + traded  + " " + String);
-                        Money = ((Money - Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughMoney);
-                    }
-                } else {
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
                 PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
+                PLNTNum = PLNTNum*10;
+                DICENum = DICENum*10;
+                TRTLNum = TRTLNum*10;
+                SINENum = SINENum*10;
+                BTCNum = BTCNum*10;
+                LUZENum = LUZENum*10;
+                HAIRNum = HAIRNum*10;
+
+
+                if (TRTLNum == 0){
+
+                    TRTLNum = 1;
+
+                }
+                if (DICENum == 0){
+
+                    DICENum = 1;
+
+                }
+                if (SINENum == 0){
+
+                    SINENum = 1;
+
+                }
+                if (LUZENum == 0){
+
+                    LUZENum = 1;
+
+                }
+                if (PLNTNum == 0){
+
+                    PLNTNum = 1;
+
+                }
+                if (HAIRNum == 0){
+
+                    HAIRNum = 1;
+
+                }
+                if (BTCNum == 0){
+
+                    BTCNum = 1;
+
+                }
                 if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
+                }else{
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-
-            private void displayMethod(int number) {
-                TextView displayInteger = (TextView) findViewById(R.id.Day);
-                displayInteger.setText("Day " + number);
-
-            }
-
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-
-        });
-        SellPLNTStock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                double BuyAmount = 1;
-                final double BuyPass = BuyAmount;
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-                if (Day >= 1) {
-                    displaySellMethod(BuyPass, PLNT, PlantPrice);
-                } else {
-                    TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                    displayPaper.setText(TheGameHasntStarted);
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
                 }
+                Manipulated = 1;
 
             }
-
-            double BuyAmount = 1;
-            final double BuyPass = BuyAmount;
-            final String BuyAmountS = String.format(TestOne, BuyAmount);
-
-
-            public void displaySellMethod(double number, String String, double price) {
-                double total;
-                price = price * 100; price = (Math.round(price)); price = price/100;
-                total = Math.abs(price * number);
-                total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                total = total/100;
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                double TESTDICE;
-                double DoubleTestDice;
-                TESTDICE = PLNTNum;
-                DoubleTestDice = TESTDICE - number;
-
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    if (PLNTNum >= number && PLNTNum >= 0 && DoubleTestDice >= 0) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum - number;
-                            displayFactoryMethod();
-
-
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum - number;
-                            displayFactoryMethod();
-
-                        } else {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Sold + traded  + " " + String);
-                        Money = ((Money + Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughShares);
-                        displayMoneyMethod(Money);
-                    }
-                } else {
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-
-                TextView PortfolioValueViewNoName;
-                PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
-                if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-
-
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-
         });
         BuyBTCStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Day >= 0) {
+                HARE = 10;
+                NewStockPrice = 10;
+                TurtlePrice = 10;
+                PlantPrice = 10;
+                LossLeaderPrice = 10;
+                BitcoinPrice = 10;
+                DicePrice = 10;
 
-                }
-                double BuyAmount = 1;
-
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-                if (Day <= 0) {
-                    TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                    displayPaper.setText(TheGameHasntStarted);
-                } else {
-                    displayBuyMethod(BuyAmount, BTC, BitcoinPrice);
-
-                }
-            }
-
-
-            public void displayBuyMethod(double number, String String, double price) {
-                double total; price = (Math.round(price * 100));
-                price = price/100;
-                total = Math.abs(price * number);
-                total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                total = total/100;
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-
-                if (Day >= 1) {
-                    if (Math.abs(total) <= Money) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum + number;
-                            displayFactoryMethod();
-
-
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum + number;
-                            displayFactoryMethod();
-
-                        } else {
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Bought + traded  + " " + String);
-                        Money = ((Money - Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughMoney);
-                    }
-
-                }
-
-            }
-
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
                 PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
                 if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
+                }else{
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-            private void displayMethod(int number) {
-                TextView displayInteger = (TextView) findViewById(R.id.Day);
-                displayInteger.setText("Day " + number);
-
-            }
-
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-        });
-        SellBTCStock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                double BuyAmount = 1;
-                if (Day > 0) {
-                    displaySellMethod(BuyAmount, BTC, BitcoinPrice);
-                    displayMoneyMethod(Money);
-                } else {
-                    TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                    displayPaper.setText(TheGameHasntStarted);
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
                 }
-            }
-            public void displaySellMethod(double number, String String, double price) {
-                double total;
-                price = price * 100; price = (Math.round(price)); price = price/100;
-                total = Math.abs(price * number);
-                total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                total = total/100;
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    if (BTCNum >= number && BTCNum >= 0 && (BTCNum - number) >= 0) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum - number;
-                            displayFactoryMethod();
-
-
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum - number;
-                            displayFactoryMethod();
-
-                        } else {
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Sold + traded  + " " + String);
-                        Money = ((Money + Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughShares);
-                    }
-                } else {
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
-                PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
-                if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-
-
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-        });
-
-        SellLUZEStock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                double BuyAmount = 1;
-                if (Day >= 1) {
-                    displaySellMethod(BuyAmount, LUZE, LossLeaderPrice);
-                } else {
-                    TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-
-            }
-
-            double BuyAmount = 1;
-            public void displaySellMethod(double number, String String, double price) {
-                double total;
-                price = price * 100; price = (Math.round(price)); price = price/100;
-                total = Math.abs(price * number);
-                total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                total = total/100;
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    if (LUZENum >= number && LUZENum >= 0 && (LUZENum - number) >= 0) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum - number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum - number;
-                            displayFactoryMethod();
-
-
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum - number;
-                            displayFactoryMethod();
-
-                        } else {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Sold + traded  + " " + String);
-                        Money = ((Money + Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughShares);
-                    }
-                } else {
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            } private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
-                PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
-                if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
+                Manipulated = 1;
             }
         });
         BuyLUZEStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PLNTNum = PLNTNum/10;PLNTNum = Math.round(PLNTNum);
+                DICENum = DICENum/10;DICENum = Math.round(DICENum);
+                TRTLNum = TRTLNum/10;TRTLNum = Math.round(TRTLNum);
+                SINENum = SINENum/10;SINENum = Math.round(SINENum);
+                BTCNum = BTCNum/10;BTCNum = Math.round(BTCNum);
+                LUZENum = LUZENum/10;LUZENum = Math.round(LUZENum);
+                HAIRNum = HAIRNum/10;HAIRNum = Math.round(HAIRNum);
 
-                double BuyAmount = 1;
 
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-
-                if (Day <= 0) {
-                    TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                    displayPaper.setText(TheGameHasntStarted);
-                } else {
-                    displayBuyMethod(BuyAmount, LUZE, LossLeaderPrice);
-                }
-            }
-            public void displayBuyMethod(double number, String String, double price) {
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    double total; price = (Math.round(price * 100));
-                    price = price/100;
-                    total = Math.abs(price * number);
-                    total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                    total = total/100;
-
-                    if (Math.abs(total) <= Money) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum + number;
-                            displayFactoryMethod();
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum + number;
-                            displayFactoryMethod();
-                        } else {
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Bought + traded  + " " + String);
-                        Money = ((Money - Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughMoney);
-                    }
-                } else {
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
                 PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
                 if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
+                }else{
                     final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-        });
-        SellHAREStock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                double BuyAmount = 1;
-                final double BuyPass = BuyAmount;
-                Rx = Rx + 1;
-
-                if (resetCounter > 5){
-                    NextGame.setVisibility(View.VISIBLE);
+                    PortfolioValueViewNoName.setText(PortTextNoName);
+                    Tisl.setText(Money$ + Money);
                 }
+                Manipulated = 1;
 
-                if (Day >= 1) {
-                    displaySellMethod(BuyPass, HAIR, HARE);
-                } else {
-                    TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                    displayPaper.setText(TheGameHasntStarted);
                 }
-
-            }
-
-            double BuyAmount = 1;
-            public void displaySellMethod(double number, String String, double price) {
-                double total;
-                price = price * 100; price = (Math.round(price)); price = price/100;
-                total = Math.abs(price * number);
-                total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                total = total/100;
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                double TESTDICE;
-                double DoubleTestDice;
-                TESTDICE = HAIRNum;
-                DoubleTestDice = TESTDICE - number;
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    if (HAIRNum >= number && HAIRNum >= 0 && DoubleTestDice >= 0) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum - number;
-                            displayFactoryMethod();
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum - number;
-                            displayFactoryMethod();
-                        } else {
-                            TRTLNum = TRTLNum - number;
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Sold + traded  + " " + String);
-                        Money = ((Money + Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughShares);
-                    }
-                } else {
-                    displayPaper.setText(TheGameHasntStarted);
-                }
-            }
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
-                PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
-                if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText( X);
-            }
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
         });
         BuyHAREStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                double BuyAmount = 1;
-                Rx = Rx + 1;
-                final String BuyAmountS = String.format(TestOne, BuyAmount);
-
-                displayBuyMethod(BuyAmount, HAIR, HARE);
-            }
-            public void displayBuyMethod(double number, String String, double price) {
-                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-                if (Day >= 1) {
-                    displayMoneyMethod(Money);
-                    double total; price = (Math.round(price * 100));
-                    price = price/100;
-                    total = Math.abs(price * number);
-                    total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                    total = total/100;
-                    if (Math.abs(total) <= Money) {
-                        if (String.equals(DICE)) {
-                            DICENum = DICENum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(TRTL)) {
-                            TRTLNum = TRTLNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(BTC)) {
-                            BTCNum = BTCNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(PLNT)) {
-                            PLNTNum = PLNTNum + number;
-                            displayFactoryMethod();
-
-                        } else if (String.equals(LUZE)) {
-                            LUZENum = LUZENum + number;
-                            displayFactoryMethod();
 
 
-                        } else if (String.equals(HAIR)) {
-                            HAIRNum = HAIRNum + number;
-                            displayFactoryMethod();
-
-                        } else {
-                            displayFactoryMethod();
-                        }
-                        String traded = String.format("%.0f", number);
-                        displayPaper.setText(Bought + traded  + " " + String);
-                        Money = ((Money - Math.abs(total))*100); Money = Math.round(Money); Money = Money/100;
-                        displayMoneyMethod(Money);
-                    } else {
-                        displayPaper.setText(NotEnoughMoney);
-                    }
-                } else {
-
-                    displayPaper.setText(TheGameHasntStarted);
+                if(resetCounter == 0) {
+                    logincrement = 999999999;
+                    resetCounter = 1;
+                }else {
+                    logincrement = (logtobetested+1);
+                    logincrement = Math.round(logincrement);
+                    resetCounter = 0;
                 }
-            }
-            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
-
-                TextView PortfolioValueViewNoName;
-                PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
-                double PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                final String PortText = String.format(TestPort);
-                PortfolioValueView.setText(PortText);
-                if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
-                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                    PortfolioValueViewNoName.setText(PortTextNoName);}
-            }
-            private void displayMoneyMethod(double MoneyPass) {
-                TextView Tsil = (TextView) findViewById(R.id.List);
-                String money = String.format("%.2f", MoneyPass);
-                Tisl.setText(Money$ + money);
-                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
-            }
-            private void displayFactoryMethod(){
-                displayTRTLMethod(TRTLNum);
-                displayDICEMethod(DICENum);
-                displayBTCMethod(BTCNum);
-                displayPLNTMethod(PLNTNum);
-                displayHAIRMethod(HAIRNum);
-                displayLUZEMethod(LUZENum);
-                displaySINEMethod(SINENum);
-            }
-            private void displayTRTLMethod(double T) {
-                TextView A = (TextView) findViewById(R.id.Q1);
-                String X = String.format("%.0f", T);
-                A.setText( X);
-            }
-            private void displaySINEMethod(double T) {
-                TextView S = (TextView) findViewById(R.id.QSINE);
-                String X = String.format("%.0f", T);
-                S.setText( X);
-            }
-            private void displayDICEMethod(double T) {
-                TextView C = (TextView) findViewById(R.id.Q2);
-                String X = String.format("%.0f", T);
-                C.setText( X);
-            }
-
-            private void displayBTCMethod(double T) {
-                TextView V = (TextView) findViewById(R.id.Q3);
-                String X = String.format("%.0f", T);
-                V.setText( X);
-            }
-
-            private void displayPLNTMethod(double T) {
-                TextView K = (TextView) findViewById(R.id.Q4);
-                String X = String.format("%.0f", T);
-                K.setText( X);
-            }
-
-            private void displayLUZEMethod(double T) {
-                TextView VB = (TextView) findViewById(R.id.Q5);
-                String X = String.format("%.0f", T);
-                VB.setText( X);
-            }
-
-            private void displayHAIRMethod(double H) {
-                TextView A = (TextView) findViewById(R.id.TW);
-                String X = String.format("%.0f", H);
-                A.setText(X);
-            }
 
 
+
+            }
         });
         NextGame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -6327,8 +4290,476 @@ double TotalValueCombined = 100;
         Gumble.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GumbleStockMania();
+
+/*                NewStockArrowImageView.setVisibility(View.INVISIBLE);
+                TurtleArrowImageView.setVisibility(View.INVISIBLE);
+                DiceArrowImageView.setVisibility(View.INVISIBLE);
+                BitcoinArrowImageView.setVisibility(View.INVISIBLE);
+                PlantArrowImageView.setVisibility(View.INVISIBLE);
+                LossArrowImageView.setVisibility(View.INVISIBLE);
+                HairArrowImageView.setVisibility(View.INVISIBLE);
+                beg.setVisibility(View.INVISIBLE);
+*/
+                TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
+                displayPaper.setText("");
+
+                final String SeedPrint = String.format(TestFree,"F" + Fandom, "N" +  Nandom,"W" + Wandom, "L" + LossLimiter, "G" + GameMode, "C" + TurtCeiling, "D" + TurtDiv, "P" + PDT, "S" + COSSINSwitch, "Y" + Cyclops, "M" + LossMinModeSetter, "R" + TurtSwitch);
+                TextView A = (TextView) findViewById(R.id.pen4);
+                A.setText(SeedPrint);
+             //   Money = 100;
+                // Money = 1000000000;
+              //  Day = 1;
+                Cheated = 0;
+             //   displayMethod(Day);
+             //   NextGameCounter = 0;
+                Car = new Random().nextInt(2);
+                car = new Random().nextInt(6);
+                Par = new Random().nextInt(2);
+                par = new Random().nextInt(6);
+                Jar = new Random().nextInt(2);
+                jar = new Random().nextInt(6);
+                Yar = new Random().nextInt(2);
+                yar = new Random().nextInt(6);
+                tar = new Random().nextInt(6);
+                Tar = new Random().nextInt(2);
+                rar = new Random().nextInt(6);
+                Rar = new Random().nextInt(2);
+                zar = new Random().nextInt(6);
+                Zar = new Random().nextInt(2);
+
+                NamesMethod();
+/*
+                DicePrice = (new Random().nextInt(3) + 31);
+                PlantPrice = new Random().nextInt(10) + 45;
+                NewStockPrice = Math.floor((49 + Math.abs((100*(((Math.sin(Day*0.0174533*NewCycle))))))+2));
+                HARE = new Random().nextInt(11) + 8;
+                TurtlePrice = new Random().nextInt(5) + 5;
+                LossLeaderPrice = new Random().nextInt(2001)-1000;
+
+                DicePrice = (Math.ceil((DicePrice*100) + (new Random().nextInt(63)-31))/100);
+                BitcoinPrice = (Math.ceil((BitcoinPrice*100) + (new Random().nextInt(13)-5))/100);
+                PlantPrice = (Math.ceil((PlantPrice*100) + (new Random().nextInt(43)-21))/100);
+                LossLeaderPrice = (Math.ceil((LossLeaderPrice*100) + (new Random().nextInt(163)-71))/100);
+                NewStockPrice = (Math.ceil((NewStockPrice*100) + (new Random().nextInt(83)-41))/100);
+                HARE = (Math.ceil((HARE*100) + (new Random().nextInt(33)-21))/100);
+                TurtlePrice = (Math.ceil((TurtlePrice*100) + (new Random().nextInt(23)-11))/100);
+*/
+              /*  if ((BankMode%2) == 1) {
+                    Take.setVisibility(View.VISIBLE);
+                    Fill.setVisibility(View.VISIBLE);
+                    Pay.setVisibility(View.VISIBLE);
+                    Loan.setVisibility(View.VISIBLE);
+                    BankView.setVisibility(View.VISIBLE);
+                    if (debts == 0) {
+                        String gobank = String.format(BankOutputs, bankbalance);
+                        BankView.setText(gobank);
+                    } else {
+                        String gobank = String.format(BankOutput, bankbalance, debts);
+                        BankView.setText(gobank);
+                    }
+                }
+/*
+                TRTLNum = 0;
+                DICENum = 0;
+                SINENum = 0;
+                BTCNum = 0;
+                PLNTNum = 0;
+                LUZENum = 0;
+                HAIRNum = 0;
+*/
+                Cyclops = (new Random().nextInt(50)+40);
+                NewCycle = (Cyclops/60);
+
+
+                DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
+                BuyBTCzMethod(TRTL, DICE, BTC, PLNT, LUZE, HAIR, SINE);
+                displayFactoryMethod();
+                displayMoneyMethod(Money);
+
+                GameMode = new Random().nextInt(2)+1;
+                Nandom = new Random().nextInt(5)+1;
+                Wandom = new Random().nextInt(5)+1;
+                Gandom = new Random().nextInt(5)+1;
+                Fandom = new Random().nextInt(5)+1;
+                LossLimiter = ((new Random().nextInt(349)+150) /100);
+                TurtCeilingGenx = ((new Random().nextInt(2123)+1500));
+                TurtCeilingGeny = Math.round(TurtCeilingGenx);
+                TurtCeiling = TurtCeilingGeny/100;
+                // TurtCeiling = new Random().nextInt(20)+15;
+                TurtDiv = new Random().nextInt(3)+2;
+                TrueRangeLossMax = new Random().nextInt(69)+621;
+                COSSINSwitch = new Random().nextInt(3)+1;
+
+                displayDiceMethod(Math.abs(DicePrice));
+                double PassPrice = Math.abs(LossLeaderPrice);
+                displayLossMethod(PassPrice);
+                displayBitcoinMethod(Math.abs(BitcoinPrice));
+                displayTurtleMethod(Math.abs(TurtlePrice));
+                displayHareMethod(Math.abs(HARE));
+                displayPlantMethod(Math.abs(PlantPrice));
+                displayNewStockPrice(NewStockPrice);
+
             }
+
+            private void displayMethod(int number) {
+                TextView displayInteger = (TextView) findViewById(R.id.Day);
+                displayInteger.setText("Day " + number);
+
+            }
+            private void displayMoneyMethod(double MoneyPass) {
+                TextView Tsil = (TextView) findViewById(R.id.List);
+                double MoneyHand = ((Math.ceil(MoneyPass * 100))/100);
+
+                Tisl.setText(Money$ + MoneyHand);
+            }
+
+            private void DisplayPortValue(double NumTRTL, double PriceTRTL, double NumDICE, double PriceDICE, double NumBTC, double PriceBTC, double NumPLNT, double PricePLNT, double NumLUZE, double PriceLUZE, double NumHAIR, double PriceHAIR) {
+
+                TextView PortfolioValueViewNoName;
+                PortfolioValueViewNoName = (TextView) findViewById(R.id.PortViewValue);
+                PortfolioValue = (((((Math.abs((NumTRTL * PriceTRTL)) + Math.abs((NumDICE * PriceDICE)) + Math.abs((NumBTC * PriceBTC)) + Math.abs((NumPLNT * PricePLNT)) + Math.abs((NumLUZE * PriceLUZE)) + Math.abs((NumHAIR * PriceHAIR)) + Math.abs(NewStockPrice * SINENum))*100))));PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
+                final String PortText = String.format(TestPort);
+                PortfolioValueView.setText(PortText);
+                if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                    PortfolioValueViewNoName.setText(PortTextNoName);}else{
+                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                    PortfolioValueViewNoName.setText(PortTextNoName);}
+            }
+            public void BuyBTCzMethod(final String A, final String B, final String C, final String D, final String E, final String F, String G) {
+                TPV5.setText(E);
+                TPV4.setText(D);
+                TPV3.setText(C);
+                TPV2.setText(B);
+                TPV1.setText(A);
+                TPV6.setText(F);
+                TPV7.setText(G);
+            }
+            private void displayFactoryMethod(){
+                displayTRTLMethod(TRTLNum);
+                displayDICEMethod(DICENum);
+                displayBTCMethod(BTCNum);
+                displayPLNTMethod(PLNTNum);
+                displayHAIRMethod(HAIRNum);
+                displayLUZEMethod(LUZENum);
+                displaySINEMethod(SINENum);
+            }
+
+
+            private void NamesMethod() {
+                if (Car == 1) {
+                    if (car == 1) {
+                        TRTL = "TRTL";
+                    //    LossLeaderPrice = new Random().nextInt(61) + 360;
+                    } else if (car == 2) {
+                        TRTL = "TUTL";
+                    //    LossLeaderPrice = new Random().nextInt(21) + 90;
+                    } else if (car == 3) {
+                        TRTL = "TTLE";
+                    //    LossLeaderPrice = new Random().nextInt(61) - 110;
+                    } else if (car == 4) {
+                        TRTL = "TORT";
+                    //    LossLeaderPrice = new Random().nextInt(61) - 420;
+                    } else if (car == 5) {
+                        TRTL = "TURT";
+                    //    LossLeaderPrice = new Random().nextInt(31) - 60;
+                    } else {
+                        TRTL = "TRAT";
+                    //    LossLeaderPrice = new Random().nextInt(1000)+17;
+                    }
+                } else {
+                    if (car == 1) {
+                        TRTL = "TOTL";
+                    //    LossLeaderPrice = new Random().nextInt(1000)+1;
+                    } else if (car == 2) {
+                        TRTL = "TUTE";
+                    //    LossLeaderPrice = new Random().nextInt(31) - 60;
+                    } else if (car == 3) {
+                        TRTL = "TILE";
+                    //    LossLeaderPrice = new Random().nextInt(61) - 420;
+                    } else if (car == 4) {
+                        TRTL = "TOUT";
+                    //    LossLeaderPrice = new Random().nextInt(21) + 90;
+                    } else if (car == 5) {
+                        TRTL = "TRNT";
+                    //    LossLeaderPrice = new Random().nextInt(61) - 110;
+                    } else {
+                        TRTL = "TRUT";
+                    //    LossLeaderPrice = new Random().nextInt(61) + 360;
+                    }
+                }      if (Par == 1) {
+                    if (par == 1) {
+                        SINE = "SINE";
+
+                    } else if (par == 2) {
+                        SINE = "SYGN";
+                    } else if (par == 3) {
+                        SINE = "SIHN";
+                    } else if (par == 4) {
+                        SINE = "SOCN";
+                    } else if (par == 5) {
+                        SINE = "SEIN";
+                    } else {
+                        SINE = "SYHN";
+                    }
+                } else {
+                    if (par == 1) {
+                        SINE = "SOIN";
+                    } else if (par == 2) {
+                        SINE = "SOYN";
+                    } else if (par == 3) {
+                        SINE = "SYYN";
+                    } else if (par == 4) {
+                        SINE = "SGGN";
+                    } else if (par == 5) {
+                        SINE = "SOCA";
+                    } else {
+                        SINE = "TOHA";
+                    }
+                }
+                if (Jar == 1) {
+                    if (jar == 1) {
+                        PLNT = "PLNT";
+                      //  BitcoinPrice = new Random().nextInt(20) + 20;
+                    } else if (jar == 2) {
+                        PLNT = "GROW";
+                      //  BitcoinPrice = new Random().nextInt(2) + 5;
+                    } else if (jar == 3) {
+                        PLNT = "SEED";
+                     //   BitcoinPrice = new Random().nextInt(15) + 15;
+                    } else if (jar == 4) {
+                        PLNT = "SPRT";
+                     //   BitcoinPrice = new Random().nextInt(100) + 20;
+                    } else if (jar == 5) {
+                        PLNT = "GREN";
+                     //   BitcoinPrice = new Random().nextInt(125) + 20;
+                    } else {
+                        PLNT = "TREE";
+                     //   BitcoinPrice = new Random().nextInt(45) + 45;
+                    }
+                } else {
+                    if (jar == 1) {
+                        PLNT = "HEGE";
+                      //  BitcoinPrice = new Random().nextInt(47) + 42;
+                    } else if (jar == 2) {
+                     //   BitcoinPrice = new Random().nextInt(4) + 4;
+                        PLNT = "CROP";
+                    } else if (jar == 3) {
+                        PLNT = "CHOP";
+                     //   BitcoinPrice = new Random().nextInt(15) + 15;
+                    } else if (jar == 4) {
+                        PLNT = "HEAL";
+                     //   BitcoinPrice = new Random().nextInt(125) + 20;
+                    } else if (jar == 5) {
+                        PLNT = "SAW";
+                     //   BitcoinPrice = new Random().nextInt(45) + 45;
+                    } else {
+                        PLNT = "TETH";
+                     //   BitcoinPrice = new Random().nextInt(20) + 20;
+                    }
+                }
+                if (Yar == 1) {
+                    if (yar == 1) {
+                        DICE = "DICE";
+                    } else if (yar == 2) {
+                        DICE = "DYCE";
+                    } else if (yar == 3) {
+                        DICE = "DIXE";
+                    } else if (yar == 4) {
+                        DICE = "DIZE";
+                    } else if (yar == 5) {
+                        DICE = "DIIC";
+                    } else {
+                        DICE = "CUBE";
+                    }
+                } else {
+                    if (yar == 1) {
+                        DICE = "BLOK";
+                    } else if (yar == 2) {
+                        DICE = "FLUC";
+                    } else if (yar == 3) {
+                        DICE = "ROLL";
+                    } else if (yar == 4) {
+                        DICE = "ROLE";
+                    } else if (yar == 5) {
+                        DICE = "CUVE";
+                    } else {
+                        DICE = "TOSS";
+                    }
+                }
+
+                if (Tar == 1) {
+                    if (tar == 1) {
+                        LUZE = "LUZE";
+                    } else if (tar == 2) {
+                        LUZE = "LOSS";
+                    } else if (tar == 3) {
+                        LUZE = "LUSE";
+                    } else if (tar == 4) {
+                        LUZE = "LOSE";
+                    } else if (tar == 5) {
+                        LUZE = "DIAS";
+                    } else {
+                        LUZE = "CRAS";
+                    }
+                } else {
+                    if (tar == 1) {
+                        LUZE = "FALL";
+                    } else if (tar == 2) {
+                        LUZE = "HANG";
+                    } else if (tar == 3) {
+                        LUZE = "BOUN";
+                    } else if (tar == 4) {
+                        LUZE = "CHEK";
+                    } else if (tar == 5) {
+                        LUZE = "REBN";
+                    } else {
+                        LUZE = "SPIN";
+                    }
+                }
+                if (Rar == 1) {
+                    if (rar == 1) {
+                        BTC = "BTC";
+                    } else if (rar == 2) {
+                        BTC = "BICE";
+                    } else if (rar == 3) {
+                        BTC = "BIS";
+                    } else if (rar == 4) {
+                        BTC = "BIG";
+                    } else if (rar == 5) {
+                        BTC = "CRYP";
+                    } else {
+                        BTC = "COIN";
+                    }
+                } else {
+                    if (rar == 1) {
+                        BTC = "BTCC";
+                    } else if (rar == 2) {
+                        BTC = "BYYC";
+                    } else if (rar == 3) {
+                        BTC = "BUTC";
+                    } else if (rar == 4) {
+                        BTC = "BTTC";
+                    } else if (rar == 5) {
+                        BTC = "BIC";
+                    } else {
+                        BTC = "BYC";
+                    }
+                }
+                if (Zar == 1) {
+                    if (zar == 1) {
+                        HAIR = "HAIR";
+                    } else if (zar == 2) {
+                        HAIR = "BUNI";
+                    } else if (zar == 3) {
+                        HAIR = "HOP";
+                    } else if (zar == 4) {
+                        HAIR = "RBIT";
+                    } else if (zar == 5) {
+                        HAIR = "RABT";
+                    } else {
+                        HAIR = "RBBT";
+                    }
+                } else {
+                    if (zar == 1) {
+                        HAIR = "HAIRZ";
+                    } else if (zar == 2) {
+                        HAIR = "HARE";
+                    } else if (zar == 3) {
+                        HAIR = "HERE";
+                    } else if (zar == 4) {
+                        HAIR = "HERA";
+                    } else if (zar == 5) {
+                        HAIR = "BND";
+                    } else {
+                        HAIR = "BNY";
+                    }
+                }
+            }
+            private void displayTRTLMethod(double T) {
+                TextView A = (TextView) findViewById(R.id.Q1);
+                String X = String.format("%.0f", T);
+                A.setText( X);
+            }
+            private void displaySINEMethod(double T) {
+                TextView S = (TextView) findViewById(R.id.QSINE);
+                String X = String.format("%.0f", T);
+                S.setText( X);
+            }
+            private void displayDICEMethod(double T) {
+                TextView C = (TextView) findViewById(R.id.Q2);
+                String X = String.format("%.0f", T);
+                C.setText( X);
+            }
+
+            private void displayBTCMethod(double T) {
+                TextView V = (TextView) findViewById(R.id.Q3);
+                String X = String.format("%.0f", T);
+                V.setText( X);
+            }
+
+            private void displayPLNTMethod(double T) {
+                TextView K = (TextView) findViewById(R.id.Q4);
+                String X = String.format("%.0f", T);
+                K.setText( X);
+            }
+
+            private void displayLUZEMethod(double T) {
+                TextView VB = (TextView) findViewById(R.id.Q5);
+                String X = String.format("%.0f", T);
+                VB.setText( X);
+            }
+
+            private void displayHAIRMethod(double H) {
+                TextView A = (TextView) findViewById(R.id.TW);
+                String X = String.format("%.0f", H);
+                A.setText( X);
+            }
+
+
+            private void displayNewStockPrice(double number){
+                TextView displayInteger = (TextView) findViewById(R.id.penSINE);
+                String price = String.format("%.2f", number);
+                displayInteger.setText("$" + price);
+            }
+
+            private void displayTurtleMethod(double number) {
+                TextView displayInteger = (TextView) findViewById(R.id.pen);
+                String price = String.format("%.2f", number);
+                displayInteger.setText("$" + price);
+            }
+            private void displayDiceMethod(double number) {
+                TextView displayInteger = (TextView) findViewById(R.id.pen9);
+                String price = String.format("%.2f", number);
+                displayInteger.setText("$" + price);
+            }
+            private void displayBitcoinMethod(double number) {
+                TextView displayInteger = (TextView) findViewById(R.id.pen8);
+                String price = String.format("%.2f", number);
+                displayInteger.setText("$" + price);
+
+            }
+            private void displayPlantMethod(double number) {
+                TextView displayInteger = (TextView) findViewById(R.id.pen7);
+                String price = String.format("%.2f", number);
+                displayInteger.setText("$" + price);
+
+            }
+            private void displayLossMethod(double number) {
+                TextView displayInteger = (TextView) findViewById(R.id.pen5);
+                String price = String.format("%.2f", number);
+                displayInteger.setText("$" + price);
+
+            }
+            private void displayHareMethod(double number) {
+                TextView displayInteger = (TextView) findViewById(R.id.pen6);
+                String price = String.format("%.2f", number);
+                displayInteger.setText("$" + price);
+            }
+
+
+              //  GumbleStockMania();
+
         });
     }
 

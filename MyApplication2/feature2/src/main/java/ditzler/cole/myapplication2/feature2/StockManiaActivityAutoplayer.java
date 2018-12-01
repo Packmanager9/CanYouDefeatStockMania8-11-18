@@ -746,8 +746,8 @@ double TotalValueCombined = 100;
                 }
 
 
-                NextGameCounter = 0;
-                resetCounter = 0;
+              //  NextGameCounter = 0;
+              //  resetCounter = 0;
                 Day = Day + 1;
 
 
@@ -2692,7 +2692,7 @@ double TotalValueCombined = 100;
             }
 
 
-        }, 100, 232);
+        }, 100, 250);
 
 
         Mute.setOnClickListener(new View.OnClickListener() {
