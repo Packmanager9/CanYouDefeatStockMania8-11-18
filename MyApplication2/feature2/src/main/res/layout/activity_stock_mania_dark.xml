@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:label="@string/app_nameTwo"
-    android:background="#f9ffff"
+    android:background="#000900"
     tools:context=".StockManiaActivity">
 
 
@@ -95,7 +95,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="0dp"
             android:text="tea"
-            android:textColor="#000900"
+            android:textColor="#fff9ff"
             android:textStyle="bold"/>
 
     </LinearLayout>
@@ -153,7 +153,7 @@
                     android:id="@+id/Day"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
-                    android:textColor="#000900"
+                    android:textColor="#fff9ff"
                     android:textSize="12sp"
 
                     android:text="" />
@@ -171,7 +171,7 @@
 
             <LinearLayout
                 android:layout_width="70dp"
-                android:layout_height="86dp"
+                android:layout_height="55dp"
                 android:layout_marginTop="-10dp"
                 android:orientation="horizontal">
 
@@ -203,7 +203,7 @@
                 android:layout_width="68dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="-41dp"
+                android:layout_marginTop="-10dp"
                 android:text="@string/Gamble"
                 android:textSize="10sp"
                 android:textStyle="bold" />
@@ -219,7 +219,6 @@
                 android:textSize="10sp"
                 android:textStyle="bold" />
 
-
             <Button
                 android:id="@+id/lights"
                 android:layout_width="68dp"
@@ -229,9 +228,8 @@
                 android:text="@string/lights"
                 android:textSize="10sp"
                 android:textStyle="bold"
-                android:backgroundTint="#00000000"
+                android:backgroundTint="#000000"
                 />
-
 
 
         </LinearLayout>
@@ -319,7 +317,7 @@
                     android:layout_marginStart="-30dp"
                     android:layout_marginTop="0dp"
                     android:ems="10"
-                    android:textColor="#000000"
+                    android:textColor="#ffffff"
                     android:inputType="number"
                     android:text="@string/O"
                     android:textStyle="bold" />
@@ -381,7 +379,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="60dp"
                 android:text=""
-                android:textColor="#000900"
+                android:textColor="#fff9ff"
                 android:textStyle="bold" />
                 <LinearLayout
                 android:layout_width="match_parent"
@@ -395,7 +393,7 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginStart="0dp"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:text=""
                 android:textStyle="bold"/>
 
@@ -405,7 +403,7 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginStart="80dp"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:text=""
                 android:textStyle="bold"/>
 
@@ -743,12 +741,13 @@
                         android:layout_marginTop="-5dp"
                         android:text="@string/Buy"
                         android:textSize="12sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:backgroundTint="#ffaaaa"/>
 
                     <Button
                         android:id="@+id/buyTRTL"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#ff9977"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -759,7 +758,7 @@
                     <Button
                         android:id="@+id/buyDICE"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#cccc77"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -771,7 +770,7 @@
                     <Button
                         android:id="@+id/buyBTC"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#11dd66"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -782,7 +781,7 @@
                     <Button
                         android:id="@+id/buyPLNT"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#22cccc"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -793,7 +792,7 @@
                     <Button
                         android:id="@+id/buyLUZE"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#22bbee"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -805,6 +804,7 @@
                         android:id="@+id/buyHARE"
                         android:layout_width="60dp"
 
+                        android:backgroundTint="#ee99ee"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -825,7 +825,7 @@
                     <Button
                         android:id="@+id/sellSINE"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#ffaaaa"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="-5dp"
@@ -836,7 +836,7 @@
                     <Button
                         android:id="@+id/sellTRTL"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#ff9977"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -847,7 +847,7 @@
                     <Button
                         android:id="@+id/sellDICE"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#cccc77"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -858,7 +858,7 @@
                     <Button
                         android:id="@+id/SellBTC"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#11dd66"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -869,7 +869,7 @@
                     <Button
                         android:id="@+id/sellPLNT"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#22cccc"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -880,7 +880,7 @@
                     <Button
                         android:id="@+id/sellLUZE"
                         android:layout_width="60dp"
-
+                        android:backgroundTint="#22bbee"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
@@ -892,6 +892,7 @@
                         android:id="@+id/SellHARE"
                         android:layout_width="60dp"
 
+                        android:backgroundTint="#ee99ee"
                         android:layout_height="35dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"

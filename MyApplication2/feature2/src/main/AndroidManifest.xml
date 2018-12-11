@@ -5,7 +5,8 @@
 
     <application>
 
-        <activity android:name=".Main2Activity">
+        <activity android:name=".Main2Activity"
+            android:label="Calculator">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -24,7 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StockManiaActivity">
+        <activity android:name=".StockManiaActivity"
+            android:label="Investments">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -67,7 +69,8 @@
         </activity>
 
 
-        <activity android:name=".CounterTiles">
+        <activity android:name=".CounterTiles"
+            >
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -95,7 +98,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Stereoscope">
+        <activity android:name=".Stereoscope"
+            >
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -362,7 +366,8 @@
         </activity>
 
             <activity android:name=".protomon"
-                android:windowSoftInputMode="adjustNothing">
+                android:windowSoftInputMode="adjustNothing"
+                android:label="Monster Collector">
 
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
@@ -376,7 +381,24 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-            <activity android:name=".protomons">
+            <activity android:name=".protomons"
+                android:label="Monster Collector">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+            <activity android:name=".GarlitosLab"
+                android:label="Laboratory"
+                android:noHistory="false">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -391,7 +413,9 @@
         </activity>
 
 
-            <activity android:name=".HareSplitting">
+            <activity android:name=".CustomMonsterTopLayer"
+                android:label="Monster Customizer"
+                android:noHistory="false">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -405,7 +429,41 @@
             </intent-filter>
         </activity>
 
-            <activity android:name=".RabbitHutch">
+
+            <activity android:name=".StatAdjustments"
+                android:label="Monster Stat Adjuster"
+                android:noHistory="false">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+
+            <activity android:name=".HareSplitting"
+                android:label="Hare Splitting Lab">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+            <activity android:name=".RabbitHutch"
+                android:label="Hare Housing">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -434,7 +492,8 @@
             </intent-filter>
         </activity>
 
-            <activity android:name=".gumbler">
+            <activity android:name=".gumbler"
+                android:label="Gambling">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -463,6 +522,20 @@
         </activity>
 
             <activity android:name=".LongPractice">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="Cole.Ditzler"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+            <activity android:name=".AOC">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 

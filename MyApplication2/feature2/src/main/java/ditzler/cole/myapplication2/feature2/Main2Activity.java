@@ -241,9 +241,13 @@ public class Main2Activity extends AppCompatActivity {
                 }
                 if ((a%2) == 0 && a == b && a>0 && (a%3) != 0){
                     NarcSixty();
-                }else if ((a%2) == 0 && a == b && a>0 && (a%3) == 0){
+                }else if ((a%2) == 0 && a == b && a>0 && (a%3) == 0 && (a%5) != 0){
                     HappySixty();
-                }else if(a == b && a > 14) {
+                }else if ((a%2) == 0 && a == b && a>0 && (a%3) == 0 && (a%5) == 0 && (a%7) != 0 ){
+                    AOCmethod();
+                }else if ((a%2) == 0 && a == b && a>0 && (a%3) == 0 && (a%5) == 0 && (a%7) == 0 && (a%11) != 0 ){
+                    CpracOpen();
+                }else if(a == b && a > 2310 && b < 2345) {
                     OpenRedHerring();
                 }else if (!(xI == 42 || xI == 9) && a != 1 && a != 389&& a != 390&& a != 391 && a != 392 && a != 393 && a!= 394 && a!= 395 && a!= 396&& a!= 397&& a!= 398&& a!= 399) {
                     OpenStockMania();
@@ -332,6 +336,10 @@ public class Main2Activity extends AppCompatActivity {
         }
         public void HappySixty() {
             Intent go = new Intent(this, HappySixties.class);
+                    startActivity(go);
+        }
+        public void AOCmethod() {
+            Intent go = new Intent(this, AOC.class);
                     startActivity(go);
         }
         public void NarcSixty() {

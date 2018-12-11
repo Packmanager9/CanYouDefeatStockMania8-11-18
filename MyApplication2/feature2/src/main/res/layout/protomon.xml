@@ -86,6 +86,8 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:id="@+id/enemylayout"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -228,6 +230,14 @@
         android:layout_above="@+id/statsbutton"
         android:layout_alignParentEnd="true"
         android:text="Max" />
+
+    <Button
+        android:id="@+id/LabButton"
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/statsbutton"
+        android:layout_alignParentEnd="true"
+        android:text="Lab" />
 
 
     <Button

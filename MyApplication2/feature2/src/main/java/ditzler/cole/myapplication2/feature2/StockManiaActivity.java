@@ -3,6 +3,7 @@ package ditzler.cole.myapplication2.feature2;
 //import android.media.tv.TvContract;
 //import android.print.PrinterId;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 //import android.util.Log;
@@ -11,6 +12,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,6 +29,8 @@ import android.media.MediaPlayer;
 public class StockManiaActivity extends AppCompatActivity {
 
 
+
+    public View DarkView, LightView;
 
     public void EscapeStockMania() {
         Intent intentDice = new Intent(this, DiceGame.class);
@@ -225,6 +230,7 @@ public class StockManiaActivity extends AppCompatActivity {
     Button NextGame;
     Button Mute;
     Button Gumble;
+    Button LightsButton;
     TextView DailyPapers;
     Button Go;
     Button beg;
@@ -347,6 +353,12 @@ public class StockManiaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        DarkView = getLayoutInflater().inflate(R.layout.activity_stock_mania_dark, null);
+        LightView = getLayoutInflater().inflate(R.layout.activity_stock_mania, null);
+
+
         DecimalFormat df = new DecimalFormat("#.00");
 
 
@@ -617,7 +629,11 @@ public class StockManiaActivity extends AppCompatActivity {
                 HAIR = "BNY";
             }
         }
-        setContentView(R.layout.activity_stock_mania);
+      //  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+      //  setContentView(LightView);
+          setContentView(DarkView);
+        LightsButton = (Button) findViewById(R.id.lights);
+        LightsButton.setVisibility(View.INVISIBLE);
 
 
         NewStockArrowImageView = (ImageView) findViewById(R.id.SineArrow);
@@ -725,6 +741,15 @@ public class StockManiaActivity extends AppCompatActivity {
                                                      sound = sound + 1;
                                                  }*/
                                                  }
+                                         }
+                                     });
+
+
+        LightsButton.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View v) {
+
+                                          //   setContentView(DarkView);
                                          }
                                      });
       Bank.setOnClickListener(new View.OnClickListener() {

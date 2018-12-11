@@ -1,5 +1,11 @@
 <resources>
+    <string name="pseudoblack">#000900</string>
     <string name="title_activity_main">Calculator + Game</string>
+    <string name="title_activity_calc">Calculator</string>
+    <string name="title_activity_hutch">Hare Housing</string>
+    <string name="title_activity_hare">Hare Splitting Lab</string>
+    <string name="title_activity_monst">Monster Collector</string>
+    <string name="title_activity_stock">Investments</string>
     <string name="app_name">Calculator</string>
     <string name="app_nameTwo">Game</string>
     <string name="a">+</string>
@@ -19,6 +25,7 @@
     <string name="t">12</string>
     <string name="E">▲♀▼</string>
     <string name="e"> </string>
+    <string name="lights">💡</string>
     <string name="N">%</string>
     <string name="dummy">%</string>
     <string name="percent">%</string>

@@ -25,6 +25,7 @@ public class MusicSoup extends AppCompatActivity {
     private  Integer AttackSprites[] = {R.drawable.energyball, R.drawable.fireball, R.drawable.shield};
 
 
+
     int playerattackcatcher = 50;
     int playerattackcatchertwo = 20;
     int boxticker = 0;

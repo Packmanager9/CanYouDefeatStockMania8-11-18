@@ -1,8 +1,18 @@
 package ditzler.cole.myapplication2.feature2;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.widget.TextView;
 
+import java.util.function.IntBinaryOperator;
+
 public class ActualGenetics {
+
+
+
+
+
+
 
 
 /*

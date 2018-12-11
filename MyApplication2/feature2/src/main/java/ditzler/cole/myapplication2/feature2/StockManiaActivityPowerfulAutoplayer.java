@@ -130,7 +130,7 @@ int Manipulated = 0 ;
     double PLNTSellChecker = 7;
     double BTCSellChecker = 7;
     double LOSSSellChecker = 7;
-    int thishasnthappenedyet = 0; 
+    int thishasnthappenedyet = 0;
 
 
     MediaPlayer VictoryMusic;
@@ -749,543 +749,547 @@ int Manipulated = 0 ;
 
 
 
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                DiceChange = DicePrice;
-                BitcoinChange = BitcoinPrice;
-                PlantChange = PlantPrice;
-                LossChange = LossLeaderPrice;
-                SineChange = NewStockPrice;
-                HairChange = HARE;
-                TurtleChange = TurtlePrice;
+
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    DiceChange = DicePrice;
+                    BitcoinChange = BitcoinPrice;
+                    PlantChange = PlantPrice;
+                    LossChange = LossLeaderPrice;
+                    SineChange = NewStockPrice;
+                    HairChange = HARE;
+                    TurtleChange = TurtlePrice;
 
 
-                if (Day == 0 || Day == 1){
-                    DicePrice = (Math.ceil((DicePrice*100) + (new Random().nextInt(63)-31))/100);
-                    BitcoinPrice = (Math.ceil((BitcoinPrice*100) + (new Random().nextInt(13)-5))/100);
-                    PlantPrice = (Math.ceil((PlantPrice*100) + (new Random().nextInt(43)-21))/100);
-                    LossLeaderPrice = (Math.ceil((LossLeaderPrice*100) + (new Random().nextInt(163)-71))/100);
-                    NewStockPrice = (Math.ceil((NewStockPrice*100) + (new Random().nextInt(83)-41))/100);
-                    HARE = (Math.ceil((HARE*100) + (new Random().nextInt(33)-21))/100);
-                    TurtlePrice = (Math.ceil((TurtlePrice*100) + (new Random().nextInt(23)-11))/100);
+                    if (Day == 0 || Day == 1) {
+                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                        BitcoinPrice = (Math.ceil((BitcoinPrice * 100) + (new Random().nextInt(13) - 5)) / 100);
+                        PlantPrice = (Math.ceil((PlantPrice * 100) + (new Random().nextInt(43) - 21)) / 100);
+                        LossLeaderPrice = (Math.ceil((LossLeaderPrice * 100) + (new Random().nextInt(163) - 71)) / 100);
+                        NewStockPrice = (Math.ceil((NewStockPrice * 100) + (new Random().nextInt(83) - 41)) / 100);
+                        HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(33) - 21)) / 100);
+                        TurtlePrice = (Math.ceil((TurtlePrice * 100) + (new Random().nextInt(23) - 11)) / 100);
 
-                }
+                    }
 
 
-               // NextGameCounter = 0;
-              //  resetCounter = 0;
-                Day = Day + 1;
+                    // NextGameCounter = 0;
+                    //  resetCounter = 0;
+                    Day = Day + 1;
 
 
                     TextView displayIntegerSay = (TextView) findViewById(R.id.Day);
-                  //  displayIntegerSay.setText("Day " + Day);
+                    //  displayIntegerSay.setText("Day " + Day);
 
 
-                if (BitcoinPrice <= 2){
-                    BitcoinPrice = 3;
-                }
+                    if (BitcoinPrice <= 2) {
+                        BitcoinPrice = 3;
+                    }
 
-                if (PlantPrice <= 19  || (PlantPrice >= -19 && PlantPrice <= 19)) {
-                    PlantPrice = (new Random().nextInt(10) + 19);
-                }
-                if (LossLeaderPrice == 0) {
-                    LossLeaderPrice = (-17 + (new Random().nextInt(101)-50)/100);
-                }
+                    if (PlantPrice <= 19 || (PlantPrice >= -19 && PlantPrice <= 19)) {
+                        PlantPrice = (new Random().nextInt(10) + 19);
+                    }
+                    if (LossLeaderPrice == 0) {
+                        LossLeaderPrice = (-17 + (new Random().nextInt(101) - 50) / 100);
+                    }
 
-                if (DicePrice < 10 && DicePrice > -10) {
-                    DicePrice = (13 + (new Random().nextInt(101))/100);
-                }
-
-
-                switch(GameMode) {
-                    case 1:
+                    if (DicePrice < 10 && DicePrice > -10) {
+                        DicePrice = (13 + (new Random().nextInt(101)) / 100);
+                    }
 
 
-                        if (NewStockPrice < 21) {
-                            NewStockPrice = 22;
-                        }
-                        if (new Random().nextInt(7) >= 1) {
+                    switch (GameMode) {
+                        case 1:
 
-                            if (COSSINSwitch == 3) {
-                                if (50 < (((Math.floor(100 * (Math.abs((100 * (((Math.cos(Day * 0.0174533 * NewCycle)))))) + 2))) / 100))) {
-                                    NewStockPrice = ((Math.floor(100 * (Math.abs((100 * (((Math.cos(Day * 0.0174533 * NewCycle)))))) + 2))) / 100);
-                                } else {
-                                    NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
-                                }
-                                NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
-                            } else if (COSSINSwitch == 2) {
-                                if (50 < ((Math.floor(100 * ((Math.abs((100 * (((Math.sin(Day * 0.0174533 * NewCycle)))))) + 2)))) / 100)) {
-                                    NewStockPrice = (Math.floor(100 * ((Math.abs((100 * (((Math.sin(Day * 0.0174533 * NewCycle)))))) + 2)))) / 100;
-                                } else {
-                                    NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
-                                }
-                                NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
+
+                            if (NewStockPrice < 21) {
+                                NewStockPrice = 22;
                             }
-                            else if (COSSINSwitch == 1) {
-                                if (61 < (2*(((Math.floor(((Math.abs((100 * (Math.sqrt(Math.sin(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2)) && HighCosSwitch > (2*(((Math.floor(((Math.abs((100 * (Math.sqrt(Math.sin(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2))) {
-                                    NewStockPrice = (2*(((Math.floor(((Math.abs((100 * (Math.sqrt(Math.sin(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2));
-                                } else {
-                                    NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
-                                }
-                                NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
-                            }else {
-                                if (50 < ((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2) {
-                                    NewStockPrice = ((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2;
-                                } else {
+                            if (new Random().nextInt(7) >= 1) {
+
+                                if (COSSINSwitch == 3) {
+                                    if (50 < (((Math.floor(100 * (Math.abs((100 * (((Math.cos(Day * 0.0174533 * NewCycle)))))) + 2))) / 100))) {
+                                        NewStockPrice = ((Math.floor(100 * (Math.abs((100 * (((Math.cos(Day * 0.0174533 * NewCycle)))))) + 2))) / 100);
+                                    } else {
+                                        NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
+                                    }
                                     NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
+                                } else if (COSSINSwitch == 2) {
+                                    if (50 < ((Math.floor(100 * ((Math.abs((100 * (((Math.sin(Day * 0.0174533 * NewCycle)))))) + 2)))) / 100)) {
+                                        NewStockPrice = (Math.floor(100 * ((Math.abs((100 * (((Math.sin(Day * 0.0174533 * NewCycle)))))) + 2)))) / 100;
+                                    } else {
+                                        NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
+                                    }
+                                    NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
+                                } else if (COSSINSwitch == 1) {
+                                    if (61 < (2 * (((Math.floor(((Math.abs((100 * (Math.sqrt(Math.sin(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2)) && HighCosSwitch > (2 * (((Math.floor(((Math.abs((100 * (Math.sqrt(Math.sin(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2))) {
+                                        NewStockPrice = (2 * (((Math.floor(((Math.abs((100 * (Math.sqrt(Math.sin(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2));
+                                    } else {
+                                        NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
+                                    }
+                                    NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
+                                } else {
+                                    if (50 < ((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2) {
+                                        NewStockPrice = ((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2;
+                                    } else {
+                                        NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
+                                    }
                                 }
                             }
-                        }
 
 
-                        if (TurtlePrice >= (new Random().nextInt(5) - 10) && TurtlePrice <= (new Random().nextInt(5) + 5)) {
-                            TurtlePrice = (new Random().nextInt(6) + 6);
-                        }
-                        if (HARE >= (new Random().nextInt(5) - 10) && HARE <= (new Random().nextInt(3) + 4)) {
-                            HARE = (new Random().nextInt(6) + 6);
-                            HARE = (Math.ceil((HARE*100) + (new Random().nextInt(33)-21))/100);
-
-                        }
-
-
-                        int BreakingPoint = new Random().nextInt(10);
-
-                        if ((new Random().nextInt(11) < 7)) {
-                            switch (Fandom) {
-                                case 1:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(900) - 400)))) / 100);
-                                    if (DicePrice <= 19) {
-                                        DicePrice = (new Random().nextInt(5) + 20);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-
-                                    } else {
-                                        if (DicePrice >= 62) {
-                                            DicePrice = (new Random().nextInt(4) + 55);
-                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                        }
-                                    }
-                                    break;
-                                case 2:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1700) - 800)))) / 100);
-                                    if (DicePrice <= 25) {
-                                        DicePrice = (new Random().nextInt(6) + 36);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 110) {
-                                            DicePrice = (new Random().nextInt(4) + 95);
-                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                        }
-                                    }
-                                    break;
-                                case 3:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1900) - 900)))) / 100);
-                                    if (DicePrice <= 19) {
-                                        DicePrice = (new Random().nextInt(7) + 19);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 43) {
-                                            DicePrice = (new Random().nextInt(4) + 27);
-                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                        }
-                                    }
-                                    break;
-                                case 4:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1500) - 700)))) / 100);
-                                    if (DicePrice <= 18) {
-                                        DicePrice = (new Random().nextInt(7) + 19);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 38) {
-                                            DicePrice = (new Random().nextInt(4) + 23);
-                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-
-                                        }
-                                    }
-                                    break;
-                                case 5:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1100) - 500)))) / 100);
-                                    if (DicePrice <= 16) {
-                                        DicePrice = (new Random().nextInt(3) + 17);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 42) {
-                                            DicePrice = (new Random().nextInt(4) + 27);
-                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                        }
-                                    }
-                                    break;
-                                default:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1700) - 800)))) / 100);
-                                    if (DicePrice <= 32) {
-                                        DicePrice = (new Random().nextInt(4) + 33);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 120) {
-                                            DicePrice = (new Random().nextInt(4) + 112);
-                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                        }
-                                    }
-                                    break;
+                            if (TurtlePrice >= (new Random().nextInt(5) - 10) && TurtlePrice <= (new Random().nextInt(5) + 5)) {
+                                TurtlePrice = (new Random().nextInt(6) + 6);
                             }
-                        }
-                        if (new Random().nextInt(5)==0) {
-                            switch (Wandom) {
-                                case 1:
-                                    if (BitcoinPrice == 0) {
-                                        BitcoinPrice = 5;
-                                    } else if (BitcoinPrice < 12) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
-                                    } else if (BitcoinPrice >= 12 && BitcoinPrice <= 310) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((301) - 100)/100);
-                                    } else if (BitcoinPrice > 310 && BitcoinPrice <= 1000) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((2002) - 201)/100);
-                                    } else if (BitcoinPrice > 1000 && BitcoinPrice <= 2660) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((2900) - 950)/100);
-                                    } else if (BitcoinPrice > 2660 && BitcoinPrice <= 12500) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((6001) - 2900)/100);
-                                    } else {
-                                        int Crasher = new Random().nextInt(60);
-                                        if (Crasher >= 57){
-                                            BitcoinPrice = (BitcoinPrice / (5 + (new Random().nextInt(5)-1)));
-                                        }else {
-                                            BitcoinPrice = (BitcoinPrice * 12501 / 12500);
-                                        }
+                            if (HARE >= (new Random().nextInt(5) - 10) && HARE <= (new Random().nextInt(3) + 4)) {
+                                HARE = (new Random().nextInt(6) + 6);
+                                HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(33) - 21)) / 100);
 
-                                    }
-                                    break;
-                                case 2:
-                                    if (BitcoinPrice == 0) {
-                                        BitcoinPrice = 4;
-                                    } else if (BitcoinPrice < 12) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((201) + 1)/100);
-                                    } else if (BitcoinPrice >= 12 && BitcoinPrice <= 68) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((401) - 110)/100);
-                                    } else if (BitcoinPrice > 68 && BitcoinPrice <= 97) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((701) - 250)/100);
-                                    } else if (BitcoinPrice > 97 && BitcoinPrice <= 101) {
-                                        if (BreakingPoint == 9) {
-                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((301) - 149)/100);
+                            }
+
+
+                            int BreakingPoint = new Random().nextInt(10);
+
+                            if ((new Random().nextInt(11) < 7)) {
+                                switch (Fandom) {
+                                    case 1:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(900) - 400)))) / 100);
+                                        if (DicePrice <= 19) {
+                                            DicePrice = (new Random().nextInt(5) + 20);
+                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+
+                                        } else {
+                                            if (DicePrice >= 62) {
+                                                DicePrice = (new Random().nextInt(4) + 55);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
                                         }
-                                    } else if (BitcoinPrice > 101 && BitcoinPrice <= 375) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((6001) - 1950)/100);
-                                    } else {
-                                        int Crasher = new Random().nextInt(60);
-                                        if (Crasher == 59){
-                                            BitcoinPrice = (BitcoinPrice / (2 + (new Random().nextInt(4)-1)));
-                                        }else {
-                                            BitcoinPrice = (BitcoinPrice * 376 / 375);
+                                        break;
+                                    case 2:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1700) - 800)))) / 100);
+                                        if (DicePrice <= 25) {
+                                            DicePrice = (new Random().nextInt(6) + 36);
+                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 110) {
+                                                DicePrice = (new Random().nextInt(4) + 95);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
                                         }
-                                    }
-                                    break;
-                                case 3:
-                                    if (BitcoinPrice == 0) {
-                                        BitcoinPrice = 3;
-                                    } else if (BitcoinPrice < 9) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((200) + 250)/100);
-                                    } else if (BitcoinPrice >= 9 && BitcoinPrice <= 18) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((501) - 150)/100);
-                                    } else if (BitcoinPrice > 18 && BitcoinPrice <= 21) {
-                                        if (BreakingPoint == 9) {
-                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((301) - 120)/100);
+                                        break;
+                                    case 3:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1900) - 900)))) / 100);
+                                        if (DicePrice <= 19) {
+                                            DicePrice = (new Random().nextInt(7) + 19);
+                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 43) {
+                                                DicePrice = (new Random().nextInt(4) + 27);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
                                         }
-                                    } else if (BitcoinPrice > 21 && BitcoinPrice <= 266) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((1901) - 950)/100);
-                                    } else if (BitcoinPrice > 266 && BitcoinPrice <= 566) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((6001) - 2101)/100);
-                                    } else {
-                                        int Crasher = new Random().nextInt(60);
-                                        if (Crasher == 59){
-                                            BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(4)-1)));
-                                        }else {
-                                            BitcoinPrice = (BitcoinPrice * 567 / 566);
+                                        break;
+                                    case 4:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1500) - 700)))) / 100);
+                                        if (DicePrice <= 18) {
+                                            DicePrice = (new Random().nextInt(7) + 19);
+                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 38) {
+                                                DicePrice = (new Random().nextInt(4) + 23);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+
+                                            }
                                         }
-                                    }
-                                    break;
-                                case 4:
-                                    if (BitcoinPrice == 0) {
-                                        BitcoinPrice = 20;
-                                    } else if (BitcoinPrice < 129) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((201))/100);
-                                    } else if (BitcoinPrice >= 129 && BitcoinPrice <= 159) {
-                                        if (BreakingPoint == 9) {
-                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((401) - 145)/100);
+                                        break;
+                                    case 5:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1100) - 500)))) / 100);
+                                        if (DicePrice <= 16) {
+                                            DicePrice = (new Random().nextInt(3) + 17);
+                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 42) {
+                                                DicePrice = (new Random().nextInt(4) + 27);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
                                         }
-                                    } else if (BitcoinPrice > 159 && BitcoinPrice <= 386) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((701) - 250)/100);
-                                    } else if (BitcoinPrice > 386 && BitcoinPrice <= 1250) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((2101) - 950)/100);
-                                    } else if (BitcoinPrice > 1250 && BitcoinPrice <= 1750) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((6001) - 3150)/100);
-                                    } else {
-                                        int Crasher = new Random().nextInt(60);
-                                        if (Crasher >= 58){
-                                            BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(5)-1)));
-                                        }else {
-                                            BitcoinPrice = (BitcoinPrice * 1751 / 1750);
+                                        break;
+                                    default:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1700) - 800)))) / 100);
+                                        if (DicePrice <= 32) {
+                                            DicePrice = (new Random().nextInt(4) + 33);
+                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 120) {
+                                                DicePrice = (new Random().nextInt(4) + 112);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
                                         }
-                                    }
-                                    break;
-                                case 5:
-                                    if (BitcoinPrice < 2) {
-                                        BitcoinPrice = 3;
-                                    } else if (BitcoinPrice < 5) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((251) - 140)/100);
-                                    } else if (BitcoinPrice >= 5 && BitcoinPrice <= 21) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((401) - 150)/100);
-                                    } else if (BitcoinPrice > 21 && BitcoinPrice <= 65) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((701) - 250)/100);
-                                    } else if (BitcoinPrice > 65 && BitcoinPrice <= 180) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((2950) - 999)/100);
-                                    } else if (BitcoinPrice > 180 && BitcoinPrice <= 750) {
-                                        BitcoinPrice = BitcoinPrice + (new Random().nextInt((6101) - 1650)/100);
-                                    } else {
-                                        if (BreakingPoint == 9) {
+                                        break;
+                                }
+                            }
+                            if (new Random().nextInt(5) == 0) {
+                                switch (Wandom) {
+                                    case 1:
+                                        if (BitcoinPrice == 0) {
+                                            BitcoinPrice = 5;
+                                        } else if (BitcoinPrice < 12) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
+                                        } else if (BitcoinPrice >= 12 && BitcoinPrice <= 310) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((301) - 100) / 100);
+                                        } else if (BitcoinPrice > 310 && BitcoinPrice <= 1000) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((2002) - 201) / 100);
+                                        } else if (BitcoinPrice > 1000 && BitcoinPrice <= 2660) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((2900) - 950) / 100);
+                                        } else if (BitcoinPrice > 2660 && BitcoinPrice <= 12500) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((6001) - 2900) / 100);
+                                        } else {
                                             int Crasher = new Random().nextInt(60);
-                                            if (Crasher >= 52){
-                                                BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(5)-1)));
-                                            }else {
-                                                BitcoinPrice = (BitcoinPrice * 751 / 750);
+                                            if (Crasher >= 57) {
+                                                BitcoinPrice = (BitcoinPrice / (5 + (new Random().nextInt(5) - 1)));
+                                            } else {
+                                                BitcoinPrice = (BitcoinPrice * 12501 / 12500);
+                                            }
+
+                                        }
+                                        break;
+                                    case 2:
+                                        if (BitcoinPrice == 0) {
+                                            BitcoinPrice = 4;
+                                        } else if (BitcoinPrice < 12) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((201) + 1) / 100);
+                                        } else if (BitcoinPrice >= 12 && BitcoinPrice <= 68) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((401) - 110) / 100);
+                                        } else if (BitcoinPrice > 68 && BitcoinPrice <= 97) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((701) - 250) / 100);
+                                        } else if (BitcoinPrice > 97 && BitcoinPrice <= 101) {
+                                            if (BreakingPoint == 9) {
+                                                BitcoinPrice = BitcoinPrice + (new Random().nextInt((301) - 149) / 100);
+                                            }
+                                        } else if (BitcoinPrice > 101 && BitcoinPrice <= 375) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((6001) - 1950) / 100);
+                                        } else {
+                                            int Crasher = new Random().nextInt(60);
+                                            if (Crasher == 59) {
+                                                BitcoinPrice = (BitcoinPrice / (2 + (new Random().nextInt(4) - 1)));
+                                            } else {
+                                                BitcoinPrice = (BitcoinPrice * 376 / 375);
+                                            }
+                                        }
+                                        break;
+                                    case 3:
+                                        if (BitcoinPrice == 0) {
+                                            BitcoinPrice = 3;
+                                        } else if (BitcoinPrice < 9) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((200) + 250) / 100);
+                                        } else if (BitcoinPrice >= 9 && BitcoinPrice <= 18) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((501) - 150) / 100);
+                                        } else if (BitcoinPrice > 18 && BitcoinPrice <= 21) {
+                                            if (BreakingPoint == 9) {
+                                                BitcoinPrice = BitcoinPrice + (new Random().nextInt((301) - 120) / 100);
+                                            }
+                                        } else if (BitcoinPrice > 21 && BitcoinPrice <= 266) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((1901) - 950) / 100);
+                                        } else if (BitcoinPrice > 266 && BitcoinPrice <= 566) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((6001) - 2101) / 100);
+                                        } else {
+                                            int Crasher = new Random().nextInt(60);
+                                            if (Crasher == 59) {
+                                                BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(4) - 1)));
+                                            } else {
+                                                BitcoinPrice = (BitcoinPrice * 567 / 566);
+                                            }
+                                        }
+                                        break;
+                                    case 4:
+                                        if (BitcoinPrice == 0) {
+                                            BitcoinPrice = 20;
+                                        } else if (BitcoinPrice < 129) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((201)) / 100);
+                                        } else if (BitcoinPrice >= 129 && BitcoinPrice <= 159) {
+                                            if (BreakingPoint == 9) {
+                                                BitcoinPrice = BitcoinPrice + (new Random().nextInt((401) - 145) / 100);
+                                            }
+                                        } else if (BitcoinPrice > 159 && BitcoinPrice <= 386) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((701) - 250) / 100);
+                                        } else if (BitcoinPrice > 386 && BitcoinPrice <= 1250) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((2101) - 950) / 100);
+                                        } else if (BitcoinPrice > 1250 && BitcoinPrice <= 1750) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((6001) - 3150) / 100);
+                                        } else {
+                                            int Crasher = new Random().nextInt(60);
+                                            if (Crasher >= 58) {
+                                                BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(5) - 1)));
+                                            } else {
+                                                BitcoinPrice = (BitcoinPrice * 1751 / 1750);
+                                            }
+                                        }
+                                        break;
+                                    case 5:
+                                        if (BitcoinPrice < 2) {
+                                            BitcoinPrice = 3;
+                                        } else if (BitcoinPrice < 5) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((251) - 140) / 100);
+                                        } else if (BitcoinPrice >= 5 && BitcoinPrice <= 21) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((401) - 150) / 100);
+                                        } else if (BitcoinPrice > 21 && BitcoinPrice <= 65) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((701) - 250) / 100);
+                                        } else if (BitcoinPrice > 65 && BitcoinPrice <= 180) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((2950) - 999) / 100);
+                                        } else if (BitcoinPrice > 180 && BitcoinPrice <= 750) {
+                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((6101) - 1650) / 100);
+                                        } else {
+                                            if (BreakingPoint == 9) {
+                                                int Crasher = new Random().nextInt(60);
+                                                if (Crasher >= 52) {
+                                                    BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(5) - 1)));
+                                                } else {
+                                                    BitcoinPrice = (BitcoinPrice * 751 / 750);
+                                                }
+                                            } else {
+                                                BitcoinPrice = BitcoinPrice + (new Random().nextInt((501) - 250) / 100);
+                                            }
+                                        }
+                                        break;
+                                }
+                            } else {
+                                BitcoinPrice = BitcoinPrice + (new Random().nextInt((321) - 111) / 100);
+                            }
+                            if (new Random().nextInt(4) == 1) {
+                                switch (Nandom) {
+                                    case 1:
+
+                                        if (PlantPrice <= ((new Random().nextInt(50) + 650))) {
+                                            PlantPrice = ((PlantPrice * (new Random().nextInt(13) + 97) / 100) + (PlantPrice / ((new Random().nextInt(TurtDivLegacy) + 9))));
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(5) + 6);
+                                        }
+                                        break;
+                                    case 2:
+                                        if (PlantPrice <= ((new Random().nextInt(60) + 510))) {
+                                            PlantPrice = ((PlantPrice * (new Random().nextInt(14) + 96) / 100) + (PlantPrice / ((new Random().nextInt(TurtDivLegacy) + 8))));
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(4) + 5);
+                                        }
+                                        break;
+                                    case 3:
+                                        if (PlantPrice <= ((new Random().nextInt(70) + 440))) {
+                                            PlantPrice = ((PlantPrice * (new Random().nextInt(15) + 95) / 100) + (PlantPrice / ((new Random().nextInt(TurtDivLegacy) + 7))));
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(4) + 4);
+                                        }
+                                        break;
+                                    case 4:
+                                        if (PlantPrice <= ((new Random().nextInt(80) + 310))) {
+                                            PlantPrice = ((PlantPrice * (new Random().nextInt(16) + 95) / 100) + (PlantPrice / ((new Random().nextInt(TurtDivLegacy) + 6))));
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(4) + 3);
+                                        }
+                                        break;
+                                    case 5:
+                                        if (PlantPrice <= ((new Random().nextInt(90) + 740))) {
+                                            PlantPrice = ((PlantPrice * (new Random().nextInt(17) + 94) / 100) + (PlantPrice / ((new Random().nextInt(TurtDivLegacy) + 10))));
+
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(3) + 3);
+                                        }
+                                        break;
+                                }
+                            }
+
+
+                            if (LossLeaderPrice == 0) {
+                                LossLeaderPrice = -18;
+                            }
+
+                            switch (LossMinModeSetter) {
+                                case 1:
+                                    if (LossLeaderPrice < 18 && LossLeaderPrice > -17) {
+                                        LossLeaderPrice = -18;
+                                    }
+                                    if (new Random().nextInt(3) == 0) {
+
+                                        if (LossLeaderPrice <= 60 && LossLeaderPrice >= 1) {
+
+                                            LossLeaderPrice = LossLeaderPrice + new Random().nextInt(4) - 3;
+                                            if (LossLeaderPrice < 18 && LossLeaderPrice > -17) {
+                                                LossLeaderPrice = -18;
                                             }
                                         } else {
-                                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((501) - 250)/100);
-                                        }
-                                    }
-                                    break;
-                            }
-                        }else{
-                            BitcoinPrice = BitcoinPrice + (new Random().nextInt((321) - 111)/100);
-                        }
-                        if (new Random().nextInt(4) == 1) {
-                            switch (Nandom) {
-                                case 1:
+                                            whatamimeasuring = ((((Day * ((2 * LossLimiter) / 3)) * -1)) + (new Random().nextInt(61) - Day));
 
-                                    if (PlantPrice <= ((new Random().nextInt(50) + 650))) {
-                                        PlantPrice = ((PlantPrice * (new Random().nextInt(13) + 97) / 100) + (PlantPrice/((new Random().nextInt(TurtDivLegacy)+9))));
+                                            if (LossLeaderPrice <= whatamimeasuring || LossLeaderPrice <= (-1 * (new Random().nextInt(17123) + 10000 + Day))) {
+                                                double Days = Day;
+                                                double DayLoser = Math.floor(Days / 20);
+                                                int RandaLoss = new Random().nextInt(8);
+                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + (RandaLoss - (15 + DayLoser)))) + ((new Random().nextInt(101) - 50) / 100);
+                                            } else {
+                                                LossLeaderPrice = (LossLeaderPrice + (((new Random().nextInt(101) - 50) / 100) + new Random().nextInt(5) - (15 + (((2 * LossLimiter) / 3) * (new Random().nextInt(5))) + ((new Random().nextInt(101) - 50) / 100))));
+                                            }
+                                        }
                                     } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(5) + 6);
+                                        LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
                                     }
                                     break;
                                 case 2:
-                                    if (PlantPrice <= ((new Random().nextInt(60) + 510))) {
-                                        PlantPrice = ((PlantPrice * (new Random().nextInt(14) + 96) / 100) + (PlantPrice/((new Random().nextInt(TurtDivLegacy)+8))));
+                                    if (LossLeaderPrice < 25 && LossLeaderPrice > -24) {
+                                        LossLeaderPrice = -25;
+                                    }
+                                    if (new Random().nextInt(3) == 0) {
+
+                                        if (LossLeaderPrice <= 75 && LossLeaderPrice >= 1) {
+
+                                            LossLeaderPrice = LossLeaderPrice + new Random().nextInt(4) - 3;
+                                            if (LossLeaderPrice < 25 && LossLeaderPrice > -24) {
+                                                LossLeaderPrice = -25;
+                                            }
+                                        } else {
+
+                                            whatamimeasuring = (((((Day * ((2 * LossLimiter) / 3)) * -1)) + (new Random().nextInt(61) - Day)) * .86);
+
+
+                                            if (LossLeaderPrice <= whatamimeasuring || LossLeaderPrice <= (-1 * (new Random().nextInt(18123) + 9000 + (Day % losslimiterdaycapper)))) {
+                                                double Days = Day;
+                                                double DayLoser = Math.floor(Days / 14);
+                                                int RandaLoss = new Random().nextInt(8);
+                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + (RandaLoss - (15 + DayLoser)))) + ((new Random().nextInt(101) - 50) / 100);
+                                            } else {
+                                                LossLeaderPrice = (LossLeaderPrice + (((new Random().nextInt(101) - 50) / 100) + new Random().nextInt(5) - (15 + (((2 * LossLimiter) / 3) * (new Random().nextInt(5))) + ((new Random().nextInt(101) - 50) / 100))));
+                                            }
+                                        }
                                     } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(4) + 5);
+                                        LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
                                     }
                                     break;
                                 case 3:
-                                    if (PlantPrice <= ((new Random().nextInt(70) + 440))) {
-                                        PlantPrice = ((PlantPrice * (new Random().nextInt(15) + 95) / 100) + (PlantPrice/((new Random().nextInt(TurtDivLegacy)+7))));
+                                    if (LossLeaderPrice < (25 + (Math.floor(Day / 81))) && LossLeaderPrice > (-24 - (Math.floor(Day / 81)))) {
+                                        LossLeaderPrice = (-25 - (Math.floor(Day / 81)));
+                                    }
+                                    if (new Random().nextInt(3) == 0) {
+
+                                        if (LossLeaderPrice <= (75 + (Math.floor(Day / 31))) && LossLeaderPrice >= 1) {
+
+                                            LossLeaderPrice = LossLeaderPrice + new Random().nextInt(4) - 3;
+                                            if (LossLeaderPrice < (15 + (Math.floor(Day / 81))) && LossLeaderPrice > (-24 - (Math.floor(Day / 81)))) {
+                                                LossLeaderPrice = (-25 - (Math.floor(Day / 81)));
+                                            }
+                                        } else {
+                                            whatamimeasuring = ((((Day * ((2 * LossLimiter) / 3)) * -1)) + (new Random().nextInt(61) - Day));
+
+
+                                            if (LossLeaderPrice <= whatamimeasuring || LossLeaderPrice <= (-1 * (new Random().nextInt(7123) + 5000 + (Day % losslimiterdaycapper)))) {
+                                                double Days = Day;
+                                                double DayLoser = Math.floor(Days / 15);
+                                                int RandaLoss = new Random().nextInt(10);
+                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + (RandaLoss - (15 + DayLoser)))) + ((new Random().nextInt(101) - 50) / 100);
+                                            } else {
+                                                LossLeaderPrice = (LossLeaderPrice + (((new Random().nextInt(101) - 50) / 100) + new Random().nextInt(5) - (15 + (((2 * LossLimiter) / 3) * (new Random().nextInt(5))) + ((new Random().nextInt(101) - 50) / 100))));
+                                            }
+                                        }
                                     } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(4) + 4);
+                                        LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
                                     }
                                     break;
                                 case 4:
-                                    if (PlantPrice <= ((new Random().nextInt(80) + 310))) {
-                                        PlantPrice = ((PlantPrice * (new Random().nextInt(16) + 95) / 100) + (PlantPrice/((new Random().nextInt(TurtDivLegacy)+6))));
-                                    } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(4) + 3);
+                                    if (LossLeaderPrice < (35 + (Math.floor(Day / 61))) && LossLeaderPrice > (-34 - (Math.floor(Day / 61)))) {
+                                        LossLeaderPrice = (-35 - (Math.floor(Day / 61)));
                                     }
-                                    break;
-                                case 5:
-                                    if (PlantPrice <= ((new Random().nextInt(90) + 740))) {
-                                        PlantPrice = ((PlantPrice * (new Random().nextInt(17) + 94) / 100) + (PlantPrice/((new Random().nextInt(TurtDivLegacy)+10))));
+                                    if (new Random().nextInt(3) == 0) {
 
+                                        if (LossLeaderPrice <= (75 + (Math.floor(Day / 31))) && LossLeaderPrice >= 1) {
+
+                                            LossLeaderPrice = LossLeaderPrice + new Random().nextInt(4) - 3;
+                                            if (LossLeaderPrice < (35 + (Math.floor(Day / 61))) && LossLeaderPrice > (-34 - (Math.floor(Day / 61)))) {
+                                                LossLeaderPrice = (-35 - (Math.floor(Day / 61)));
+                                            }
+                                        } else {
+
+                                            whatamimeasuring = ((((Day * ((((61 + Cyclops) * 0.8) * LossLimiter) / ((Cyclops + 79) * 1.2))) * -1)) + (new Random().nextInt(61) - Day));
+
+
+                                            if (LossLeaderPrice <= whatamimeasuring || LossLeaderPrice <= (-1 * (new Random().nextInt(27123) + 13000 + (Day % losslimiterdaycapper)))) {
+                                                double Days = Day;
+                                                double DayLoser = Math.floor(Days / ((((1 + nandom) * (1 + wandom) * (1 + gandom)) + 3)));
+                                                int RandaLoss = new Random().nextInt(10);
+                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + (RandaLoss - (15 + DayLoser)))) + ((new Random().nextInt(101) - 50) / 100);
+                                            } else {
+                                                LossLeaderPrice = (LossLeaderPrice + (((new Random().nextInt(101) - 50) / 100) + new Random().nextInt(5) - (15 + (((2 * LossLimiter) / 3) * (new Random().nextInt(5))) + ((new Random().nextInt(101) - 50) / 100))));
+                                            }
+                                        }
                                     } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(3) + 3);
+                                        if (BreakingPoint == 5 || (new Random().nextInt(7)) <= 2)
+                                            LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
                                     }
                                     break;
                             }
-                        }
 
 
-                        if (LossLeaderPrice == 0) {
-                            LossLeaderPrice = -18;
-                        }
+                            int X = (new Random().nextInt(5) - 4);
 
-                        switch (LossMinModeSetter) {
-                            case 1:
-                                if (LossLeaderPrice < 18 && LossLeaderPrice > -17) {
-                                    LossLeaderPrice = -18;
-                                }
-                                if (new Random().nextInt(3) == 0) {
+                            if (TurtSwitch == 1) {
 
-                                    if (LossLeaderPrice <= 60 && LossLeaderPrice >= 1) {
+                                //      if (TurtlePrice >= ((((((((Day / TurtDiv) + TurtCeiling))/2)) + ((Day / TurtDiv))))+35) || TurtlePrice >= ((new Random().nextInt(50)+450))) {
+                                //                                TurtlePrice = Math.abs(TurtlePrice) * -1; // cant remember if this is supposed to have a Math.abs or not, originally did not
+                                //                            }
 
-                                        LossLeaderPrice = LossLeaderPrice + new Random().nextInt(4) - 3;
-                                        if (LossLeaderPrice < 18 && LossLeaderPrice > -17) {
-                                            LossLeaderPrice = -18;
-                                        }
-                                    } else {
-                                        whatamimeasuring =  ((((Day * ((2 * LossLimiter) / 3)) * -1)) + (new Random().nextInt(61) - Day));
 
-                                        if (LossLeaderPrice <= whatamimeasuring || LossLeaderPrice <= (-1*(new Random().nextInt(17123) + 10000 + Day) )) {
-                                            double Days = Day;
-                                            double DayLoser = Math.floor(Days / 20);
-                                            int RandaLoss = new Random().nextInt(8);
-                                            LossLeaderPrice = (Math.abs(LossLeaderPrice + (RandaLoss - (15 + DayLoser)))) + ((new Random().nextInt(101) - 50) / 100);
-                                        } else {
-                                            LossLeaderPrice = (LossLeaderPrice + (((new Random().nextInt(101) - 50) / 100) + new Random().nextInt(5) - (15 + (((2 * LossLimiter) / 3) * (new Random().nextInt(5))) + ((new Random().nextInt(101) - 50) / 100))));
-                                        }
+                                if ((new Random().nextInt(11) < 9)) {
+                                    if (TurtlePrice >= ((((((((Day / TurtDiv) + TurtCeiling)) / 2)) + ((Day / TurtDiv)))) + 15) || TurtlePrice >= (new Random().nextInt(50) + 289)) {
+                                        TurtlePrice = Math.abs(TurtlePrice) * -1;
                                     }
-                                } else {
-                                    LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
-                                }
-                                break;
-                            case 2:
-                                if (LossLeaderPrice < 25 && LossLeaderPrice > -24) {
-                                    LossLeaderPrice = -25;
-                                }
-                                if (new Random().nextInt(3) == 0) {
-
-                                    if (LossLeaderPrice <= 75 && LossLeaderPrice >= 1) {
-
-                                        LossLeaderPrice = LossLeaderPrice + new Random().nextInt(4) - 3;
-                                        if (LossLeaderPrice < 25 && LossLeaderPrice > -24) {
-                                            LossLeaderPrice = -25;
-                                        }
-                                    } else {
-
-                                        whatamimeasuring = (((((Day * ((2 * LossLimiter) / 3)) * -1)) + (new Random().nextInt(61) - Day))*.86);
-
-
-                                        if (LossLeaderPrice <= whatamimeasuring || LossLeaderPrice <= (-1*(new Random().nextInt(18123) + 9000 + (Day%losslimiterdaycapper)))) {
-                                            double Days = Day;
-                                            double DayLoser = Math.floor(Days / 14);
-                                            int RandaLoss = new Random().nextInt(8);
-                                            LossLeaderPrice = (Math.abs(LossLeaderPrice + (RandaLoss - (15 + DayLoser)))) + ((new Random().nextInt(101) - 50) / 100);
-                                        } else {
-                                            LossLeaderPrice = (LossLeaderPrice + (((new Random().nextInt(101) - 50) / 100) + new Random().nextInt(5) - (15 + (((2 * LossLimiter) / 3) * (new Random().nextInt(5))) + ((new Random().nextInt(101) - 50) / 100))));
-                                        }
+                                    if (TurtlePrice < 1 && HARE >= 1) {
+                                        HARE = Math.abs(HARE) * -1;
                                     }
-                                } else {
-                                    LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
-                                }
-                                break;
-                            case 3:
-                                if (LossLeaderPrice < (25 + (Math.floor(Day/81))) && LossLeaderPrice > (-24 - (Math.floor(Day/81)))) {
-                                    LossLeaderPrice = (-25 - (Math.floor(Day/81)));
-                                }
-                                if (new Random().nextInt(3) == 0) {
-
-                                    if (LossLeaderPrice <= (75 + (Math.floor(Day/31))) && LossLeaderPrice >= 1) {
-
-                                        LossLeaderPrice = LossLeaderPrice + new Random().nextInt(4) - 3;
-                                        if (LossLeaderPrice < (15 + (Math.floor(Day/81))) && LossLeaderPrice > (-24 - (Math.floor(Day/81)))) {
-                                            LossLeaderPrice = (-25 - (Math.floor(Day/81)));
-                                        }
-                                    } else {
-                                        whatamimeasuring =((((Day * ((2 * LossLimiter) / 3)) * -1)) + (new Random().nextInt(61) - Day));
-
-
-                                        if (LossLeaderPrice <= whatamimeasuring || LossLeaderPrice <= (-1*(new Random().nextInt(7123) + 5000 + (Day%losslimiterdaycapper)))) {
-                                            double Days = Day;
-                                            double DayLoser = Math.floor(Days / 15);
-                                            int RandaLoss = new Random().nextInt(10);
-                                            LossLeaderPrice = (Math.abs(LossLeaderPrice + (RandaLoss - (15 + DayLoser)))) + ((new Random().nextInt(101) - 50) / 100);
-                                        } else {
-                                            LossLeaderPrice = (LossLeaderPrice + (((new Random().nextInt(101) - 50) / 100) + new Random().nextInt(5) - (15 + (((2 * LossLimiter) / 3) * (new Random().nextInt(5))) + ((new Random().nextInt(101) - 50) / 100))));
-                                        }
-                                    }
-                                } else {
-                                    LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
-                                }
-                                break;
-                            case 4:
-                                if (LossLeaderPrice < (35 + (Math.floor(Day/61))) && LossLeaderPrice > (-34 - (Math.floor(Day/61)))) {
-                                    LossLeaderPrice = (-35 - (Math.floor(Day/61)));
-                                }
-                                if (new Random().nextInt(3) == 0) {
-
-                                    if (LossLeaderPrice <= (75 + (Math.floor(Day/31))) && LossLeaderPrice >= 1) {
-
-                                        LossLeaderPrice = LossLeaderPrice + new Random().nextInt(4) - 3;
-                                        if (LossLeaderPrice < (35 + (Math.floor(Day/61))) && LossLeaderPrice > (-34 - (Math.floor(Day/61)))) {
-                                            LossLeaderPrice = (-35 - (Math.floor(Day/61)));
-                                        }
-                                    } else {
-
-                                        whatamimeasuring = ((((Day * ((((61 + Cyclops) * 0.8) * LossLimiter) / ((Cyclops + 79) * 1.2))) * -1)) + (new Random().nextInt(61) - Day));
-
-
-                                        if (LossLeaderPrice <= whatamimeasuring || LossLeaderPrice <= (-1*(new Random().nextInt(27123) + 13000 + (Day%losslimiterdaycapper)))) {
-                                            double Days = Day;
-                                            double DayLoser = Math.floor(Days / ((((1+nandom)*(1+wandom)*(1+gandom))+3)));
-                                            int RandaLoss = new Random().nextInt(10);
-                                            LossLeaderPrice = (Math.abs(LossLeaderPrice + (RandaLoss - (15 + DayLoser)))) + ((new Random().nextInt(101) - 50) / 100);
-                                        } else {
-                                            LossLeaderPrice = (LossLeaderPrice + (((new Random().nextInt(101) - 50) / 100) + new Random().nextInt(5) - (15 + (((2 * LossLimiter) / 3) * (new Random().nextInt(5))) + ((new Random().nextInt(101) - 50) / 100))));
-                                        }
-                                    }
-                                } else {
-                                    if (BreakingPoint == 5 || (new Random().nextInt(7)) <=2 )
-                                        LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
-                                }
-                                break;
-                        }
-
-
-
-
-                        int X = (new Random().nextInt(5) - 4);
-
-                        if (TurtSwitch == 1) {
-
-                            //      if (TurtlePrice >= ((((((((Day / TurtDiv) + TurtCeiling))/2)) + ((Day / TurtDiv))))+35) || TurtlePrice >= ((new Random().nextInt(50)+450))) {
-                            //                                TurtlePrice = Math.abs(TurtlePrice) * -1; // cant remember if this is supposed to have a Math.abs or not, originally did not
-                            //                            }
-
-
-                            if ((new Random().nextInt(11) < 9)) {
-                                if (TurtlePrice >= ((((((((Day / TurtDiv) + TurtCeiling)) / 2)) + ((Day / TurtDiv)))) + 15) || TurtlePrice >= (new Random().nextInt(50) + 289)) {
-                                    TurtlePrice = Math.abs(TurtlePrice) * -1;
-                                }
-                                if (TurtlePrice < 1 && HARE >= 1) {
-                                    HARE = Math.abs(HARE) * -1;
-                                }
-                                if (X == 0) {
-                                    if (((Math.abs(HARE) - Math.abs(TurtlePrice)) >= 1)) {
-                                        int TurtelyEnough = new Random().nextInt(25);
-                                        if (TurtelyEnough <= 0) {
-                                            TurtlePrice = (Math.ceil((((TurtlePrice * 100) * (new Random().nextInt(125000001) + 999999999) / 1000000000) + 1)) + 1) / 100;
-                                            if (TurtlePrice == 0) {
-                                                TurtlePrice = 4;
-                                            } else {
-                                                HARE = ((Math.ceil(HARE * 100) + new Random().nextInt(700) - 345) / 100);
-                                            }
-                                        } else {
-                                            TurtlePrice = ((Math.ceil(TurtlePrice * 100) + new Random().nextInt(500) - 231) / 100);
-                                            if (TurtlePrice == 0) {
-                                                TurtlePrice = 4;
-                                                HARE = ((Math.ceil(HARE * 100) + new Random().nextInt(700) - 345) / 100);
-                                            } else {
-
-                                                HARE = ((Math.ceil(HARE * 100) + new Random().nextInt(300) - 125) / 100);
-                                            }
-                                        }
-                                    } else {
-
-                                        if (HARE > 0) {
-                                            HARE = HARE + (Math.floor((((TurtlePrice - HARE) % 8)) * (((Math.abs(TurtlePrice) - Math.abs(HARE))) / 7)));
-                                            HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(33) - 21)) / 100);
-                                            TurtlePrice = (TurtlePrice + (new Random().nextInt(5) - 3));
-                                        } else {
-                                            HARE = TurtlePrice;
-                                            TurtlePrice = (TurtlePrice + (new Random().nextInt(5) - 3));
-                                        }
-                                    }
-
-                                } else {
-                                    int TurtelyEnough = new Random().nextInt(10);
-
-                                    if (TurtlePrice == 0) {
-                                        TurtlePrice = 1;
-                                        if (HARE >= TurtlePrice) {
-                                            if (TurtelyEnough == 0) {
-                                                TurtlePrice = Math.abs(Math.floor(((TurtlePrice * (new Random().nextInt(120000001) + 1000000001) / 1000000000) + 1) + 1));
+                                    if (X == 0) {
+                                        if (((Math.abs(HARE) - Math.abs(TurtlePrice)) >= 1)) {
+                                            int TurtelyEnough = new Random().nextInt(25);
+                                            if (TurtelyEnough <= 0) {
+                                                TurtlePrice = (Math.ceil((((TurtlePrice * 100) * (new Random().nextInt(125000001) + 999999999) / 1000000000) + 1)) + 1) / 100;
                                                 if (TurtlePrice == 0) {
-                                                    TurtlePrice = 1;
+                                                    TurtlePrice = 4;
+                                                } else {
+                                                    HARE = ((Math.ceil(HARE * 100) + new Random().nextInt(700) - 345) / 100);
+                                                }
+                                            } else {
+                                                TurtlePrice = ((Math.ceil(TurtlePrice * 100) + new Random().nextInt(500) - 231) / 100);
+                                                if (TurtlePrice == 0) {
+                                                    TurtlePrice = 4;
+                                                    HARE = ((Math.ceil(HARE * 100) + new Random().nextInt(700) - 345) / 100);
+                                                } else {
+
+                                                    HARE = ((Math.ceil(HARE * 100) + new Random().nextInt(300) - 125) / 100);
+                                                }
+                                            }
+                                        } else {
+
+                                            if (HARE > 0) {
+                                                HARE = HARE + (Math.floor((((TurtlePrice - HARE) % 8)) * (((Math.abs(TurtlePrice) - Math.abs(HARE))) / 7)));
+                                                HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(33) - 21)) / 100);
+                                                TurtlePrice = (TurtlePrice + (new Random().nextInt(5) - 3));
+                                            } else {
+                                                HARE = TurtlePrice;
+                                                TurtlePrice = (TurtlePrice + (new Random().nextInt(5) - 3));
+                                            }
+                                        }
+
+                                    } else {
+                                        int TurtelyEnough = new Random().nextInt(10);
+
+                                        if (TurtlePrice == 0) {
+                                            TurtlePrice = 1;
+                                            if (HARE >= TurtlePrice) {
+                                                if (TurtelyEnough == 0) {
+                                                    TurtlePrice = Math.abs(Math.floor(((TurtlePrice * (new Random().nextInt(120000001) + 1000000001) / 1000000000) + 1) + 1));
+                                                    if (TurtlePrice == 0) {
+                                                        TurtlePrice = 1;
+                                                    }
+                                                } else {
+                                                    TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
+                                                    if (TurtlePrice == 0) {
+                                                        TurtlePrice = 1;
+                                                    }
                                                 }
                                             } else {
                                                 TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
@@ -1294,96 +1298,94 @@ int Manipulated = 0 ;
                                                 }
                                             }
                                         } else {
-                                            TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
-                                            if (TurtlePrice == 0) {
-                                                TurtlePrice = 1;
-                                            }
-                                        }
-                                    } else {
-                                        if (HARE >= TurtlePrice) {
-                                            if (TurtelyEnough == 0) {
-                                                TurtlePrice = ((Math.floor((((TurtlePrice * 100) * (new Random().nextInt(135000001) + 1000000001) / 1000000000) + 1) + 1)) / 100);
-                                                if (TurtlePrice == 0) {
-                                                    TurtlePrice = 1;
-                                                    TurtlePrice = TurtlePrice + 1.01;
+                                            if (HARE >= TurtlePrice) {
+                                                if (TurtelyEnough == 0) {
+                                                    TurtlePrice = ((Math.floor((((TurtlePrice * 100) * (new Random().nextInt(135000001) + 1000000001) / 1000000000) + 1) + 1)) / 100);
+                                                    if (TurtlePrice == 0) {
+                                                        TurtlePrice = 1;
+                                                        TurtlePrice = TurtlePrice + 1.01;
+                                                    } else {
+                                                        TurtlePrice = TurtlePrice + 1.01;
+                                                    }
                                                 } else {
-                                                    TurtlePrice = TurtlePrice + 1.01;
+                                                    TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
+                                                    if (TurtlePrice == 0) {
+                                                        TurtlePrice = 6;
+                                                        TurtlePrice = TurtlePrice + 1;
+                                                    } else {
+                                                        TurtlePrice = TurtlePrice + 1;
+                                                    }
+                                                    TurtlePrice = TurtlePrice + 1;
                                                 }
                                             } else {
-                                                TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
+                                                TurtlePrice = (TurtlePrice + (new Random().nextInt(4) - 3));
                                                 if (TurtlePrice == 0) {
-                                                    TurtlePrice = 6;
+                                                    TurtlePrice = 7;
                                                     TurtlePrice = TurtlePrice + 1;
                                                 } else {
                                                     TurtlePrice = TurtlePrice + 1;
                                                 }
                                                 TurtlePrice = TurtlePrice + 1;
                                             }
-                                        } else {
-                                            TurtlePrice = (TurtlePrice + (new Random().nextInt(4) - 3));
-                                            if (TurtlePrice == 0) {
-                                                TurtlePrice = 7;
-                                                TurtlePrice = TurtlePrice + 1;
-                                            } else {
-                                                TurtlePrice = TurtlePrice + 1;
-                                            }
-                                            TurtlePrice = TurtlePrice + 1;
                                         }
                                     }
                                 }
-                            }
-                        }
-
-                        else if (TurtSwitch == 2) {
-                            if ((new Random().nextInt(11) < 9)) {
-                                if (HARE >= ((((((((Day / TurtDiv) + TurtCeiling)) / 2)) + ((Day / TurtDiv)))) + 15) || HARE >= (new Random().nextInt(50) + 289)) {
-                                    HARE = Math.abs(HARE) * -1;
-                                }
-                                if (HARE < 1 && TurtlePrice >= 1) {
-                                    TurtlePrice = Math.abs(TurtlePrice) * -1;
-                                }
-                                if (X == 0) {
-                                    if (((Math.abs(TurtlePrice) - Math.abs(HARE)) >= 1)) {
-                                        int TurtelyEnough = new Random().nextInt(25);
-                                        if (TurtelyEnough <= 0) {
-                                            HARE = (Math.ceil((((HARE * 100) * (new Random().nextInt(125000001) + 999999999) / 1000000000) + 1)) + 1) / 100;
-                                            if (HARE == 0) {
-                                                HARE = 4;
-                                            } else {
-                                                TurtlePrice = ((Math.ceil(TurtlePrice * 100) + new Random().nextInt(700) - 345) / 100);
-                                            }
-                                        } else {
-                                            HARE = ((Math.ceil(HARE * 100) + new Random().nextInt(500) - 231) / 100);
-                                            if (HARE == 0) {
-                                                HARE = 4;
-                                                TurtlePrice = ((Math.ceil(TurtlePrice * 100) + new Random().nextInt(700) - 345) / 100);
-                                            } else {
-
-                                                TurtlePrice = ((Math.ceil(TurtlePrice * 100) + new Random().nextInt(300) - 125) / 100);
-                                            }
-                                        }
-                                    } else {
-
-                                        if (TurtlePrice > 0) {
-                                            TurtlePrice = TurtlePrice + (Math.floor((((HARE - TurtlePrice) % 8)) * (((Math.abs(HARE) - Math.abs(TurtlePrice))) / 7)));
-                                            TurtlePrice = (Math.ceil((TurtlePrice * 100) + (new Random().nextInt(33) - 21)) / 100);
-                                            HARE = (HARE + (new Random().nextInt(5) - 3));
-                                        } else {
-                                            TurtlePrice = HARE;
-                                            HARE = (HARE + (new Random().nextInt(5) - 3));
-                                        }
+                            } else if (TurtSwitch == 2) {
+                                if ((new Random().nextInt(11) < 9)) {
+                                    if (HARE >= ((((((((Day / TurtDiv) + TurtCeiling)) / 2)) + ((Day / TurtDiv)))) + 15) || HARE >= (new Random().nextInt(50) + 289)) {
+                                        HARE = Math.abs(HARE) * -1;
                                     }
-
-                                } else {
-                                    int TurtelyEnough = new Random().nextInt(10);
-
-                                    if (HARE == 0) {
-                                        HARE = 1;
-                                        if (TurtlePrice >= HARE) {
-                                            if (TurtelyEnough == 0) {
-                                                HARE = Math.abs(Math.floor(((HARE * (new Random().nextInt(120000001) + 1000000001) / 1000000000) + 1) + 1));
+                                    if (HARE < 1 && TurtlePrice >= 1) {
+                                        TurtlePrice = Math.abs(TurtlePrice) * -1;
+                                    }
+                                    if (X == 0) {
+                                        if (((Math.abs(TurtlePrice) - Math.abs(HARE)) >= 1)) {
+                                            int TurtelyEnough = new Random().nextInt(25);
+                                            if (TurtelyEnough <= 0) {
+                                                HARE = (Math.ceil((((HARE * 100) * (new Random().nextInt(125000001) + 999999999) / 1000000000) + 1)) + 1) / 100;
                                                 if (HARE == 0) {
-                                                    HARE = 1;
+                                                    HARE = 4;
+                                                } else {
+                                                    TurtlePrice = ((Math.ceil(TurtlePrice * 100) + new Random().nextInt(700) - 345) / 100);
+                                                }
+                                            } else {
+                                                HARE = ((Math.ceil(HARE * 100) + new Random().nextInt(500) - 231) / 100);
+                                                if (HARE == 0) {
+                                                    HARE = 4;
+                                                    TurtlePrice = ((Math.ceil(TurtlePrice * 100) + new Random().nextInt(700) - 345) / 100);
+                                                } else {
+
+                                                    TurtlePrice = ((Math.ceil(TurtlePrice * 100) + new Random().nextInt(300) - 125) / 100);
+                                                }
+                                            }
+                                        } else {
+
+                                            if (TurtlePrice > 0) {
+                                                TurtlePrice = TurtlePrice + (Math.floor((((HARE - TurtlePrice) % 8)) * (((Math.abs(HARE) - Math.abs(TurtlePrice))) / 7)));
+                                                TurtlePrice = (Math.ceil((TurtlePrice * 100) + (new Random().nextInt(33) - 21)) / 100);
+                                                HARE = (HARE + (new Random().nextInt(5) - 3));
+                                            } else {
+                                                TurtlePrice = HARE;
+                                                HARE = (HARE + (new Random().nextInt(5) - 3));
+                                            }
+                                        }
+
+                                    } else {
+                                        int TurtelyEnough = new Random().nextInt(10);
+
+                                        if (HARE == 0) {
+                                            HARE = 1;
+                                            if (TurtlePrice >= HARE) {
+                                                if (TurtelyEnough == 0) {
+                                                    HARE = Math.abs(Math.floor(((HARE * (new Random().nextInt(120000001) + 1000000001) / 1000000000) + 1) + 1));
+                                                    if (HARE == 0) {
+                                                        HARE = 1;
+                                                    }
+                                                } else {
+                                                    HARE = HARE + (new Random().nextInt(4) - 1);
+                                                    if (HARE == 0) {
+                                                        HARE = 1;
+                                                    }
                                                 }
                                             } else {
                                                 HARE = HARE + (new Random().nextInt(4) - 1);
@@ -1392,94 +1394,87 @@ int Manipulated = 0 ;
                                                 }
                                             }
                                         } else {
-                                            HARE = HARE + (new Random().nextInt(4) - 1);
-                                            if (HARE == 0) {
-                                                HARE = 1;
-                                            }
-                                        }
-                                    } else {
-                                        if (TurtlePrice >= HARE) {
-                                            if (TurtelyEnough == 0) {
-                                                HARE = ((Math.floor((((HARE * 100) * (new Random().nextInt(135000001) + 1000000001) / 1000000000) + 1) + 1)) / 100);
-                                                if (HARE == 0) {
-                                                    HARE = 1;
-                                                    HARE = HARE + 1.01;
+                                            if (TurtlePrice >= HARE) {
+                                                if (TurtelyEnough == 0) {
+                                                    HARE = ((Math.floor((((HARE * 100) * (new Random().nextInt(135000001) + 1000000001) / 1000000000) + 1) + 1)) / 100);
+                                                    if (HARE == 0) {
+                                                        HARE = 1;
+                                                        HARE = HARE + 1.01;
+                                                    } else {
+                                                        HARE = HARE + 1.01;
+                                                    }
                                                 } else {
-                                                    HARE = HARE + 1.01;
+                                                    HARE = HARE + (new Random().nextInt(4) - 1);
+                                                    if (HARE == 0) {
+                                                        HARE = 6;
+                                                        HARE = HARE + 1;
+                                                    } else {
+                                                        HARE = HARE + 1;
+                                                    }
+                                                    HARE = HARE + 1;
                                                 }
                                             } else {
-                                                HARE = HARE + (new Random().nextInt(4) - 1);
+                                                HARE = (HARE + (new Random().nextInt(4) - 3));
                                                 if (HARE == 0) {
-                                                    HARE = 6;
+                                                    HARE = 7;
                                                     HARE = HARE + 1;
                                                 } else {
                                                     HARE = HARE + 1;
                                                 }
                                                 HARE = HARE + 1;
                                             }
-                                        } else {
-                                            HARE = (HARE + (new Random().nextInt(4) - 3));
-                                            if (HARE == 0) {
-                                                HARE = 7;
-                                                HARE = HARE + 1;
-                                            } else {
-                                                HARE = HARE + 1;
-                                            }
-                                            HARE = HARE + 1;
                                         }
                                     }
                                 }
                             }
-                        }
 
-                        break;
+                            break;
 
-                    case 2:
+                        case 2:
 
-                        if (NewStockPrice < 21){
-                            NewStockPrice = 22;
-                        }
-
+                            if (NewStockPrice < 21) {
+                                NewStockPrice = 22;
+                            }
 
 
-                        if (new Random().nextInt(7) >= 2) {
-                            if (COSSINSwitch == 3) {
-                                if (50 < ((Math.floor(100 * (Math.abs((100 * (((Math.cos(Day * 0.0174533 * NewCycle)))))) + 2))) / 100)) {
-                                    NewStockPrice = ((Math.floor(100 * (Math.abs((100 * (((Math.cos(Day * 0.0174533 * NewCycle)))))) + 2))) / 100);
-                                } else {
-                                    NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
-                                }
-                                NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
-                            } else if (COSSINSwitch == 2) {
-                                if (50 < ((Math.floor(100 * ((Math.abs((100 * (((Math.sin(Day * 0.0174533 * NewCycle)))))) + 2)))) / 100)) {
-                                    NewStockPrice = (Math.floor(100 * ((Math.abs((100 * (((Math.sin(Day * 0.0174533 * NewCycle)))))) + 2)))) / 100;
-                                } else {
-                                    NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
-                                }
-                                NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
-                            }  else if (COSSINSwitch == 1) {
-                                if (61 < (2*(((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2)) && HighCosSwitch > (2*(((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2))) {
-                                    NewStockPrice = (2*(((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2));
-                                } else {
-                                    NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
-                                }
-                                NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
-                            } else {
-                                if (50 < (((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2)) {
-                                    NewStockPrice = ((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2;
-                                } else {
+                            if (new Random().nextInt(7) >= 2) {
+                                if (COSSINSwitch == 3) {
+                                    if (50 < ((Math.floor(100 * (Math.abs((100 * (((Math.cos(Day * 0.0174533 * NewCycle)))))) + 2))) / 100)) {
+                                        NewStockPrice = ((Math.floor(100 * (Math.abs((100 * (((Math.cos(Day * 0.0174533 * NewCycle)))))) + 2))) / 100);
+                                    } else {
+                                        NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
+                                    }
                                     NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
+                                } else if (COSSINSwitch == 2) {
+                                    if (50 < ((Math.floor(100 * ((Math.abs((100 * (((Math.sin(Day * 0.0174533 * NewCycle)))))) + 2)))) / 100)) {
+                                        NewStockPrice = (Math.floor(100 * ((Math.abs((100 * (((Math.sin(Day * 0.0174533 * NewCycle)))))) + 2)))) / 100;
+                                    } else {
+                                        NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
+                                    }
+                                    NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
+                                } else if (COSSINSwitch == 1) {
+                                    if (61 < (2 * (((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2)) && HighCosSwitch > (2 * (((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2))) {
+                                        NewStockPrice = (2 * (((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2));
+                                    } else {
+                                        NewStockPrice = NewStockPrice + (new Random().nextInt(3) - 1);
+                                    }
+                                    NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
+                                } else {
+                                    if (50 < (((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2)) {
+                                        NewStockPrice = ((Math.floor(((Math.abs((100 * (Math.sqrt(Math.cos(Day * 0.0174533 * NewCycle))))))) * 100)) / 100) + 2;
+                                    } else {
+                                        NewStockPrice = ((NewStockPrice * 100) + (new Random().nextInt(301) - 150)) / 100;
+                                    }
                                 }
                             }
-                        }
 
 
-                        if (TurtlePrice >= (new Random().nextInt(5)-10) && TurtlePrice <= (new Random().nextInt(5) + 5)){
-                            TurtlePrice = (new Random().nextInt(6) + 6);
-                        }
-                        if (HARE >= (new Random().nextInt(5)-10) && HARE <= (new Random().nextInt(5) + 5)){
-                            HARE = (new Random().nextInt(6) + 6);
-                        }
+                            if (TurtlePrice >= (new Random().nextInt(5) - 10) && TurtlePrice <= (new Random().nextInt(5) + 5)) {
+                                TurtlePrice = (new Random().nextInt(6) + 6);
+                            }
+                            if (HARE >= (new Random().nextInt(5) - 10) && HARE <= (new Random().nextInt(5) + 5)) {
+                                HARE = (new Random().nextInt(6) + 6);
+                            }
 /*
                             double TurtleRacer = ((((((((Day / TurtDiv) + TurtCeiling))/2)) + ((Day / TurtDiv)))) + 35);
                             if (TurtlePrice >= TurtleRacer || TurtlePrice >= (new Random().nextInt(50) + 450)) {
@@ -1490,556 +1485,562 @@ int Manipulated = 0 ;
                             } */
 
 
+                            if ((new Random().nextInt(11) < 7)) {
+                                switch (Fandom) {
+                                    case 1:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(700) - 300)))) / 100);
+                                        if (DicePrice <= 18) {
+                                            DicePrice = (new Random().nextInt(4) + 9);
+                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 54) {
+                                                DicePrice = (new Random().nextInt(4) + 49);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
+                                        }
+                                        break;
+                                    case 2:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(2100) - 1000)))) / 100);
+                                        if (DicePrice <= 25) {
+                                            DicePrice = (new Random().nextInt(4) + 26);
+                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 79) {
+                                                DicePrice = (new Random().nextInt(4) + 74);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
+                                        }
+                                        break;
+                                    case 3:
 
-                        if ((new Random().nextInt(11) < 7)) {
-                            switch (Fandom) {
-                                case 1:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(700) - 300)))) / 100);
-                                    if (DicePrice <= 18) {
-                                        DicePrice = (new Random().nextInt(4) + 9);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 54) {
-                                            DicePrice = (new Random().nextInt(4) + 49);
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1900) - 900)))) / 100);
+                                        if (DicePrice <= 28) {
+                                            DicePrice = (new Random().nextInt(4) + 19);
                                             DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 58) {
+                                                DicePrice = (new Random().nextInt(4) + 53);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
                                         }
-                                    }
-                                    break;
-                                case 2:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(2100) - 1000)))) / 100);
-                                    if (DicePrice <= 25) {
-                                        DicePrice = (new Random().nextInt(4) + 26);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 79) {
-                                            DicePrice = (new Random().nextInt(4) + 74);
+                                        break;
+                                    case 4:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1500) - 700)))) / 100);
+                                        if (DicePrice <= 13) {
+                                            DicePrice = (new Random().nextInt(4) + 14);
                                             DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 32) {
+                                                DicePrice = (new Random().nextInt(4) + 27);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
                                         }
-                                    }
-                                    break;
-                                case 3:
-
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1900) - 900)))) / 100);
-                                    if (DicePrice <= 28) {
-                                        DicePrice = (new Random().nextInt(4) + 19);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 58) {
-                                            DicePrice = (new Random().nextInt(4) + 53);
+                                        break;
+                                    case 5:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1700) - 800)))) / 100);
+                                        if (DicePrice <= 30) {
+                                            DicePrice = (new Random().nextInt(4) + 33);
                                             DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 150) {
+                                                DicePrice = (new Random().nextInt(4) + 142);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
                                         }
-                                    }
-                                    break;
-                                case 4:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1500) - 700)))) / 100);
-                                    if (DicePrice <= 13) {
-                                        DicePrice = (new Random().nextInt(4) + 14);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 32) {
-                                            DicePrice = (new Random().nextInt(4) + 27);
+                                        break;
+                                    default:
+                                        DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1700) - 800)))) / 100);
+                                        if (DicePrice <= 30) {
+                                            DicePrice = (new Random().nextInt(4) + 33);
                                             DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                        } else {
+                                            if (DicePrice >= 120) {
+                                                DicePrice = (new Random().nextInt(4) + 112);
+                                                DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
+                                            }
                                         }
-                                    }
-                                    break;
-                                case 5:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1700) - 800)))) / 100);
-                                    if (DicePrice <= 30) {
-                                        DicePrice = (new Random().nextInt(4) + 33);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 150) {
-                                            DicePrice = (new Random().nextInt(4) + 142);
-                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                        }
-                                    }
-                                    break;
-                                default:
-                                    DicePrice = ((Math.ceil((DicePrice * 100) + ((new Random().nextInt(1700) - 800)))) / 100);
-                                    if (DicePrice <= 30) {
-                                        DicePrice = (new Random().nextInt(4) + 33);
-                                        DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                    } else {
-                                        if (DicePrice >= 120) {
-                                            DicePrice = (new Random().nextInt(4) + 112);
-                                            DicePrice = (Math.ceil((DicePrice * 100) + (new Random().nextInt(63) - 31)) / 100);
-                                        }
-                                    }
-                                    break;
+                                        break;
+                                }
                             }
-                        }
-                        if (new Random().nextInt(3)==0) {
-                            switch (Wandom) {
-                                case 1:
-                                    if (BitcoinPrice == 0) {
-                                        BitcoinPrice = 5;
-                                    } else if (BitcoinPrice < 12) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
-                                    } else if (BitcoinPrice >= 12 && BitcoinPrice <= 310) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(4) - 1;
-                                    } else if (BitcoinPrice > 310 && BitcoinPrice <= 1000) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(7) - 2;
-                                    } else if (BitcoinPrice > 1000 && BitcoinPrice <= 2660) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(21) - 9;
-                                    } else if (BitcoinPrice > 2660 && BitcoinPrice <= 12500) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 28;
-                                    } else { int Crasher = new Random().nextInt(60);
-                                        if (Crasher == 59){
-                                            BitcoinPrice = (BitcoinPrice / (5 + (new Random().nextInt(6)-1)));
-                                        }else {
-                                            BitcoinPrice = (BitcoinPrice * 12501 / 12500);
-                                        }
-
-
-                                    }
-                                    break;
-                                case 2:
-                                    if (BitcoinPrice == 0) {
-                                        BitcoinPrice = 4;
-                                    } else if (BitcoinPrice < 12) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
-                                    } else if (BitcoinPrice >= 12 && BitcoinPrice <= 68) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(4) - 1;
-                                    } else if (BitcoinPrice > 68 && BitcoinPrice <= 177) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(7) - 2;
-                                    } else if (BitcoinPrice > 177 && BitcoinPrice <= 566) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(21) - 9;
-                                    } else if (BitcoinPrice > 566 && BitcoinPrice <= 3250) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 19;
-                                    } else {
-                                        int Crasher = new Random().nextInt(60);
-                                        if (Crasher == 59){
-                                            BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(5)-1)));
-                                        }else {
-                                            BitcoinPrice = (BitcoinPrice * 3251 / 3250);
-                                        }
-
-
-                                    }
-                                    break;
-                                case 3:
-                                    if (BitcoinPrice == 0) {
-                                        BitcoinPrice = 3;
-                                    } else if (BitcoinPrice < 9) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
-                                    } else if (BitcoinPrice >= 9 && BitcoinPrice <= 18) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(5) - 2;
-                                    } else if (BitcoinPrice > 18 && BitcoinPrice <= 100) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(21) + 5;
-                                    } else if (BitcoinPrice > 100 && BitcoinPrice <= 266) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(19) - 9;
-                                    } else if (BitcoinPrice > 266 && BitcoinPrice <= 1250) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 21;
-                                    } else {
-                                        int Crasher = new Random().nextInt(60);
-                                        if (Crasher == 59){
-                                            BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(5)-1)));
-                                        }else {
-                                            BitcoinPrice = (BitcoinPrice * 1251 / 1250);
-                                        }
-
-
-                                    }
-                                    break;
-                                case 4:
-                                    if (BitcoinPrice == 0) {
-                                        BitcoinPrice = 20;
-                                    } else if (BitcoinPrice < 120) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
-                                    } else if (BitcoinPrice >= 120 && BitcoinPrice <= 159) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(4) - 1;
-                                    } else if (BitcoinPrice > 159 && BitcoinPrice <= 386) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(7) - 2;
-                                    } else if (BitcoinPrice > 386 && BitcoinPrice <= 1250) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(21) - 9;
-                                    } else if (BitcoinPrice > 1250 && BitcoinPrice <= 2000) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 26;
-                                    } else {
-                                        int Crasher = new Random().nextInt(60);
-                                        if (Crasher == 59){
-                                            BitcoinPrice = (BitcoinPrice / (4 + (new Random().nextInt(5)-1)));
-                                        }else {
-                                            BitcoinPrice = (BitcoinPrice * 2001 / 2000);
-                                        }
-
-                                    }
-                                    break;
-                                case 5:
-                                    if (BitcoinPrice == 0) {
-                                        BitcoinPrice = 2;
-                                    } else if (BitcoinPrice < 3) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
-                                    } else if (BitcoinPrice >= 3 && BitcoinPrice <= 21) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(4) - 1;
-                                    } else if (BitcoinPrice > 21 && BitcoinPrice <= 65) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(7) - 2;
-                                    } else if (BitcoinPrice > 65 && BitcoinPrice <= 180) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(21) - 9;
-                                    } else if (BitcoinPrice > 180 && BitcoinPrice <= 3560) {
-                                        BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 15;
-                                    } else {
-                                        int Crasher = new Random().nextInt(60);
-                                        if (Crasher >= 58){
-                                            BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(4)-1)));
-                                        }else {
-                                            BitcoinPrice = (BitcoinPrice * 3561 / 3560);
-                                        }
-
-                                    }
-                                    break;
-                            }
-                        }else {
-                            BitcoinPrice = BitcoinPrice + new Random().nextInt(3) - 1;
-
-                        }
-                        if (new Random().nextInt(5) == 1) {
-                            switch (Nandom) {
-                                case 1:
-                                    if (PlantPrice <= (new Random().nextInt(50) + 450)) {
-                                        PlantPrice = (PlantPrice * (new Random().nextInt(15) + 95) / 99);
-                                    } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(5) + 5);
-                                    }
-                                    break;
-                                case 2:
-                                    if (PlantPrice <= (new Random().nextInt(60) + 410)) {
-                                        PlantPrice = (PlantPrice * (new Random().nextInt(17) + 94) / 99);
-                                    } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(6) + 6);
-                                    }
-                                    break;
-                                case 3:
-                                    if (PlantPrice <= (new Random().nextInt(70) + 340)) {
-                                        PlantPrice = (PlantPrice * (new Random().nextInt(18) + 93) / 99);
-                                    } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(7) + 7);
-                                    }
-                                    break;
-                                case 4:
-                                    if (PlantPrice <= (new Random().nextInt(80) + 210)) {
-                                        PlantPrice = (PlantPrice * (new Random().nextInt(19) + 92) / 99);
-                                    } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(9) + 9);
-                                    }
-                                    break;
-                                case 5:
-                                    if (PlantPrice <= (new Random().nextInt(90) + 140)) {
-                                        PlantPrice = (PlantPrice * (new Random().nextInt(22) + 91) / 100);
-                                    } else {
-                                        PlantPrice = PlantPrice / (new Random().nextInt(15) + 5);
-                                    }
-                                    break;
-                            }
-                        }
-
-
-                        switch (LossMinModeSetter) {
-                            case 1:
-
-                                if (LossLeaderPrice < 13 && LossLeaderPrice > -13) {
-                                    LossLeaderPrice = (-14 + (new Random().nextInt(101) - 50) / 100);
-                                }
-                                if (new Random().nextInt(3) == 0) {
-                                    if (LossLeaderPrice == 0) {
-                                        LossLeaderPrice = (-17 + (new Random().nextInt(101) - 50) / 100);
-                                    } else {
-                                        if (LossLeaderPrice <= 40 && LossLeaderPrice >= 1) {
-
-                                            LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(4) - 3) + ((new Random().nextInt(101) - 50) / 100);
-                                            if (LossLeaderPrice < 13 && LossLeaderPrice > -13) {
-                                                LossLeaderPrice = -14;
-                                            }
+                            if (new Random().nextInt(3) == 0) {
+                                switch (Wandom) {
+                                    case 1:
+                                        if (BitcoinPrice == 0) {
+                                            BitcoinPrice = 5;
+                                        } else if (BitcoinPrice < 12) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
+                                        } else if (BitcoinPrice >= 12 && BitcoinPrice <= 310) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(4) - 1;
+                                        } else if (BitcoinPrice > 310 && BitcoinPrice <= 1000) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(7) - 2;
+                                        } else if (BitcoinPrice > 1000 && BitcoinPrice <= 2660) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(21) - 9;
+                                        } else if (BitcoinPrice > 2660 && BitcoinPrice <= 12500) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 28;
                                         } else {
-                                            if (LossLeaderPrice <= ((((Day * ((2 * LossLimiter) / 3)) * -1)) + (new Random().nextInt(61) - Day)) || LossLeaderPrice <= (-1*(new Random().nextInt(27123) + 8000 + (Day%losslimiterdaycapper)))) {
-                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - 15)) + ((new Random().nextInt(101) - 50) / 100);
-                                            } else if (LossLeaderPrice <= ((Day % TrueRangeLossMax) + 101) * -1) {
-                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * (new Random().nextInt(4) + 3)))) + ((new Random().nextInt(101) - 50) / 100);
+                                            int Crasher = new Random().nextInt(60);
+                                            if (Crasher == 59) {
+                                                BitcoinPrice = (BitcoinPrice / (5 + (new Random().nextInt(6) - 1)));
                                             } else {
-                                                LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * ((new Random().nextInt(4) + 3))) + ((new Random().nextInt(101) - 50) / 100));
+                                                BitcoinPrice = (BitcoinPrice * 12501 / 12500);
                                             }
+
+
                                         }
-                                    }
-                                } else {
-                                    LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
-                                }
-                                break;
-
-                            case 2:
-
-                                if (LossLeaderPrice < 21 && LossLeaderPrice > -21) {
-                                    LossLeaderPrice = (-22 + (new Random().nextInt(101) - 50) / 100);
-                                }
-                                if (new Random().nextInt(3) == 0) {
-                                    if (LossLeaderPrice != 0) {
-                                        if (LossLeaderPrice <= 66 && LossLeaderPrice >= 1) {
-
-                                            LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(4) - 3) + ((new Random().nextInt(101) - 50) / 100);
-                                            if (LossLeaderPrice < 21 && LossLeaderPrice > -21) {
-                                                LossLeaderPrice = (-22 + (new Random().nextInt(101) - 50) / 100);
-                                            }
+                                        break;
+                                    case 2:
+                                        if (BitcoinPrice == 0) {
+                                            BitcoinPrice = 4;
+                                        } else if (BitcoinPrice < 12) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
+                                        } else if (BitcoinPrice >= 12 && BitcoinPrice <= 68) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(4) - 1;
+                                        } else if (BitcoinPrice > 68 && BitcoinPrice <= 177) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(7) - 2;
+                                        } else if (BitcoinPrice > 177 && BitcoinPrice <= 566) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(21) - 9;
+                                        } else if (BitcoinPrice > 566 && BitcoinPrice <= 3250) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 19;
                                         } else {
-                                            if (LossLeaderPrice <= ((((Day * ((5 * LossLimiter) / 7)) * -1)) + (new Random().nextInt(61) - Day)) || LossLeaderPrice <= (-1*(new Random().nextInt(7123) + 7123 + (Day%losslimiterdaycapper)))) {
-                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - 15)) + ((new Random().nextInt(101) - 50) / 100);
-                                            } else if (LossLeaderPrice <= ((Day % TrueRangeLossMax) + 101) * -1) {
-                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * (new Random().nextInt(4) + 3)))) + ((new Random().nextInt(101) - 50) / 100);
+                                            int Crasher = new Random().nextInt(60);
+                                            if (Crasher == 59) {
+                                                BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(5) - 1)));
                                             } else {
-                                                LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * ((new Random().nextInt(4) + 3))) + ((new Random().nextInt(101) - 50) / 100));
+                                                BitcoinPrice = (BitcoinPrice * 3251 / 3250);
                                             }
+
+
                                         }
-                                    }
-                                } else {
-                                    if (new Random().nextInt(5) <= 1) {
-                                        LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
-                                    }
-                                }
-                                break;
-
-                            case 3:
-
-                                if (LossLeaderPrice < 31 && LossLeaderPrice > -30) {
-                                    LossLeaderPrice = (-31 + (new Random().nextInt(101) - 50) / 100);
-                                }
-                                if (new Random().nextInt(3) == 0) {
-                                    if (LossLeaderPrice == 0) {
-                                        LossLeaderPrice = (-32 + (new Random().nextInt(101) - 50) / 100);
-                                    } else {
-                                        if (LossLeaderPrice <= 40 && LossLeaderPrice >= 1) {
-
-                                            LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(4) - 3) + ((new Random().nextInt(101) - 50) / 100);
-                                            if (LossLeaderPrice < 31 && LossLeaderPrice > -30) {
-                                                LossLeaderPrice = (-31 + (new Random().nextInt(101) - 50) / 100);
-                                            }
+                                        break;
+                                    case 3:
+                                        if (BitcoinPrice == 0) {
+                                            BitcoinPrice = 3;
+                                        } else if (BitcoinPrice < 9) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
+                                        } else if (BitcoinPrice >= 9 && BitcoinPrice <= 18) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(5) - 2;
+                                        } else if (BitcoinPrice > 18 && BitcoinPrice <= 100) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(21) + 5;
+                                        } else if (BitcoinPrice > 100 && BitcoinPrice <= 266) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(19) - 9;
+                                        } else if (BitcoinPrice > 266 && BitcoinPrice <= 1250) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 21;
                                         } else {
-                                            if (LossLeaderPrice <= ((((Day * ((3 * LossLimiter) / 4)) * -1)) + (new Random().nextInt(61) - Day)) || LossLeaderPrice <= (-1*(new Random().nextInt(9123) + 6000 + (Day%losslimiterdaycapper))) ) {
-                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(10) - 26)) + ((new Random().nextInt(101) - 52) / 100);
-                                            } else if (LossLeaderPrice <= ((Day % TrueRangeLossMax) + 101) * -1) {
-                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * (new Random().nextInt(4) + 3)))) + ((new Random().nextInt(101) - 50) / 100);
+                                            int Crasher = new Random().nextInt(60);
+                                            if (Crasher == 59) {
+                                                BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(5) - 1)));
                                             } else {
-                                                LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * ((new Random().nextInt(4) + 3))) + ((new Random().nextInt(101) - 50) / 100));
+                                                BitcoinPrice = (BitcoinPrice * 1251 / 1250);
                                             }
+
+
                                         }
-                                    }
-                                } else {
-                                    if (new Random().nextInt(7) <= 2) {
-                                        LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(5) - 2) + ((new Random().nextInt(101) - 50) / 100);
-                                    }
-                                }
-                                break;
-                            case 4:
-
-                                if (LossLeaderPrice < (31 + (Math.floor(Day/(Cyclops*2)))) && LossLeaderPrice > (-30 - (Math.floor(Day/(Cyclops*2))))) {
-                                    LossLeaderPrice = (-31 - (Math.floor(Day/(Cyclops*2))));
-                                }
-                                if (new Random().nextInt(3) == 0) {
-                                    if (LossLeaderPrice < (31 + (Math.floor(Day/(Cyclops*2)))) && LossLeaderPrice > (-30 - (Math.floor(Day/(Cyclops*2))))) {
-                                        LossLeaderPrice = (-31 - (Math.floor(Day/(Cyclops*2))));
-                                    }else {
-                                        if (LossLeaderPrice <= (40 + (Math.floor(Day/(Cyclops*2)))) && LossLeaderPrice >= 1) {
-                                            LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(4) - 3) + ((new Random().nextInt(101) - 50) / 100);
-
-                                            if (LossLeaderPrice < (31 + (Math.floor(Day/(Cyclops*2)))) && LossLeaderPrice > (-30 - (Math.floor(Day/(Cyclops*2))))) {
-                                                LossLeaderPrice = (-31 - (Math.floor(Day / (Cyclops * 2))));
-                                            }
+                                        break;
+                                    case 4:
+                                        if (BitcoinPrice == 0) {
+                                            BitcoinPrice = 20;
+                                        } else if (BitcoinPrice < 120) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
+                                        } else if (BitcoinPrice >= 120 && BitcoinPrice <= 159) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(4) - 1;
+                                        } else if (BitcoinPrice > 159 && BitcoinPrice <= 386) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(7) - 2;
+                                        } else if (BitcoinPrice > 386 && BitcoinPrice <= 1250) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(21) - 9;
+                                        } else if (BitcoinPrice > 1250 && BitcoinPrice <= 2000) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 26;
                                         } else {
-                                            if (LossLeaderPrice <= ((((Day * ((3 * LossLimiter) / 4)) * -1)) + (new Random().nextInt(61) - Day)) || LossLeaderPrice <= (-1*(new Random().nextInt(21123) + 7000 + (Day%losslimiterdaycapper)))) {
-                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(10) - 26)) + ((new Random().nextInt(101) - 52) / 100);
-                                            } else if (LossLeaderPrice <= ((Day % TrueRangeLossMax) + (Cyclops*2)) * -1) {
-                                                LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * (new Random().nextInt(4) + 3)))) + ((new Random().nextInt(101) - 50) / 100);
+                                            int Crasher = new Random().nextInt(60);
+                                            if (Crasher == 59) {
+                                                BitcoinPrice = (BitcoinPrice / (4 + (new Random().nextInt(5) - 1)));
                                             } else {
-                                                LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * ((new Random().nextInt(4) + 3))) + ((new Random().nextInt(101) - 50) / 100));
+                                                BitcoinPrice = (BitcoinPrice * 2001 / 2000);
                                             }
+
                                         }
-                                    }
-                                } else {
-                                    if (new Random().nextInt(18) <= 4) {
-                                        LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(5) - 2) + ((new Random().nextInt(101) - 50) / 100);
-                                    }
-                                }
-                                break;
+                                        break;
+                                    case 5:
+                                        if (BitcoinPrice == 0) {
+                                            BitcoinPrice = 2;
+                                        } else if (BitcoinPrice < 3) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(2);
+                                        } else if (BitcoinPrice >= 3 && BitcoinPrice <= 21) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(4) - 1;
+                                        } else if (BitcoinPrice > 21 && BitcoinPrice <= 65) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(7) - 2;
+                                        } else if (BitcoinPrice > 65 && BitcoinPrice <= 180) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(21) - 9;
+                                        } else if (BitcoinPrice > 180 && BitcoinPrice <= 3560) {
+                                            BitcoinPrice = BitcoinPrice + new Random().nextInt(60) - 15;
+                                        } else {
+                                            int Crasher = new Random().nextInt(60);
+                                            if (Crasher >= 58) {
+                                                BitcoinPrice = (BitcoinPrice / (3 + (new Random().nextInt(4) - 1)));
+                                            } else {
+                                                BitcoinPrice = (BitcoinPrice * 3561 / 3560);
+                                            }
 
-                        }
-
-                        double TurtleRacer = ((((((((Day / TurtDiv) + TurtCeiling)) / 2)) + ((Day / TurtDiv)))) + 15);
-                        if (TurtlePrice >= (new Random().nextInt(50) + 549) || TurtlePrice >= TurtleRacer) {
-                            TurtlePrice = Math.abs(TurtlePrice) * -1;
-                        }
-                        if (TurtlePrice < 1 && HARE >= 1) {
-                            HARE = Math.abs(HARE) * -1;
-                        }
-
-
-                        int Y = (new Random().nextInt(5) - 4);
-                        if (Y == 0) {
-                            if ((Math.abs(HARE) - Math.abs(TurtlePrice)) >= 1) {
-                                int TurtelyEnough = new Random().nextInt(25);
-                                if (TurtelyEnough <= 1) {
-                                    TurtlePrice = Math.round((((TurtlePrice) * (new Random().nextInt(125000001) + 999999999) / 1000000000) + 1)) + 1;
-                                    if (TurtlePrice == 0) {
-                                        TurtlePrice = 1;
-                                    } else {
-                                        HARE = HARE + new Random().nextInt(4) - 2;
-                                        HARE = (Math.ceil((HARE*100) + (new Random().nextInt(33)-21))/100);
-                                    }
-                                } else {
-                                    TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
-                                    if (TurtlePrice == 0) {
-                                        TurtlePrice = 1;
-                                        HARE = HARE + (new Random().nextInt((5) - 2));
-                                        HARE = (Math.ceil((HARE*100) + (new Random().nextInt(33)-21))/100);
-                                    } else {
-
-                                        HARE = HARE + (new Random().nextInt((5) - 2));
-                                        HARE = (Math.ceil((HARE*100) + (new Random().nextInt(33)-21))/100);
-                                    }
+                                        }
+                                        break;
                                 }
                             } else {
-                                if (HARE > 0) {
-                                    HARE = HARE + (Math.floor((((TurtlePrice - HARE) % 10)) * (((Math.abs(TurtlePrice) - Math.abs(HARE))) / 9)));
-                                    HARE = (Math.ceil((HARE*100) + (new Random().nextInt(33)-21))/100);
-                                    TurtlePrice = (TurtlePrice + (new Random().nextInt(5) - 3));
-                                }else{
-                                    HARE = TurtlePrice;
-                                    TurtlePrice = (TurtlePrice + (new Random().nextInt(5) - 3));
+                                BitcoinPrice = BitcoinPrice + new Random().nextInt(3) - 1;
+
+                            }
+                            if (new Random().nextInt(5) == 1) {
+                                switch (Nandom) {
+                                    case 1:
+                                        if (PlantPrice <= (new Random().nextInt(50) + 450)) {
+                                            PlantPrice = (PlantPrice * (new Random().nextInt(15) + 95) / 99);
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(5) + 5);
+                                        }
+                                        break;
+                                    case 2:
+                                        if (PlantPrice <= (new Random().nextInt(60) + 410)) {
+                                            PlantPrice = (PlantPrice * (new Random().nextInt(17) + 94) / 99);
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(6) + 6);
+                                        }
+                                        break;
+                                    case 3:
+                                        if (PlantPrice <= (new Random().nextInt(70) + 340)) {
+                                            PlantPrice = (PlantPrice * (new Random().nextInt(18) + 93) / 99);
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(7) + 7);
+                                        }
+                                        break;
+                                    case 4:
+                                        if (PlantPrice <= (new Random().nextInt(80) + 210)) {
+                                            PlantPrice = (PlantPrice * (new Random().nextInt(19) + 92) / 99);
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(9) + 9);
+                                        }
+                                        break;
+                                    case 5:
+                                        if (PlantPrice <= (new Random().nextInt(90) + 140)) {
+                                            PlantPrice = (PlantPrice * (new Random().nextInt(22) + 91) / 100);
+                                        } else {
+                                            PlantPrice = PlantPrice / (new Random().nextInt(15) + 5);
+                                        }
+                                        break;
                                 }
                             }
 
-                        } else {
-                            int TurtelyEnough = new Random().nextInt(10);
-                            if ((new Random().nextInt(11) < 9)) {
-                                if (TurtlePrice == 0) {
-                                    TurtlePrice = 1;
-                                    if (((Math.abs(HARE) - Math.abs(TurtlePrice))) >= 1) {
-                                        if (TurtelyEnough == 0) {
-                                            if (TurtlePrice > 0 ) {
-                                                if (TurtlePrice > 0 ) {
-                                                    TurtlePrice = (Math.floor(((TurtlePrice * (new Random().nextInt(125000001) + 1000000001) / 1000000000) + 1) + 1));
-                                                } else if (TurtlePrice < 0 ) {
-                                                    TurtlePrice = TurtlePrice / (Math.floor((((new Random().nextInt(125000001) + 1000000001) / 1000000000))));
-                                                }else{
-                                                    TurtlePrice = TurtleChange;
-                                                }
-                                            } else if (TurtlePrice < 0 ) {
-                                                TurtlePrice = TurtlePrice / (Math.floor((((new Random().nextInt(125000001) + 1000000001) / 1000000000))));
-                                            }else{
-                                                TurtlePrice = TurtleChange;
-                                            }
-                                            if (TurtlePrice == 0) {
-                                                TurtlePrice = 1;
-                                            }
+
+                            switch (LossMinModeSetter) {
+                                case 1:
+
+                                    if (LossLeaderPrice < 13 && LossLeaderPrice > -13) {
+                                        LossLeaderPrice = (-14 + (new Random().nextInt(101) - 50) / 100);
+                                    }
+                                    if (new Random().nextInt(3) == 0) {
+                                        if (LossLeaderPrice == 0) {
+                                            LossLeaderPrice = (-17 + (new Random().nextInt(101) - 50) / 100);
                                         } else {
-                                            TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
-                                            if (TurtlePrice == 0) {
-                                                TurtlePrice = 1;
+                                            if (LossLeaderPrice <= 40 && LossLeaderPrice >= 1) {
+
+                                                LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(4) - 3) + ((new Random().nextInt(101) - 50) / 100);
+                                                if (LossLeaderPrice < 13 && LossLeaderPrice > -13) {
+                                                    LossLeaderPrice = -14;
+                                                }
+                                            } else {
+                                                if (LossLeaderPrice <= ((((Day * ((2 * LossLimiter) / 3)) * -1)) + (new Random().nextInt(61) - Day)) || LossLeaderPrice <= (-1 * (new Random().nextInt(27123) + 8000 + (Day % losslimiterdaycapper)))) {
+                                                    LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - 15)) + ((new Random().nextInt(101) - 50) / 100);
+                                                } else if (LossLeaderPrice <= ((Day % TrueRangeLossMax) + 101) * -1) {
+                                                    LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * (new Random().nextInt(4) + 3)))) + ((new Random().nextInt(101) - 50) / 100);
+                                                } else {
+                                                    LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * ((new Random().nextInt(4) + 3))) + ((new Random().nextInt(101) - 50) / 100));
+                                                }
                                             }
+                                        }
+                                    } else {
+                                        LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
+                                    }
+                                    break;
+
+                                case 2:
+
+                                    if (LossLeaderPrice < 21 && LossLeaderPrice > -21) {
+                                        LossLeaderPrice = (-22 + (new Random().nextInt(101) - 50) / 100);
+                                    }
+                                    if (new Random().nextInt(3) == 0) {
+                                        if (LossLeaderPrice != 0) {
+                                            if (LossLeaderPrice <= 66 && LossLeaderPrice >= 1) {
+
+                                                LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(4) - 3) + ((new Random().nextInt(101) - 50) / 100);
+                                                if (LossLeaderPrice < 21 && LossLeaderPrice > -21) {
+                                                    LossLeaderPrice = (-22 + (new Random().nextInt(101) - 50) / 100);
+                                                }
+                                            } else {
+                                                if (LossLeaderPrice <= ((((Day * ((5 * LossLimiter) / 7)) * -1)) + (new Random().nextInt(61) - Day)) || LossLeaderPrice <= (-1 * (new Random().nextInt(7123) + 7123 + (Day % losslimiterdaycapper)))) {
+                                                    LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - 15)) + ((new Random().nextInt(101) - 50) / 100);
+                                                } else if (LossLeaderPrice <= ((Day % TrueRangeLossMax) + 101) * -1) {
+                                                    LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * (new Random().nextInt(4) + 3)))) + ((new Random().nextInt(101) - 50) / 100);
+                                                } else {
+                                                    LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * ((new Random().nextInt(4) + 3))) + ((new Random().nextInt(101) - 50) / 100));
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        if (new Random().nextInt(5) <= 1) {
+                                            LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(3) - 1) + ((new Random().nextInt(101) - 50) / 100);
+                                        }
+                                    }
+                                    break;
+
+                                case 3:
+
+                                    if (LossLeaderPrice < 31 && LossLeaderPrice > -30) {
+                                        LossLeaderPrice = (-31 + (new Random().nextInt(101) - 50) / 100);
+                                    }
+                                    if (new Random().nextInt(3) == 0) {
+                                        if (LossLeaderPrice == 0) {
+                                            LossLeaderPrice = (-32 + (new Random().nextInt(101) - 50) / 100);
+                                        } else {
+                                            if (LossLeaderPrice <= 40 && LossLeaderPrice >= 1) {
+
+                                                LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(4) - 3) + ((new Random().nextInt(101) - 50) / 100);
+                                                if (LossLeaderPrice < 31 && LossLeaderPrice > -30) {
+                                                    LossLeaderPrice = (-31 + (new Random().nextInt(101) - 50) / 100);
+                                                }
+                                            } else {
+                                                if (LossLeaderPrice <= ((((Day * ((3 * LossLimiter) / 4)) * -1)) + (new Random().nextInt(61) - Day)) || LossLeaderPrice <= (-1 * (new Random().nextInt(9123) + 6000 + (Day % losslimiterdaycapper)))) {
+                                                    LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(10) - 26)) + ((new Random().nextInt(101) - 52) / 100);
+                                                } else if (LossLeaderPrice <= ((Day % TrueRangeLossMax) + 101) * -1) {
+                                                    LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * (new Random().nextInt(4) + 3)))) + ((new Random().nextInt(101) - 50) / 100);
+                                                } else {
+                                                    LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * ((new Random().nextInt(4) + 3))) + ((new Random().nextInt(101) - 50) / 100));
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        if (new Random().nextInt(7) <= 2) {
+                                            LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(5) - 2) + ((new Random().nextInt(101) - 50) / 100);
+                                        }
+                                    }
+                                    break;
+                                case 4:
+
+                                    if (LossLeaderPrice < (31 + (Math.floor(Day / (Cyclops * 2)))) && LossLeaderPrice > (-30 - (Math.floor(Day / (Cyclops * 2))))) {
+                                        LossLeaderPrice = (-31 - (Math.floor(Day / (Cyclops * 2))));
+                                    }
+                                    if (new Random().nextInt(3) == 0) {
+                                        if (LossLeaderPrice < (31 + (Math.floor(Day / (Cyclops * 2)))) && LossLeaderPrice > (-30 - (Math.floor(Day / (Cyclops * 2))))) {
+                                            LossLeaderPrice = (-31 - (Math.floor(Day / (Cyclops * 2))));
+                                        } else {
+                                            if (LossLeaderPrice <= (40 + (Math.floor(Day / (Cyclops * 2)))) && LossLeaderPrice >= 1) {
+                                                LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(4) - 3) + ((new Random().nextInt(101) - 50) / 100);
+
+                                                if (LossLeaderPrice < (31 + (Math.floor(Day / (Cyclops * 2)))) && LossLeaderPrice > (-30 - (Math.floor(Day / (Cyclops * 2))))) {
+                                                    LossLeaderPrice = (-31 - (Math.floor(Day / (Cyclops * 2))));
+                                                }
+                                            } else {
+                                                if (LossLeaderPrice <= ((((Day * ((3 * LossLimiter) / 4)) * -1)) + (new Random().nextInt(61) - Day)) || LossLeaderPrice <= (-1 * (new Random().nextInt(21123) + 7000 + (Day % losslimiterdaycapper)))) {
+                                                    LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(10) - 26)) + ((new Random().nextInt(101) - 52) / 100);
+                                                } else if (LossLeaderPrice <= ((Day % TrueRangeLossMax) + (Cyclops * 2)) * -1) {
+                                                    LossLeaderPrice = (Math.abs(LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * (new Random().nextInt(4) + 3)))) + ((new Random().nextInt(101) - 50) / 100);
+                                                } else {
+                                                    LossLeaderPrice = (LossLeaderPrice + new Random().nextInt(5) - ((LossLimiter + 1) * ((new Random().nextInt(4) + 3))) + ((new Random().nextInt(101) - 50) / 100));
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        if (new Random().nextInt(18) <= 4) {
+                                            LossLeaderPrice = LossLeaderPrice + (new Random().nextInt(5) - 2) + ((new Random().nextInt(101) - 50) / 100);
+                                        }
+                                    }
+                                    break;
+
+                            }
+
+                            double TurtleRacer = ((((((((Day / TurtDiv) + TurtCeiling)) / 2)) + ((Day / TurtDiv)))) + 15);
+                            if (TurtlePrice >= (new Random().nextInt(50) + 549) || TurtlePrice >= TurtleRacer) {
+                                TurtlePrice = Math.abs(TurtlePrice) * -1;
+                            }
+                            if (TurtlePrice < 1 && HARE >= 1) {
+                                HARE = Math.abs(HARE) * -1;
+                            }
+
+
+                            int Y = (new Random().nextInt(5) - 4);
+                            if (Y == 0) {
+                                if ((Math.abs(HARE) - Math.abs(TurtlePrice)) >= 1) {
+                                    int TurtelyEnough = new Random().nextInt(25);
+                                    if (TurtelyEnough <= 1) {
+                                        TurtlePrice = Math.round((((TurtlePrice) * (new Random().nextInt(125000001) + 999999999) / 1000000000) + 1)) + 1;
+                                        if (TurtlePrice == 0) {
+                                            TurtlePrice = 1;
+                                        } else {
+                                            HARE = HARE + new Random().nextInt(4) - 2;
+                                            HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(33) - 21)) / 100);
                                         }
                                     } else {
                                         TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
                                         if (TurtlePrice == 0) {
                                             TurtlePrice = 1;
+                                            HARE = HARE + (new Random().nextInt((5) - 2));
+                                            HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(33) - 21)) / 100);
+                                        } else {
+
+                                            HARE = HARE + (new Random().nextInt((5) - 2));
+                                            HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(33) - 21)) / 100);
                                         }
                                     }
                                 } else {
-                                    if ((Math.abs(HARE) - Math.abs(TurtlePrice)) >= 1) {
-                                        if (TurtelyEnough == 0) {
-                                            if (TurtlePrice > 0 ) {
-                                                TurtlePrice = (Math.floor(((TurtlePrice * (new Random().nextInt(125000001) + 1000000001) / 1000000000) + 1) + 1));
-                                            } else if (TurtlePrice < 0 ) {
-                                                TurtlePrice = TurtlePrice / (Math.floor((((new Random().nextInt(125000001) + 1000000001) / 1000000000))));
-                                            }else{
-                                                TurtlePrice = TurtleChange;
-                                            }
-                                            if (TurtlePrice == 0) {
-                                                TurtlePrice = 1;
-                                                TurtlePrice = TurtlePrice + 1;
+                                    if (HARE > 0) {
+                                        HARE = HARE + (Math.floor((((TurtlePrice - HARE) % 10)) * (((Math.abs(TurtlePrice) - Math.abs(HARE))) / 9)));
+                                        HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(33) - 21)) / 100);
+                                        TurtlePrice = (TurtlePrice + (new Random().nextInt(5) - 3));
+                                    } else {
+                                        HARE = TurtlePrice;
+                                        TurtlePrice = (TurtlePrice + (new Random().nextInt(5) - 3));
+                                    }
+                                }
+
+                            } else {
+                                int TurtelyEnough = new Random().nextInt(10);
+                                if ((new Random().nextInt(11) < 9)) {
+                                    if (TurtlePrice == 0) {
+                                        TurtlePrice = 1;
+                                        if (((Math.abs(HARE) - Math.abs(TurtlePrice))) >= 1) {
+                                            if (TurtelyEnough == 0) {
+                                                if (TurtlePrice > 0) {
+                                                    if (TurtlePrice > 0) {
+                                                        TurtlePrice = (Math.floor(((TurtlePrice * (new Random().nextInt(125000001) + 1000000001) / 1000000000) + 1) + 1));
+                                                    } else if (TurtlePrice < 0) {
+                                                        TurtlePrice = TurtlePrice / (Math.floor((((new Random().nextInt(125000001) + 1000000001) / 1000000000))));
+                                                    } else {
+                                                        TurtlePrice = TurtleChange;
+                                                    }
+                                                } else if (TurtlePrice < 0) {
+                                                    TurtlePrice = TurtlePrice / (Math.floor((((new Random().nextInt(125000001) + 1000000001) / 1000000000))));
+                                                } else {
+                                                    TurtlePrice = TurtleChange;
+                                                }
+                                                if (TurtlePrice == 0) {
+                                                    TurtlePrice = 1;
+                                                }
                                             } else {
-                                                TurtlePrice = TurtlePrice + 1;
+                                                TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
+                                                if (TurtlePrice == 0) {
+                                                    TurtlePrice = 1;
+                                                }
                                             }
                                         } else {
                                             TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
                                             if (TurtlePrice == 0) {
                                                 TurtlePrice = 1;
+                                            }
+                                        }
+                                    } else {
+                                        if ((Math.abs(HARE) - Math.abs(TurtlePrice)) >= 1) {
+                                            if (TurtelyEnough == 0) {
+                                                if (TurtlePrice > 0) {
+                                                    TurtlePrice = (Math.floor(((TurtlePrice * (new Random().nextInt(125000001) + 1000000001) / 1000000000) + 1) + 1));
+                                                } else if (TurtlePrice < 0) {
+                                                    TurtlePrice = TurtlePrice / (Math.floor((((new Random().nextInt(125000001) + 1000000001) / 1000000000))));
+                                                } else {
+                                                    TurtlePrice = TurtleChange;
+                                                }
+                                                if (TurtlePrice == 0) {
+                                                    TurtlePrice = 1;
+                                                    TurtlePrice = TurtlePrice + 1;
+                                                } else {
+                                                    TurtlePrice = TurtlePrice + 1;
+                                                }
+                                            } else {
+                                                TurtlePrice = TurtlePrice + (new Random().nextInt(4) - 1);
+                                                if (TurtlePrice == 0) {
+                                                    TurtlePrice = 1;
+                                                    TurtlePrice = TurtlePrice + 1;
+                                                } else {
+                                                    TurtlePrice = TurtlePrice + 1;
+                                                }
+                                                TurtlePrice = TurtlePrice + 1;
+                                            }
+                                        } else {
+                                            TurtlePrice = (TurtlePrice + (new Random().nextInt(4) - 3));
+                                            if (TurtlePrice == 0) {
+                                                TurtlePrice = 1;
                                                 TurtlePrice = TurtlePrice + 1;
                                             } else {
                                                 TurtlePrice = TurtlePrice + 1;
                                             }
                                             TurtlePrice = TurtlePrice + 1;
                                         }
-                                    } else {
-                                        TurtlePrice = (TurtlePrice + (new Random().nextInt(4) - 3));
-                                        if (TurtlePrice == 0) {
-                                            TurtlePrice = 1;
-                                            TurtlePrice = TurtlePrice + 1;
-                                        } else {
-                                            TurtlePrice = TurtlePrice + 1;
-                                        }
-                                        TurtlePrice = TurtlePrice + 1;
                                     }
                                 }
                             }
-                        }
-                        break;
-                }
-                if (new Random().nextInt(7) >= 3) {
-                    LossLeaderPrice = (Math.ceil((LossLeaderPrice * 100) + (new Random().nextInt(100) - 51))) / 100;
-                }
-                if (new Random().nextInt(7) >= 5) {
-                    BitcoinPrice = (Math.ceil((BitcoinPrice * 100) + (new Random().nextInt(75) - 34))) / 100;
-                }
-                if (new Random().nextInt(7) == 6) {
-                    TurtlePrice = (Math.ceil((TurtlePrice * 100) + (new Random().nextInt(35) - 17))) / 100;
-                }
-                if (new Random().nextInt(7) == 6) {
-                    HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(35) - 18))) / 100;
-                }
+                            break;
+                    }
+                    if (new Random().nextInt(7) >= 3) {
+                        LossLeaderPrice = (Math.ceil((LossLeaderPrice * 100) + (new Random().nextInt(100) - 51))) / 100;
+                    }
+                    if (new Random().nextInt(7) >= 5) {
+                        BitcoinPrice = (Math.ceil((BitcoinPrice * 100) + (new Random().nextInt(75) - 34))) / 100;
+                    }
+                    if (new Random().nextInt(7) == 6) {
+                        TurtlePrice = (Math.ceil((TurtlePrice * 100) + (new Random().nextInt(35) - 17))) / 100;
+                    }
+                    if (new Random().nextInt(7) == 6) {
+                        HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(35) - 18))) / 100;
+                    }
 
-                if (GameMode == 1) {
-                    if (TurtSwitch == 1) {
+                    if (GameMode == 1) {
+                        if (TurtSwitch == 1) {
+                            TurtlePrice = (Math.ceil((TurtlePrice * 100) + (new Random().nextInt(23) - 11)) / 100);
+                        }
+                        if (TurtSwitch == 2) {
+                            HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(23) - 11)) / 100);
+                        }
+                    }
+                    if (GameMode == 2) {
                         TurtlePrice = (Math.ceil((TurtlePrice * 100) + (new Random().nextInt(23) - 11)) / 100);
                     }
-                    if (TurtSwitch == 2) {
-                        HARE = (Math.ceil((HARE * 100) + (new Random().nextInt(23) - 11)) / 100);
-                    }
-                }
-                if (GameMode == 2) {
-                    TurtlePrice = (Math.ceil((TurtlePrice * 100) + (new Random().nextInt(23) - 11)) / 100);
-                }
 
 
-                PlantPrice = ((Math.ceil(100*PlantPrice))/100);
-                NewStockPrice = ((Math.ceil(100*NewStockPrice))/100);
-                DicePrice = ((Math.ceil(100*DicePrice))/100);
-                BitcoinPrice = ((Math.ceil(100*BitcoinPrice))/100);
-                HARE = ((Math.ceil(100*HARE))/100);
-                LossLeaderPrice = ((Math.ceil(100*LossLeaderPrice))/100);
-                TurtlePrice = ((Math.ceil(100*TurtlePrice))/100);
+                    PlantPrice = ((Math.ceil(100 * PlantPrice)) / 100);
+                    NewStockPrice = ((Math.ceil(100 * NewStockPrice)) / 100);
+                    DicePrice = ((Math.ceil(100 * DicePrice)) / 100);
+                    BitcoinPrice = ((Math.ceil(100 * BitcoinPrice)) / 100);
+                    HARE = ((Math.ceil(100 * HARE)) / 100);
+                    LossLeaderPrice = ((Math.ceil(100 * LossLeaderPrice)) / 100);
+                    TurtlePrice = ((Math.ceil(100 * TurtlePrice)) / 100);
 
 
-                bankbalance = (bankbalance * 1.005999); bankbalance = (bankbalance *100); bankbalance = Math.ceil(bankbalance); bankbalance = bankbalance/100;
-                debts =(debts * 1.0149999); debts = (debts *100); debts = Math.ceil(debts); debts = debts/100;
+                    bankbalance = (bankbalance * 1.005999);
+                    bankbalance = (bankbalance * 100);
+                    bankbalance = Math.ceil(bankbalance);
+                    bankbalance = bankbalance / 100;
+                    debts = (debts * 1.0149999);
+                    debts = (debts * 100);
+                    debts = Math.ceil(debts);
+                    debts = debts / 100;
 
 
                     TextView A = (TextView) findViewById(R.id.Q1);
                     String W = String.format("%.0f", TRTLNum);
-                    A.setText( W);
+                    A.setText(W);
                     TextView S = (TextView) findViewById(R.id.QSINE);
                     String SX = String.format("%.0f", SINENum);
                     S.setText(SX);
                     TextView C = (TextView) findViewById(R.id.Q2);
                     String CX = String.format("%.0f", DICENum);
-                    C.setText( CX);
+                    C.setText(CX);
                     TextView V = (TextView) findViewById(R.id.Q3);
                     String VX = String.format("%.0f", BTCNum);
-                    V.setText( VX);
+                    V.setText(VX);
 
                     TextView KX = (TextView) findViewById(R.id.Q4);
                     String KiX = String.format("%.0f", PLNTNum);
                     KX.setText(KiX);
                     TextView VB = (TextView) findViewById(R.id.Q5);
                     String XB = String.format("%.0f", LUZENum);
-                    VB.setText( XB);
+                    VB.setText(XB);
                     TextView AX = (TextView) findViewById(R.id.TW);
                     String XA = String.format("%.0f", HAIRNum);
-                    AX.setText( XA);
+                    AX.setText(XA);
 
                     TextView displayIntegera = (TextView) findViewById(R.id.penSINE);
                     String price = String.format("%.2f", Math.abs(NewStockPrice));
@@ -2064,17 +2065,12 @@ int Manipulated = 0 ;
                     displayIntegerH.setText("$" + priceH);
 
 
-              //  DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
+                    //  DisplayPortValue(TRTLNum, TurtlePrice, DICENum, DicePrice, BTCNum, BitcoinPrice, PLNTNum, PlantPrice, LUZENum, LossLeaderPrice, HAIRNum, HARE);
 
 
-
-
-
-
-
-        runOnUiThread(new Runnable() {
-    @Override
-    public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
 
 /*
         try{
@@ -2086,1117 +2082,1279 @@ int Manipulated = 0 ;
             e.printStackTrace();
         }
         */
-        TextView PortfolioValueViewNoNames;
-        PortfolioValueViewNoNames = (TextView) findViewById(R.id.PortViewValue);
-        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-        final String PortText = String.format(TestPort);
-        PortfolioValueView.setText(PortText);
-        if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-            final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-            PortfolioValueViewNoNames.setText(PortTextNoName);}else{
-            final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-            PortfolioValueViewNoNames.setText(PortTextNoName);}
-
-            TPV5.setText(LUZE);
-            TPV4.setText(PLNT);
-            TPV3.setText(BTC);
-            TPV2.setText(DICE);
-            TPV1.setText(TRTL);
-            TPV6.setText(HAIR);
-            TPV7.setText(SINE);
-
-
-
-        if ((BankMode%2) != 1) {
-            NewStockArrowImageView.setVisibility(View.VISIBLE);
-            TurtleArrowImageView.setVisibility(View.VISIBLE);
-            DiceArrowImageView.setVisibility(View.VISIBLE);
-            BitcoinArrowImageView.setVisibility(View.VISIBLE);
-            PlantArrowImageView.setVisibility(View.VISIBLE);
-            LossArrowImageView.setVisibility(View.VISIBLE);
-            HairArrowImageView.setVisibility(View.VISIBLE);
-        }else {
-            if (debts == 0) {
-                String gobank = String.format(BankOutputs, bankbalance);
-                BankView.setText(gobank);
-            }else {
-                String gobank = String.format(BankOutput,bankbalance, debts);
-                BankView.setText(gobank);
-            }
-
-        }
-
-        if ((DicePrice - DiceChange) > 0){
-            DiceArrowImageView.setImageResource(Demagos[0]);
-
-        }else if ((DicePrice - DiceChange) < 0){
-            DiceArrowImageView.setImageResource(Demagos[1]);
-
-        }else {
-            DiceArrowImageView.setImageResource(Demagos[2]);
-
-        }
-
-        if ((BitcoinPrice - BitcoinChange) > 0){
-            BitcoinArrowImageView.setImageResource(Demagos[0]);
-
-        }else if ((BitcoinPrice - BitcoinChange) < 0){
-
-            BitcoinArrowImageView.setImageResource(Demagos[1]);
-        }else {
-            BitcoinArrowImageView.setImageResource(Demagos[2]);
-
-        }
-        if ((PlantPrice - PlantChange) > 0){
-            PlantArrowImageView.setImageResource(Demagos[0]);
-
-        }else if ((PlantPrice - PlantChange) < 0){
-            PlantArrowImageView.setImageResource(Demagos[1]);
-
-        }else {
-            PlantArrowImageView.setImageResource(Demagos[2]);
-
-        }
-
-        if ((Math.abs(LossLeaderPrice) - Math.abs(LossChange)) > 0){
-            LossArrowImageView.setImageResource(Demagos[0]);
-
-        }else if ((Math.abs(LossLeaderPrice) - Math.abs(LossChange)) < 0){
-            LossArrowImageView.setImageResource(Demagos[1]);
-
-        }else {
-            LossArrowImageView.setImageResource(Demagos[2]);
-
-        }
-
-        if ((NewStockPrice - SineChange) > 0){
-            NewStockArrowImageView.setImageResource(Demagos[0]);
-
-        }else if ((NewStockPrice - SineChange) < 0){
-            NewStockArrowImageView.setImageResource(Demagos[1]);
-        }else {
-            NewStockArrowImageView.setImageResource(Demagos[2]);
-
-        }
-
-        if ((Math.abs(HARE) - Math.abs(HairChange)) > 0){
-            HairArrowImageView.setImageResource(Demagos[0]);
-
-        }else if ((Math.abs(HARE) - Math.abs(HairChange)) < 0){
-
-            HairArrowImageView.setImageResource(Demagos[1]);
-        }else {
-            HairArrowImageView.setImageResource(Demagos[2]);
-
-        }
-
-        if ((Math.abs(TurtlePrice) - Math.abs(TurtleChange)) > 0){
-
-            TurtleArrowImageView.setImageResource(Demagos[0]);
-        }else if ((Math.abs(TurtlePrice) - Math.abs(TurtleChange)) < 0){
-
-            TurtleArrowImageView.setImageResource(Demagos[1]);
-        }else {
-            TurtleArrowImageView.setImageResource(Demagos[2]);
-
-        }
-        TextView displayInteger = (TextView) findViewById(R.id.Day);
-        displayInteger.setText("Day " + Day);
-
-        Bank.setVisibility(View.VISIBLE);
-        timercounter = (timercounter + 1)%11;
-        if (timercounter == 10){
-            timercountercounter = timercountercounter +1;
-        }
-        if (timercountercounter > 245){
-
-            timercountercounter = 245;
-        }
-
-        int A = ColorSettingMethod();
-        int B = ColorSettingMethod();
-        int C = ColorSettingMethod();
-        int D = ColorSettingMethod();
-        int E = ColorSettingMethod();
-        int F = ColorSettingMethod();
-
-        int A3 = ColorSettingMethod();
-        int B3 = ColorSettingMethod();
-        int C3 = ColorSettingMethod();
-        int D3 = ColorSettingMethod();
-        int E3 = ColorSettingMethod();
-        int F3 = ColorSettingMethod();
-
-        int A2 = ColorSettingMethod();
-        int B2 = ColorSettingMethod();
-        int C2 = ColorSettingMethod();
-        int D2 = ColorSettingMethod();
-        int E2 = ColorSettingMethod();
-        int F2 = ColorSettingMethod();
-
-        String colorsmall = FinalColorMethod(A, B, C, D, E, F);
-        String color = FinalColorMethod(F2,E2,D2,C2,B2,A2);
-        String colorbig = FinalColorMethod(C3,E3,B3,A3,F3,D3);
-
-
-        ColorCircle = (TextView) findViewById(R.id.Circle);
-        SmallCircle = (TextView) findViewById(R.id.circleSmall);
-        BigCircle = (TextView) findViewById(R.id.circleBig);
-        SmallCircle.setTextColor(android.graphics.Color.parseColor(colorsmall));
-        ColorCircle.setTextColor(android.graphics.Color.parseColor(color));
-        BigCircle.setTextColor(android.graphics.Color.parseColor(colorbig));
-        ColorCircle.setText("○");
-        SmallCircle.setText("○");
-        BigCircle.setText("○");
-
-        TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
-            TextView Tsil = (TextView) findViewById(R.id.List);
-            String money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);
-        String Stringer = SINE;
-
-        if(thishasnthappenedyet == 0) {
-             DICEBuyChecker = DicePrice + 1;
-             TRTLBuyChecker = TurtlePrice + 3;
-             SINEBuyChecker = NewStockPrice + 3;
-             HAREBuyChecker = HARE + 3;
-             PLNTBuyChecker = PlantPrice + 3;
-             BTCBuyChecker = BitcoinPrice + 3;
-             LOSSBuyChecker = LossLeaderPrice + 3;
-
-             DICESellChecker = DicePrice - 1;
-             TRTLSellChecker = TurtlePrice - 3;
-             SINESellChecker = NewStockPrice - 3;
-             HARESellChecker = HARE - 3;
-             PLNTSellChecker = PlantPrice - 3;
-             BTCSellChecker = BitcoinPrice - 3;
-             LOSSSellChecker = LossLeaderPrice - 3;
-
-            thishasnthappenedyet = 1;
-        }
-
-
-
-
-
-
-        double price = 0;
-
-
-
-            double total = 0;
-
-        for (loopAI = loopStart; loopAI < 11; loopAI++) {
-            PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-            TotalValueCombined = Money + PortfolioValue + 1;
-           // double LogOfValue = Math.log(TotalValueCombined);
-            double LogOfValue = Math.log(TotalValueCombined)/Math.log(1.618);
-            int IncreaseBuysAndSellsBy = (int) Math.abs((Math.floor(LogOfValue) - 9));
-            int PassRandomCarrier = 15+(IncreaseBuysAndSellsBy*5);
-            double number = new Random().nextInt(PassRandomCarrier)+1;
-            double SalesPitch = new Random().nextInt(5);
-            int newrandom = new Random().nextInt(7);
-            double showme = number*2;
-            if (SalesPitch == 0) {
-                switch (newrandom) {
-
-                    case 0:
-                        Stringer = TRTL;
-                        price = Math.abs(TurtlePrice);
-
-                        if (Day >= 1) {
-
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * number);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-
-                            if (Math.abs(TurtlePrice) < (TRTLBuyChecker/1.15)) {
-                                if (Math.abs(total) <= Money) {
-                                    TRTLNum = TRTLNum + number;
-                                    String traded = String.format("%.0f", number);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    TRTLSellChecker = ((TRTLSellChecker*TRTLaverage)/(number+TRTLaverage)) +(Math.abs(TurtlePrice)*number/(TRTLaverage+number));
-                                    TRTLaverage = TRTLaverage + number;
-                                } else {
-                                   // displayPaper.setText(NotEnoughMoney);
-                                }
+                            TextView PortfolioValueViewNoNames;
+                            PortfolioValueViewNoNames = (TextView) findViewById(R.id.PortViewValue);
+                            PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                            PortfolioValue = Math.round(PortfolioValue);
+                            PortfolioValue = PortfolioValue / 100;
+                            final String PortText = String.format(TestPort);
+                            PortfolioValueView.setText(PortText);
+                            if (PortfolioValue <= 999999999) {
+                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                            } else {
+                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                PortfolioValueViewNoNames.setText(PortTextNoName);
                             }
-                            double numberone = 1;
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * numberone);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
 
-                            int thisjobagain = new Random().nextInt(6);
-                            if (thisjobagain == 2) {
-                                if (Math.abs(total) <= Money) {
-                                    TRTLNum = TRTLNum + numberone;
-                                    String traded = String.format("%.0f", numberone);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    TRTLSellChecker = ((TRTLSellChecker*TRTLaverage)/(numberone+TRTLaverage)) +(Math.abs(TurtlePrice)*numberone/(TRTLaverage+numberone));
-                                    TRTLaverage = TRTLaverage + numberone;
+                            TPV5.setText(LUZE);
+                            TPV4.setText(PLNT);
+                            TPV3.setText(BTC);
+                            TPV2.setText(DICE);
+                            TPV1.setText(TRTL);
+                            TPV6.setText(HAIR);
+                            TPV7.setText(SINE);
+
+
+                            if ((BankMode % 2) != 1) {
+                                NewStockArrowImageView.setVisibility(View.VISIBLE);
+                                TurtleArrowImageView.setVisibility(View.VISIBLE);
+                                DiceArrowImageView.setVisibility(View.VISIBLE);
+                                BitcoinArrowImageView.setVisibility(View.VISIBLE);
+                                PlantArrowImageView.setVisibility(View.VISIBLE);
+                                LossArrowImageView.setVisibility(View.VISIBLE);
+                                HairArrowImageView.setVisibility(View.VISIBLE);
+                            } else {
+                                if (debts == 0) {
+                                    String gobank = String.format(BankOutputs, bankbalance);
+                                    BankView.setText(gobank);
                                 } else {
-                                   // displayPaper.setText(NotEnoughMoney);
+                                    String gobank = String.format(BankOutput, bankbalance, debts);
+                                    BankView.setText(gobank);
                                 }
+
                             }
+
+                            if ((DicePrice - DiceChange) > 0) {
+                                DiceArrowImageView.setImageResource(Demagos[0]);
+
+                            } else if ((DicePrice - DiceChange) < 0) {
+                                DiceArrowImageView.setImageResource(Demagos[1]);
+
+                            } else {
+                                DiceArrowImageView.setImageResource(Demagos[2]);
+
+                            }
+
+                            if ((BitcoinPrice - BitcoinChange) > 0) {
+                                BitcoinArrowImageView.setImageResource(Demagos[0]);
+
+                            } else if ((BitcoinPrice - BitcoinChange) < 0) {
+
+                                BitcoinArrowImageView.setImageResource(Demagos[1]);
+                            } else {
+                                BitcoinArrowImageView.setImageResource(Demagos[2]);
+
+                            }
+                            if ((PlantPrice - PlantChange) > 0) {
+                                PlantArrowImageView.setImageResource(Demagos[0]);
+
+                            } else if ((PlantPrice - PlantChange) < 0) {
+                                PlantArrowImageView.setImageResource(Demagos[1]);
+
+                            } else {
+                                PlantArrowImageView.setImageResource(Demagos[2]);
+
+                            }
+
+                            if ((Math.abs(LossLeaderPrice) - Math.abs(LossChange)) > 0) {
+                                LossArrowImageView.setImageResource(Demagos[0]);
+
+                            } else if ((Math.abs(LossLeaderPrice) - Math.abs(LossChange)) < 0) {
+                                LossArrowImageView.setImageResource(Demagos[1]);
+
+                            } else {
+                                LossArrowImageView.setImageResource(Demagos[2]);
+
+                            }
+
+                            if ((NewStockPrice - SineChange) > 0) {
+                                NewStockArrowImageView.setImageResource(Demagos[0]);
+
+                            } else if ((NewStockPrice - SineChange) < 0) {
+                                NewStockArrowImageView.setImageResource(Demagos[1]);
+                            } else {
+                                NewStockArrowImageView.setImageResource(Demagos[2]);
+
+                            }
+
+                            if ((Math.abs(HARE) - Math.abs(HairChange)) > 0) {
+                                HairArrowImageView.setImageResource(Demagos[0]);
+
+                            } else if ((Math.abs(HARE) - Math.abs(HairChange)) < 0) {
+
+                                HairArrowImageView.setImageResource(Demagos[1]);
+                            } else {
+                                HairArrowImageView.setImageResource(Demagos[2]);
+
+                            }
+
+                            if ((Math.abs(TurtlePrice) - Math.abs(TurtleChange)) > 0) {
+
+                                TurtleArrowImageView.setImageResource(Demagos[0]);
+                            } else if ((Math.abs(TurtlePrice) - Math.abs(TurtleChange)) < 0) {
+
+                                TurtleArrowImageView.setImageResource(Demagos[1]);
+                            } else {
+                                TurtleArrowImageView.setImageResource(Demagos[2]);
+
+                            }
+                            TextView displayInteger = (TextView) findViewById(R.id.Day);
+                            displayInteger.setText("Day " + Day);
+
+                            Bank.setVisibility(View.VISIBLE);
+                            timercounter = (timercounter + 1) % 11;
+                            if (timercounter == 10) {
+                                timercountercounter = timercountercounter + 1;
+                            }
+                            if (timercountercounter > 245) {
+
+                                timercountercounter = 245;
+                            }
+
+                            int A = ColorSettingMethod();
+                            int B = ColorSettingMethod();
+                            int C = ColorSettingMethod();
+                            int D = ColorSettingMethod();
+                            int E = ColorSettingMethod();
+                            int F = ColorSettingMethod();
+
+                            int A3 = ColorSettingMethod();
+                            int B3 = ColorSettingMethod();
+                            int C3 = ColorSettingMethod();
+                            int D3 = ColorSettingMethod();
+                            int E3 = ColorSettingMethod();
+                            int F3 = ColorSettingMethod();
+
+                            int A2 = ColorSettingMethod();
+                            int B2 = ColorSettingMethod();
+                            int C2 = ColorSettingMethod();
+                            int D2 = ColorSettingMethod();
+                            int E2 = ColorSettingMethod();
+                            int F2 = ColorSettingMethod();
+
+                            String colorsmall = FinalColorMethod(A, B, C, D, E, F);
+                            String color = FinalColorMethod(F2, E2, D2, C2, B2, A2);
+                            String colorbig = FinalColorMethod(C3, E3, B3, A3, F3, D3);
+
+
+                            ColorCircle = (TextView) findViewById(R.id.Circle);
+                            SmallCircle = (TextView) findViewById(R.id.circleSmall);
+                            BigCircle = (TextView) findViewById(R.id.circleBig);
+                            SmallCircle.setTextColor(android.graphics.Color.parseColor(colorsmall));
+                            ColorCircle.setTextColor(android.graphics.Color.parseColor(color));
+                            BigCircle.setTextColor(android.graphics.Color.parseColor(colorbig));
+                            ColorCircle.setText("○");
+                            SmallCircle.setText("○");
+                            BigCircle.setText("○");
+
+                            TextView displayPaper = (TextView) findViewById(R.id.DailyPaper);
+                            TextView Tsil = (TextView) findViewById(R.id.List);
+                            String money = String.format("%.2f", Money);
+                            Tisl.setText(Money$ + money);
+                            String Stringer = SINE;
+
+                            if (thishasnthappenedyet == 0) {
+                                DICEBuyChecker = DicePrice + 1;
+                                TRTLBuyChecker = TurtlePrice + 3;
+                                SINEBuyChecker = NewStockPrice + 3;
+                                HAREBuyChecker = HARE + 3;
+                                PLNTBuyChecker = PlantPrice + 3;
+                                BTCBuyChecker = BitcoinPrice + 3;
+                                LOSSBuyChecker = LossLeaderPrice + 3;
+
+                                DICESellChecker = DicePrice - 1;
+                                TRTLSellChecker = TurtlePrice - 3;
+                                SINESellChecker = NewStockPrice - 3;
+                                HARESellChecker = HARE - 3;
+                                PLNTSellChecker = PlantPrice - 3;
+                                BTCSellChecker = BitcoinPrice - 3;
+                                LOSSSellChecker = LossLeaderPrice - 3;
+
+                                thishasnthappenedyet = 1;
+                            }
+
+
+                            double price = 0;
+
+
+                            double total = 0;
+
+                            for (loopAI = loopStart; loopAI < 14; loopAI++) {
+                                PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                PortfolioValue = Math.round(PortfolioValue);
+                                PortfolioValue = PortfolioValue / 100;
+                                TotalValueCombined = Money + PortfolioValue + 1;
+                                // double LogOfValue = Math.log(TotalValueCombined);
+                                double LogOfValue = Math.log(TotalValueCombined) / Math.log(1.618);
+                                int IncreaseBuysAndSellsBy = (int) Math.abs((Math.floor(LogOfValue) - 9));
+                                int PassRandomCarrier = 15 + (IncreaseBuysAndSellsBy * (5 + IncreaseBuysAndSellsBy)); // maybe should be 5+IncreaseBuysAndSellsBy
+                                // int PassRandomCarrier = 15+(IncreaseBuysAndSellsBy*5); // maybe should be 5+IncreaseBuysAndSellsBy
+                                double number = new Random().nextInt(PassRandomCarrier) + 1;
+                                double SalesPitch = new Random().nextInt(5);
+                                int newrandom = new Random().nextInt(7);
+                                double showme = number * 2;
+                                if (SalesPitch == 0) {
+                                    switch (newrandom) {
+
+                                        case 0:
+                                            Stringer = TRTL;
+                                            price = Math.abs(TurtlePrice);
+
+                                            if (Day >= 1) {
+
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * number);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+
+                                                if (Math.abs(TurtlePrice) < (TRTLBuyChecker / 1.15)) {
+                                                    if (Math.abs(total) <= Money) {
+                                                        TRTLNum = TRTLNum + number;
+                                                        String traded = String.format("%.0f", number);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        TRTLSellChecker = ((TRTLSellChecker * TRTLaverage) / (number + TRTLaverage)) + (Math.abs(TurtlePrice) * number / (TRTLaverage + number));
+                                                        TRTLaverage = TRTLaverage + number;
+                                                    } else {
+                                                        // displayPaper.setText(NotEnoughMoney);
+                                                    }
+                                                }
+                                                double numberone = 1;
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * numberone);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+
+                                                int thisjobagain = new Random().nextInt(6);
+                                                if (thisjobagain == 2) {
+                                                    if (Math.abs(total) <= Money) {
+                                                        TRTLNum = TRTLNum + numberone;
+                                                        String traded = String.format("%.0f", numberone);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        TRTLSellChecker = ((TRTLSellChecker * TRTLaverage) / (numberone + TRTLaverage)) + (Math.abs(TurtlePrice) * numberone / (TRTLaverage + numberone));
+                                                        TRTLaverage = TRTLaverage + numberone;
+                                                    } else {
+                                                        // displayPaper.setText(NotEnoughMoney);
+                                                    }
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 1:
+                                            Stringer = DICE;
+                                            price = Math.abs(DicePrice);
+
+
+                                            if (Day >= 1) {
+
+
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * number);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                if (Math.abs(DicePrice) < (DICEBuyChecker / 1.1)) {
+                                                    if (Math.abs(total) <= Money) {
+                                                        DICENum = DICENum + number;
+                                                        String traded = String.format("%.0f", number);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        DICESellChecker = ((DICESellChecker * DICEaverage) / (number + DICEaverage)) + (Math.abs(DicePrice) * number / (DICEaverage + number));
+                                                        DICEaverage = DICEaverage + number;
+                                                    } else {
+                                                        // displayPaper.setText(NotEnoughMoney);
+                                                    }
+                                                }
+
+                                                double numberone = 1;
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * numberone);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                int thisjobagain = new Random().nextInt(3);
+                                                if (thisjobagain == 2) {
+                                                    if (Math.abs(total) <= Money) {
+                                                        DICENum = DICENum + numberone;
+                                                        String traded = String.format("%.0f", numberone);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        DICESellChecker = ((DICESellChecker * DICEaverage) / (numberone + DICEaverage)) + (Math.abs(DicePrice) * numberone / (DICEaverage + numberone));
+                                                        DICEaverage = DICEaverage + numberone;
+                                                    } else {
+                                                        // displayPaper.setText(NotEnoughMoney);
+                                                    }
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 2:
+                                            Stringer = BTC;
+                                            price = Math.abs(BitcoinPrice);
+
+                                            if (Day >= 1) {
+
+
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * number);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                if (Math.abs(BitcoinPrice) < (BTCBuyChecker / 1.1)) {
+                                                    if (Math.abs(total) <= Money) {
+
+                                                        BTCNum = BTCNum + number;
+
+                                                        String traded = String.format("%.0f", number);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        BTCSellChecker = ((BTCSellChecker * BTCaverage) / (number + BTCaverage)) + (Math.abs(BitcoinPrice) * number / (BTCaverage + number));
+                                                        BTCaverage = BTCaverage + number;
+                                                    } else {
+                                                        // displayPaper.setText(NotEnoughMoney);
+                                                    }
+                                                }
+                                                double numberone = 1;
+
+                                                price = Math.abs(BitcoinPrice);
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * numberone);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                int thisjobagain = new Random().nextInt(3);
+                                                if (thisjobagain == 2) {
+                                                    if (Math.abs(total) <= Money) {
+
+                                                        BTCNum = BTCNum + numberone;
+
+                                                        String traded = String.format("%.0f", numberone);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        BTCSellChecker = ((BTCSellChecker * BTCaverage) / (numberone + BTCaverage)) + (Math.abs(BitcoinPrice) * numberone / (BTCaverage + numberone));
+                                                        BTCaverage = BTCaverage + numberone;
+                                                    } else {
+                                                        // displayPaper.setText(NotEnoughMoney);
+                                                    }
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 3:
+                                            Stringer = HAIR;
+                                            price = Math.abs(HARE);
+
+                                            if (Day >= 1) {
+
+
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * number);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                if (Math.abs(HARE) < (HAREBuyChecker / 1.15)) {
+                                                    if (Math.abs(total) <= Money) {
+                                                        HAIRNum = HAIRNum + number;
+                                                        String traded = String.format("%.0f", number);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        HARESellChecker = ((HARESellChecker * HAREaverage) / (number + HAREaverage)) + (Math.abs(HARE) * number / (HAREaverage + number));
+                                                        HAREaverage = HAREaverage + number;
+                                                    }
+                                                }
+
+                                                double numberone = 1;
+
+                                                price = Math.abs(HARE);
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * numberone);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                int thisjobagain = new Random().nextInt(6);
+                                                if (thisjobagain == 2) {
+                                                    if (Math.abs(total) <= Money) {
+                                                        HAIRNum = HAIRNum + numberone;
+                                                        String traded = String.format("%.0f", numberone);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        HARESellChecker = ((HARESellChecker * HAREaverage) / (numberone + HAREaverage)) + (Math.abs(HARE) * numberone / (HAREaverage + numberone));
+                                                        HAREaverage = HAREaverage + numberone;
+                                                    }
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 4:
+                                            Stringer = LUZE;
+                                            price = Math.abs(LossLeaderPrice);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            price = price / 100;
+                                            total = Math.abs(price * number);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            if (Math.abs(LossLeaderPrice) < (LOSSBuyChecker / 1.25)) {
+                                                if (Math.abs(total) <= Money) {
+                                                    LUZENum = LUZENum + number;
+                                                    String traded = String.format("%.0f", number);
+                                                    displayPaper.setText(Bought + traded + " " + Stringer);
+                                                    Money = ((Money - Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+                                                    LOSSSellChecker = ((LOSSSellChecker * LOSSaverage) / (number + LOSSaverage)) + (Math.abs(LossLeaderPrice) * number / (LOSSaverage + number));
+                                                    LOSSaverage = LOSSaverage + number;
+                                                }
+                                            }
+                                            double numberone = 1;
+                                            price = Math.abs(LossLeaderPrice);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            price = price / 100;
+                                            total = Math.abs(price * numberone);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            int thisjobagain = new Random().nextInt(3);
+                                            if (thisjobagain == 2) {
+                                                if (Math.abs(total) <= Money) {
+                                                    LUZENum = LUZENum + numberone;
+                                                    String traded = String.format("%.0f", numberone);
+                                                    displayPaper.setText(Bought + traded + " " + Stringer);
+                                                    Money = ((Money - Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+                                                    LOSSSellChecker = ((LOSSSellChecker * LOSSaverage) / (numberone + LOSSaverage)) + (Math.abs(LossLeaderPrice) * numberone / (LOSSaverage + numberone));
+                                                    LOSSaverage = LOSSaverage + numberone;
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 5:
+                                            Stringer = PLNT;
+                                            price = Math.abs(PlantPrice);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            price = price / 100;
+                                            total = Math.abs(price * number);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            if (Math.abs(PlantPrice) < (PLNTBuyChecker / 1.1)) {
+                                                if (Math.abs(total) <= Money) {
+                                                    PLNTNum = PLNTNum + number;
+                                                    String traded = String.format("%.0f", number);
+                                                    displayPaper.setText(Bought + traded + " " + Stringer);
+                                                    Money = ((Money - Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+                                                    PLNTSellChecker = ((PLNTSellChecker * PLNTaverage) / (number + PLNTaverage)) + (Math.abs(PlantPrice) * number / (PLNTaverage + number));
+                                                    PLNTaverage = PLNTaverage + number;
+                                                }
+                                            }
+                                            double numberwon = 1;
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            price = price / 100;
+                                            total = Math.abs(price * numberwon);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            int thisjobagains = new Random().nextInt(3);
+                                            if (thisjobagains == 2) {
+                                                if (Math.abs(total) <= Money) {
+                                                    PLNTNum = PLNTNum + numberwon;
+                                                    String traded = String.format("%.0f", numberwon);
+                                                    displayPaper.setText(Bought + traded + " " + Stringer);
+                                                    Money = ((Money - Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+                                                    PLNTSellChecker = ((PLNTSellChecker * PLNTaverage) / (numberwon + PLNTaverage)) + (Math.abs(PlantPrice) * numberwon / (PLNTaverage + numberwon));
+                                                    PLNTaverage = PLNTaverage + numberwon;
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 6:
+                                            Stringer = SINE;
+                                            price = Math.abs(NewStockPrice);
+
+                                            if (Day >= 1) {
+
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * number);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                if (Math.abs(NewStockPrice) < (SINEBuyChecker / 1.1)) {
+                                                    if (Math.abs(total) <= Money) {
+                                                        SINENum = SINENum + number;
+                                                        String traded = String.format("%.0f", number);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        SINESellChecker = ((SINESellChecker * SINEaverage) / (number + SINEaverage)) + (Math.abs(NewStockPrice) * number / (SINEaverage + number));
+                                                        SINEaverage = SINEaverage + number;
+
+                                                    } else {
+                                                        // displayPaper.setText(NotEnoughMoney);
+                                                    }
+                                                }
+                                                double nvmberone = 1;
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price * 100;
+                                                price = (Math.round(price));
+                                                price = price / 100;
+                                                price = price / 100;
+                                                total = Math.abs(price * nvmberone);
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total * 100;
+                                                total = (Math.round(total));
+                                                total = total / 100;
+                                                total = total / 100;
+                                                int thisjobagainsa = new Random().nextInt(7);
+                                                if (thisjobagainsa == 2) {
+                                                    if (Math.abs(total) <= Money) {
+                                                        SINENum = SINENum + nvmberone;
+                                                        String traded = String.format("%.0f", nvmberone);
+                                                        displayPaper.setText(Bought + traded + " " + Stringer);
+                                                        Money = ((Money - Math.abs(total)) * 100);
+                                                        Money = Math.round(Money);
+                                                        Money = Money / 100;
+                                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                        PortfolioValue = Math.round(PortfolioValue);
+                                                        PortfolioValue = PortfolioValue / 100;
+                                                        SINESellChecker = ((SINESellChecker * SINEaverage) / (nvmberone + SINEaverage)) + (Math.abs(NewStockPrice) * nvmberone / (SINEaverage + nvmberone));
+                                                        SINEaverage = SINEaverage + nvmberone;
+                                                    } else {
+                                                        // displayPaper.setText(NotEnoughMoney);
+                                                    }
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+
+                                    }
+                                } else {
+
+                                    number = Math.ceil(number / 5);
+                                    switch (newrandom) {
+
+                                        case 0:
+                                            Stringer = TRTL;
+                                            price = Math.abs(TurtlePrice);
+                                            double floorpass = Math.log(TRTLNum + 1);
+                                            number = number + Math.floor(floorpass);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            total = Math.abs(price * number);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            if (TurtlePrice > (TRTLSellChecker * 1)) {
+
+                                                if (TRTLNum >= number && TRTLNum >= 0 && (TRTLNum - number) >= 0) {
+
+                                                    TRTLNum = TRTLNum - number;
+
+                                                    TRTLBuyChecker = ((TRTLBuyChecker * TRTLaveragesell) / (TRTLaveragesell + number)) + (Math.abs(TurtlePrice) * number / (TRTLaveragesell + number));
+                                                    TRTLaveragesell = TRTLaveragesell + number;
+                                                    String traded = String.format("%.0f", number);
+                                                    displayPaper.setText(Sold + traded + " " + Stringer);
+                                                    Money = ((Money + Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+                                                } else {
+                                                    // displayPaper.setText(NotEnoughShares);
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 1:
+                                            Stringer = DICE;
+                                            price = Math.abs((DicePrice));
+
+                                            double floorpassz = Math.log(DICENum + 1);
+                                            number = number + Math.floor(floorpassz);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            total = Math.abs(price * number);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            if (DicePrice > (DICESellChecker * 1.1)) {
+
+                                                if (DICENum >= number && DICENum >= 0 && (DICENum - number) >= 0) {
+
+                                                    DICEBuyChecker = ((DICEBuyChecker * DICEaveragesell) / (DICEaveragesell + number)) + (Math.abs(DicePrice) * number / (DICEaveragesell + number));
+                                                    DICEaveragesell = DICEaveragesell + number;
+                                                    DICENum = DICENum - number;
+                                                    String traded = String.format("%.0f", number);
+                                                    displayPaper.setText(Sold + traded + " " + Stringer);
+                                                    Money = ((Money + Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+                                                } else {
+                                                    // displayPaper.setText(NotEnoughShares);
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 2:
+                                            Stringer = BTC;
+                                            price = Math.abs(BitcoinPrice);
+
+                                            double floorppass = Math.log(BTCNum + 1);
+                                            number = number + Math.floor(floorppass);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            total = Math.abs(price * number);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            if (BitcoinPrice > (BTCSellChecker * 1.1)) {
+                                                if (BTCNum >= number && BTCNum >= 0 && (BTCNum - number) >= 0) {
+
+                                                    BTCBuyChecker = ((BTCBuyChecker * BTCaveragesell) / (BTCaveragesell + number)) + (Math.abs(BitcoinPrice) * number / (BTCaveragesell + number));
+                                                    BTCaveragesell = BTCaveragesell + number;
+                                                    BTCNum = BTCNum - number;
+                                                    String traded = String.format("%.0f", number);
+                                                    displayPaper.setText(Sold + traded + " " + Stringer);
+                                                    Money = ((Money + Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+
+                                                } else {
+                                                    // displayPaper.setText(NotEnoughShares);
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 3:
+                                            Stringer = HAIR;
+                                            price = Math.abs(HARE);
+
+                                            double floorrpass = Math.log(HAIRNum + 1);
+                                            number = number + Math.floor(floorrpass);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            total = Math.abs(price * number);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            if (HARE > (HARESellChecker * 1)) {
+                                                if (HAIRNum >= number && HAIRNum >= 0 && (HAIRNum - number) >= 0) {
+
+                                                    HAREBuyChecker = ((HAREBuyChecker * HAREaveragesell) / (HAREaveragesell + number)) + (Math.abs(HARE) * number / (HAREaveragesell + number));
+                                                    HAREaveragesell = HAREaveragesell + number;
+                                                    HAIRNum = HAIRNum - number;
+                                                    String traded = String.format("%.0f", number);
+                                                    displayPaper.setText(Sold + traded + " " + Stringer);
+                                                    Money = ((Money + Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+
+                                                } else {
+                                                    // displayPaper.setText(NotEnoughShares);
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 4:
+                                            Stringer = LUZE;
+                                            price = Math.abs(LossLeaderPrice);
+                                            double floorzpass = Math.log(LUZENum + 1);
+                                            number = number + Math.floor(floorzpass);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            total = Math.abs(price * number);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            if (Math.abs(LossLeaderPrice) > (LOSSSellChecker * 1.25)) {
+
+                                                if (LUZENum >= number && LUZENum >= 0 && (LUZENum - number) >= 0) {
+
+
+                                                    LOSSBuyChecker = ((LOSSBuyChecker * LOSSaveragesell) / (LOSSaveragesell + number)) + (Math.abs(LossLeaderPrice) * number / (LOSSaveragesell + number));
+                                                    LOSSaveragesell = LOSSaveragesell + number;
+                                                    LUZENum = LUZENum - number;
+                                                    String traded = String.format("%.0f", number);
+                                                    displayPaper.setText(Sold + traded + " " + Stringer);
+                                                    Money = ((Money + Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+                                                } else {
+                                                    // displayPaper.setText(NotEnoughShares);
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 5:
+                                            Stringer = PLNT;
+                                            price = Math.abs(PlantPrice);
+                                            double floorepass = Math.log(PLNTNum + 1);
+                                            number = number + Math.floor(floorepass);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            total = Math.abs(price * number);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            if (PlantPrice > (PLNTSellChecker * 1.15)) {
+                                                if (PLNTNum >= number && PLNTNum >= 0 && (PLNTNum - number) >= 0) {
+                                                    PLNTNum = PLNTNum - number;
+
+                                                    PLNTBuyChecker = ((PLNTBuyChecker * PLNTaveragesell) / (PLNTaveragesell + number)) + (Math.abs(PlantPrice) * number / (PLNTaveragesell + number));
+                                                    PLNTaveragesell = PLNTaveragesell + number;
+                                                    String traded = String.format("%.0f", number);
+                                                    displayPaper.setText(Sold + traded + " " + Stringer);
+                                                    Money = ((Money + Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+                                                } else {
+                                                    // displayPaper.setText(NotEnoughShares);
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+                                        case 6:
+                                            Stringer = SINE;
+                                            price = Math.abs(NewStockPrice);
+
+                                            double floorapass = Math.log(SINENum + 1);
+                                            number = number + Math.floor(floorapass);
+                                            price = price * 100;
+                                            price = (Math.round(price));
+                                            price = price / 100;
+                                            total = Math.abs(price * number);
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total * 100;
+                                            total = (Math.round(total));
+                                            total = total / 100;
+                                            total = total / 100;
+                                            if (NewStockPrice > (SINESellChecker * 1.1)) {
+                                                if (SINENum >= number && SINENum >= 0 && (SINENum - number) >= 0) {
+
+
+                                                    SINENum = SINENum - number;
+
+                                                    SINEBuyChecker = ((SINEBuyChecker * SINEaveragesell) / (SINEaveragesell + number)) + (Math.abs(NewStockPrice) * number / (SINEaveragesell + number));
+                                                    SINEaveragesell = SINEaveragesell + number;
+                                                    String traded = String.format("%.0f", number);
+                                                    displayPaper.setText(Sold + traded + " " + Stringer);
+                                                    Money = ((Money + Math.abs(total)) * 100);
+                                                    Money = Math.round(Money);
+                                                    Money = Money / 100;
+                                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                                                    PortfolioValue = Math.round(PortfolioValue);
+                                                    PortfolioValue = PortfolioValue / 100;
+                                                }
+                                            }
+                                            if (PortfolioValue <= 999999999) {
+                                                String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            } else {
+                                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                                PortfolioValueViewNoNames.setText(PortTextNoName);
+                                                money = String.format("%.2f", Money);
+                                                Tisl.setText(Money$ + money);
+                                            }
+                                            break;
+
+                                    }
+
+                                }
+
+                            }
+
+                            if (Money < 1000000000 || Manipulated == 1) {  // not equal to one or equal to one? certainly is equal.
+                                loopAI = 0;
+                            } else if (Manipulated == 0 && Money >= 1000000000) {
+                                loopStart = 15;
+                                money = String.format("I Have Won By Earning $1,000,000,000! My Stack Is Currently $%.2f", Money);
+                                Tisl.setText(money);
+                            }
+                            PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum)) * 100))));
+                            PortfolioValue = Math.round(PortfolioValue);
+                            PortfolioValue = PortfolioValue / 100;
+
+                            logtobetested = (Money + PortfolioValue);
+
+                            logtobetested = Math.log(logtobetested) / Math.log(1.618);
+
+                            if (logtobetested >= logincrement) {
+                                Money = (Money + PortfolioValue) * 100;
+                                Money = Math.round(Money);
+                                Money = Money / 100;
+                                TRTLNum = 0;
+                                SINENum = 0;
+                                DICENum = 0;
+                                BTCNum = 0;
+                                PLNTNum = 0;
+                                LUZENum = 0;
+                                HAIRNum = 0;
+                                logincrement = logincrement + 1;
+                                displayPaper.setText("Safe Sell!");
+                                if (PortfolioValue <= 999999999) {
+                                    String PortfolioValueString = String.format("%.2f", PortfolioValue);
+                                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
+                                    PortfolioValueViewNoNames.setText(PortTextNoName);
+                                    money = String.format("%.2f", Money);
+                                    Tisl.setText(Money$ + money);
+                                } else {
+                                    final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
+                                    PortfolioValueViewNoNames.setText(PortTextNoName);
+                                    money = String.format("%.2f", Money);
+                                    Tisl.setText(Money$ + money);
+                                }
+
+                            }
+
+
                         }
-                        if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                        break;
-                    case 1:
-                        Stringer = DICE;
-                        price = Math.abs(DicePrice);
 
 
-                        if (Day >= 1) {
+                    });
 
-
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * number);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            if (Math.abs(DicePrice) < (DICEBuyChecker/1.1)) {
-                                if (Math.abs(total) <= Money) {
-                                    DICENum = DICENum + number;
-                                    String traded = String.format("%.0f", number);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    DICESellChecker = ((DICESellChecker*DICEaverage)/(number+DICEaverage)) +(Math.abs(DicePrice)*number/(DICEaverage+number));
-                                    DICEaverage = DICEaverage + number;
-                                } else {
-                                   // displayPaper.setText(NotEnoughMoney);
-                                }
-                            }
-
-                            double numberone = 1;
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * numberone);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            int thisjobagain = new Random().nextInt(3);
-                            if (thisjobagain == 2) {
-                                if (Math.abs(total) <= Money) {
-                                    DICENum = DICENum + numberone;
-                                    String traded = String.format("%.0f", numberone);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    DICESellChecker = ((DICESellChecker*DICEaverage)/(numberone+DICEaverage)) +(Math.abs(DicePrice)*numberone/(DICEaverage+numberone));
-                                    DICEaverage = DICEaverage + numberone;
-                                } else {
-                                   // displayPaper.setText(NotEnoughMoney);
-                                }
-                            }
-                        }
-                        if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                        break;
-                    case 2:
-                        Stringer = BTC;
-                        price = Math.abs(BitcoinPrice);
-
-                        if (Day >= 1) {
-
-
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * number);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            if (Math.abs(BitcoinPrice) < (BTCBuyChecker/1.1)) {
-                                if (Math.abs(total) <= Money) {
-
-                                    BTCNum = BTCNum + number;
-
-                                    String traded = String.format("%.0f", number);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    BTCSellChecker = ((BTCSellChecker*BTCaverage)/(number+BTCaverage)) +(Math.abs(BitcoinPrice)*number/(BTCaverage+number));
-                                    BTCaverage = BTCaverage + number;
-                                } else {
-                                   // displayPaper.setText(NotEnoughMoney);
-                                }
-                            }
-                            double numberone = 1;
-
-                            price = Math.abs(BitcoinPrice);
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * numberone);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            int thisjobagain = new Random().nextInt(3);
-                            if (thisjobagain == 2) {
-                                if (Math.abs(total) <= Money) {
-
-                                    BTCNum = BTCNum + numberone;
-
-                                    String traded = String.format("%.0f", numberone);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    BTCSellChecker = ((BTCSellChecker*BTCaverage)/(numberone+BTCaverage)) +(Math.abs(BitcoinPrice)*numberone/(BTCaverage+numberone));
-                                    BTCaverage = BTCaverage + numberone;
-                                } else {
-                                   // displayPaper.setText(NotEnoughMoney);
-                                }
-                            }
-                        }
-                        if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                        break;
-                    case 3:
-                        Stringer = HAIR;
-                        price = Math.abs(HARE);
-
-                        if (Day >= 1) {
-
-
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * number);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            if(Math.abs(HARE) < (HAREBuyChecker/1.15)) {
-                                if (Math.abs(total) <= Money) {
-                                    HAIRNum = HAIRNum + number;
-                                    String traded = String.format("%.0f", number);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    HARESellChecker = ((HARESellChecker*HAREaverage)/(number+HAREaverage)) +(Math.abs(HARE)*number/(HAREaverage+number));
-                                    HAREaverage = HAREaverage + number;
-                                }
-                            }
-
-                        double numberone = 1;
-
-                            price = Math.abs(HARE);
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * numberone);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            int thisjobagain = new Random().nextInt(6);
-                            if (thisjobagain == 2) {
-                                if (Math.abs(total) <= Money) {
-                                    HAIRNum = HAIRNum + numberone;
-                                    String traded = String.format("%.0f", numberone);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    HARESellChecker = ((HARESellChecker*HAREaverage)/(numberone+HAREaverage)) +(Math.abs(HARE)*numberone/(HAREaverage+numberone));
-                                    HAREaverage = HAREaverage + numberone;
-                                }
-                            }
-                            }
-                        if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                        break;
-                    case 4:
-                        Stringer = LUZE;
-                        price = Math.abs(LossLeaderPrice);
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * number);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            if (Math.abs(LossLeaderPrice) < (LOSSBuyChecker/1.25)) {
-                                if (Math.abs(total) <= Money) {
-                                    LUZENum = LUZENum + number;
-                                    String traded = String.format("%.0f", number);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    LOSSSellChecker = ((LOSSSellChecker*LOSSaverage)/(number+LOSSaverage)) +(Math.abs(LossLeaderPrice)*number/(LOSSaverage+number));
-                                    LOSSaverage = LOSSaverage + number;
-                                }
-                            }
-                            double numberone = 1;
-                        price = Math.abs(LossLeaderPrice);
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * numberone);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                        int thisjobagain = new Random().nextInt(3);
-                        if (thisjobagain == 2) {
-                                if (Math.abs(total) <= Money) {
-                                    LUZENum = LUZENum + numberone;
-                                    String traded = String.format("%.0f", numberone);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    LOSSSellChecker = ((LOSSSellChecker*LOSSaverage)/(numberone+LOSSaverage)) +(Math.abs(LossLeaderPrice)*numberone/(LOSSaverage+numberone));
-                                    LOSSaverage = LOSSaverage + numberone;
-                                }
-                            }
-                        if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                        break;
-                    case 5:
-                        Stringer = PLNT;
-                        price = Math.abs(PlantPrice);
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * number);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            if(Math.abs(PlantPrice) < (PLNTBuyChecker/1.1)) {
-                                if (Math.abs(total) <= Money) {
-                                    PLNTNum = PLNTNum + number;
-                                    String traded = String.format("%.0f", number);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    PLNTSellChecker = ((PLNTSellChecker*PLNTaverage)/(number+PLNTaverage)) +(Math.abs(PlantPrice)*number/(PLNTaverage+number));
-                                    PLNTaverage = PLNTaverage + number;
-                                }
-                            }
-                            double numberwon = 1;
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * numberwon);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                        int thisjobagains = new Random().nextInt(3);
-                        if (thisjobagains == 2) {
-                                if (Math.abs(total) <= Money) {
-                                    PLNTNum = PLNTNum + numberwon;
-                                    String traded = String.format("%.0f", numberwon);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    PLNTSellChecker = ((PLNTSellChecker*PLNTaverage)/(numberwon+PLNTaverage)) +(Math.abs(PlantPrice)*numberwon/(PLNTaverage+numberwon));
-                                    PLNTaverage = PLNTaverage + numberwon;
-                                }
-                            }
-                        if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                        break;
-                    case 6:
-                        Stringer = SINE;
-                        price = Math.abs(NewStockPrice);
-
-                        if (Day >= 1) {
-
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * number);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            if (Math.abs(NewStockPrice) < (SINEBuyChecker/1.1)) {
-                                if (Math.abs(total) <= Money) {
-                                    SINENum = SINENum + number;
-                                    String traded = String.format("%.0f", number);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    SINESellChecker = ((SINESellChecker*SINEaverage)/(number+SINEaverage)) +(Math.abs(NewStockPrice)*number/(SINEaverage+number));
-                                    SINEaverage = SINEaverage + number;
-
-                                } else {
-                                   // displayPaper.setText(NotEnoughMoney);
-                                }
-                            }
-                            double nvmberone = 1;
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price * 100;
-                            price = (Math.round(price));
-                            price = price / 100;
-                            price = price / 100;
-                            total = Math.abs(price * nvmberone);
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total * 100;
-                            total = (Math.round(total));
-                            total = total / 100;
-                            total = total / 100;
-                            int thisjobagainsa = new Random().nextInt(7);
-                            if (thisjobagainsa == 2) {
-                                if (Math.abs(total) <= Money) {
-                                    SINENum = SINENum + nvmberone;
-                                    String traded = String.format("%.0f", nvmberone);
-                                    displayPaper.setText(Bought + traded + " " + Stringer);
-                                    Money = ((Money - Math.abs(total)) * 100);
-                                    Money = Math.round(Money);
-                                    Money = Money / 100;
-                                    PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    SINESellChecker = ((SINESellChecker*SINEaverage)/(nvmberone+SINEaverage)) +(Math.abs(NewStockPrice)*nvmberone/(SINEaverage+nvmberone));
-                                    SINEaverage = SINEaverage + nvmberone;
-                                } else {
-                                   // displayPaper.setText(NotEnoughMoney);
-                                }
-                            }
-                        }
-                        if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                            final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                            PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                        break;
 
                 }
-            }else {
-
-                number = Math.ceil(number/5);
-                    switch (newrandom) {
-
-                        case 0:
-                            Stringer = TRTL;
-                            price = Math.abs(TurtlePrice);
-                            double floorpass = Math.log(TRTLNum + 1);
-                            number = number + Math.floor(floorpass);
-                            price = price * 100; price = (Math.round(price)); price = price/100;
-                            total = Math.abs(price * number);
-                            total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                            total = total/100;
-                                if (TurtlePrice > (TRTLSellChecker*1)) {
-
-                                    if (TRTLNum >= number && TRTLNum >= 0 && (TRTLNum - number) >= 0) {
-
-                                        TRTLNum = TRTLNum - number;
-
-                                        TRTLBuyChecker = ((TRTLBuyChecker*TRTLaveragesell)/(TRTLaveragesell+number)) +(Math.abs(TurtlePrice)*number/(TRTLaveragesell+number));
-                                        TRTLaveragesell = TRTLaveragesell + number;
-                                        String traded = String.format("%.0f", number);
-                                        displayPaper.setText(Sold + traded + " " + Stringer);
-                                        Money = ((Money + Math.abs(total)) * 100);
-                                        Money = Math.round(Money);
-                                        Money = Money / 100;
-                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    } else {
-                                       // displayPaper.setText(NotEnoughShares);
-                                    }
-                                }
-                            if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                            break;
-                        case 1:
-                            Stringer = DICE;
-                            price = Math.abs((DicePrice));
-
-                            double floorpassz = Math.log(DICENum + 1);
-                            number = number + Math.floor(floorpassz);
-                            price = price * 100; price = (Math.round(price)); price = price/100;
-                            total = Math.abs(price * number);
-                            total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                            total = total/100;
-                                if (DicePrice > (DICESellChecker*1.1)) {
-
-                                    if (DICENum >= number && DICENum >= 0 && (DICENum - number) >= 0) {
-
-                                        DICEBuyChecker = ((DICEBuyChecker*DICEaveragesell)/(DICEaveragesell+number)) +(Math.abs(DicePrice)*number/(DICEaveragesell+number));
-                                        DICEaveragesell = DICEaveragesell + number;
-                                        DICENum = DICENum - number;
-                                        String traded = String.format("%.0f", number);
-                                        displayPaper.setText(Sold + traded + " " + Stringer);
-                                        Money = ((Money + Math.abs(total)) * 100);
-                                        Money = Math.round(Money);
-                                        Money = Money / 100;
-                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    } else {
-                                       // displayPaper.setText(NotEnoughShares);
-                                    }
-                            }
-                            if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                            break;
-                        case 2:
-                            Stringer = BTC;
-                            price = Math.abs(BitcoinPrice);
-
-                            double floorppass = Math.log(BTCNum + 1);
-                            number = number + Math.floor(floorppass);
-                            price = price * 100; price = (Math.round(price)); price = price/100;
-                            total = Math.abs(price * number);
-                            total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                            total = total/100;
-                                if (BitcoinPrice > (BTCSellChecker*1.1)) {
-                                    if (BTCNum >= number && BTCNum >= 0 && (BTCNum - number) >= 0) {
-
-                                        BTCBuyChecker = ((BTCBuyChecker*BTCaveragesell)/(BTCaveragesell+number)) +(Math.abs(BitcoinPrice)*number/(BTCaveragesell+number));
-                                        BTCaveragesell = BTCaveragesell + number;
-                                        BTCNum = BTCNum - number;
-                                        String traded = String.format("%.0f", number);
-                                        displayPaper.setText(Sold + traded + " " + Stringer);
-                                        Money = ((Money + Math.abs(total)) * 100);
-                                        Money = Math.round(Money);
-                                        Money = Money / 100;
-                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-
-                                    } else {
-                                       // displayPaper.setText(NotEnoughShares);
-                                    }
-                                }
-                            if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                            break;
-                        case 3:
-                            Stringer = HAIR;
-                            price = Math.abs(HARE);
-
-                            double floorrpass = Math.log(HAIRNum + 1);
-                            number = number + Math.floor(floorrpass);
-                            price = price * 100; price = (Math.round(price)); price = price/100;
-                            total = Math.abs(price * number);
-                            total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                            total = total/100;
-                                if (HARE > (HARESellChecker*1)) {
-                                    if (HAIRNum >= number && HAIRNum >= 0 && (HAIRNum - number) >= 0) {
-
-                                        HAREBuyChecker = ((HAREBuyChecker*HAREaveragesell)/(HAREaveragesell+number)) +(Math.abs(HARE)*number/(HAREaveragesell+number));
-                                        HAREaveragesell = HAREaveragesell + number;
-                                        HAIRNum = HAIRNum - number;
-                                        String traded = String.format("%.0f", number);
-                                        displayPaper.setText(Sold + traded + " " + Stringer);
-                                        Money = ((Money + Math.abs(total)) * 100);
-                                        Money = Math.round(Money);
-                                        Money = Money / 100;
-                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-
-                                    } else {
-                                       // displayPaper.setText(NotEnoughShares);
-                                    }
-                                }
-                            if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                            break;
-                        case 4:
-                            Stringer = LUZE;
-                            price = Math.abs(LossLeaderPrice);
-                            double floorzpass = Math.log(LUZENum + 1);
-                            number = number + Math.floor(floorzpass);
-                            price = price * 100; price = (Math.round(price)); price = price/100;
-                            total = Math.abs(price * number);
-                            total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                            total = total/100;
-                                if (Math.abs(LossLeaderPrice) > (LOSSSellChecker*1.25)) {
-
-                                    if (LUZENum >= number && LUZENum >= 0 && (LUZENum - number) >= 0) {
 
 
-
-                                        LOSSBuyChecker = ((LOSSBuyChecker*LOSSaveragesell)/(LOSSaveragesell+number)) +(Math.abs(LossLeaderPrice)*number/(LOSSaveragesell+number));
-                                        LOSSaveragesell = LOSSaveragesell + number;
-                                        LUZENum = LUZENum - number;
-                                        String traded = String.format("%.0f", number);
-                                        displayPaper.setText(Sold + traded + " " + Stringer);
-                                        Money = ((Money + Math.abs(total)) * 100);
-                                        Money = Math.round(Money);
-                                        Money = Money / 100;
-                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    } else {
-                                       // displayPaper.setText(NotEnoughShares);
-                                    }
-                                }
-                            if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                            break;
-                        case 5:
-                            Stringer = PLNT;
-                            price = Math.abs(PlantPrice);
-                            double floorepass = Math.log(PLNTNum + 1);
-                            number = number + Math.floor(floorepass);
-                            price = price * 100; price = (Math.round(price)); price = price/100;
-                            total = Math.abs(price * number);
-                            total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                            total = total/100;
-                                if (PlantPrice > (PLNTSellChecker*1.15)) {
-                                    if (PLNTNum >= number && PLNTNum >= 0 && (PLNTNum - number) >= 0) {
-                                        PLNTNum = PLNTNum - number;
-
-                                        PLNTBuyChecker = ((PLNTBuyChecker*PLNTaveragesell)/(PLNTaveragesell+number)) +(Math.abs(PlantPrice)*number/(PLNTaveragesell+number));
-                                        PLNTaveragesell = PLNTaveragesell + number;
-                                        String traded = String.format("%.0f", number);
-                                        displayPaper.setText(Sold + traded + " " + Stringer);
-                                        Money = ((Money + Math.abs(total)) * 100);
-                                        Money = Math.round(Money);
-                                        Money = Money / 100;
-                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    } else {
-                                       // displayPaper.setText(NotEnoughShares);
-                                    }
-                                }
-                            if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                            break;
-                        case 6:
-                            Stringer = SINE;
-                            price = Math.abs(NewStockPrice);
-
-                            double floorapass = Math.log(SINENum + 1);
-                            number = number + Math.floor(floorapass);
-                            price = price * 100; price = (Math.round(price)); price = price/100;
-                            total = Math.abs(price * number);
-                            total = total * 100; total = (Math.round(total)); total = total * 100; total = (Math.round(total)); total = total/100;
-                            total = total/100;
-                                if (NewStockPrice > (SINESellChecker*1.1)) {
-                                    if (SINENum >= number && SINENum >= 0 && (SINENum - number) >= 0) {
-
-
-                                        SINENum = SINENum - number;
-
-                                        SINEBuyChecker = ((SINEBuyChecker*SINEaveragesell)/(SINEaveragesell+number)) +(Math.abs(NewStockPrice)*number/(SINEaveragesell+number));
-                                        SINEaveragesell = SINEaveragesell + number;
-                                        String traded = String.format("%.0f", number);
-                                        displayPaper.setText(Sold + traded + " " + Stringer);
-                                        Money = ((Money + Math.abs(total)) * 100);
-                                        Money = Math.round(Money);
-                                        Money = Money / 100;
-                                        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-                                    }
-                                }
-                            if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-                            break;
-
-                    }
-
-                    }
-
-            }
-
-        if (Money < 1000000000 ||  Manipulated != 1) {
-            loopAI = 0;
-        }else if (Manipulated == 0 && Money >= 1000000000){
-                loopStart = 12;
-                Tisl.setText("I Have Won By Earning $1,000,000,000! My Stack Is Currently $" + Money);
-            }
-        PortfolioValue = (((((Math.abs((TRTLNum * TurtlePrice)) + Math.abs((DICENum * DicePrice)) + Math.abs((BTCNum * BitcoinPrice)) + Math.abs((PLNTNum * PlantPrice)) + Math.abs((LUZENum * LossLeaderPrice)) + Math.abs((HAIRNum * HARE)) + Math.abs(NewStockPrice * SINENum))*100)))); PortfolioValue = Math.round(PortfolioValue); PortfolioValue = PortfolioValue/100;
-
-        logtobetested = (Money + PortfolioValue);
-
-        logtobetested = Math.log(logtobetested)/Math.log(1.618);
-
-        if (logtobetested >= logincrement){
-            Money = (Money + PortfolioValue)*100;Money = Math.round(Money); Money = Money/100;
-            TRTLNum = 0;
-            SINENum = 0;
-            DICENum = 0;
-            BTCNum = 0;
-            PLNTNum = 0;
-            LUZENum = 0;
-            HAIRNum = 0;
-            logincrement = logincrement + 1;
-            displayPaper.setText("Safe Sell!");
-            if (PortfolioValue <= 999999999){  String PortfolioValueString = String.format("%.2f", PortfolioValue);
-                final String PortTextNoName = String.format(TestPortNoName, PortfolioValueString);
-                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}else{
-                final String PortTextNoName = String.format(TestPortNoName, PortfolioValue);
-                PortfolioValueViewNoNames.setText(PortTextNoName);money = String.format("%.2f", Money);
-            Tisl.setText(Money$ + money);}
-
-        }
-
-
-    }
-
-
-        });
-
-
-
-
-
-            }
-
-
-        }, 100, 250);
+            }, 100, 250);
 
 
         Mute.setOnClickListener(new View.OnClickListener() {
@@ -3371,9 +3529,9 @@ int Manipulated = 0 ;
             @Override
             public void onClick(View v) {
 
-           
+
                 double BuyAmount = Money;
-               
+
 
                 if (Money >= BuyAmount) {
                     Money = (((Money - BuyAmount)*100)); Money = Math.round(Money); Money = Money/100;
@@ -3428,9 +3586,9 @@ int Manipulated = 0 ;
             @Override
             public void onClick(View v) {
 
-             
+
                 double BuyAmount = bankbalance;
-             
+
 
                 if (bankbalance >= BuyAmount) {
                     Money = (((Money + BuyAmount)*100)); Money = Math.round(Money); Money = Money/100;
@@ -3478,11 +3636,11 @@ int Manipulated = 0 ;
             @Override
             public void onClick(View v) {
 
-               
-                
+
+
                 double BuyAmount = 1;
                 final String BuyAmountS = String.format(TestOne, BuyAmount);
-              
+
 
                 if (((Money + PortfolioValue + bankbalance) - debts) >= (debts + BuyAmount) && (debts - (Money + PortfolioValue + bankbalance)) <= 0) {
                     Money = (((Money + BuyAmount)*100)); Money = Math.round(Money); Money = Money/100;
@@ -3515,10 +3673,10 @@ int Manipulated = 0 ;
             @Override
             public void onClick(View v) {
 
-               
+
                 double BuyAmount = debts;
                 final String BuyAmountS = String.format(TestOne, BuyAmount);
-              
+
 
                 if (debts > 0 && Money >= BuyAmount && (debts - BuyAmount) >= 0) {
                     Money = (((Money - BuyAmount)*100)); Money = Math.round(Money); Money = Money/100;
