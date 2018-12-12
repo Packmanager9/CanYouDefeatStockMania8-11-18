@@ -673,6 +673,45 @@ public class protomon extends AppCompatActivity {
     double MaxHealthPlayer = 1;
 
 
+    public static class encounter implements Cloneable, Parcelable, Serializable {
+
+        public monst[] EncounterList = new monst[8];
+
+        public encounter (monst EncounteredMonsters0, monst EncounteredMonsters1, monst EncounteredMonsters2,monst EncounteredMonsters3, monst EncounteredMonsters4, monst EncounteredMonsters5, monst EncounteredMonsters6){
+            EncounterList[0] = EncounteredMonsters0;
+            EncounterList[1] = EncounteredMonsters1;
+            EncounterList[2] = EncounteredMonsters2;
+            EncounterList[3] = EncounteredMonsters3;
+            EncounterList[4] = EncounteredMonsters4;
+            EncounterList[5] = EncounteredMonsters5;
+            EncounterList[6] = EncounteredMonsters6;
+        }
+
+        protected encounter(Parcel in) {
+        }
+
+        public static final Creator<encounter> CREATOR = new Creator<encounter>() {
+            @Override
+            public encounter createFromParcel(Parcel in) {
+                return new encounter(in);
+            }
+
+            @Override
+            public encounter[] newArray(int size) {
+                return new encounter[size];
+            }
+        };
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+        }
+    }
+
     public static class monst implements Cloneable, Parcelable, Serializable {
 
         public double Idnum;
@@ -849,6 +888,8 @@ public class protomon extends AppCompatActivity {
     monst Knightstacean = new monst(knightstaceanid, knightstaceansp, knightstaceanat, knightstaceande, knightstaceanhe, SpecialMoves(0),SpeedMoves(0),0,HealMoves(0), UniqueIdentifier(0));
     monst Custom = new monst(83, 51, 51, 51, 51, SpecialMoves(0),SpeedMoves(0),0,HealMoves(0), UniqueIdentifier(0));
 
+
+    encounter commonfight = new encounter(monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)));
     monst attackermonster;
     monst playermonster;
     monst secondstartingmonster;
@@ -899,6 +940,8 @@ public class protomon extends AppCompatActivity {
         LongView = findViewById(R.id.ScrollerLongText);
         enemylayoutpage = findViewById(R.id.enemylayout);
 
+
+        commonfight = new encounter(monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)));
 
         CapChanger();
 
@@ -1209,7 +1252,7 @@ public class protomon extends AppCompatActivity {
                     CollarNumber = CollarNumber + 10;
 
                 }*/
-                
+
                 CollarNumber = 10;
 
 
