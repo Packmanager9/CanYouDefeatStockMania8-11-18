@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import java.text.DecimalFormat;
+import java.math.BigDecimal;
 import java.util.Random;
 
 

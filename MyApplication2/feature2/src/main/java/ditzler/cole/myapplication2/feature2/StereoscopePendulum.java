@@ -1,6 +1,8 @@
 package ditzler.cole.myapplication2.feature2;
 
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
@@ -16,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -49,6 +52,7 @@ public class StereoscopePendulum extends AppCompatActivity{
     int timerdelayer;
     int imagecounter;
     int arrayreversal;
+    ProgressBar LoadingScreenBar;
     String TimeString = "";
     String TimeStrings = "%s:%s";
     String TimeStringss = "%s:%s:%s";
@@ -237,821 +241,22 @@ public class StereoscopePendulum extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stereoscope_layout_pendulum);
+        Context context = getApplicationContext();
         daysview = (ImageView)  findViewById(R.id.red);
         hoursview = (ImageView)  findViewById(R.id.black);
         minutesview = (ImageView)  findViewById(R.id.blue);
         fasterbutton = (Button) findViewById(R.id.faster);
         slowerbutton = (Button) findViewById(R.id.slower);
+        LoadingScreenBar = (ProgressBar)  findViewById(R.id.LoadBar);
         Bitmap penmap = BitmapFactory.decodeResource(getResources(), R.drawable.dotssix);
         Bitmap transparentmap = BitmapFactory.decodeResource(getResources(), R.drawable.tinytransparent);
 
         Bitmap mutablepenmap = transparentmap.copy(Bitmap.Config.ARGB_4444, true);
 
+        LoadingScreenBar.setProgress(9);
 
 
-/*
-        for ( int q = 0; q < 721;q++ ){
-            canvas[q] = new Canvas(mutablepenmap);
-        }
-*/
-        for ( int q = 0; q < 359;q++ ){
-            redicarray[q] = q;
-        }
-            redicarray[360]  = 0;
-
-/*
-        for ( int q = 0; q < 502;q++ ){
-            canvas[q] = new Canvas(mutablepenmap);
-        }*/
-
-
-
-  /*
-        penangle0 = 90;
-        penangle1 = 102;
-        penangle2 = 114;
-        penangle3 = 126;
-        penangle4 = 138;
-        penangle5 = 150;
-        penangle6 = 162;
-    */
-        penangle0 = 90;
-        penangle1 = 95;
-        penangle2 = 100;
-        penangle3 = 105;
-        penangle4 = 110;
-        penangle5 = 115;
-        penangle6 = 120;
-        penangle01 = 360;
-        penangle11 = 365;
-        penangle21 = 370;
-        penangle31 = 375;
-        penangle41 = 380;
-        penangle51 = 385;
-        penangle61 = 390;
-      /*
-        penangle0 = 60;
-        penangle1 = 63;
-        penangle2 = 66;
-        penangle3 = 69;
-        penangle4 = 72;
-        penangle5 = 75;
-        penangle6 = 78;
- */
-
-        for ( int colorswitch = 0; colorswitch < 769;colorswitch++ ){
-            if(colorswitch <= 127){
-                bix = bix - 1; // from 255 to  128
-                syx = syx + 1; // from 128 to 255
-            }
-            if(colorswitch <= 255 && colorswitch > 127){
-                bix--; // from 128 to 0
-                mix++; // from 0 to 128
-            }
-            if(colorswitch >= 256 && colorswitch < 383){
-                mix = mix + 1; // from 128 to 255
-                syx--; // from 255 to 128
-            }
-            if(colorswitch >= 384 && colorswitch < 512){
-                syx--; // from 128 to 0
-                bix++; // from 0 to 128
-            }
-            if(colorswitch >= 513 && colorswitch < 640){
-                mix--; // from 255 to 128
-                bix++; // from 128 to 255
-            }
-            if(colorswitch >= 641 && colorswitch < 769){
-                mix--; // from 128 to 0
-                syx++; // from 0 to 128
-
-            }
-            if (colorswitch == 0){
-                bix = 255;
-                syx = 128;
-                mix = 0;
-            }
-            redarray[colorswitch] = bix;
-            greenarray[colorswitch] = syx;
-            bluearray[colorswitch] = mix;
-        }
-
-        for ( int z = 0; z <= redarray.length;z++ ) {
-
-
-            redarray0[(z) % 769] = redarray[(z + 110) % 769];
-            redarray1[(z) % 769] = redarray[(z + 219) % 769];
-            redarray2[(z) % 769] = redarray[(z + 329) % 769];
-            redarray3[(z) % 769] = redarray[(z + 438) % 769];
-            redarray4[(z) % 769] = redarray[(z + 548) % 769];
-            redarray5[(z) % 769] = redarray[(z + 657) % 769];
-            redarray6[(z) % 769] = redarray[(z + 767) % 769];
-
-
-            bluearray0[(z) % 769] = bluearray[(z + 110) % 769];
-            bluearray1[(z) % 769] = bluearray[(z + 219) % 769];
-            bluearray2[(z) % 769] = bluearray[(z + 329) % 769];
-            bluearray3[(z) % 769] = bluearray[(z + 438) % 769];
-            bluearray4[(z) % 769] = bluearray[(z + 548) % 769];
-            bluearray5[(z) % 769] = bluearray[(z + 657) % 769];
-            bluearray6[(z) % 769] = bluearray[(z + 767) % 769];
-
-
-            greenarray0[(z) % 769] = greenarray[(z + 110) % 769];
-            greenarray1[(z) % 769] = greenarray[(z + 219) % 769];
-            greenarray2[(z) % 769] = greenarray[(z + 329) % 769];
-            greenarray3[(z) % 769] = greenarray[(z + 438) % 769];
-            greenarray4[(z) % 769] = greenarray[(z + 548) % 769];
-            greenarray5[(z) % 769] = greenarray[(z + 657) % 769];
-            greenarray6[(z) % 769] = greenarray[(z + 767) % 769];
-
-        }
-
-
-colorswitch = 0;
-      summit = 50;
-
-      for ( int x = 0; x < 201;x++ ){
-          summit = summit - asterisk;
-          if ( summit == 1){
-              asterisk = -1;
-          }
-          if (summit == 50){
-              asterisk = 1;
-          }
-
-          speedarray[x] = summit;
-
-      }
-
-
-       // y1 = 360;pendirector0=0;
-        y1 = 360;pendirector0=0;
-        for (int x = 0; x < 360; x++){
-            intarray01[x] = y1;
-            if (pendirector0 == 0) {
-                pencounter01 = pencounter01 + onehalf01;
-                y1 = pencounter01 + y1;
-                if (y1 >= 0) {
-                    pendirector0 = 1;
-                }
-            } else {
-                pencounter01 = pencounter01 - onehalf01;
-                y1 = y1 + pencounter01;
-                if (y1 <= 0) {
-                    pendirector0 = 0;
-                }
-            }
-        }//pendirector0=0;
-        //y1 = 365;
-        pendirector0=0;
-        y1 = 372.85;
-        for (int x = 0; x < 360; x++){
-            intarray11[x] = y1;
-            if (pendirector0 == 0) {
-                pencounter11 = pencounter11 + onehalf11;
-                y1 = pencounter11 + y1;
-                if (y1 >= 0) {
-                    pendirector0 = 1;
-                }
-            } else {
-                pencounter11 = pencounter11 - onehalf11;
-                y1 = y1 + pencounter11;
-                if (y1 <= 0) {
-                    pendirector0 = 0;
-                }
-            }
-        }pendirector0=0;
-        //y1 = 370;
-        y1 = 385.70;
-        for (int x = 0; x < 360; x++){
-            intarray21[x] = y1;
-            if (pendirector0 == 0) {
-                pencounter21 = pencounter21 + onehalf21;
-                y1 = pencounter21 + y1;
-                if (y1 >= 0) {
-                    pendirector0 = 1;
-                }
-            } else {
-                pencounter21 = pencounter21 - onehalf21;
-                y1 = y1 + pencounter21;
-                if (y1 <= 0) {
-                    pendirector0 = 0;
-                }
-            }
-        }pendirector0=0;
-        //y1 = 375;
-        y1 = 398.55;
-        for (int x = 0; x < 360; x++){
-            intarray31[x] = y1;
-            if (pendirector0 == 0) {
-                pencounter31 = pencounter31 + onehalf31;
-                y1 = pencounter31 + y1;
-                if (y1 >= 0) {
-                    pendirector0 = 1;
-                }
-            } else {
-                pencounter31 = pencounter31 - onehalf31;
-                y1 = y1 + pencounter31;
-                if (y1 <= 0) {
-                    pendirector0 = 0;
-                }
-            }
-        }pendirector0=0;
-        //y1 = 380;
-        y1 = 411.40;
-        for (int x = 0; x < 360; x++){
-            intarray41[x] = y1;
-            if (pendirector0 == 0) {
-                pencounter41 = pencounter41 + onehalf41;
-                y1 = pencounter41 + y1;
-                if (y1 >= 0) {
-                    pendirector0 = 1;
-                }
-            } else {
-                pencounter41 = pencounter41 - onehalf41;
-                y1 = y1 + pencounter41;
-                if (y1 <= 0) {
-                    pendirector0 = 0;
-                }
-            }
-        }pendirector0=0;
-        //y1 = 385;
-        y1 = 424.25;
-        for (int x = 0; x < 360; x++){
-            intarray51[x] = y1;
-            if (pendirector0 == 0) {
-                pencounter51 = pencounter51 + onehalf51;
-                y1 = pencounter51 + y1;
-                if (y1 >= 0) {
-                    pendirector0 = 1;
-                }
-            } else {
-                pencounter51 = pencounter51 - onehalf51;
-                y1 = y1 + pencounter51;
-                if (y1 <= 0) {
-                    pendirector0 = 0;
-                }
-            }
-        }pendirector0=0;
-       // y1 = 390;
-        y1 = 437.10;
-        for (int x = 0; x < 360; x++){
-            intarray61[x] = y1;
-            if (pendirector0 == 0) {
-                pencounter61 = pencounter61 + onehalf61;
-                y1 = pencounter61 + y1;
-                if (y1 >= 0) {
-                    pendirector0 = 1;
-                }
-            } else {
-                pencounter61 = pencounter61 - onehalf61;
-                y1 = y1 + pencounter61;
-                if (y1 <= 0) {
-                    pendirector0 = 0;
-                }
-            }
-        }
-
-        double y = 90;pendirector0=0;
-      for (int x = 0; x < 180; x++){
-          intarray0[x] = y;
-          if (pendirector0 == 0) {
-              pencounter0 = pencounter0 + onehalf0;
-              y = pencounter0 + y;
-              if (y >= 0) {
-                  pendirector0 = 1;
-              }
-          } else {
-              pencounter0 = pencounter0 - onehalf0;
-              y = y + pencounter0;
-              if (y <= 0) {
-                  pendirector0 = 0;
-              }
-          }
-      }
-y = 102.85;
-      for (int x = 0; x < 180; x++){
-          intarray1[x] = y;
-          if (pendirector1== 0) {
-
-              pencounter1 = pencounter1 + onehalf1;
-              y = pencounter1+  y;
-              if ( y >= 0) {
-                  pendirector1= 1;
-              }
-          } else {
-              pencounter1= pencounter1- onehalf1;
-              y =  y + pencounter1;
-              if ( y <= 0) {
-                  pendirector1= 0;
-              }
-          }
-
-      }
-y = 115.7;
-      for (int x = 0; x < 180; x++){
-          intarray2[x] = y;
-
-
-          if (pendirector2== 0) {
-
-              pencounter2 = pencounter2 + onehalf2;
-              y = pencounter2+ y;
-              if (y >= 0) {
-                  pendirector2= 1;
-              }
-          } else {
-              pencounter2= pencounter2- onehalf2;
-              y = y + pencounter2;
-              if (y <= 0) {
-                  pendirector2= 0;
-              }
-          }
-      }
-y = 128.55;
-      for (int x = 0; x < 180; x++){
-          intarray3[x] = y;
-
-          if (pendirector3== 0) {
-
-              pencounter3 = pencounter3 + onehalf3;
-              y = pencounter3+ y;
-              if (y >= 0) {
-                  pendirector3= 1;
-              }
-          } else {
-              pencounter3= pencounter3- onehalf3;
-              y = y + pencounter3;
-              if (y <= 0) {
-                  pendirector3= 0;
-              }
-          }
-      }
-y = 141.4;
-      for (int x = 0; x < 180; x++){
-          intarray4[x] = y;
-
-          if (pendirector4== 0) {
-
-              pencounter4 = pencounter4 + onehalf4;
-              y = pencounter4+ y;
-              if (y >= 0) {
-                  pendirector4= 1;
-              }
-          } else {
-              pencounter4= pencounter4- onehalf4;
-              y = y + pencounter4;
-              if (y <= 0) {
-                  pendirector4= 0;
-              }
-          }
-      }
-y = 154.25;
-      for (int x = 0; x < 180; x++){
-          intarray5[x] = y;
-
-
-          if (pendirector5== 0) {
-
-              pencounter5 = pencounter5 + onehalf5;
-              y = pencounter5+ y;
-              if (y >= 0) {
-                  pendirector5= 1;
-              }
-          } else {
-              pencounter5= pencounter5- onehalf5;
-              y = y + pencounter5;
-              if (y <= 0) {
-                  pendirector5= 0;
-              }
-          }
-      }
-y = 167.1;
-      for (int x = 0; x < 180; x++){
-          intarray6[x] = y;
-
-          if (pendirector6== 0) {
-
-              pencounter6 = pencounter6 + onehalf6;
-              y = pencounter6+ y;
-              if (y >= 0) {
-                  pendirector6= 1;
-              }
-          } else {
-              pencounter6= pencounter6- onehalf6;
-              y = y + pencounter6;
-              if (y <= 0) {
-                  pendirector6= 0;
-              }
-          }
-      }
-
-
-
-
-      for (int x = 0; x < (intarray01.length-1); x++){
-          intarray02[z] = intarray01[x];
-          z++;
-          intarray02[z] = ((intarray01[x]+intarray01[x+1])/2);
-          z++;
-       //   intarray02[z] = intarray01[x+1];
-       //   z++;
-      }z=0;
-      for (int x = 0; x < (intarray11.length-1); x++){
-          intarray12[z] = intarray11[x];
-          z++;
-          intarray12[z] = ((intarray11[x]+intarray11[x+1])/2);
-          z++;
-       //   intarray12[z] = intarray11[x+1];
-       //   z++;
-      }z=0;
-      for (int x = 0; x < (intarray61.length-1); x++){
-          intarray62[z] = intarray61[x];
-          z++;
-          intarray62[z] = ((intarray61[x]+intarray61[x+1])/2);
-          z++;
-       //   intarray62[z] = intarray61[x+1];
-       //   z++;
-      }z=0;
-      for (int x = 0; x < (intarray21.length-1); x++){
-          intarray22[z] = intarray21[x];
-          z++;
-          intarray22[z] = ((intarray21[x]+intarray21[x+1])/2);
-          z++;
-         // intarray22[z] = intarray21[x+1];
-        //  z++;
-      }z=0;
-      for (int x = 0; x < (intarray31.length-1); x++){
-          intarray32[z] = intarray31[x];
-          z++;
-          intarray32[z] = ((intarray31[x]+intarray31[x+1])/2);
-          z++;
-       //   intarray32[z] = intarray31[x+1];
-       //   z++;
-      }z=0;
-      for (int x = 0; x < (intarray41.length-1); x++){
-          intarray42[z] = intarray41[x];
-          z++;
-          intarray42[z] = ((intarray41[x]+intarray41[x+1])/2);
-          z++;
-       //   intarray42[z] = intarray41[x+1];
-        //  z++;
-      }z=0;
-      for (int x = 0; x < (intarray51.length-1); x++){
-          intarray52[z] = intarray51[x];
-          z++;
-          intarray52[z] = ((intarray51[x]+intarray51[x+1])/2);
-          z++;
-        //  intarray52[z] = intarray51[x+1];
-        //  z++;
-      }z=0;
-      for (int x = 0; x < (intarray61.length-1); x++){
-          intarray62[z] = intarray61[x];
-          z++;
-          intarray62[z] = ((intarray61[x]+intarray61[x+1])/2);
-          z++;
-        //  intarray62[z] = intarray61[x+1];
-        //  z++;
-      }z=0;
-
-
-
-
-        rainbowview0z =(ImageView)  findViewById(R.id.rainbow0z);
-        rainbowview0 =(ImageView)  findViewById(R.id.rainbow0);
-        rainbowview1 =(ImageView)  findViewById(R.id.rainbow1);
-        rainbowview2 =(ImageView)  findViewById(R.id.rainbow2);
-        rainbowview3 =(ImageView)  findViewById(R.id.rainbow3);
-        rainbowview4 =(ImageView)  findViewById(R.id.rainbow4);
-        rainbowview5 =(ImageView)  findViewById(R.id.rainbow5);
-        rainbowview6 =(ImageView)  findViewById(R.id.rainbow6);
-
-        rainbowview01 =(ImageView)  findViewById(R.id.rainbow01);
-        rainbowview11 =(ImageView)  findViewById(R.id.rainbow11);
-        rainbowview21 =(ImageView)  findViewById(R.id.rainbow21);
-        rainbowview31 =(ImageView)  findViewById(R.id.rainbow31);
-        rainbowview41 =(ImageView)  findViewById(R.id.rainbow41);
-        rainbowview51 =(ImageView)  findViewById(R.id.rainbow51);
-        rainbowview61 =(ImageView)  findViewById(R.id.rainbow61);
-
-
-
-
-
-        int penmapwidth = mutablepenmap.getWidth();  //423
-        int penmapheight = mutablepenmap.getHeight();  //423
-
-       // double newWidthpen = (penmapwidth)*.575;
-      //  double newHeightpen = (penmapheight)*.575;
-        double newWidthpen = (penmapwidth)*.5;
-        double newHeightpen = (penmapheight)*.5;
-        /*
-        int newWidthpen = 446;
-        int newHeightpen = 446;
-        */
-
-        for (int x = 0; x < 360; x++){
-            Matrix matarray71 = new Matrix();
-            matarray01z[x] = matarray71;
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray01z[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray01z[x].postRotate((int)intarray02[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray01z[x], true);
-            bMapRotatepen01[x] = Bitmapmaker;
-        }
-        for (int x = 0; x < 360; x++){
-            Matrix matarray71 = new Matrix();
-            matarray11[x] = matarray71;
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray11[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray11[x].postRotate((int)intarray12[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray11[x], true);
-            bMapRotatepen11[x] = Bitmapmaker;
-        }
-        for (int x = 0; x < 360; x++){
-            Matrix matarray71 = new Matrix();
-            matarray21[x] = matarray71;
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray21[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray21[x].postRotate((int)intarray22[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray21[x], true);
-            bMapRotatepen21[x] = Bitmapmaker;
-        }
-        for (int x = 0; x < 360; x++){
-            Matrix matarray71 = new Matrix();
-            matarray31[x] = matarray71;
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray31[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray31[x].postRotate((int)intarray32[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray31[x], true);
-            bMapRotatepen31[x] = Bitmapmaker;
-        }
-
-        for (int x = 0; x < 360; x++){
-            Matrix matarray71 = new Matrix();
-            matarray41[x] = matarray71;
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray41[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray41[x].postRotate((int)intarray42[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray41[x], true);
-            bMapRotatepen41[x] = Bitmapmaker;
-        }
-
-        for (int x = 0; x < 360; x++){
-            Matrix matarray71 = new Matrix();
-            matarray51[x] = matarray71;
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray51[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray51[x].postRotate((int)intarray52[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray51[x], true);
-            bMapRotatepen51[x] = Bitmapmaker;
-        }
-
-        for (int x = 0; x < 360; x++){
-            Matrix matarray71 = new Matrix();
-            matarray61[x] = matarray71;
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray61[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray61[x].postRotate((int)intarray62[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray61[x], true);
-            bMapRotatepen61[x] = Bitmapmaker;
-        }
-        // weird and normal divide
-
-        for (int x = 0; x < 180; x++){
-            Matrix matarray01 = new Matrix();
-            matarray0[x] = matarray01;
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray0[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray0[x].postRotate((int)intarray0[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray0[x], true);
-            bMapRotatepen0[x] = Bitmapmaker;
-        }
-
-        for (int x = 0; x < 180; x++){
-            Matrix matarray01 = new Matrix();
-            matarray1[x] = matarray01;
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray1[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray1[x].postRotate((int)intarray1[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray1[x], true);
-            bMapRotatepen1[x] = Bitmapmaker;
-        }
-
-        for (int x = 0; x < 180; x++){
-            Matrix matarray02 = new Matrix();
-            matarray2[x] = matarray02;
-
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray2[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray2[x].postRotate((int)intarray2[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray2[x], true);
-            bMapRotatepen2[x] = Bitmapmaker;
-        }
-
-        for (int x = 0; x < 180; x++){
-            Matrix matarray03 = new Matrix();
-            matarray3[x] = matarray03;
-
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray3[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray3[x].postRotate((int)intarray3[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray3[x], true);
-            bMapRotatepen3[x] = Bitmapmaker;
-        }
-
-        for (int x = 0; x < 180; x++){
-            Matrix matarray04 = new Matrix();
-            matarray4[x] = matarray04;
-
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray4[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray4[x].postRotate((int)intarray4[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray4[x], true);
-            bMapRotatepen4[x] = Bitmapmaker;
-        }
-
-        for (int x = 0; x < 180; x++){
-            Matrix matarray05 = new Matrix();
-            matarray5[x] = matarray05;
-
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray5[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray5[x].postRotate((int)intarray5[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray5[x], true);
-            bMapRotatepen5[x] = Bitmapmaker;
-        }
-
-        for (int x = 0; x < 180; x++){
-            Matrix matarray06 = new Matrix();
-            matarray6[x] = matarray06;
-
-
-            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
-            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
-            matarray6[x].postScale(scaleWidthpen, scaleHeightpen);
-            matarray6[x].postRotate((int)intarray6[x]);
-            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray6[x], true);
-            bMapRotatepen6[x] = Bitmapmaker;
-        }
-
-
-
-
-        for ( int f = 0; f < 720;f++ ){
-            Bitmap mutableroto = createSingleImageFromMultipleImages().copy(Bitmap.Config.ARGB_4444, true);
-           cancelarray[f] = mutableroto;
-        }
-/*
-
-        for ( int f = 0; f < 501;f++ ){
-            Bitmap mutableroto = createSingleImageFromMultipleImages().copy(Bitmap.Config.ARGB_8888, true);
-           cancelarray[f] = mutableroto;
-        }*/
-
-
-        /*
-        rainbowview0.setAlpha(128);
-        rainbowview1.setAlpha(128);
-        rainbowview2.setAlpha(128);
-        rainbowview3.setAlpha(128);
-        rainbowview4.setAlpha(128);
-        rainbowview5.setAlpha(128);
-        rainbowview6.setAlpha(128);
-*/
-        faceview0 =(ImageView)  findViewById(R.id.face0);
-        faceview1 =(ImageView)  findViewById(R.id.face1);
-        faceview2 =(ImageView)  findViewById(R.id.face2);
-        faceview3 =(ImageView)  findViewById(R.id.face3);
-        faceview4 =(ImageView)  findViewById(R.id.face4);
-        faceview5 =(ImageView)  findViewById(R.id.face5);
-        faceview6 =(ImageView)  findViewById(R.id.face6);
-/*
-        rainbowview0.setImageResource(R.drawable.pendulumhandtwosmalldot);
-        rainbowview1.setImageResource(R.drawable.pendulumhandtwosmalldot);
-        rainbowview2.setImageResource(R.drawable.pendulumhandtwosmalldot);
-        rainbowview3.setImageResource(R.drawable.pendulumhandtwosmalldot);
-        rainbowview4.setImageResource(R.drawable.pendulumhandtwosmalldot);
-        rainbowview5.setImageResource(R.drawable.pendulumhandtwosmalldot);
-        rainbowview6.setImageResource(R.drawable.pendulumhandtwosmalldot);
-*/
-
-        rainbowview0z.setColorFilter(Color.argb(255, 255, 0, 0));
-        rainbowview1.setColorFilter(Color.argb(255, 255, 128, 0));
-        rainbowview2.setColorFilter(Color.argb(255, 255, 255, 0));
-        rainbowview3.setColorFilter(Color.argb(255, 0, 255, 0));
-        rainbowview4.setColorFilter(Color.argb(255, 0, 255, 255));
-        rainbowview5.setColorFilter(Color.argb(255, 0, 128, 255));
-        rainbowview6.setColorFilter(Color.argb(255, 0, 0, 255));
-/*
-        rainbowview01.setColorFilter(Color.argb(255, 0, 255, 255));
-        rainbowview11.setColorFilter(Color.argb(255, 0, 128, 255));
-        rainbowview21.setColorFilter(Color.argb(255, 0, 0, 255));
-        rainbowview31.setColorFilter(Color.argb(255, 255, 0, 255));
-        rainbowview41.setColorFilter(Color.argb(255, 255, 0, 0));
-        rainbowview51.setColorFilter(Color.argb(255, 255, 128, 0));
-        rainbowview61.setColorFilter(Color.argb(255, 255, 255, 0));
-       */  /*
-        rainbowview6.setColorFilter(Color.argb(255, 255, 0, 0));
-        rainbowview5.setColorFilter(Color.argb(255, 255, 127, 0));
-        rainbowview4.setColorFilter(Color.argb(255, 255, 255, 0));
-        rainbowview3.setColorFilter(Color.argb(255, 0, 255, 0));
-        rainbowview2.setColorFilter(Color.argb(255, 0, 0, 255));
-        rainbowview1.setColorFilter(Color.argb(255, 75, 0, 130));
-        rainbowview0.setColorFilter(Color.argb(255, 148, 0, 211));
-
-        rainbowview0.setColorFilter(Color.argb(255, 255, 0, 0));
-        rainbowview1.setColorFilter(Color.argb(255, 255, 127, 0));
-        rainbowview2.setColorFilter(Color.argb(255, 255, 255, 0));
-        rainbowview3.setColorFilter(Color.argb(255, 0, 255, 0));
-        rainbowview4.setColorFilter(Color.argb(255, 0, 0, 255));
-        rainbowview5.setColorFilter(Color.argb(255, 75, 0, 130));
-        rainbowview6.setColorFilter(Color.argb(255, 148, 0, 211));
-        /*
-        rainbowview01.setColorFilter(Color.argb(255, 255, 0, 0));
-        rainbowview11.setColorFilter(Color.argb(255, 255, 127, 0));
-        rainbowview21.setColorFilter(Color.argb(255, 255, 255, 0));
-        rainbowview31.setColorFilter(Color.argb(255, 0, 255, 0));
-        rainbowview41.setColorFilter(Color.argb(255, 0, 0, 255));
-        rainbowview51.setColorFilter(Color.argb(255, 75, 0, 130));
-        rainbowview61.setColorFilter(Color.argb(255, 148, 0, 211));
-        /*
-        rainbowview01.setColorFilter(Color.argb(255, 0, 0, 255));
-        rainbowview11.setColorFilter(Color.argb(255, 0, 128, 255));
-        rainbowview21.setColorFilter(Color.argb(255, 0, 255, 255));
-        rainbowview31.setColorFilter(Color.argb(255, 0, 255, 0));
-        rainbowview41.setColorFilter(Color.argb(255, 255, 255, 0));
-        rainbowview51.setColorFilter(Color.argb(255, 255, 128, 0));
-        rainbowview61.setColorFilter(Color.argb(255, 255, 0, 0));
-        /*
-        faceview0.setImageResource(R.drawable.clockfaceprotofour);
-        faceview1.setImageResource(R.drawable.clockfaceprotofour);
-        faceview2.setImageResource(R.drawable.clockfaceprotofour);
-        faceview3.setImageResource(R.drawable.clockfaceprotofour);
-        faceview4.setImageResource(R.drawable.clockfaceprotofour);
-        faceview5.setImageResource(R.drawable.clockfaceprotofour);
-        faceview6.setImageResource(R.drawable.clockfaceprotofour);
-        */
-
-        rainbowview0z.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview0.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview1.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview2.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview3.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview4.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview5.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview6.setScaleType(ImageView.ScaleType.CENTER);
-
-
-        rainbowview01.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview11.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview21.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview31.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview41.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview51.setScaleType(ImageView.ScaleType.CENTER);
-        rainbowview61.setScaleType(ImageView.ScaleType.CENTER);
-
-        timerdelayer = 1;
-
-
-        fasterbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               fastercatch++;
-            }
-            });
-
-        slowerbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                slowercatch++;
-            }
-            });
+        init();
 
 
         whytho();
@@ -1750,6 +955,8 @@ y = 167.1;
 
     public void whytho() {
 
+
+        LoadingScreenBar.setVisibility(View.INVISIBLE);
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -1871,6 +1078,860 @@ y = 167.1;
         }, 0, 1);
 
     }
+
+    public void init(){
+
+
+
+
+        Bitmap penmap = BitmapFactory.decodeResource(getResources(), R.drawable.dotssix);
+
+        Bitmap transparentmap = BitmapFactory.decodeResource(getResources(), R.drawable.tinytransparent);
+
+        Bitmap mutablepenmap = transparentmap.copy(Bitmap.Config.ARGB_4444, true);
+
+
+/*
+        for ( int q = 0; q < 721;q++ ){
+            canvas[q] = new Canvas(mutablepenmap);
+        }
+*/
+        for ( int q = 0; q < 359;q++ ){
+            redicarray[q] = q;
+        }
+        redicarray[360]  = 0;
+
+/*
+        for ( int q = 0; q < 502;q++ ){
+            canvas[q] = new Canvas(mutablepenmap);
+        }*/
+
+
+
+  /*
+        penangle0 = 90;
+        penangle1 = 102;
+        penangle2 = 114;
+        penangle3 = 126;
+        penangle4 = 138;
+        penangle5 = 150;
+        penangle6 = 162;
+    */
+        penangle0 = 90;
+        penangle1 = 95;
+        penangle2 = 100;
+        penangle3 = 105;
+        penangle4 = 110;
+        penangle5 = 115;
+        penangle6 = 120;
+        penangle01 = 360;
+        penangle11 = 365;
+        penangle21 = 370;
+        penangle31 = 375;
+        penangle41 = 380;
+        penangle51 = 385;
+        penangle61 = 390;
+      /*
+        penangle0 = 60;
+        penangle1 = 63;
+        penangle2 = 66;
+        penangle3 = 69;
+        penangle4 = 72;
+        penangle5 = 75;
+        penangle6 = 78;
+ */
+
+        for ( int colorswitch = 0; colorswitch < 769;colorswitch++ ){
+            if(colorswitch <= 127){
+                bix = bix - 1; // from 255 to  128
+                syx = syx + 1; // from 128 to 255
+            }
+            if(colorswitch <= 255 && colorswitch > 127){
+                bix--; // from 128 to 0
+                mix++; // from 0 to 128
+            }
+            if(colorswitch >= 256 && colorswitch < 383){
+                mix = mix + 1; // from 128 to 255
+                syx--; // from 255 to 128
+            }
+            if(colorswitch >= 384 && colorswitch < 512){
+                syx--; // from 128 to 0
+                bix++; // from 0 to 128
+            }
+            if(colorswitch >= 513 && colorswitch < 640){
+                mix--; // from 255 to 128
+                bix++; // from 128 to 255
+            }
+            if(colorswitch >= 641 && colorswitch < 769){
+                mix--; // from 128 to 0
+                syx++; // from 0 to 128
+
+            }
+            if (colorswitch == 0){
+                bix = 255;
+                syx = 128;
+                mix = 0;
+            }
+            redarray[colorswitch] = bix;
+            greenarray[colorswitch] = syx;
+            bluearray[colorswitch] = mix;
+        }
+
+        for ( int z = 0; z <= redarray.length;z++ ) {
+
+
+            redarray0[(z) % 769] = redarray[(z + 110) % 769];
+            redarray1[(z) % 769] = redarray[(z + 219) % 769];
+            redarray2[(z) % 769] = redarray[(z + 329) % 769];
+            redarray3[(z) % 769] = redarray[(z + 438) % 769];
+            redarray4[(z) % 769] = redarray[(z + 548) % 769];
+            redarray5[(z) % 769] = redarray[(z + 657) % 769];
+            redarray6[(z) % 769] = redarray[(z + 767) % 769];
+
+
+            bluearray0[(z) % 769] = bluearray[(z + 110) % 769];
+            bluearray1[(z) % 769] = bluearray[(z + 219) % 769];
+            bluearray2[(z) % 769] = bluearray[(z + 329) % 769];
+            bluearray3[(z) % 769] = bluearray[(z + 438) % 769];
+            bluearray4[(z) % 769] = bluearray[(z + 548) % 769];
+            bluearray5[(z) % 769] = bluearray[(z + 657) % 769];
+            bluearray6[(z) % 769] = bluearray[(z + 767) % 769];
+
+
+            greenarray0[(z) % 769] = greenarray[(z + 110) % 769];
+            greenarray1[(z) % 769] = greenarray[(z + 219) % 769];
+            greenarray2[(z) % 769] = greenarray[(z + 329) % 769];
+            greenarray3[(z) % 769] = greenarray[(z + 438) % 769];
+            greenarray4[(z) % 769] = greenarray[(z + 548) % 769];
+            greenarray5[(z) % 769] = greenarray[(z + 657) % 769];
+            greenarray6[(z) % 769] = greenarray[(z + 767) % 769];
+
+        }
+
+
+        colorswitch = 0;
+        summit = 50;
+
+        for ( int x = 0; x < 201;x++ ){
+            summit = summit - asterisk;
+            if ( summit == 1){
+                asterisk = -1;
+            }
+            if (summit == 50){
+                asterisk = 1;
+            }
+
+            speedarray[x] = summit;
+
+        }
+
+
+        // y1 = 360;pendirector0=0;
+        y1 = 360;pendirector0=0;
+        for (int x = 0; x < 360; x++){
+            intarray01[x] = y1;
+            if (pendirector0 == 0) {
+                pencounter01 = pencounter01 + onehalf01;
+                y1 = pencounter01 + y1;
+                if (y1 >= 0) {
+                    pendirector0 = 1;
+                }
+            } else {
+                pencounter01 = pencounter01 - onehalf01;
+                y1 = y1 + pencounter01;
+                if (y1 <= 0) {
+                    pendirector0 = 0;
+                }
+            }
+        }//pendirector0=0;
+        //y1 = 365;
+        pendirector0=0;
+        y1 = 372.85;
+        for (int x = 0; x < 360; x++){
+            intarray11[x] = y1;
+            if (pendirector0 == 0) {
+                pencounter11 = pencounter11 + onehalf11;
+                y1 = pencounter11 + y1;
+                if (y1 >= 0) {
+                    pendirector0 = 1;
+                }
+            } else {
+                pencounter11 = pencounter11 - onehalf11;
+                y1 = y1 + pencounter11;
+                if (y1 <= 0) {
+                    pendirector0 = 0;
+                }
+            }
+        }pendirector0=0;
+        //y1 = 370;
+        y1 = 385.70;
+        for (int x = 0; x < 360; x++){
+            intarray21[x] = y1;
+            if (pendirector0 == 0) {
+                pencounter21 = pencounter21 + onehalf21;
+                y1 = pencounter21 + y1;
+                if (y1 >= 0) {
+                    pendirector0 = 1;
+                }
+            } else {
+                pencounter21 = pencounter21 - onehalf21;
+                y1 = y1 + pencounter21;
+                if (y1 <= 0) {
+                    pendirector0 = 0;
+                }
+            }
+        }pendirector0=0;
+        //y1 = 375;
+        y1 = 398.55;
+        for (int x = 0; x < 360; x++){
+            intarray31[x] = y1;
+            if (pendirector0 == 0) {
+                pencounter31 = pencounter31 + onehalf31;
+                y1 = pencounter31 + y1;
+                if (y1 >= 0) {
+                    pendirector0 = 1;
+                }
+            } else {
+                pencounter31 = pencounter31 - onehalf31;
+                y1 = y1 + pencounter31;
+                if (y1 <= 0) {
+                    pendirector0 = 0;
+                }
+            }
+        }pendirector0=0;
+        //y1 = 380;
+        y1 = 411.40;
+        for (int x = 0; x < 360; x++){
+            intarray41[x] = y1;
+            if (pendirector0 == 0) {
+                pencounter41 = pencounter41 + onehalf41;
+                y1 = pencounter41 + y1;
+                if (y1 >= 0) {
+                    pendirector0 = 1;
+                }
+            } else {
+                pencounter41 = pencounter41 - onehalf41;
+                y1 = y1 + pencounter41;
+                if (y1 <= 0) {
+                    pendirector0 = 0;
+                }
+            }
+        }pendirector0=0;
+        //y1 = 385;
+        y1 = 424.25;
+        for (int x = 0; x < 360; x++){
+            intarray51[x] = y1;
+            if (pendirector0 == 0) {
+                pencounter51 = pencounter51 + onehalf51;
+                y1 = pencounter51 + y1;
+                if (y1 >= 0) {
+                    pendirector0 = 1;
+                }
+            } else {
+                pencounter51 = pencounter51 - onehalf51;
+                y1 = y1 + pencounter51;
+                if (y1 <= 0) {
+                    pendirector0 = 0;
+                }
+            }
+        }pendirector0=0;
+        // y1 = 390;
+        y1 = 437.10;
+        for (int x = 0; x < 360; x++){
+            intarray61[x] = y1;
+            if (pendirector0 == 0) {
+                pencounter61 = pencounter61 + onehalf61;
+                y1 = pencounter61 + y1;
+                if (y1 >= 0) {
+                    pendirector0 = 1;
+                }
+            } else {
+                pencounter61 = pencounter61 - onehalf61;
+                y1 = y1 + pencounter61;
+                if (y1 <= 0) {
+                    pendirector0 = 0;
+                }
+            }
+        }
+
+        double y = 90;pendirector0=0;
+        for (int x = 0; x < 180; x++){
+            intarray0[x] = y;
+            if (pendirector0 == 0) {
+                pencounter0 = pencounter0 + onehalf0;
+                y = pencounter0 + y;
+                if (y >= 0) {
+                    pendirector0 = 1;
+                }
+            } else {
+                pencounter0 = pencounter0 - onehalf0;
+                y = y + pencounter0;
+                if (y <= 0) {
+                    pendirector0 = 0;
+                }
+            }
+        }
+        y = 102.85;
+        for (int x = 0; x < 180; x++){
+            intarray1[x] = y;
+            if (pendirector1== 0) {
+
+                pencounter1 = pencounter1 + onehalf1;
+                y = pencounter1+  y;
+                if ( y >= 0) {
+                    pendirector1= 1;
+                }
+            } else {
+                pencounter1= pencounter1- onehalf1;
+                y =  y + pencounter1;
+                if ( y <= 0) {
+                    pendirector1= 0;
+                }
+            }
+
+        }
+        y = 115.7;
+        for (int x = 0; x < 180; x++){
+            intarray2[x] = y;
+
+
+            if (pendirector2== 0) {
+
+                pencounter2 = pencounter2 + onehalf2;
+                y = pencounter2+ y;
+                if (y >= 0) {
+                    pendirector2= 1;
+                }
+            } else {
+                pencounter2= pencounter2- onehalf2;
+                y = y + pencounter2;
+                if (y <= 0) {
+                    pendirector2= 0;
+                }
+            }
+        }
+        y = 128.55;
+        for (int x = 0; x < 180; x++){
+            intarray3[x] = y;
+
+            if (pendirector3== 0) {
+
+                pencounter3 = pencounter3 + onehalf3;
+                y = pencounter3+ y;
+                if (y >= 0) {
+                    pendirector3= 1;
+                }
+            } else {
+                pencounter3= pencounter3- onehalf3;
+                y = y + pencounter3;
+                if (y <= 0) {
+                    pendirector3= 0;
+                }
+            }
+        }
+        y = 141.4;
+        for (int x = 0; x < 180; x++){
+            intarray4[x] = y;
+
+            if (pendirector4== 0) {
+
+                pencounter4 = pencounter4 + onehalf4;
+                y = pencounter4+ y;
+                if (y >= 0) {
+                    pendirector4= 1;
+                }
+            } else {
+                pencounter4= pencounter4- onehalf4;
+                y = y + pencounter4;
+                if (y <= 0) {
+                    pendirector4= 0;
+                }
+            }
+        }
+        y = 154.25;
+        for (int x = 0; x < 180; x++){
+            intarray5[x] = y;
+
+
+            if (pendirector5== 0) {
+
+                pencounter5 = pencounter5 + onehalf5;
+                y = pencounter5+ y;
+                if (y >= 0) {
+                    pendirector5= 1;
+                }
+            } else {
+                pencounter5= pencounter5- onehalf5;
+                y = y + pencounter5;
+                if (y <= 0) {
+                    pendirector5= 0;
+                }
+            }
+        }
+        y = 167.1;
+        for (int x = 0; x < 180; x++){
+            intarray6[x] = y;
+
+            if (pendirector6== 0) {
+
+                pencounter6 = pencounter6 + onehalf6;
+                y = pencounter6+ y;
+                if (y >= 0) {
+                    pendirector6= 1;
+                }
+            } else {
+                pencounter6= pencounter6- onehalf6;
+                y = y + pencounter6;
+                if (y <= 0) {
+                    pendirector6= 0;
+                }
+            }
+        }
+
+
+        LoadingScreenBar.setProgress(30);
+
+
+        for (int x = 0; x < (intarray01.length-1); x++){
+            intarray02[z] = intarray01[x];
+            z++;
+            intarray02[z] = ((intarray01[x]+intarray01[x+1])/2);
+            z++;
+            //   intarray02[z] = intarray01[x+1];
+            //   z++;
+        }z=0;
+        for (int x = 0; x < (intarray11.length-1); x++){
+            intarray12[z] = intarray11[x];
+            z++;
+            intarray12[z] = ((intarray11[x]+intarray11[x+1])/2);
+            z++;
+            //   intarray12[z] = intarray11[x+1];
+            //   z++;
+        }z=0;
+        for (int x = 0; x < (intarray61.length-1); x++){
+            intarray62[z] = intarray61[x];
+            z++;
+            intarray62[z] = ((intarray61[x]+intarray61[x+1])/2);
+            z++;
+            //   intarray62[z] = intarray61[x+1];
+            //   z++;
+        }z=0;
+        for (int x = 0; x < (intarray21.length-1); x++){
+            intarray22[z] = intarray21[x];
+            z++;
+            intarray22[z] = ((intarray21[x]+intarray21[x+1])/2);
+            z++;
+            // intarray22[z] = intarray21[x+1];
+            //  z++;
+        }z=0;
+        for (int x = 0; x < (intarray31.length-1); x++){
+            intarray32[z] = intarray31[x];
+            z++;
+            intarray32[z] = ((intarray31[x]+intarray31[x+1])/2);
+            z++;
+            //   intarray32[z] = intarray31[x+1];
+            //   z++;
+        }z=0;
+        for (int x = 0; x < (intarray41.length-1); x++){
+            intarray42[z] = intarray41[x];
+            z++;
+            intarray42[z] = ((intarray41[x]+intarray41[x+1])/2);
+            z++;
+            //   intarray42[z] = intarray41[x+1];
+            //  z++;
+        }z=0;
+        for (int x = 0; x < (intarray51.length-1); x++){
+            intarray52[z] = intarray51[x];
+            z++;
+            intarray52[z] = ((intarray51[x]+intarray51[x+1])/2);
+            z++;
+            //  intarray52[z] = intarray51[x+1];
+            //  z++;
+        }z=0;
+        for (int x = 0; x < (intarray61.length-1); x++){
+            intarray62[z] = intarray61[x];
+            z++;
+            intarray62[z] = ((intarray61[x]+intarray61[x+1])/2);
+            z++;
+            //  intarray62[z] = intarray61[x+1];
+            //  z++;
+        }z=0;
+
+
+
+
+        rainbowview0z =(ImageView)  findViewById(R.id.rainbow0z);
+        rainbowview0 =(ImageView)  findViewById(R.id.rainbow0);
+        rainbowview1 =(ImageView)  findViewById(R.id.rainbow1);
+        rainbowview2 =(ImageView)  findViewById(R.id.rainbow2);
+        rainbowview3 =(ImageView)  findViewById(R.id.rainbow3);
+        rainbowview4 =(ImageView)  findViewById(R.id.rainbow4);
+        rainbowview5 =(ImageView)  findViewById(R.id.rainbow5);
+        rainbowview6 =(ImageView)  findViewById(R.id.rainbow6);
+
+        rainbowview01 =(ImageView)  findViewById(R.id.rainbow01);
+        rainbowview11 =(ImageView)  findViewById(R.id.rainbow11);
+        rainbowview21 =(ImageView)  findViewById(R.id.rainbow21);
+        rainbowview31 =(ImageView)  findViewById(R.id.rainbow31);
+        rainbowview41 =(ImageView)  findViewById(R.id.rainbow41);
+        rainbowview51 =(ImageView)  findViewById(R.id.rainbow51);
+        rainbowview61 =(ImageView)  findViewById(R.id.rainbow61);
+
+
+
+
+
+        int penmapwidth = mutablepenmap.getWidth();  //423
+        int penmapheight = mutablepenmap.getHeight();  //423
+
+        // double newWidthpen = (penmapwidth)*.575;
+        //  double newHeightpen = (penmapheight)*.575;
+        double newWidthpen = (penmapwidth)*.5;
+        double newHeightpen = (penmapheight)*.5;
+        /*
+        int newWidthpen = 446;
+        int newHeightpen = 446;
+        */
+
+        for (int x = 0; x < 360; x++){
+            Matrix matarray71 = new Matrix();
+            matarray01z[x] = matarray71;
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray01z[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray01z[x].postRotate((int)intarray02[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray01z[x], true);
+            bMapRotatepen01[x] = Bitmapmaker;
+        }
+        for (int x = 0; x < 360; x++){
+            Matrix matarray71 = new Matrix();
+            matarray11[x] = matarray71;
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray11[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray11[x].postRotate((int)intarray12[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray11[x], true);
+            bMapRotatepen11[x] = Bitmapmaker;
+        }
+        for (int x = 0; x < 360; x++){
+            Matrix matarray71 = new Matrix();
+            matarray21[x] = matarray71;
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray21[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray21[x].postRotate((int)intarray22[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray21[x], true);
+            bMapRotatepen21[x] = Bitmapmaker;
+        }
+        for (int x = 0; x < 360; x++){
+            Matrix matarray71 = new Matrix();
+            matarray31[x] = matarray71;
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray31[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray31[x].postRotate((int)intarray32[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray31[x], true);
+            bMapRotatepen31[x] = Bitmapmaker;
+        }
+
+
+        LoadingScreenBar.setProgress(35);
+
+        for (int x = 0; x < 360; x++){
+            Matrix matarray71 = new Matrix();
+            matarray41[x] = matarray71;
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray41[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray41[x].postRotate((int)intarray42[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray41[x], true);
+            bMapRotatepen41[x] = Bitmapmaker;
+        }
+
+        LoadingScreenBar.setProgress(40);
+
+        for (int x = 0; x < 360; x++){
+            Matrix matarray71 = new Matrix();
+            matarray51[x] = matarray71;
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray51[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray51[x].postRotate((int)intarray52[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray51[x], true);
+            bMapRotatepen51[x] = Bitmapmaker;
+        }
+
+        LoadingScreenBar.setProgress(45);
+
+        for (int x = 0; x < 360; x++){
+            Matrix matarray71 = new Matrix();
+            matarray61[x] = matarray71;
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray61[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray61[x].postRotate((int)intarray62[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray61[x], true);
+            bMapRotatepen61[x] = Bitmapmaker;
+        }
+        // weird and normal divide
+
+        LoadingScreenBar.setProgress(50);
+
+        for (int x = 0; x < 180; x++){
+            Matrix matarray01 = new Matrix();
+            matarray0[x] = matarray01;
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray0[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray0[x].postRotate((int)intarray0[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray0[x], true);
+            bMapRotatepen0[x] = Bitmapmaker;
+        }
+
+
+        LoadingScreenBar.setProgress(55);
+
+        for (int x = 0; x < 180; x++){
+            Matrix matarray01 = new Matrix();
+            matarray1[x] = matarray01;
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray1[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray1[x].postRotate((int)intarray1[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray1[x], true);
+            bMapRotatepen1[x] = Bitmapmaker;
+        }
+
+
+        LoadingScreenBar.setProgress(60);
+
+        for (int x = 0; x < 180; x++){
+            Matrix matarray02 = new Matrix();
+            matarray2[x] = matarray02;
+
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray2[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray2[x].postRotate((int)intarray2[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray2[x], true);
+            bMapRotatepen2[x] = Bitmapmaker;
+        }
+
+
+        LoadingScreenBar.setProgress(65);
+
+        for (int x = 0; x < 180; x++){
+            Matrix matarray03 = new Matrix();
+            matarray3[x] = matarray03;
+
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray3[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray3[x].postRotate((int)intarray3[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray3[x], true);
+            bMapRotatepen3[x] = Bitmapmaker;
+        }
+
+        LoadingScreenBar.setProgress(70);
+
+        for (int x = 0; x < 180; x++){
+            Matrix matarray04 = new Matrix();
+            matarray4[x] = matarray04;
+
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray4[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray4[x].postRotate((int)intarray4[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray4[x], true);
+            bMapRotatepen4[x] = Bitmapmaker;
+        }
+
+
+        LoadingScreenBar.setProgress(75);
+
+        for (int x = 0; x < 180; x++){
+            Matrix matarray05 = new Matrix();
+            matarray5[x] = matarray05;
+
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray5[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray5[x].postRotate((int)intarray5[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray5[x], true);
+            bMapRotatepen5[x] = Bitmapmaker;
+        }
+
+
+        LoadingScreenBar.setProgress(80);
+
+        for (int x = 0; x < 180; x++){
+            Matrix matarray06 = new Matrix();
+            matarray6[x] = matarray06;
+
+
+            float scaleWidthpen = ((float) newWidthpen) / penmapwidth;
+            float scaleHeightpen = ((float) newHeightpen) / penmapheight;
+            matarray6[x].postScale(scaleWidthpen, scaleHeightpen);
+            matarray6[x].postRotate((int)intarray6[x]);
+            Bitmap Bitmapmaker = Bitmap.createBitmap(penmap, 0, 0, penmapwidth, penmapheight, matarray6[x], true);
+            bMapRotatepen6[x] = Bitmapmaker;
+        }
+
+        LoadingScreenBar.setProgress(85);
+
+
+
+
+        for ( int f = 0; f < 720;f++ ){
+            Bitmap mutableroto = createSingleImageFromMultipleImages().copy(Bitmap.Config.ARGB_4444, true);
+            cancelarray[f] = mutableroto;
+        }
+        LoadingScreenBar.setProgress(90);
+/*
+
+
+        for ( int f = 0; f < 501;f++ ){
+            Bitmap mutableroto = createSingleImageFromMultipleImages().copy(Bitmap.Config.ARGB_8888, true);
+           cancelarray[f] = mutableroto;
+        }*/
+
+
+        /*
+        rainbowview0.setAlpha(128);
+        rainbowview1.setAlpha(128);
+        rainbowview2.setAlpha(128);
+        rainbowview3.setAlpha(128);
+        rainbowview4.setAlpha(128);
+        rainbowview5.setAlpha(128);
+        rainbowview6.setAlpha(128);
+*/
+        faceview0 =(ImageView)  findViewById(R.id.face0);
+        faceview1 =(ImageView)  findViewById(R.id.face1);
+        faceview2 =(ImageView)  findViewById(R.id.face2);
+        faceview3 =(ImageView)  findViewById(R.id.face3);
+        faceview4 =(ImageView)  findViewById(R.id.face4);
+        faceview5 =(ImageView)  findViewById(R.id.face5);
+        faceview6 =(ImageView)  findViewById(R.id.face6);
+/*
+        rainbowview0.setImageResource(R.drawable.pendulumhandtwosmalldot);
+        rainbowview1.setImageResource(R.drawable.pendulumhandtwosmalldot);
+        rainbowview2.setImageResource(R.drawable.pendulumhandtwosmalldot);
+        rainbowview3.setImageResource(R.drawable.pendulumhandtwosmalldot);
+        rainbowview4.setImageResource(R.drawable.pendulumhandtwosmalldot);
+        rainbowview5.setImageResource(R.drawable.pendulumhandtwosmalldot);
+        rainbowview6.setImageResource(R.drawable.pendulumhandtwosmalldot);
+*/
+
+        rainbowview0z.setColorFilter(Color.argb(255, 255, 0, 0));
+        rainbowview1.setColorFilter(Color.argb(255, 255, 128, 0));
+        rainbowview2.setColorFilter(Color.argb(255, 255, 255, 0));
+        rainbowview3.setColorFilter(Color.argb(255, 0, 255, 0));
+        rainbowview4.setColorFilter(Color.argb(255, 0, 255, 255));
+        rainbowview5.setColorFilter(Color.argb(255, 0, 128, 255));
+        rainbowview6.setColorFilter(Color.argb(255, 0, 0, 255));
+/*
+        rainbowview01.setColorFilter(Color.argb(255, 0, 255, 255));
+        rainbowview11.setColorFilter(Color.argb(255, 0, 128, 255));
+        rainbowview21.setColorFilter(Color.argb(255, 0, 0, 255));
+        rainbowview31.setColorFilter(Color.argb(255, 255, 0, 255));
+        rainbowview41.setColorFilter(Color.argb(255, 255, 0, 0));
+        rainbowview51.setColorFilter(Color.argb(255, 255, 128, 0));
+        rainbowview61.setColorFilter(Color.argb(255, 255, 255, 0));
+       */  /*
+        rainbowview6.setColorFilter(Color.argb(255, 255, 0, 0));
+        rainbowview5.setColorFilter(Color.argb(255, 255, 127, 0));
+        rainbowview4.setColorFilter(Color.argb(255, 255, 255, 0));
+        rainbowview3.setColorFilter(Color.argb(255, 0, 255, 0));
+        rainbowview2.setColorFilter(Color.argb(255, 0, 0, 255));
+        rainbowview1.setColorFilter(Color.argb(255, 75, 0, 130));
+        rainbowview0.setColorFilter(Color.argb(255, 148, 0, 211));
+
+        rainbowview0.setColorFilter(Color.argb(255, 255, 0, 0));
+        rainbowview1.setColorFilter(Color.argb(255, 255, 127, 0));
+        rainbowview2.setColorFilter(Color.argb(255, 255, 255, 0));
+        rainbowview3.setColorFilter(Color.argb(255, 0, 255, 0));
+        rainbowview4.setColorFilter(Color.argb(255, 0, 0, 255));
+        rainbowview5.setColorFilter(Color.argb(255, 75, 0, 130));
+        rainbowview6.setColorFilter(Color.argb(255, 148, 0, 211));
+        /*
+        rainbowview01.setColorFilter(Color.argb(255, 255, 0, 0));
+        rainbowview11.setColorFilter(Color.argb(255, 255, 127, 0));
+        rainbowview21.setColorFilter(Color.argb(255, 255, 255, 0));
+        rainbowview31.setColorFilter(Color.argb(255, 0, 255, 0));
+        rainbowview41.setColorFilter(Color.argb(255, 0, 0, 255));
+        rainbowview51.setColorFilter(Color.argb(255, 75, 0, 130));
+        rainbowview61.setColorFilter(Color.argb(255, 148, 0, 211));
+        /*
+        rainbowview01.setColorFilter(Color.argb(255, 0, 0, 255));
+        rainbowview11.setColorFilter(Color.argb(255, 0, 128, 255));
+        rainbowview21.setColorFilter(Color.argb(255, 0, 255, 255));
+        rainbowview31.setColorFilter(Color.argb(255, 0, 255, 0));
+        rainbowview41.setColorFilter(Color.argb(255, 255, 255, 0));
+        rainbowview51.setColorFilter(Color.argb(255, 255, 128, 0));
+        rainbowview61.setColorFilter(Color.argb(255, 255, 0, 0));
+        /*
+        faceview0.setImageResource(R.drawable.clockfaceprotofour);
+        faceview1.setImageResource(R.drawable.clockfaceprotofour);
+        faceview2.setImageResource(R.drawable.clockfaceprotofour);
+        faceview3.setImageResource(R.drawable.clockfaceprotofour);
+        faceview4.setImageResource(R.drawable.clockfaceprotofour);
+        faceview5.setImageResource(R.drawable.clockfaceprotofour);
+        faceview6.setImageResource(R.drawable.clockfaceprotofour);
+        */
+
+        rainbowview0z.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview0.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview1.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview2.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview3.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview4.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview5.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview6.setScaleType(ImageView.ScaleType.CENTER);
+
+
+        rainbowview01.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview11.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview21.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview31.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview41.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview51.setScaleType(ImageView.ScaleType.CENTER);
+        rainbowview61.setScaleType(ImageView.ScaleType.CENTER);
+
+        timerdelayer = 1;
+
+
+        fasterbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fastercatch++;
+            }
+        });
+
+        slowerbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slowercatch++;
+            }
+        });
+
+
+        LoadingScreenBar.setProgress(100);
+
+
+    }
+
 }
 
 

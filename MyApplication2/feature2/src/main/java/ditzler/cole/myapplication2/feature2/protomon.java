@@ -3439,21 +3439,21 @@ public class protomon extends AppCompatActivity {
         if (playermonster.Speed <= attackermonster.Speed) {
             if ((turncounter % 2) == 0) {
                 PlayerIcon.setVisibility(View.VISIBLE);
-                PlayerIcon.setImageResource(R.drawable.d53);
+                PlayerIcon.setImageResource(R.drawable.excalim);
                 EnemyIcon.setVisibility(View.INVISIBLE);
             } else {
                 EnemyIcon.setVisibility(View.VISIBLE);
-                EnemyIcon.setImageResource(R.drawable.d53);
+                EnemyIcon.setImageResource(R.drawable.excalim);
                 PlayerIcon.setVisibility(View.INVISIBLE);
             }
         } else {
             if ((turncounter % 2) == 1) {
                 PlayerIcon.setVisibility(View.VISIBLE);
-                PlayerIcon.setImageResource(R.drawable.d53);
+                PlayerIcon.setImageResource(R.drawable.excalim);
                 EnemyIcon.setVisibility(View.INVISIBLE);
             } else {
                 EnemyIcon.setVisibility(View.VISIBLE);
-                EnemyIcon.setImageResource(R.drawable.d53);
+                EnemyIcon.setImageResource(R.drawable.excalim);
                 PlayerIcon.setVisibility(View.INVISIBLE);
             }
 
