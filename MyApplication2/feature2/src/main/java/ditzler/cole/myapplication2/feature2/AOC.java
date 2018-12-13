@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
 import java.util.function.IntBinaryOperator;
 import java.util.function.IntUnaryOperator;
 
@@ -59,9 +60,10 @@ public class AOC extends AppCompatActivity {
     IntBinaryOperator Minus = (a, b) -> a - b;
     IntBinaryOperator MinusSelf = (a, b) -> a - (a*a);
     IntUnaryOperator Ö = (a) -> (a+367)/(a+367) * (53);
-    IntUnaryOperator fizz = (a) -> a%3;
-    IntUnaryOperator buzz = (a) -> a%5;
-    IntUnaryOperator fizzbuzz = (a) -> a%15;
+    IntUnaryOperator fiss = (a) -> a%3;
+    IntUnaryOperator buss = (a) -> a%5;
+    IntUnaryOperator fissbuss = (a) -> a%15;
+    int Input = new Random().nextInt(100)+1;
 
     IntBinaryOperator Mult = (a, b) -> (a*b);
     IntBinaryOperator Test = (a, b) -> (((a+b)*(a*a))-(b+a));
@@ -73,6 +75,8 @@ public class AOC extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.happylayout);
+
+        Fissbuss(Input, fiss, buss, fissbuss);
 
         AView = (TextView) findViewById(R.id.TextViewA);
 
@@ -108,17 +112,17 @@ public class AOC extends AppCompatActivity {
         return sign.applyAsInt(A, B);
     }
 
-    public String Fissbuss(int input){
+    public String Fissbuss(int input, IntUnaryOperator Fizz, IntUnaryOperator Buzz, IntUnaryOperator FizzBuzz){
         String notfissorbuss = "%s";
         notfissorbuss = String.format(notfissorbuss, input);
 
-        if(fizz.applyAsInt(input) == 0){
+        if(Fizz.applyAsInt(input) == 0){
             notfissorbuss = "Fizz";
         }
-        if(buzz.applyAsInt(input) == 0){
+        if(Buzz.applyAsInt(input) == 0){
             notfissorbuss = "Buzz";
         }
-        if(fizzbuzz.applyAsInt(input) == 0){
+        if(FizzBuzz.applyAsInt(input) == 0){
             notfissorbuss = "FizzBuzz";
         }
         return  notfissorbuss;
