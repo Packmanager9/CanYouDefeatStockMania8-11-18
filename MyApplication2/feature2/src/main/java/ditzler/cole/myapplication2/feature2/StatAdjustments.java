@@ -47,6 +47,8 @@ public class StatAdjustments extends AppCompatActivity {
 
         Gathering();
 
+
+
         SeekStatsBarH.setMax(slidemaximum - slideminimum);
         // SeekStatsBar.setMin(slideminimum);
         SeekStatsBarH.setProgress(currentH - slideminimum);
@@ -59,21 +61,21 @@ public class StatAdjustments extends AppCompatActivity {
         SeekStatsBarD.setProgress(currentD - slideminimum);
 
         String GadgetD = String.format(o, currentD);
-        DisplaySliderBoxD.setText(Gadget);
+        DisplaySliderBoxD.setText(GadgetD);
 
         SeekStatsBarA.setMax(slidemaximum - slideminimum);
         // SeekStatsBar.setMin(slideminimum);
         SeekStatsBarA.setProgress(currentA - slideminimum);
 
         String GadgetA = String.format(o, currentA);
-        DisplaySliderBoxA.setText(Gadget);
+        DisplaySliderBoxA.setText(GadgetA);
 
         SeekStatsBarS.setMax(slidemaximum - slideminimum);
         // SeekStatsBar.setMin(slideminimum);
         SeekStatsBarS.setProgress(currentS - slideminimum);
 
         String GadgetS = String.format(o, currentS);
-        DisplaySliderBoxS.setText(Gadget);
+        DisplaySliderBoxS.setText(GadgetS);
 
 
         CustomizerMonst.Speed = currentS;
@@ -318,20 +320,21 @@ GoBackButton.setOnClickListener(new View.OnClickListener() {
         SeekStatsBarD.setProgress(currentD - slideminimum);
 
         String GadgetD = String.format(o, currentD);
-        DisplaySliderBoxD.setText(Gadget);
+        DisplaySliderBoxD.setText(GadgetD);
 
         SeekStatsBarA.setMax(slidemaximum - slideminimum);
         // SeekStatsBar.setMin(slideminimum);
         SeekStatsBarA.setProgress(currentA - slideminimum);
 
         String GadgetA = String.format(o, currentA);
-        DisplaySliderBoxA.setText(Gadget);
+        DisplaySliderBoxA.setText(GadgetA);
 
         SeekStatsBarS.setMax(slidemaximum - slideminimum);
         // SeekStatsBar.setMin(slideminimum);
         SeekStatsBarS.setProgress(currentS - slideminimum);
 
-
+        String GadgetS = String.format(o, currentS);
+        DisplaySliderBoxA.setText(GadgetS);
 
 
 

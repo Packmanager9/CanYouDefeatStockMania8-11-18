@@ -83,7 +83,7 @@ public class protomon extends AppCompatActivity {
 
     Button Turn, HealButton, Status, Reset, SwitchButton, NewMonsters, RivalButton, TestButton, TellButton, CountButton, SpecialAttack, CaptureButton, DeployButton, GoToLabButton;
 
-    ImageView PlayerIcon, EnemyIcon;
+    ImageView PlayerIcon, EnemyIcon, playerbuff1, playerbuff2, playerbuff3, playerbuff4, playerbuff5;
 
     TextView Pname, Patk, Pheal, Pdef, Pspe, Ename, Eatk, Eheal, Edef, Espe, EHmov, PHmov, PSmov, ESmov, PAmov, EAmov, LongView;
 
@@ -671,6 +671,7 @@ public class protomon extends AppCompatActivity {
 
     double MaxHealthAttacker = 1;
     double MaxHealthPlayer = 1;
+    ImageView EnemyDisplay, PlayerDisplay;
 
 
     public static class encounter implements Cloneable, Parcelable, Serializable {
@@ -936,10 +937,24 @@ public class protomon extends AppCompatActivity {
         ESmov = findViewById(R.id.enemyspmove);
         EAmov = findViewById(R.id.enemyatmove);
         PlayerIcon = findViewById(R.id.playerturn);
+        playerbuff1 = findViewById(R.id.playerbuffbox1);
+        playerbuff2 = findViewById(R.id.playerbuffbox2);
+        playerbuff3 = findViewById(R.id.playerbuffbox3);
+        playerbuff4 = findViewById(R.id.playerbuffbox4);
+        playerbuff5 = findViewById(R.id.playerbuffbox5);
+        PlayerDisplay = findViewById(R.id.PlayerMonsterDisplay);
+        EnemyDisplay = findViewById(R.id.EnemyMonsterDisplay);
         EnemyIcon = findViewById(R.id.enemyturn);
         LongView = findViewById(R.id.ScrollerLongText);
         enemylayoutpage = findViewById(R.id.enemylayout);
 
+/*
+        playerbuff1.setImageResource(R.drawable.heartplus);
+        playerbuff2.setImageResource(R.drawable.heartplus);
+        playerbuff3.setImageResource(R.drawable.heartplus);
+        playerbuff4.setImageResource(R.drawable.heartplus);
+        playerbuff5.setImageResource(R.drawable.heartplus);
+*/
 
         commonfight = new encounter(monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)),monstlist(new Random().nextInt(spawncap)));
 
@@ -985,6 +1000,11 @@ public class protomon extends AppCompatActivity {
                 e.printStackTrace();
             }secondstartingmonster.UniqueID = UniqueIdentifier(0);
 
+
+
+        MonsterImageChangerPlayer(playermonster);
+
+        MonsterImageChangerAttacker(attackermonster);
 
 
   /*
@@ -1465,7 +1485,13 @@ public class protomon extends AppCompatActivity {
 
                 playerid = (int)playermonster.Idnum;
                 RivalRevealer();
+
+
+                MonsterImageChangerPlayer(playermonster);
+
             }
+            
+            
         });
 
         NewMonsters.setOnClickListener(new View.OnClickListener() {
@@ -3476,7 +3502,7 @@ public class protomon extends AppCompatActivity {
             StringDisplayMethod();
 
 
-            if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
+            if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
                 if (whosturnisitanyway == 0) {
                     CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 } else if (whosturnisitanyway == 1) {
@@ -3536,7 +3562,7 @@ public class protomon extends AppCompatActivity {
 
             String WhatHappenedString = TypesOfMotions(3);
 
-            if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
+            if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
                 if (whosturnisitanyway == 0) {
                     CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
 
@@ -3615,7 +3641,7 @@ public class protomon extends AppCompatActivity {
             String displaystring = "%s";
             String displaystringH = "%s/%s";
 
-            if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
+            if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
                 if (whosturnisitanyway == 0) {
 
                     if  (attackermonster.Moveslotheal == 0)  {
@@ -3805,6 +3831,21 @@ public class protomon extends AppCompatActivity {
             }
         }
 
+
+        if (playermonster.Health <= 0){
+
+
+            CombatString = String.format(CombatString + names(playermonster.Idnum) + " is Unable To battle " + "\n");
+
+        }
+
+        if (attackermonster.Health <= 0){
+
+
+            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
+
+        }
+
         StatAbuseCurb(playermonster);
         StatAbuseCurb(attackermonster);
         /*
@@ -3905,7 +3946,7 @@ public class protomon extends AppCompatActivity {
             StringDisplayMethod();
 
 
-            if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
+            if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
                 if (whosturnisitanyway == 0) {
                     CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 } else if (whosturnisitanyway == 1) {
@@ -3967,7 +4008,7 @@ public class protomon extends AppCompatActivity {
 
             String WhatHappenedString = TypesOfMotions(3);
 
-            if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
+            if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
                 if (whosturnisitanyway == 0) {
                     CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
 
@@ -4043,7 +4084,7 @@ public class protomon extends AppCompatActivity {
             String displaystring = "%s";
             String displaystringH = "%s/%s";
 
-            if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
+            if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
                 if (whosturnisitanyway == 0) {
 
                     if  (attackermonster.Moveslotheal == 0)  {
@@ -4238,6 +4279,20 @@ public class protomon extends AppCompatActivity {
         }
 
 
+        if (playermonster.Health <= 0){
+
+
+            CombatString = String.format(CombatString + names(playermonster.Idnum) + " is Unable To battle " + "\n");
+
+        }
+
+        if (attackermonster.Health <= 0){
+
+
+            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
+
+        }
+
         StatAbuseCurb(playermonster);
         StatAbuseCurb(attackermonster);
         /*
@@ -4302,6 +4357,109 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
         PlayerMonsterStorage[MonsterStorageCounter] = secondstartingmonster;
         MonsterStorageCounter++;
+
+        ///* image debugging
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Kohboh.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Yuggle.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Knightstacean.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Honigkönig.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Tutewtoo.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Kunk.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Blanqast.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Strachid.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Degeissdt.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Osteoplang.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Bongu.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Жrachnid.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Ōbchovy.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+
+
+       // */
+
 
         turncounter = 1;
         ImageChanger();
@@ -4379,6 +4537,12 @@ public class protomon extends AppCompatActivity {
         if (raw.Defense >= 750){
             raw.Defense = 750;
         }
+
+
+        MonsterImageChangerPlayer(playermonster);
+
+        MonsterImageChangerAttacker(attackermonster);
+
     }
 
     public void ResetWounds(){
@@ -4430,5 +4594,523 @@ public class protomon extends AppCompatActivity {
         CapChanger();
     }
 
+    public void MonsterImageChangerPlayer(monst PlayerMonsterHandle){
+        
+        
+        switch((int) PlayerMonsterHandle.Idnum){
+            
+case 0:
+         //              //PlayerDisplay.setImageResource(R.drawable.errantnope);
+                    break; 
+case 1:
+                PlayerDisplay.setImageResource(R.drawable.kunk);
+                    break; 
+case 2:
+       PlayerDisplay.setImageResource(R.drawable.kohboh);
+                    break; 
+case 3:
+        //               //PlayerDisplay.setImageResource(R.drawable.djoper);
+                    break; 
+case 4:
+        //               //PlayerDisplay.setImageResource(R.drawable.schorp);
+                    break; 
+case 5:
+         //              //PlayerDisplay.setImageResource(R.drawable.zaume);
+                    break; 
+case 6:
+        //               //PlayerDisplay.setImageResource(R.drawable.nhainhai);
+                    break; 
+case 7:
+              PlayerDisplay.setImageResource(R.drawable.degeissdt);
+                    break; 
+case 8:
+          PlayerDisplay.setImageResource(R.drawable.yuggle);
+                    break; 
+case 9:
+          PlayerDisplay.setImageResource(R.drawable.bongu);
+                    break; 
+case 10:
+            //           //PlayerDisplay.setImageResource(R.drawable.giteriglia);
+                    break; 
+case 11:
+           //            //PlayerDisplay.setImageResource(R.drawable.cyosteroth);
+                    break; 
+case 12:
+                       //PlayerDisplay.setImageResource(R.drawable.Nentopode);
+                    break; 
+case 13:
+                       //PlayerDisplay.setImageResource(R.drawable.centiclak);
+                    break; 
+case 14:
+                       //PlayerDisplay.setImageResource(R.drawable.Uggnawb);
+                    break; 
+case 15:
+                       //PlayerDisplay.setImageResource(R.drawable.Grobhost);
+                    break; 
+case 16:
+                       //PlayerDisplay.setImageResource(R.drawable.Illelonab);
+                    break; 
+case 17:
+                       //PlayerDisplay.setImageResource(R.drawable.Rongzeed);
+                    break; 
+case 18:
+                       //PlayerDisplay.setImageResource(R.drawable.blattle);
+                    break; 
+case 19:
+                       //PlayerDisplay.setImageResource(R.drawable.Swogharnler);
+                    break; 
+case 20:
+                       //PlayerDisplay.setImageResource(R.drawable.adenolish);
+                    break; 
+case 21:
+                       //PlayerDisplay.setImageResource(R.drawable.Genaupresang);
+                    break; 
+case 22:
+                       //PlayerDisplay.setImageResource(R.drawable.daahnida);
+                    break; 
+case 23:
+                       //PlayerDisplay.setImageResource(R.drawable.Sorba);
+                    break; 
+case 24:
+                       //PlayerDisplay.setImageResource(R.drawable.Jiyou);
+                    break; 
+case 25:
+                       //PlayerDisplay.setImageResource(R.drawable.Sparvae);
+                    break; 
+case 26:
+                       //PlayerDisplay.setImageResource(R.drawable.Vellup);
+                    break; 
+case 27:
+                       //PlayerDisplay.setImageResource(R.drawable.bellaja);
+                    break; 
+case 28:
+                       //PlayerDisplay.setImageResource(R.drawable.Levdzell);
+                    break; 
+case 29:
+                       //PlayerDisplay.setImageResource(R.drawable.Rytegg);
+                    break; 
+case 30:
+                       //PlayerDisplay.setImageResource(R.drawable.Flashmer);
+                    break; 
+case 31:
+                       //PlayerDisplay.setImageResource(R.drawable.Schmodozer);
+                    break; 
+case 32:
+                       //PlayerDisplay.setImageResource(R.drawable.Octgotot);
+                    break; 
+case 33:
+                       //PlayerDisplay.setImageResource(R.drawable.Triaural);
+                    break; 
+case 34:
+                       //PlayerDisplay.setImageResource(R.drawable.dicyto);
+                    break; 
+case 35:
+                       //PlayerDisplay.setImageResource(R.drawable.Monopteryx);
+                    break; 
+case 36:
+                       //PlayerDisplay.setImageResource(R.drawable.Elastocark);
+                    break; 
+case 37:
+                       //PlayerDisplay.setImageResource(R.drawable.Toobapath);
+                    break; 
+case 38:
+                       //PlayerDisplay.setImageResource(R.drawable.Weeliosbop);
+                    break; 
+case 39:
+                       //PlayerDisplay.setImageResource(R.drawable.Ihmpdrap);
+                    break; 
+case 40:
+                       //PlayerDisplay.setImageResource(R.drawable.Epibazang);
+                    break; 
+case 41:
+                       //PlayerDisplay.setImageResource(R.drawable.Hemtan);
+                    break; 
+case 42:
+                       //PlayerDisplay.setImageResource(R.drawable.Ogo);
+                    break; 
+case 43:
+                       PlayerDisplay.setImageResource(R.drawable.strachid);
+                    break; 
+case 44:
+                       //PlayerDisplay.setImageResource(R.drawable.Toximastica);
+                    break; 
+case 45:
+                       //PlayerDisplay.setImageResource(R.drawable.Urcuria);
+                    break; 
+case 46:
+                       //PlayerDisplay.setImageResource(R.drawable.Hyuntress);
+                    break; 
+case 47:
+                       //PlayerDisplay.setImageResource(R.drawable.Mondosplak);
+                    break; 
+case 48:
+                       //PlayerDisplay.setImageResource(R.drawable.Kaheksaguge);
+                    break; 
+case 49:
+                       //PlayerDisplay.setImageResource(R.drawable.Sapiosuant);
+                    break; 
+case 50:
+                       //PlayerDisplay.setImageResource(R.drawable.Munegull);
+                    break; 
+case 51:
+                       //PlayerDisplay.setImageResource(R.drawable.Sudakleez);
+                    break; 
+case 52:
+                       //PlayerDisplay.setImageResource(R.drawable.Halocordate);
+                    break; 
+case 53:
+                       //PlayerDisplay.setImageResource(R.drawable.Fædendron);
+                    break; 
+case 54:
+                       PlayerDisplay.setImageResource(R.drawable.osteoplang);
+                    break; 
+case 55:
+                      PlayerDisplay.setImageResource(R.drawable.zrachnid);
+                    break; 
+case 56:
+                       //PlayerDisplay.setImageResource(R.drawable.Ϫlitch);
+                    break; 
+case 57:
+                       //PlayerDisplay.setImageResource(R.drawable.በ);
+                    break; 
+case 58:
+                       //PlayerDisplay.setImageResource(R.drawable.Mantidile);
+                    break; 
+case 59:
+                       //PlayerDisplay.setImageResource(R.drawable.Nokoyl);
+                    break; 
+case 60:
+                       //PlayerDisplay.setImageResource(R.drawable.Яallod);
+                    break; 
+case 61:
+                       //PlayerDisplay.setImageResource(R.drawable.algaetizer);
+                    break; 
+case 62:
+                       //PlayerDisplay.setImageResource(R.drawable.Kachort);
+                    break; 
+case 63:
+                       //PlayerDisplay.setImageResource(R.drawable.Slamelion);
+                    break; 
+case 64:
+                       //PlayerDisplay.setImageResource(R.drawable.ayateda);
+                    break; 
+case 65:
+                       //PlayerDisplay.setImageResource(R.drawable.Wochem);
+                    break; 
+case 66:
+                       //PlayerDisplay.setImageResource(R.drawable.Ƕmun);
+                    break; 
+case 67:
+                       //PlayerDisplay.setImageResource(R.drawable.Ψkobath);
+                    break; 
+case 68:
+                       //PlayerDisplay.setImageResource(R.drawable.Gytanic);
+                    break; 
+case 69:
+                       //PlayerDisplay.setImageResource(R.drawable.beis);
+                    break; 
+case 70:
+                       //PlayerDisplay.setImageResource(R.drawable.gungholio);
+                    break; 
+case 71:
+                       PlayerDisplay.setImageResource(R.drawable.honigkonig);
+                    break; 
+case 72:
+                       //PlayerDisplay.setImageResource(R.drawable.Kungulp);
+                    break; 
+case 73:
+                       //PlayerDisplay.setImageResource(R.drawable.satinella);
+                    break; 
+case 74:
+                       //PlayerDisplay.setImageResource(R.drawable.Elocurl);
+                    break; 
+case 75:
+                       //PlayerDisplay.setImageResource(R.drawable.Takobie);
+                    break; 
+case 76:
+                     PlayerDisplay.setImageResource(R.drawable.obchovy);
+                    break; 
+case 77:
+                       //PlayerDisplay.setImageResource(R.drawable.Nimnamnom);
+                    break; 
+case 78:
+                      PlayerDisplay.setImageResource(R.drawable.tutewtoo);
+                    break; 
+case 79:
+                       PlayerDisplay.setImageResource(R.drawable.blanqast);
+                    break; 
+case 80:
+                       //PlayerDisplay.setImageResource(R.drawable.Indeo);
+                    break; 
+case 81:
+                       //PlayerDisplay.setImageResource(R.drawable.deblobbio);
+                    break; 
+case 82:
+     PlayerDisplay.setImageResource(R.drawable.knightstacean);
+    break;
+    
+        }
+        
+        
+    }
+public void MonsterImageChangerAttacker(monst AttackerMonsterHandle){
+        
+        
+        switch((int) AttackerMonsterHandle.Idnum){
+            
+case 0:
+         //              //EnemyDisplay.setImageResource(R.drawable.errantnope);
+                    break; 
+case 1:
+                 EnemyDisplay.setImageResource(R.drawable.kunk);
+                    break; 
+case 2:
+       EnemyDisplay.setImageResource(R.drawable.kohboh);
+                    break; 
+case 3:
+        //               //EnemyDisplay.setImageResource(R.drawable.djoper);
+                    break; 
+case 4:
+        //               //EnemyDisplay.setImageResource(R.drawable.schorp);
+                    break; 
+case 5:
+         //              //EnemyDisplay.setImageResource(R.drawable.zaume);
+                    break; 
+case 6:
+        //               //EnemyDisplay.setImageResource(R.drawable.nhainhai);
+                    break; 
+case 7:
+              EnemyDisplay.setImageResource(R.drawable.degeissdt);
+                    break; 
+case 8:
+          EnemyDisplay.setImageResource(R.drawable.yuggle);
+                    break; 
+case 9:
+            EnemyDisplay.setImageResource(R.drawable.bongu);
+                    break; 
+case 10:
+            //           //EnemyDisplay.setImageResource(R.drawable.giteriglia);
+                    break; 
+case 11:
+           //            //EnemyDisplay.setImageResource(R.drawable.cyosteroth);
+                    break; 
+case 12:
+                       //EnemyDisplay.setImageResource(R.drawable.Nentopode);
+                    break; 
+case 13:
+                       //EnemyDisplay.setImageResource(R.drawable.centiclak);
+                    break; 
+case 14:
+                       //EnemyDisplay.setImageResource(R.drawable.Uggnawb);
+                    break; 
+case 15:
+                       //EnemyDisplay.setImageResource(R.drawable.Grobhost);
+                    break; 
+case 16:
+                       //EnemyDisplay.setImageResource(R.drawable.Illelonab);
+                    break; 
+case 17:
+                       //EnemyDisplay.setImageResource(R.drawable.Rongzeed);
+                    break; 
+case 18:
+                       //EnemyDisplay.setImageResource(R.drawable.blattle);
+                    break; 
+case 19:
+                       //EnemyDisplay.setImageResource(R.drawable.Swogharnler);
+                    break; 
+case 20:
+                       //EnemyDisplay.setImageResource(R.drawable.adenolish);
+                    break; 
+case 21:
+                       //EnemyDisplay.setImageResource(R.drawable.Genaupresang);
+                    break; 
+case 22:
+                       //EnemyDisplay.setImageResource(R.drawable.daahnida);
+                    break; 
+case 23:
+                       //EnemyDisplay.setImageResource(R.drawable.Sorba);
+                    break; 
+case 24:
+                       //EnemyDisplay.setImageResource(R.drawable.Jiyou);
+                    break; 
+case 25:
+                       //EnemyDisplay.setImageResource(R.drawable.Sparvae);
+                    break; 
+case 26:
+                       //EnemyDisplay.setImageResource(R.drawable.Vellup);
+                    break; 
+case 27:
+                       //EnemyDisplay.setImageResource(R.drawable.bellaja);
+                    break; 
+case 28:
+                       //EnemyDisplay.setImageResource(R.drawable.Levdzell);
+                    break; 
+case 29:
+                       //EnemyDisplay.setImageResource(R.drawable.Rytegg);
+                    break; 
+case 30:
+                       //EnemyDisplay.setImageResource(R.drawable.Flashmer);
+                    break; 
+case 31:
+                       //EnemyDisplay.setImageResource(R.drawable.Schmodozer);
+                    break; 
+case 32:
+                       //EnemyDisplay.setImageResource(R.drawable.Octgotot);
+                    break; 
+case 33:
+                       //EnemyDisplay.setImageResource(R.drawable.Triaural);
+                    break; 
+case 34:
+                       //EnemyDisplay.setImageResource(R.drawable.dicyto);
+                    break; 
+case 35:
+                       //EnemyDisplay.setImageResource(R.drawable.Monopteryx);
+                    break; 
+case 36:
+                       //EnemyDisplay.setImageResource(R.drawable.Elastocark);
+                    break; 
+case 37:
+                       //EnemyDisplay.setImageResource(R.drawable.Toobapath);
+                    break; 
+case 38:
+                       //EnemyDisplay.setImageResource(R.drawable.Weeliosbop);
+                    break; 
+case 39:
+                       //EnemyDisplay.setImageResource(R.drawable.Ihmpdrap);
+                    break; 
+case 40:
+                       //EnemyDisplay.setImageResource(R.drawable.Epibazang);
+                    break; 
+case 41:
+                       //EnemyDisplay.setImageResource(R.drawable.Hemtan);
+                    break; 
+case 42:
+                       //EnemyDisplay.setImageResource(R.drawable.Ogo);
+                    break; 
+case 43:
+                       EnemyDisplay.setImageResource(R.drawable.strachid);
+                    break; 
+case 44:
+                       //EnemyDisplay.setImageResource(R.drawable.Toximastica);
+                    break; 
+case 45:
+                       //EnemyDisplay.setImageResource(R.drawable.Urcuria);
+                    break; 
+case 46:
+                       //EnemyDisplay.setImageResource(R.drawable.Hyuntress);
+                    break; 
+case 47:
+                       //EnemyDisplay.setImageResource(R.drawable.Mondosplak);
+                    break; 
+case 48:
+                       //EnemyDisplay.setImageResource(R.drawable.Kaheksaguge);
+                    break; 
+case 49:
+                       //EnemyDisplay.setImageResource(R.drawable.Sapiosuant);
+                    break; 
+case 50:
+                       //EnemyDisplay.setImageResource(R.drawable.Munegull);
+                    break; 
+case 51:
+                       //EnemyDisplay.setImageResource(R.drawable.Sudakleez);
+                    break; 
+case 52:
+                       //EnemyDisplay.setImageResource(R.drawable.Halocordate);
+                    break; 
+case 53:
+                       //EnemyDisplay.setImageResource(R.drawable.Fædendron);
+                    break; 
+case 54:
+                       EnemyDisplay.setImageResource(R.drawable.osteoplang);
+                    break; 
+case 55:
+                       EnemyDisplay.setImageResource(R.drawable.zrachnid);
+                    break; 
+case 56:
+                       //EnemyDisplay.setImageResource(R.drawable.Ϫlitch);
+                    break; 
+case 57:
+                       //EnemyDisplay.setImageResource(R.drawable.በ);
+                    break; 
+case 58:
+                       //EnemyDisplay.setImageResource(R.drawable.Mantidile);
+                    break; 
+case 59:
+                       //EnemyDisplay.setImageResource(R.drawable.Nokoyl);
+                    break; 
+case 60:
+                       //EnemyDisplay.setImageResource(R.drawable.Яallod);
+                    break; 
+case 61:
+                       //EnemyDisplay.setImageResource(R.drawable.algaetizer);
+                    break; 
+case 62:
+                       //EnemyDisplay.setImageResource(R.drawable.Kachort);
+                    break; 
+case 63:
+                       //EnemyDisplay.setImageResource(R.drawable.Slamelion);
+                    break; 
+case 64:
+                       //EnemyDisplay.setImageResource(R.drawable.ayateda);
+                    break; 
+case 65:
+                       //EnemyDisplay.setImageResource(R.drawable.Wochem);
+                    break; 
+case 66:
+                       //EnemyDisplay.setImageResource(R.drawable.Ƕmun);
+                    break; 
+case 67:
+                       //EnemyDisplay.setImageResource(R.drawable.Ψkobath);
+                    break; 
+case 68:
+                       //EnemyDisplay.setImageResource(R.drawable.Gytanic);
+                    break; 
+case 69:
+                       //EnemyDisplay.setImageResource(R.drawable.beis);
+                    break; 
+case 70:
+                       //EnemyDisplay.setImageResource(R.drawable.gungholio);
+                    break; 
+case 71:
+                      EnemyDisplay.setImageResource(R.drawable.honigkonig);
+                    break; 
+case 72:
+                       //EnemyDisplay.setImageResource(R.drawable.Kungulp);
+                    break; 
+case 73:
+                       //EnemyDisplay.setImageResource(R.drawable.satinella);
+                    break; 
+case 74:
+                       //EnemyDisplay.setImageResource(R.drawable.Elocurl);
+                    break; 
+case 75:
+                       //EnemyDisplay.setImageResource(R.drawable.Takobie);
+                    break; 
+case 76:
+                     EnemyDisplay.setImageResource(R.drawable.obchovy);
+                    break; 
+case 77:
+                       //EnemyDisplay.setImageResource(R.drawable.Nimnamnom);
+                    break; 
+case 78:
+                       EnemyDisplay.setImageResource(R.drawable.tutewtoo);
+                    break; 
+case 79:
+                       EnemyDisplay.setImageResource(R.drawable.blanqast);
+                    break; 
+case 80:
+                       //EnemyDisplay.setImageResource(R.drawable.Indeo);
+                    break; 
+case 81:
+                       //EnemyDisplay.setImageResource(R.drawable.deblobbio);
+                    break; 
+case 82:
+     EnemyDisplay.setImageResource(R.drawable.knightstacean);
+    break;
+    
+        }
+        
+        
+    }
 
 }

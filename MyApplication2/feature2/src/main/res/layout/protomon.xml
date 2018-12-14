@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <LinearLayout
@@ -20,68 +21,112 @@
                 android:id="@+id/playername"
                 android:layout_width="200dp"
                 android:layout_height="30dp"
-                android:textSize="21sp"
-
                 android:textColor="#000900"
-                android:textStyle="bold"
-                />
+
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:id="@+id/PlayerMonsterDisplay"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:scaleX="1" />
+
 
             <TextView
 
                 android:id="@+id/playerhealth"
                 android:layout_width="200dp"
                 android:layout_height="25dp"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
 
                 android:id="@+id/playerdefense"
                 android:layout_width="200dp"
                 android:layout_height="25dp"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
 
                 android:id="@+id/playerattack"
                 android:layout_width="200dp"
                 android:layout_height="25dp"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
 
                 android:id="@+id/playerspeed"
                 android:layout_width="200dp"
                 android:layout_height="25dp"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
 
                 android:id="@+id/playerhemove"
                 android:layout_width="200dp"
                 android:layout_height="30dp"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
 
                 android:id="@+id/playerspmove"
                 android:layout_width="200dp"
                 android:layout_height="30dp"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
 
                 android:id="@+id/playeratmove"
                 android:layout_width="200dp"
                 android:layout_height="30dp"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
 
-            <ImageView
+            <LinearLayout
+                android:id="@+id/playerImageCage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                android:id="@+id/playerturn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+                <ImageView
 
+                    android:id="@+id/playerturn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+
+                <ImageView
+
+                    android:id="@+id/playerbuffbox1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+                <ImageView
+
+                    android:id="@+id/playerbuffbox2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+                <ImageView
+
+                    android:id="@+id/playerbuffbox3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+                <ImageView
+
+                    android:id="@+id/playerbuffbox4"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+                <ImageView
+
+                    android:id="@+id/playerbuffbox5"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -102,6 +147,13 @@
 
                 android:textColor="#000900"
                 android:textStyle="bold"/>
+
+
+            <ImageView
+                android:id="@+id/EnemyMonsterDisplay"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:scaleX="-1"/>
 
             <TextView
 
@@ -188,7 +240,7 @@
     <Button
         android:id="@+id/statsbutton"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="45dp"
         android:layout_alignParentStart="true"
 
         android:layout_alignTop="@+id/heal"
@@ -197,7 +249,7 @@
     <Button
         android:id="@+id/attack"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="45dp"
         android:layout_alignTop="@+id/statsbutton"
 
         android:layout_toEndOf="@+id/statsbutton"
@@ -205,17 +257,17 @@
 
     <Button
         android:id="@+id/Special"
-        android:layout_width="63dp"
-        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
         android:layout_alignTop="@+id/statsbutton"
-        android:textSize="27sp"
+        android:textSize="17sp"
         android:layout_toStartOf="@+id/heal"
         android:text="✮" />
 
     <Button
         android:id="@+id/heal"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
 
         android:layout_alignParentEnd="true"
@@ -283,10 +335,10 @@
     <Button
         android:id="@+id/RivalSwap"
         android:layout_width="63dp"
-        android:layout_height="wrap_content"
+        android:layout_height="63dp"
 
-        android:layout_above="@+id/statsbutton"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/LabButton"
         android:text="Rival" />
 
     <Button
@@ -302,7 +354,7 @@
         android:layout_width="63dp"
         android:layout_height="wrap_content"
         android:textSize="8sp"
-        android:layout_above="@+id/NewMonstersButton"
+        android:layout_above="@+id/statsbutton"
         android:layout_alignParentStart="true"
         android:text="Capture" />
     <Button
