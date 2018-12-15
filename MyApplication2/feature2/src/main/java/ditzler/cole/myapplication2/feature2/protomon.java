@@ -4340,7 +4340,7 @@ public class protomon extends AppCompatActivity {
     }
 
     public void  FirstTurnMethod(){
-
+//pampeg
         attackermonster.Moveslotspeed = new Random().nextInt(14);
         attackermonster.Moveslotheal = new Random().nextInt(6);
         playermonster.Moveslotspeed = new Random().nextInt(14);
@@ -4451,6 +4451,41 @@ public class protomon extends AppCompatActivity {
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Ōbchovy.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Halocordate.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Ogo.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Rongzeed.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Grobhost.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Elocurl.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -4645,13 +4680,13 @@ case 14:
                        //PlayerDisplay.setImageResource(R.drawable.Uggnawb);
                     break; 
 case 15:
-                       //PlayerDisplay.setImageResource(R.drawable.Grobhost);
+                   PlayerDisplay.setImageResource(R.drawable.grobhost);
                     break; 
 case 16:
                        //PlayerDisplay.setImageResource(R.drawable.Illelonab);
                     break; 
 case 17:
-                       //PlayerDisplay.setImageResource(R.drawable.Rongzeed);
+                   PlayerDisplay.setImageResource(R.drawable.rongzeed);
                     break; 
 case 18:
                        //PlayerDisplay.setImageResource(R.drawable.blattle);
@@ -4726,7 +4761,7 @@ case 41:
                        //PlayerDisplay.setImageResource(R.drawable.Hemtan);
                     break; 
 case 42:
-                       //PlayerDisplay.setImageResource(R.drawable.Ogo);
+                     PlayerDisplay.setImageResource(R.drawable.ogo);
                     break; 
 case 43:
                        PlayerDisplay.setImageResource(R.drawable.strachid);
@@ -4756,7 +4791,7 @@ case 51:
                        //PlayerDisplay.setImageResource(R.drawable.Sudakleez);
                     break; 
 case 52:
-                       //PlayerDisplay.setImageResource(R.drawable.Halocordate);
+                     PlayerDisplay.setImageResource(R.drawable.halocordate);
                     break; 
 case 53:
                        //PlayerDisplay.setImageResource(R.drawable.Fædendron);
@@ -4822,7 +4857,7 @@ case 73:
                        //PlayerDisplay.setImageResource(R.drawable.satinella);
                     break; 
 case 74:
-                       //PlayerDisplay.setImageResource(R.drawable.Elocurl);
+                       PlayerDisplay.setImageResource(R.drawable.elocurl);
                     break; 
 case 75:
                        //PlayerDisplay.setImageResource(R.drawable.Takobie);
@@ -4904,13 +4939,13 @@ case 14:
                        //EnemyDisplay.setImageResource(R.drawable.Uggnawb);
                     break; 
 case 15:
-                       //EnemyDisplay.setImageResource(R.drawable.Grobhost);
+                       EnemyDisplay.setImageResource(R.drawable.grobhost);
                     break; 
 case 16:
                        //EnemyDisplay.setImageResource(R.drawable.Illelonab);
                     break; 
 case 17:
-                       //EnemyDisplay.setImageResource(R.drawable.Rongzeed);
+                      EnemyDisplay.setImageResource(R.drawable.rongzeed);
                     break; 
 case 18:
                        //EnemyDisplay.setImageResource(R.drawable.blattle);
@@ -4985,7 +5020,7 @@ case 41:
                        //EnemyDisplay.setImageResource(R.drawable.Hemtan);
                     break; 
 case 42:
-                       //EnemyDisplay.setImageResource(R.drawable.Ogo);
+                      EnemyDisplay.setImageResource(R.drawable.ogo);
                     break; 
 case 43:
                        EnemyDisplay.setImageResource(R.drawable.strachid);
@@ -5015,7 +5050,7 @@ case 51:
                        //EnemyDisplay.setImageResource(R.drawable.Sudakleez);
                     break; 
 case 52:
-                       //EnemyDisplay.setImageResource(R.drawable.Halocordate);
+                      EnemyDisplay.setImageResource(R.drawable.halocordate);
                     break; 
 case 53:
                        //EnemyDisplay.setImageResource(R.drawable.Fædendron);
@@ -5081,7 +5116,7 @@ case 73:
                        //EnemyDisplay.setImageResource(R.drawable.satinella);
                     break; 
 case 74:
-                       //EnemyDisplay.setImageResource(R.drawable.Elocurl);
+                       EnemyDisplay.setImageResource(R.drawable.elocurl);
                     break; 
 case 75:
                        //EnemyDisplay.setImageResource(R.drawable.Takobie);
