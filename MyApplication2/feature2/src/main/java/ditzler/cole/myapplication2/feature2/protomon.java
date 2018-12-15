@@ -4471,13 +4471,6 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Rongzeed.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        MonsterStorageCounter++;
-
-        try {
             PlayerMonsterStorage[MonsterStorageCounter] = Grobhost.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
@@ -4486,6 +4479,42 @@ public class protomon extends AppCompatActivity {
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Elocurl.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Kachort.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Rongzeed.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Sparvae.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Triaural.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Sapiosuant.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -4710,7 +4739,7 @@ case 24:
                        //PlayerDisplay.setImageResource(R.drawable.Jiyou);
                     break; 
 case 25:
-                       //PlayerDisplay.setImageResource(R.drawable.Sparvae);
+                        PlayerDisplay.setImageResource(R.drawable.sparvae);
                     break; 
 case 26:
                        //PlayerDisplay.setImageResource(R.drawable.Vellup);
@@ -4734,7 +4763,7 @@ case 32:
                        //PlayerDisplay.setImageResource(R.drawable.Octgotot);
                     break; 
 case 33:
-                       //PlayerDisplay.setImageResource(R.drawable.Triaural);
+                       PlayerDisplay.setImageResource(R.drawable.triaural);
                     break; 
 case 34:
                        //PlayerDisplay.setImageResource(R.drawable.dicyto);
@@ -4782,7 +4811,7 @@ case 48:
                        //PlayerDisplay.setImageResource(R.drawable.Kaheksaguge);
                     break; 
 case 49:
-                       //PlayerDisplay.setImageResource(R.drawable.Sapiosuant);
+                        PlayerDisplay.setImageResource(R.drawable.sapiosuant);
                     break; 
 case 50:
                        //PlayerDisplay.setImageResource(R.drawable.Munegull);
@@ -4821,7 +4850,7 @@ case 61:
                        //PlayerDisplay.setImageResource(R.drawable.algaetizer);
                     break; 
 case 62:
-                       //PlayerDisplay.setImageResource(R.drawable.Kachort);
+                      PlayerDisplay.setImageResource(R.drawable.kachort);
                     break; 
 case 63:
                        //PlayerDisplay.setImageResource(R.drawable.Slamelion);
@@ -4969,7 +4998,7 @@ case 24:
                        //EnemyDisplay.setImageResource(R.drawable.Jiyou);
                     break; 
 case 25:
-                       //EnemyDisplay.setImageResource(R.drawable.Sparvae);
+                       EnemyDisplay.setImageResource(R.drawable.sparvae);
                     break; 
 case 26:
                        //EnemyDisplay.setImageResource(R.drawable.Vellup);
@@ -4993,7 +5022,7 @@ case 32:
                        //EnemyDisplay.setImageResource(R.drawable.Octgotot);
                     break; 
 case 33:
-                       //EnemyDisplay.setImageResource(R.drawable.Triaural);
+                       EnemyDisplay.setImageResource(R.drawable.triaural);
                     break; 
 case 34:
                        //EnemyDisplay.setImageResource(R.drawable.dicyto);
@@ -5041,7 +5070,7 @@ case 48:
                        //EnemyDisplay.setImageResource(R.drawable.Kaheksaguge);
                     break; 
 case 49:
-                       //EnemyDisplay.setImageResource(R.drawable.Sapiosuant);
+                        EnemyDisplay.setImageResource(R.drawable.sapiosuant);
                     break; 
 case 50:
                        //EnemyDisplay.setImageResource(R.drawable.Munegull);
@@ -5080,7 +5109,7 @@ case 61:
                        //EnemyDisplay.setImageResource(R.drawable.algaetizer);
                     break; 
 case 62:
-                       //EnemyDisplay.setImageResource(R.drawable.Kachort);
+                       EnemyDisplay.setImageResource(R.drawable.kachort);
                     break; 
 case 63:
                        //EnemyDisplay.setImageResource(R.drawable.Slamelion);
