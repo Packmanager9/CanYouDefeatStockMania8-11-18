@@ -4361,29 +4361,21 @@ public class protomon extends AppCompatActivity {
         ///* image debugging
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Kohboh.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Kohboh);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Yuggle.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Knightstacean.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        MonsterStorageCounter++;
-
-
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Honigkönig.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Knightstacean);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -4391,7 +4383,15 @@ public class protomon extends AppCompatActivity {
 
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Tutewtoo.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Honigkönig);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Tutewtoo);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -4400,7 +4400,7 @@ public class protomon extends AppCompatActivity {
 
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Kunk.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Kunk);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -4408,84 +4408,84 @@ public class protomon extends AppCompatActivity {
 
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Blanqast.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Blanqast);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Strachid.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Strachid);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Degeissdt.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Degeissdt);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Osteoplang.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Osteoplang);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Bongu.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Bongu);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Жrachnid.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Жrachnid);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Ōbchovy.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ōbchovy);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Halocordate.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Halocordate);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Ogo.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ogo);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Grobhost.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Grobhost);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Elocurl.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Elocurl);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Kachort.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Kachort);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -4493,28 +4493,108 @@ public class protomon extends AppCompatActivity {
 
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Rongzeed.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rongzeed);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Sparvae.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Sparvae);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Triaural.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Triaural);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Sapiosuant.clone();
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Sapiosuant);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rytegg);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Dicyto);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Algaetizer);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Wochem);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Schorp);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nhainhai);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(error);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Munegull);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Djoper);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Hemtan);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -4664,7 +4744,7 @@ public class protomon extends AppCompatActivity {
         switch((int) PlayerMonsterHandle.Idnum){
             
 case 0:
-         //              //PlayerDisplay.setImageResource(R.drawable.errantnope);
+          PlayerDisplay.setImageResource(R.drawable.errantnope);
                     break; 
 case 1:
                 PlayerDisplay.setImageResource(R.drawable.kunk);
@@ -4673,16 +4753,16 @@ case 2:
        PlayerDisplay.setImageResource(R.drawable.kohboh);
                     break; 
 case 3:
-        //               //PlayerDisplay.setImageResource(R.drawable.djoper);
+            PlayerDisplay.setImageResource(R.drawable.djoper);
                     break; 
 case 4:
-        //               //PlayerDisplay.setImageResource(R.drawable.schorp);
+              PlayerDisplay.setImageResource(R.drawable.schorp);
                     break; 
 case 5:
-         //              //PlayerDisplay.setImageResource(R.drawable.zaume);
+           PlayerDisplay.setImageResource(R.drawable.zaume);
                     break; 
 case 6:
-        //               //PlayerDisplay.setImageResource(R.drawable.nhainhai);
+                 PlayerDisplay.setImageResource(R.drawable.nhainhai);
                     break; 
 case 7:
               PlayerDisplay.setImageResource(R.drawable.degeissdt);
@@ -4751,7 +4831,7 @@ case 28:
                        //PlayerDisplay.setImageResource(R.drawable.Levdzell);
                     break; 
 case 29:
-                       //PlayerDisplay.setImageResource(R.drawable.Rytegg);
+                       PlayerDisplay.setImageResource(R.drawable.rytegg);
                     break; 
 case 30:
                        //PlayerDisplay.setImageResource(R.drawable.Flashmer);
@@ -4766,7 +4846,7 @@ case 33:
                        PlayerDisplay.setImageResource(R.drawable.triaural);
                     break; 
 case 34:
-                       //PlayerDisplay.setImageResource(R.drawable.dicyto);
+                       PlayerDisplay.setImageResource(R.drawable.dicyto);
                     break; 
 case 35:
                        //PlayerDisplay.setImageResource(R.drawable.Monopteryx);
@@ -4787,7 +4867,7 @@ case 40:
                        //PlayerDisplay.setImageResource(R.drawable.Epibazang);
                     break; 
 case 41:
-                       //PlayerDisplay.setImageResource(R.drawable.Hemtan);
+                       PlayerDisplay.setImageResource(R.drawable.hemtan);
                     break; 
 case 42:
                      PlayerDisplay.setImageResource(R.drawable.ogo);
@@ -4814,7 +4894,7 @@ case 49:
                         PlayerDisplay.setImageResource(R.drawable.sapiosuant);
                     break; 
 case 50:
-                       //PlayerDisplay.setImageResource(R.drawable.Munegull);
+                        PlayerDisplay.setImageResource(R.drawable.munegull);
                     break; 
 case 51:
                        //PlayerDisplay.setImageResource(R.drawable.Sudakleez);
@@ -4847,7 +4927,7 @@ case 60:
                        //PlayerDisplay.setImageResource(R.drawable.Яallod);
                     break; 
 case 61:
-                       //PlayerDisplay.setImageResource(R.drawable.algaetizer);
+                      PlayerDisplay.setImageResource(R.drawable.algaetizer);
                     break; 
 case 62:
                       PlayerDisplay.setImageResource(R.drawable.kachort);
@@ -4859,7 +4939,7 @@ case 64:
                        //PlayerDisplay.setImageResource(R.drawable.ayateda);
                     break; 
 case 65:
-                       //PlayerDisplay.setImageResource(R.drawable.Wochem);
+                       PlayerDisplay.setImageResource(R.drawable.wochem);
                     break; 
 case 66:
                        //PlayerDisplay.setImageResource(R.drawable.Ƕmun);
@@ -4923,7 +5003,7 @@ public void MonsterImageChangerAttacker(monst AttackerMonsterHandle){
         switch((int) AttackerMonsterHandle.Idnum){
             
 case 0:
-         //              //EnemyDisplay.setImageResource(R.drawable.errantnope);
+          EnemyDisplay.setImageResource(R.drawable.errantnope);
                     break; 
 case 1:
                  EnemyDisplay.setImageResource(R.drawable.kunk);
@@ -4932,16 +5012,16 @@ case 2:
        EnemyDisplay.setImageResource(R.drawable.kohboh);
                     break; 
 case 3:
-        //               //EnemyDisplay.setImageResource(R.drawable.djoper);
+           EnemyDisplay.setImageResource(R.drawable.djoper);
                     break; 
 case 4:
-        //               //EnemyDisplay.setImageResource(R.drawable.schorp);
+            EnemyDisplay.setImageResource(R.drawable.schorp);
                     break; 
 case 5:
-         //              //EnemyDisplay.setImageResource(R.drawable.zaume);
+         EnemyDisplay.setImageResource(R.drawable.zaume);
                     break; 
 case 6:
-        //               //EnemyDisplay.setImageResource(R.drawable.nhainhai);
+           EnemyDisplay.setImageResource(R.drawable.nhainhai);
                     break; 
 case 7:
               EnemyDisplay.setImageResource(R.drawable.degeissdt);
@@ -5010,7 +5090,7 @@ case 28:
                        //EnemyDisplay.setImageResource(R.drawable.Levdzell);
                     break; 
 case 29:
-                       //EnemyDisplay.setImageResource(R.drawable.Rytegg);
+                      EnemyDisplay.setImageResource(R.drawable.rytegg);
                     break; 
 case 30:
                        //EnemyDisplay.setImageResource(R.drawable.Flashmer);
@@ -5025,7 +5105,7 @@ case 33:
                        EnemyDisplay.setImageResource(R.drawable.triaural);
                     break; 
 case 34:
-                       //EnemyDisplay.setImageResource(R.drawable.dicyto);
+                     EnemyDisplay.setImageResource(R.drawable.dicyto);
                     break; 
 case 35:
                        //EnemyDisplay.setImageResource(R.drawable.Monopteryx);
@@ -5046,7 +5126,7 @@ case 40:
                        //EnemyDisplay.setImageResource(R.drawable.Epibazang);
                     break; 
 case 41:
-                       //EnemyDisplay.setImageResource(R.drawable.Hemtan);
+                     EnemyDisplay.setImageResource(R.drawable.hemtan);
                     break; 
 case 42:
                       EnemyDisplay.setImageResource(R.drawable.ogo);
@@ -5073,7 +5153,7 @@ case 49:
                         EnemyDisplay.setImageResource(R.drawable.sapiosuant);
                     break; 
 case 50:
-                       //EnemyDisplay.setImageResource(R.drawable.Munegull);
+                       EnemyDisplay.setImageResource(R.drawable.munegull);
                     break; 
 case 51:
                        //EnemyDisplay.setImageResource(R.drawable.Sudakleez);
@@ -5106,7 +5186,7 @@ case 60:
                        //EnemyDisplay.setImageResource(R.drawable.Яallod);
                     break; 
 case 61:
-                       //EnemyDisplay.setImageResource(R.drawable.algaetizer);
+                      EnemyDisplay.setImageResource(R.drawable.algaetizer);
                     break; 
 case 62:
                        EnemyDisplay.setImageResource(R.drawable.kachort);
@@ -5118,7 +5198,7 @@ case 64:
                        //EnemyDisplay.setImageResource(R.drawable.ayateda);
                     break; 
 case 65:
-                       //EnemyDisplay.setImageResource(R.drawable.Wochem);
+                    EnemyDisplay.setImageResource(R.drawable.wochem);
                     break; 
 case 66:
                        //EnemyDisplay.setImageResource(R.drawable.Ƕmun);
