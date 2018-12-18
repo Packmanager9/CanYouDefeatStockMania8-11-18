@@ -990,7 +990,7 @@ public class protomon extends AppCompatActivity {
                 e.printStackTrace();
             }playermonster.UniqueID = UniqueIdentifier(0);
             try {
-                attackermonster = Cloner(monstlist(attackerid));
+                attackermonster = Cloner(monstlist(22));
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }attackermonster.UniqueID = UniqueIdentifier(0);
@@ -3186,7 +3186,7 @@ public class protomon extends AppCompatActivity {
                 case 0:
                     return " errantnope ";
                 case 1:
-                    return " Attacks for ";
+                    return " Attacks For ";
                 case 2:
                     return " Heals ";
                 case 3:
@@ -3502,7 +3502,7 @@ public class protomon extends AppCompatActivity {
             StringDisplayMethod();
 
 
-            if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
+            if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
                 if (whosturnisitanyway == 0) {
                     CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 } else if (whosturnisitanyway == 1) {
@@ -3946,7 +3946,7 @@ public class protomon extends AppCompatActivity {
             StringDisplayMethod();
 
 
-            if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
+            if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
                 if (whosturnisitanyway == 0) {
                     CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 } else if (whosturnisitanyway == 1) {
@@ -4364,21 +4364,85 @@ public class protomon extends AppCompatActivity {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Kohboh);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Knightstacean);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
 
@@ -4386,7 +4450,7 @@ public class protomon extends AppCompatActivity {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Honigkönig);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
 
@@ -4394,7 +4458,7 @@ public class protomon extends AppCompatActivity {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Tutewtoo);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
 
@@ -4403,7 +4467,7 @@ public class protomon extends AppCompatActivity {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Kunk);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
 
@@ -4411,84 +4475,84 @@ public class protomon extends AppCompatActivity {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Blanqast);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Strachid);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Degeissdt);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Osteoplang);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Bongu);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Жrachnid);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ōbchovy);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Halocordate);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ogo);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Grobhost);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Elocurl);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Kachort);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
 
@@ -4496,56 +4560,156 @@ public class protomon extends AppCompatActivity {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rongzeed);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Sparvae);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Triaural);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Sapiosuant);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rytegg);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rytegg);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rytegg);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rytegg);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rytegg);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Dicyto);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Algaetizer);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
 
@@ -4554,42 +4718,77 @@ public class protomon extends AppCompatActivity {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Wochem);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Schorp);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }  PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nhainhai);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nhainhai);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nhainhai);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nhainhai);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nhainhai);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nhainhai);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(error);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Munegull);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Djoper);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
 
@@ -4597,7 +4796,155 @@ public class protomon extends AppCompatActivity {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Hemtan);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-        }
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Fædendron);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Slamelion);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Slamelion);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Slamelion);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Slamelion);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Slamelion);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Slamelion);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Slamelion);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Slamelion);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(βeiß);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(በ);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Яallod);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Σatinella);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Takobie);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Daahnida);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Daahnida);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Daahnida);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Daahnida);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Daahnida);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Schmodozer);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ihmpdrap);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
 
@@ -4759,16 +5106,37 @@ case 4:
               PlayerDisplay.setImageResource(R.drawable.schorp);
                     break; 
 case 5:
-           PlayerDisplay.setImageResource(R.drawable.zaume);
+    if (PlayerMonsterHandle.UniqueID < 22000000) {
+        PlayerDisplay.setImageResource(R.drawable.zaume);
+    }else if(PlayerMonsterHandle.UniqueID < 45000000) {
+        PlayerDisplay.setImageResource(R.drawable.zaumer);
+    }else if(PlayerMonsterHandle.UniqueID < 70000000) {
+        PlayerDisplay.setImageResource(R.drawable.zaumeb);
+    }else {
+        PlayerDisplay.setImageResource(R.drawable.zaumeg);
+    }
                     break; 
 case 6:
-                 PlayerDisplay.setImageResource(R.drawable.nhainhai);
+
+    if (PlayerMonsterHandle.UniqueID < 50000000) {
+        PlayerDisplay.setImageResource(R.drawable.nhainhai);
+    }else {
+        PlayerDisplay.setImageResource(R.drawable.nhainhaii);
+    }
                     break; 
 case 7:
               PlayerDisplay.setImageResource(R.drawable.degeissdt);
                     break; 
 case 8:
-          PlayerDisplay.setImageResource(R.drawable.yuggle);
+    if (PlayerMonsterHandle.UniqueID < 22000000) {
+        PlayerDisplay.setImageResource(R.drawable.yuggle);
+    }else if(PlayerMonsterHandle.UniqueID < 45000000) {
+        PlayerDisplay.setImageResource(R.drawable.yugglee);
+    }else if(PlayerMonsterHandle.UniqueID < 70000000) {
+        PlayerDisplay.setImageResource(R.drawable.yugglet);
+    }else {
+        PlayerDisplay.setImageResource(R.drawable.yuggler);
+    }
                     break; 
 case 9:
           PlayerDisplay.setImageResource(R.drawable.bongu);
@@ -4810,7 +5178,11 @@ case 21:
                        //PlayerDisplay.setImageResource(R.drawable.Genaupresang);
                     break; 
 case 22:
-                       //PlayerDisplay.setImageResource(R.drawable.daahnida);
+    if (PlayerMonsterHandle.UniqueID < 50000000) {
+        PlayerDisplay.setImageResource(R.drawable.daahnida);
+    }else {
+        PlayerDisplay.setImageResource(R.drawable.daahnidaa);
+    }
                     break; 
 case 23:
                        //PlayerDisplay.setImageResource(R.drawable.Sorba);
@@ -4831,13 +5203,17 @@ case 28:
                        //PlayerDisplay.setImageResource(R.drawable.Levdzell);
                     break; 
 case 29:
-                       PlayerDisplay.setImageResource(R.drawable.rytegg);
+    if (PlayerMonsterHandle.UniqueID < 50000000) {
+        PlayerDisplay.setImageResource(R.drawable.ryteggg);
+    }else {
+        PlayerDisplay.setImageResource(R.drawable.rytegg);
+    }
                     break; 
 case 30:
                        //PlayerDisplay.setImageResource(R.drawable.Flashmer);
                     break; 
 case 31:
-                       //PlayerDisplay.setImageResource(R.drawable.Schmodozer);
+                       PlayerDisplay.setImageResource(R.drawable.schmodozer);
                     break; 
 case 32:
                        //PlayerDisplay.setImageResource(R.drawable.Octgotot);
@@ -4861,7 +5237,7 @@ case 38:
                        //PlayerDisplay.setImageResource(R.drawable.Weeliosbop);
                     break; 
 case 39:
-                       //PlayerDisplay.setImageResource(R.drawable.Ihmpdrap);
+                       PlayerDisplay.setImageResource(R.drawable.ihmpdrap);
                     break; 
 case 40:
                        //PlayerDisplay.setImageResource(R.drawable.Epibazang);
@@ -4903,7 +5279,7 @@ case 52:
                      PlayerDisplay.setImageResource(R.drawable.halocordate);
                     break; 
 case 53:
-                       //PlayerDisplay.setImageResource(R.drawable.Fædendron);
+                     PlayerDisplay.setImageResource(R.drawable.faedendron);
                     break; 
 case 54:
                        PlayerDisplay.setImageResource(R.drawable.osteoplang);
@@ -4915,7 +5291,7 @@ case 56:
                        //PlayerDisplay.setImageResource(R.drawable.Ϫlitch);
                     break; 
 case 57:
-                       //PlayerDisplay.setImageResource(R.drawable.በ);
+                       PlayerDisplay.setImageResource(R.drawable.baa);
                     break; 
 case 58:
                        //PlayerDisplay.setImageResource(R.drawable.Mantidile);
@@ -4924,7 +5300,7 @@ case 59:
                        //PlayerDisplay.setImageResource(R.drawable.Nokoyl);
                     break; 
 case 60:
-                       //PlayerDisplay.setImageResource(R.drawable.Яallod);
+                       PlayerDisplay.setImageResource(R.drawable.yallod);
                     break; 
 case 61:
                       PlayerDisplay.setImageResource(R.drawable.algaetizer);
@@ -4933,7 +5309,15 @@ case 62:
                       PlayerDisplay.setImageResource(R.drawable.kachort);
                     break; 
 case 63:
-                       //PlayerDisplay.setImageResource(R.drawable.Slamelion);
+    if (PlayerMonsterHandle.UniqueID < 22000000) {
+        PlayerDisplay.setImageResource(R.drawable.slamelion);
+    }else if(PlayerMonsterHandle.UniqueID < 45000000) {
+        PlayerDisplay.setImageResource(R.drawable.slamelionb);
+    }else if(PlayerMonsterHandle.UniqueID < 70000000) {
+        PlayerDisplay.setImageResource(R.drawable.slameliona);
+    }else {
+        PlayerDisplay.setImageResource(R.drawable.slamelion);
+    }
                     break; 
 case 64:
                        //PlayerDisplay.setImageResource(R.drawable.ayateda);
@@ -4951,7 +5335,7 @@ case 68:
                        //PlayerDisplay.setImageResource(R.drawable.Gytanic);
                     break; 
 case 69:
-                       //PlayerDisplay.setImageResource(R.drawable.beis);
+                       PlayerDisplay.setImageResource(R.drawable.beis);
                     break; 
 case 70:
                        //PlayerDisplay.setImageResource(R.drawable.gungholio);
@@ -4963,13 +5347,13 @@ case 72:
                        //PlayerDisplay.setImageResource(R.drawable.Kungulp);
                     break; 
 case 73:
-                       //PlayerDisplay.setImageResource(R.drawable.satinella);
+                       PlayerDisplay.setImageResource(R.drawable.satinella);
                     break; 
 case 74:
                        PlayerDisplay.setImageResource(R.drawable.elocurl);
                     break; 
 case 75:
-                       //PlayerDisplay.setImageResource(R.drawable.Takobie);
+                      PlayerDisplay.setImageResource(R.drawable.takobie);
                     break; 
 case 76:
                      PlayerDisplay.setImageResource(R.drawable.obchovy);
@@ -5018,16 +5402,37 @@ case 4:
             EnemyDisplay.setImageResource(R.drawable.schorp);
                     break; 
 case 5:
-         EnemyDisplay.setImageResource(R.drawable.zaume);
+    if (AttackerMonsterHandle.UniqueID < 22000000) {
+        EnemyDisplay.setImageResource(R.drawable.zaume);
+    }else if(AttackerMonsterHandle.UniqueID < 45000000) {
+        EnemyDisplay.setImageResource(R.drawable.zaumer);
+    }else if(AttackerMonsterHandle.UniqueID < 70000000) {
+        EnemyDisplay.setImageResource(R.drawable.zaumeb);
+    }else {
+        EnemyDisplay.setImageResource(R.drawable.zaumeg);
+    }
                     break; 
 case 6:
-           EnemyDisplay.setImageResource(R.drawable.nhainhai);
+    if (AttackerMonsterHandle.UniqueID < 50000000) {
+        EnemyDisplay.setImageResource(R.drawable.nhainhai);
+    }else {
+        EnemyDisplay.setImageResource(R.drawable.nhainhaii);
+    }
                     break; 
 case 7:
               EnemyDisplay.setImageResource(R.drawable.degeissdt);
                     break; 
 case 8:
-          EnemyDisplay.setImageResource(R.drawable.yuggle);
+
+    if (AttackerMonsterHandle.UniqueID < 22000000) {
+        EnemyDisplay.setImageResource(R.drawable.yuggle);
+    }else if(AttackerMonsterHandle.UniqueID < 45000000) {
+        EnemyDisplay.setImageResource(R.drawable.yugglee);
+    }else if(AttackerMonsterHandle.UniqueID < 70000000) {
+        EnemyDisplay.setImageResource(R.drawable.yugglet);
+    }else {
+        EnemyDisplay.setImageResource(R.drawable.yuggler);
+    }
                     break; 
 case 9:
             EnemyDisplay.setImageResource(R.drawable.bongu);
@@ -5069,7 +5474,12 @@ case 21:
                        //EnemyDisplay.setImageResource(R.drawable.Genaupresang);
                     break; 
 case 22:
-                       //EnemyDisplay.setImageResource(R.drawable.daahnida);
+
+    if (AttackerMonsterHandle.UniqueID < 50000000) {
+        EnemyDisplay.setImageResource(R.drawable.daahnida);
+    }else {
+        EnemyDisplay.setImageResource(R.drawable.daahnidaa);
+    }
                     break; 
 case 23:
                        //EnemyDisplay.setImageResource(R.drawable.Sorba);
@@ -5090,13 +5500,17 @@ case 28:
                        //EnemyDisplay.setImageResource(R.drawable.Levdzell);
                     break; 
 case 29:
-                      EnemyDisplay.setImageResource(R.drawable.rytegg);
+    if (AttackerMonsterHandle.UniqueID < 50000000) {
+        EnemyDisplay.setImageResource(R.drawable.ryteggg);
+    }else {
+        EnemyDisplay.setImageResource(R.drawable.rytegg);
+    }
                     break; 
 case 30:
                        //EnemyDisplay.setImageResource(R.drawable.Flashmer);
                     break; 
 case 31:
-                       //EnemyDisplay.setImageResource(R.drawable.Schmodozer);
+                       EnemyDisplay.setImageResource(R.drawable.schmodozer);
                     break; 
 case 32:
                        //EnemyDisplay.setImageResource(R.drawable.Octgotot);
@@ -5120,7 +5534,7 @@ case 38:
                        //EnemyDisplay.setImageResource(R.drawable.Weeliosbop);
                     break; 
 case 39:
-                       //EnemyDisplay.setImageResource(R.drawable.Ihmpdrap);
+                      EnemyDisplay.setImageResource(R.drawable.ihmpdrap);
                     break; 
 case 40:
                        //EnemyDisplay.setImageResource(R.drawable.Epibazang);
@@ -5162,7 +5576,7 @@ case 52:
                       EnemyDisplay.setImageResource(R.drawable.halocordate);
                     break; 
 case 53:
-                       //EnemyDisplay.setImageResource(R.drawable.Fædendron);
+                       EnemyDisplay.setImageResource(R.drawable.faedendron);
                     break; 
 case 54:
                        EnemyDisplay.setImageResource(R.drawable.osteoplang);
@@ -5174,7 +5588,7 @@ case 56:
                        //EnemyDisplay.setImageResource(R.drawable.Ϫlitch);
                     break; 
 case 57:
-                       //EnemyDisplay.setImageResource(R.drawable.በ);
+                       EnemyDisplay.setImageResource(R.drawable.baa);
                     break; 
 case 58:
                        //EnemyDisplay.setImageResource(R.drawable.Mantidile);
@@ -5183,7 +5597,7 @@ case 59:
                        //EnemyDisplay.setImageResource(R.drawable.Nokoyl);
                     break; 
 case 60:
-                       //EnemyDisplay.setImageResource(R.drawable.Яallod);
+                       EnemyDisplay.setImageResource(R.drawable.yallod);
                     break; 
 case 61:
                       EnemyDisplay.setImageResource(R.drawable.algaetizer);
@@ -5192,7 +5606,15 @@ case 62:
                        EnemyDisplay.setImageResource(R.drawable.kachort);
                     break; 
 case 63:
-                       //EnemyDisplay.setImageResource(R.drawable.Slamelion);
+    if (AttackerMonsterHandle.UniqueID < 22000000) {
+        EnemyDisplay.setImageResource(R.drawable.slamelion);
+    }else if(AttackerMonsterHandle.UniqueID < 45000000) {
+        EnemyDisplay.setImageResource(R.drawable.slamelionb);
+    }else if(AttackerMonsterHandle.UniqueID < 70000000) {
+        EnemyDisplay.setImageResource(R.drawable.slameliona);
+    }else {
+        EnemyDisplay.setImageResource(R.drawable.slamelion);
+    }
                     break; 
 case 64:
                        //EnemyDisplay.setImageResource(R.drawable.ayateda);
@@ -5210,7 +5632,7 @@ case 68:
                        //EnemyDisplay.setImageResource(R.drawable.Gytanic);
                     break; 
 case 69:
-                       //EnemyDisplay.setImageResource(R.drawable.beis);
+                      EnemyDisplay.setImageResource(R.drawable.beis);
                     break; 
 case 70:
                        //EnemyDisplay.setImageResource(R.drawable.gungholio);
@@ -5222,13 +5644,13 @@ case 72:
                        //EnemyDisplay.setImageResource(R.drawable.Kungulp);
                     break; 
 case 73:
-                       //EnemyDisplay.setImageResource(R.drawable.satinella);
+                     EnemyDisplay.setImageResource(R.drawable.satinella);
                     break; 
 case 74:
                        EnemyDisplay.setImageResource(R.drawable.elocurl);
                     break; 
 case 75:
-                       //EnemyDisplay.setImageResource(R.drawable.Takobie);
+                        EnemyDisplay.setImageResource(R.drawable.takobie);
                     break; 
 case 76:
                      EnemyDisplay.setImageResource(R.drawable.obchovy);
