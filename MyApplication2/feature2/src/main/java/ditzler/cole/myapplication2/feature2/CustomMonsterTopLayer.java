@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -34,6 +35,7 @@ public class CustomMonsterTopLayer extends AppCompatActivity {
     String  As  = "Attack %.0f";
     String empty = "";
     String NamePass = "";
+    ImageView CustomWindowTop;
 
 
     public static class StringObject implements Cloneable, Parcelable, Serializable {
@@ -190,6 +192,7 @@ public class CustomMonsterTopLayer extends AppCompatActivity {
         Speed =(TextView) findViewById(R.id.Speed);
         Attack =(TextView) findViewById(R.id.Attack);
         Defense =(TextView) findViewById(R.id.Defense);
+        CustomWindowTop =(ImageView) findViewById(R.id.CustomWindowTop);
 
 
         StatsReturn();
@@ -228,6 +231,7 @@ public class CustomMonsterTopLayer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                ImageReturn();
                 StatsReturn();
             }
         });
@@ -235,6 +239,7 @@ public class CustomMonsterTopLayer extends AppCompatActivity {
         SpriteAdjust.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SpriteDelve();
             }
         });
 
@@ -319,6 +324,10 @@ public class CustomMonsterTopLayer extends AppCompatActivity {
         Intent go = new Intent(this, StatAdjustments.class);
         startActivity(go);
     }
+    public void SpriteDelve() {
+        Intent go = new Intent(this, SpriteAdjustments.class);
+        startActivity(go);
+    }
 
     public void StatsReturn() {
         String DustMe = "%s";
@@ -352,4 +361,340 @@ public class CustomMonsterTopLayer extends AppCompatActivity {
         i.putExtras(b);
         i.setClass(this, GarlitosLab.class);
     }
+    public void ImageReturn() {
+
+        MemoryRefreshment();
+
+
+            switch((int) Customizer.Idnum){
+
+                case 0:
+                    CustomWindowTop.setImageResource(R.drawable.errantnope);
+                    break;
+                case 1:
+                    CustomWindowTop.setImageResource(R.drawable.kunk);
+                    break;
+                case 2:
+                    CustomWindowTop.setImageResource(R.drawable.kohboh);
+                    break;
+                case 3:
+                    CustomWindowTop.setImageResource(R.drawable.djoper);
+                    break;
+                case 4:
+                    CustomWindowTop.setImageResource(R.drawable.schorp);
+                    break;
+                case 5:
+                    if (Customizer.UniqueID < 22000000) {
+                        CustomWindowTop.setImageResource(R.drawable.zaume);
+                    }else if(Customizer.UniqueID < 45000000) {
+                        CustomWindowTop.setImageResource(R.drawable.zaumer);
+                    }else if(Customizer.UniqueID < 70000000) {
+                        CustomWindowTop.setImageResource(R.drawable.zaumeb);
+                    }else {
+                        CustomWindowTop.setImageResource(R.drawable.zaumeg);
+                    }
+                    break;
+                case 6:
+                    if (Customizer.UniqueID < 50000000) {
+                        CustomWindowTop.setImageResource(R.drawable.nhainhai);
+                    }else {
+                        CustomWindowTop.setImageResource(R.drawable.nhainhaii);
+                    }
+                    break;
+                case 7:
+                    CustomWindowTop.setImageResource(R.drawable.degeissdt);
+                    break;
+                case 8:
+
+                    if (Customizer.UniqueID < 22000000) {
+                        CustomWindowTop.setImageResource(R.drawable.yuggle);
+                    }else if(Customizer.UniqueID < 45000000) {
+                        CustomWindowTop.setImageResource(R.drawable.yugglee);
+                    }else if(Customizer.UniqueID < 70000000) {
+                        CustomWindowTop.setImageResource(R.drawable.yugglet);
+                    }else {
+                        CustomWindowTop.setImageResource(R.drawable.yuggler);
+                    }
+                    break;
+                case 9:
+                    CustomWindowTop.setImageResource(R.drawable.bongu);
+                    break;
+                case 10:
+                    //           //CustomWindowTop.setImageResource(R.drawable.giteriglia);
+                    break;
+                case 11:
+                    //            //CustomWindowTop.setImageResource(R.drawable.cyosteroth);
+                    break;
+                case 12:
+                    //CustomWindowTop.setImageResource(R.drawable.Nentopode);
+                    break;
+                case 13:
+                    //CustomWindowTop.setImageResource(R.drawable.centiclak);
+                    break;
+                case 14:
+                    //CustomWindowTop.setImageResource(R.drawable.Uggnawb);
+                    break;
+                case 15:
+                    CustomWindowTop.setImageResource(R.drawable.grobhost);
+                    break;
+                case 16:
+                    //CustomWindowTop.setImageResource(R.drawable.Illelonab);
+                    break;
+                case 17:
+                    CustomWindowTop.setImageResource(R.drawable.rongzeed);
+                    break;
+                case 18:
+                    //CustomWindowTop.setImageResource(R.drawable.blattle);
+                    break;
+                case 19:
+                    //CustomWindowTop.setImageResource(R.drawable.Swogharnler);
+                    break;
+                case 20:
+                    //CustomWindowTop.setImageResource(R.drawable.adenolish);
+                    break;
+                case 21:
+                    //CustomWindowTop.setImageResource(R.drawable.Genaupresang);
+                    break;
+                case 22:
+
+                    if (Customizer.UniqueID < 50000000) {
+                        CustomWindowTop.setImageResource(R.drawable.daahnida);
+                    }else {
+                        CustomWindowTop.setImageResource(R.drawable.daahnidaa);
+                    }
+                    break;
+                case 23:
+                    //CustomWindowTop.setImageResource(R.drawable.Sorba);
+                    break;
+                case 24:
+                    //CustomWindowTop.setImageResource(R.drawable.Jiyou);
+                    break;
+                case 25:
+                    CustomWindowTop.setImageResource(R.drawable.sparvae);
+                    break;
+                case 26:
+                    //CustomWindowTop.setImageResource(R.drawable.Vellup);
+                    break;
+                case 27:
+                    //CustomWindowTop.setImageResource(R.drawable.bellaja);
+                    break;
+                case 28:
+                    //CustomWindowTop.setImageResource(R.drawable.Levdzell);
+                    break;
+                case 29:
+                    if (Customizer.UniqueID < 50000000) {
+                        CustomWindowTop.setImageResource(R.drawable.ryteggg);
+                    }else {
+                        CustomWindowTop.setImageResource(R.drawable.rytegg);
+                    }
+                    break;
+                case 30:
+                    //CustomWindowTop.setImageResource(R.drawable.Flashmer);
+                    break;
+                case 31:
+                    CustomWindowTop.setImageResource(R.drawable.schmodozer);
+                    break;
+                case 32:
+                    //CustomWindowTop.setImageResource(R.drawable.Octgotot);
+                    break;
+                case 33:
+                    CustomWindowTop.setImageResource(R.drawable.triaural);
+                    break;
+                case 34:
+                    CustomWindowTop.setImageResource(R.drawable.dicyto);
+                    break;
+                case 35:
+                    //CustomWindowTop.setImageResource(R.drawable.Monopteryx);
+                    break;
+                case 36:
+                    //CustomWindowTop.setImageResource(R.drawable.Elastocark);
+                    break;
+                case 37:
+                    //CustomWindowTop.setImageResource(R.drawable.Toobapath);
+                    break;
+                case 38:
+                    //CustomWindowTop.setImageResource(R.drawable.Weeliosbop);
+                    break;
+                case 39:
+                    CustomWindowTop.setImageResource(R.drawable.ihmpdrap);
+                    break;
+                case 40:
+                    //CustomWindowTop.setImageResource(R.drawable.Epibazang);
+                    break;
+                case 41:
+                    CustomWindowTop.setImageResource(R.drawable.hemtan);
+                    break;
+                case 42:
+                    CustomWindowTop.setImageResource(R.drawable.ogo);
+                    break;
+                case 43:
+                    CustomWindowTop.setImageResource(R.drawable.strachid);
+                    break;
+                case 44:
+                    //CustomWindowTop.setImageResource(R.drawable.Toximastica);
+                    break;
+                case 45:
+                    //CustomWindowTop.setImageResource(R.drawable.Urcuria);
+                    break;
+                case 46:
+                    //CustomWindowTop.setImageResource(R.drawable.Hyuntress);
+                    break;
+                case 47:
+                    //CustomWindowTop.setImageResource(R.drawable.Mondosplak);
+                    break;
+                case 48:
+                    //CustomWindowTop.setImageResource(R.drawable.Kaheksaguge);
+                    break;
+                case 49:
+                    CustomWindowTop.setImageResource(R.drawable.sapiosuant);
+                    break;
+                case 50:
+                    CustomWindowTop.setImageResource(R.drawable.munegull);
+                    break;
+                case 51:
+                    //CustomWindowTop.setImageResource(R.drawable.Sudakleez);
+                    break;
+                case 52:
+                    CustomWindowTop.setImageResource(R.drawable.halocordate);
+                    break;
+                case 53:
+                    CustomWindowTop.setImageResource(R.drawable.faedendron);
+                    break;
+                case 54:
+                    CustomWindowTop.setImageResource(R.drawable.osteoplang);
+                    break;
+                case 55:
+                    CustomWindowTop.setImageResource(R.drawable.zrachnid);
+                    break;
+                case 56:
+                    //CustomWindowTop.setImageResource(R.drawable.Ϫlitch);
+                    break;
+                case 57:
+                    CustomWindowTop.setImageResource(R.drawable.baa);
+                    break;
+                case 58:
+                    //CustomWindowTop.setImageResource(R.drawable.Mantidile);
+                    break;
+                case 59:
+                    //CustomWindowTop.setImageResource(R.drawable.Nokoyl);
+                    break;
+                case 60:
+                    CustomWindowTop.setImageResource(R.drawable.yallod);
+                    break;
+                case 61:
+                    CustomWindowTop.setImageResource(R.drawable.algaetizer);
+                    break;
+                case 62:
+                    CustomWindowTop.setImageResource(R.drawable.kachort);
+                    break;
+                case 63:
+                    if (Customizer.UniqueID < 22000000) {
+                        CustomWindowTop.setImageResource(R.drawable.slamelion);
+                    }else if(Customizer.UniqueID < 45000000) {
+                        CustomWindowTop.setImageResource(R.drawable.slamelionb);
+                    }else if(Customizer.UniqueID < 70000000) {
+                        CustomWindowTop.setImageResource(R.drawable.slameliona);
+                    }else {
+                        CustomWindowTop.setImageResource(R.drawable.slamelion);
+                    }
+                    break;
+                case 64:
+                    //CustomWindowTop.setImageResource(R.drawable.ayateda);
+                    break;
+                case 65:
+                    CustomWindowTop.setImageResource(R.drawable.wochem);
+                    break;
+                case 66:
+                    //CustomWindowTop.setImageResource(R.drawable.Ƕmun);
+                    break;
+                case 67:
+                    //CustomWindowTop.setImageResource(R.drawable.Ψkobath);
+                    break;
+                case 68:
+                    //CustomWindowTop.setImageResource(R.drawable.Gytanic);
+                    break;
+                case 69:
+                    CustomWindowTop.setImageResource(R.drawable.beis);
+                    break;
+                case 70:
+                    //CustomWindowTop.setImageResource(R.drawable.gungholio);
+                    break;
+                case 71:
+                    CustomWindowTop.setImageResource(R.drawable.honigkonig);
+                    break;
+                case 72:
+                    //CustomWindowTop.setImageResource(R.drawable.Kungulp);
+                    break;
+                case 73:
+                    CustomWindowTop.setImageResource(R.drawable.satinella);
+                    break;
+                case 74:
+                    CustomWindowTop.setImageResource(R.drawable.elocurl);
+                    break;
+                case 75:
+                    CustomWindowTop.setImageResource(R.drawable.takobie);
+                    break;
+                case 76:
+                    CustomWindowTop.setImageResource(R.drawable.obchovy);
+                    break;
+                case 77:
+                    //CustomWindowTop.setImageResource(R.drawable.Nimnamnom);
+                    break;
+                case 78:
+                    CustomWindowTop.setImageResource(R.drawable.tutewtoo);
+                    break;
+                case 79:
+                    CustomWindowTop.setImageResource(R.drawable.blanqast);
+                    break;
+                case 80:
+                    //CustomWindowTop.setImageResource(R.drawable.Indeo);
+                    break;
+                case 81:
+                    //CustomWindowTop.setImageResource(R.drawable.deblobbio);
+                    break;
+                case 82:
+                    CustomWindowTop.setImageResource(R.drawable.knightstacean);
+                    break;
+                case 83:
+                    if (Customizer.UniqueID < 22000000) {
+                        CustomWindowTop.setImageResource(R.drawable.firstcustom);
+                    }else if(Customizer.UniqueID < 45000000) {
+                        CustomWindowTop.setImageResource(R.drawable.firstcustoma);
+                    }else if(Customizer.UniqueID < 70000000) {
+                        CustomWindowTop.setImageResource(R.drawable.firstcustomb);
+                    }else {
+                        CustomWindowTop.setImageResource(R.drawable.firstcustomc);
+                    }
+                    break;
+
+            }
+
+
+        }
+
+        public void MemoryRefreshment(){
+            Context ProtomonContext = getApplicationContext();
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ProtomonContext);
+            SharedPreferences.Editor editor = prefs.edit();
+            Gson gson = new Gson();
+            //Gson gson = new Gson();
+            String json = prefs.getString("CustomSlotSprite", "");
+            Intent i = new Intent();
+            Bundle b = new Bundle();
+            if (gson.fromJson(json, (Type) protomon.monst.class) != null) {
+                protomon.monst dust = gson.fromJson(json, (Type) protomon.monst.class);
+                Customizer.UniqueID = dust.UniqueID;
+            }
+
+
+           json = prefs.getString("CustomSlotX", "");
+            if (gson.fromJson(json, (Type) protomon.monst.class) != null) {
+                protomon.monst dust = gson.fromJson(json, (Type) protomon.monst.class);
+                Customizer.Attack = dust.Attack;
+                Customizer.Health = dust.Health;
+                Customizer.Speed = dust.Speed;
+                Customizer.Defense = dust.Defense;
+            }
+        }
+
 }
