@@ -4211,6 +4211,25 @@ public class protomon extends AppCompatActivity {
 
         }
 
+        if (attackermonster.Moveslotheal == 1){
+            if(Teller == HealButton){
+                if (delayedhealtimerA != 0){
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Turn;
+                            break;
+                        case 2:
+                            Teller = Turn;
+                            break;
+                    }
+                }
+
+            }
+        }
+
         if (Teller != Turn){
             Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
             if(playermonster.Health <= Damage){
