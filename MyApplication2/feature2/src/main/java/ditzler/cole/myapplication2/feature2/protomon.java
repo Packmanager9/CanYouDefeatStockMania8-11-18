@@ -4018,6 +4018,26 @@ public class protomon extends AppCompatActivity {
                     if (attackermonster.Moveslotheal == 4){
                         if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0)  && attackermonster.Moveslotheal == 4){
                             Teller = HealButton;
+                        }else if(ratiohealth >= 45 && ratiohealth <= 80){
+                            if (attackermonster.Moveslotheal == 1){
+                                if (delayedhealtimerA == 0){
+                                    Teller = HealButton;
+                                }else {
+                                    switch (new Random().nextInt(3)) {
+
+                                        case 0:
+                                            Teller = SpecialAttack;
+                                            break;
+                                        case 1:
+                                            Teller = Turn;
+                                            break;
+                                        case 2:
+                                            Teller = Turn;
+                                            break;
+
+                                    }
+                                }
+                            }
                         }else {
                             switch (new Random().nextInt(3)) {
 
@@ -4157,9 +4177,25 @@ public class protomon extends AppCompatActivity {
                        Teller = Turn;
                        break;
                    case 2:
-                       if (attackermonster.Health < MaxHealthAttacker) {
-                           Teller = HealButton;
-                       }else {
+                           if(ratiohealth >= 45 && ratiohealth <= 80){
+                               if (attackermonster.Moveslotheal == 1){
+                                   if (delayedhealtimerA == 0){
+                                       Teller = HealButton;
+                                   }else {
+                                       switch (new Random().nextInt(3)) {
+                                           case 0:
+                                               Teller = SpecialAttack;
+                                               break;
+                                           case 1:
+                                               Teller = Turn;
+                                               break;
+                                           case 2:
+                                               Teller = Turn;
+                                               break;
+                                       }
+                                   }
+                               }
+                           }else {
                            Teller= Turn;
                        }
                        break;
@@ -4961,6 +4997,14 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
 
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Toximastica);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
 
        // */
 
@@ -5272,7 +5316,7 @@ case 43:
                        PlayerDisplay.setImageResource(R.drawable.strachid);
                     break; 
 case 44:
-                       //PlayerDisplay.setImageResource(R.drawable.Toximastica);
+                       PlayerDisplay.setImageResource(R.drawable.toximastica);
                     break; 
 case 45:
                        //PlayerDisplay.setImageResource(R.drawable.Urcuria);
@@ -5586,7 +5630,7 @@ case 43:
                        EnemyDisplay.setImageResource(R.drawable.strachid);
                     break; 
 case 44:
-                       //EnemyDisplay.setImageResource(R.drawable.Toximastica);
+                       EnemyDisplay.setImageResource(R.drawable.toximastica);
                     break; 
 case 45:
                        //EnemyDisplay.setImageResource(R.drawable.Urcuria);
