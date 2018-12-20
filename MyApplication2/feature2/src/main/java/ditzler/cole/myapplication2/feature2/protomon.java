@@ -3935,7 +3935,28 @@ public class protomon extends AppCompatActivity {
 
         if (Teller != Status){
             if (attackermonster.Health >= MaxHealthAttacker && (attackermonster.Defense < 749 && attackermonster.Speed < 749 && attackermonster.Attack < 749)) {
-                Teller = Status;
+                switch (new Random().nextInt(6)) {
+
+                    case 0:
+                        Teller = SpecialAttack;
+                        break;
+                    case 1:
+                        Teller = Status;
+                        break;
+                    case 2:
+                        Teller = Status;
+                        break;
+                    case 3:
+                        Teller = Status;
+                        break;
+                    case 4:
+                        Teller = Turn;
+                        break;
+                    case 5:
+                        Teller = Turn;
+                        break;
+
+                }
             }
         }
 
