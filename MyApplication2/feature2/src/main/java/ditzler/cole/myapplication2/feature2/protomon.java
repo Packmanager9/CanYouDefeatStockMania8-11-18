@@ -1904,7 +1904,7 @@ public class protomon extends AppCompatActivity {
                 int runtoonehundred = 0;
                 IDstorage = playerid;
                 int AIDstorage = attackerid;
-
+ /*
             for (attackerid = 1; attackerid < rotationcap; attackerid++){
 
                 try {
@@ -1917,7 +1917,7 @@ public class protomon extends AppCompatActivity {
                 } catch (CloneNotSupportedException e) {
                     e.printStackTrace();
                 }
-               /* */
+               */
                 for (playerid = 1; playerid < rotationcap; playerid++) {
 
                     try {
@@ -1932,7 +1932,7 @@ public class protomon extends AppCompatActivity {
                     }
 
 
-                    for (runtoonehundred = 0; runtoonehundred < 10; runtoonehundred++) {
+                    for (runtoonehundred = 0; runtoonehundred < 100; runtoonehundred++) {
 
                         for (int dummy = -1; (playermonster.Health > 0 && attackermonster.Health > 0); turncounter++) {
 
@@ -1983,15 +1983,17 @@ public class protomon extends AppCompatActivity {
                     if (playwins < attackwins) {
                         scorekeepera++;
                     }
-                   // GombatString = (GombatString + names(playerid) + " " + String.format(displaystring, attackwins)+ "W/" + String.format(displaystring, playwins)+"L" + "\n");
+                     GombatString = (GombatString + names(playerid) + " " + String.format(displaystring, attackwins)+ "W/" + String.format(displaystring, playwins)+"L" + "\n");
+
                     attackwins = 0;
                     playwins = 0;
                 }
 
 
-                //    CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
+                //   CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
 
                 CombatString = CombatString + String.format("Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + names(attackermonster.Idnum) + " " + String.format(displaystring, scorekeepera) + "\n");
+
 
 
                 ActionNum = 0;
@@ -2000,7 +2002,7 @@ public class protomon extends AppCompatActivity {
                 playwins = 0;
                 scorekeeperp = 0;
                 scorekeepera = 0;
-            }
+            //}
 
                 playerid = IDstorage;
                 attackerid = AIDstorage;
@@ -4692,6 +4694,14 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
 
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Jiyou);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
 
        // */
 
@@ -4914,7 +4924,13 @@ case 18:
                        //PlayerDisplay.setImageResource(R.drawable.blattle);
                     break; 
 case 19:
-                       PlayerDisplay.setImageResource(R.drawable.swogharnler);
+
+
+    if (PlayerMonsterHandle.UniqueID < 50000000) {
+        PlayerDisplay.setImageResource(R.drawable.swogharnlera);
+    }else {
+        PlayerDisplay.setImageResource(R.drawable.swogharnler);
+    }
                     break; 
 case 20:
                        //PlayerDisplay.setImageResource(R.drawable.adenolish);
@@ -4933,7 +4949,7 @@ case 23:
                        PlayerDisplay.setImageResource(R.drawable.sorba);
                     break; 
 case 24:
-                       //PlayerDisplay.setImageResource(R.drawable.Jiyou);
+                      PlayerDisplay.setImageResource(R.drawable.jiyou);
                     break; 
 case 25:
                         PlayerDisplay.setImageResource(R.drawable.sparvae);
@@ -5222,7 +5238,12 @@ case 18:
                        //EnemyDisplay.setImageResource(R.drawable.blattle);
                     break; 
 case 19:
-                       EnemyDisplay.setImageResource(R.drawable.swogharnler);
+
+    if (AttackerMonsterHandle.UniqueID < 50000000) {
+        EnemyDisplay.setImageResource(R.drawable.swogharnlera);
+    }else {
+        EnemyDisplay.setImageResource(R.drawable.swogharnler);
+    }
                     break; 
 case 20:
                        //EnemyDisplay.setImageResource(R.drawable.adenolish);
@@ -5242,7 +5263,7 @@ case 23:
                       EnemyDisplay.setImageResource(R.drawable.sorba);
                     break; 
 case 24:
-                       //EnemyDisplay.setImageResource(R.drawable.Jiyou);
+                       EnemyDisplay.setImageResource(R.drawable.jiyou);
                     break; 
 case 25:
                        EnemyDisplay.setImageResource(R.drawable.sparvae);
