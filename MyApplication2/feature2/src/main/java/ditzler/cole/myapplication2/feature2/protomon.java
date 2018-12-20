@@ -3933,6 +3933,113 @@ public class protomon extends AppCompatActivity {
 
         }
 
+        if (Teller != Status){
+            if (attackermonster.Health >= MaxHealthAttacker && (attackermonster.Defense < 749 && attackermonster.Speed < 749 && attackermonster.Attack < 749)) {
+                Teller = Status;
+            }
+        }
+
+        if (Teller == Status){
+            if (!(attackermonster.Defense < 749 && attackermonster.Speed < 749 && attackermonster.Attack < 749)) {
+                switch (new Random().nextInt(3)) {
+
+                    case 0:
+                        Teller = SpecialAttack;
+                        break;
+                    case 1:
+                        Teller = Turn;
+                        break;
+                    case 2:
+                        if (attackermonster.Health < MaxHealthAttacker) {
+                            Teller = HealButton;
+                        }else {
+                            Teller= Turn;
+                        }
+                        break;
+
+                }
+            }
+            if (AttackerStatDelayTimer != -1){
+                switch (new Random().nextInt(3)) {
+
+                    case 0:
+                        Teller = SpecialAttack;
+                        break;
+                    case 1:
+                        Teller = Turn;
+                        break;
+                    case 2:
+                        if (attackermonster.Health < MaxHealthAttacker) {
+                            Teller = HealButton;
+                        }else {
+                            Teller= Turn;
+                        }
+                        break;
+
+                }
+            }
+
+        }
+
+        double ratiohealth = (100*attackermonster.Health/MaxHealthAttacker);
+        if (ratiohealth < 21){
+            if(healblocktgimerA == 0 && elongatedhealwoundpowerA == 0 && delayedhealtimerA == 0){
+                if (attackermonster.Speed > attackermonster.Defense && attackermonster.Moveslotheal != 3) {
+                    Teller = HealButton;
+                }
+                if(attackermonster.Moveslotheal == 3){
+                    double what = (attackermonster.Attack / playermonster.Defense)/(attackermonster.Speed / attackermonster.Defense);
+                    if (what > 1.0 ){
+                        Teller = HealButton;
+                    }
+                }
+
+                // should probably make something that keeps the monster from using heal over time over and over
+
+                if (elongatedhealtimerA != 0 && attackermonster.Moveslotheal != 2){
+                    switch (new Random().nextInt(3)) {
+
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Turn;
+                            break;
+                        case 2:
+                            if (attackermonster.Health < MaxHealthAttacker) {
+                                Teller = HealButton;
+                            }else {
+                                Teller= Turn;
+                            }
+                            break;
+
+                    }
+                }
+
+
+                if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0)  && attackermonster.Moveslotheal != 4){
+                    Teller = HealButton;
+                }
+
+
+            }
+
+        }else if(ratiohealth >= 45 && ratiohealth <= 80){
+            if (attackermonster.Moveslotheal ==  1){
+                if (delayedhealtimerA == 0){
+                    Teller = HealButton;
+                }
+            }
+        }
+
+
+        if (Teller != Turn){
+            Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+            if(playermonster.Health <= Damage){
+                Teller = Turn;
+            }
+        }
+
 
         if (Teller == Turn) {
             whosturnisitanyway = 0;
@@ -4703,6 +4810,16 @@ public class protomon extends AppCompatActivity {
 
 
 
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Adenolish);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+
        // */
 
 
@@ -4933,7 +5050,7 @@ case 19:
     }
                     break; 
 case 20:
-                       //PlayerDisplay.setImageResource(R.drawable.adenolish);
+                       PlayerDisplay.setImageResource(R.drawable.adenolish);
                     break; 
 case 21:
                        //PlayerDisplay.setImageResource(R.drawable.Genaupresang);
@@ -5246,7 +5363,7 @@ case 19:
     }
                     break; 
 case 20:
-                       //EnemyDisplay.setImageResource(R.drawable.adenolish);
+                      EnemyDisplay.setImageResource(R.drawable.adenolish);
                     break; 
 case 21:
                        //EnemyDisplay.setImageResource(R.drawable.Genaupresang);
