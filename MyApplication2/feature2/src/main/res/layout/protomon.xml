@@ -92,8 +92,8 @@
                 <ImageView
 
                     android:id="@+id/playerturn"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
 
                 <ImageView
 
@@ -206,8 +206,8 @@
             <ImageView
 
                 android:id="@+id/enemyturn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginStart="0dp" />
 
         </LinearLayout>

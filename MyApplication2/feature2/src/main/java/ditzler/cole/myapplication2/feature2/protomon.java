@@ -261,7 +261,7 @@ public class protomon extends AppCompatActivity {
     public double daahnidaat = 60;
     public double daahnidasp = 462;
     public double daahnidade = 52;
-    public double daahnidahe = 60;
+    public double daahnidahe = 61;
 
     public double sorbaid = 23;
     public double sorbaat = 150; // 150
@@ -985,17 +985,17 @@ public class protomon extends AppCompatActivity {
 
 
             try {
-                playermonster = Cloner(monstlist(playerid));
+                playermonster = Cloner(monstlist(playerid)); // playerid
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }playermonster.UniqueID = UniqueIdentifier(0);
             try {
-                attackermonster = Cloner(monstlist(attackerid));
+                attackermonster = Cloner(monstlist(attackerid)); // attackerid // 62 kachort, 22 daahnida, 20 adenolish
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }attackermonster.UniqueID = UniqueIdentifier(0);
             try {
-                secondstartingmonster = Cloner(monstlist((int)somecrap));
+                secondstartingmonster = Cloner(monstlist((int)somecrap)); // somecrap
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }secondstartingmonster.UniqueID = UniqueIdentifier(0);
@@ -2843,14 +2843,33 @@ public class protomon extends AppCompatActivity {
 
             }
 
-            for (int w = 0; w < MonsterStorageCounter; w++){
+            if (grouphealtimerP != 0){
+            for (int w = 0; w < MonsterStorageCounter; w++) {
                 PlayerMonsterStorage[w].Health = PlayerMonsterStorage[w].Health + grouphealpowerP;
 
-                if (PlayerMonsterStorage[w].Health >= stats(monstlist((int)PlayerMonsterStorage[w].Idnum).Health)){
-                    PlayerMonsterStorage[w].Health = stats(monstlist((int)PlayerMonsterStorage[w].Idnum).Health);
+                if (PlayerMonsterStorage[w].Health >= stats(monstlist((int) PlayerMonsterStorage[w].Idnum).Health)) {
+                    PlayerMonsterStorage[w].Health = stats(monstlist((int) PlayerMonsterStorage[w].Idnum).Health);
+                  }
+                }
+            }
+
+            if (grouphealtimerA != 0){
+                    attackermonster.Health = attackermonster.Health + grouphealpowerA;
+
+                    if (attackermonster.Health >= stats(monstlist((int) attackermonster.Idnum).Health)) {
+                        attackermonster.Health = stats(monstlist((int) attackermonster.Idnum).Health);
+                    }
                 }
 
+
+            if (grouphealtimerP == 0){
+                grouphealpowerP = 0;
             }
+
+            if (grouphealtimerA == 0){
+                grouphealpowerA = 0;
+            }
+
 
             /*
             for (int w = 0; w < MonsterStorageCounter; w++){
@@ -2878,7 +2897,24 @@ public class protomon extends AppCompatActivity {
             StatAbuseCurb(playermonster);
             StatAbuseCurb(attackermonster);
 
+
+            if (playermonster.Health <= 0){
+
+
+                CombatString = String.format(CombatString + names(playermonster.Idnum) + " is Unable To battle " + "\n");
+
+            }
+
+            if (attackermonster.Health <= 0){
+
+
+                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
+
+            }
         }
+
+
+
     }
 
     public String HealingMoveNames(int move) {
@@ -2928,23 +2964,23 @@ public class protomon extends AppCompatActivity {
             case 1:
                 return "Speed and Defense Boost ";
             case 2:
-                return "Attack and Defense boost ";
+                return "Attack and Defense Boost ";
             case 3:
-                return "Attack and speed boost ";
+                return "Attack and Speed Boost ";
             case 4:
                 return "Major Speed Boost ";
             case 5:
-                return "Major Defense boost ";
+                return "Major Defense Boost ";
             case 6:
-                return "Major Attack boost ";
+                return "Major Attack Boost ";
             case 7:
                 return "Delayed All Stat Boost ";
             case 8:
                 return "Delayed Major Speed and Defense Boost ";
             case 9:
-                return "Delayed Major Attack and Defense boost ";
+                return "Delayed Major Attack and Defense Boost ";
             case 10:
-                return "Delayed Major Attack and speed boost ";
+                return "Delayed Major Attack and Speed Boost ";
             case 11:
                 return "Delayed Huge Speed Boost ";
             case 12:
@@ -3729,7 +3765,7 @@ public class protomon extends AppCompatActivity {
                     elongatedglugpowerP = healtester;
                 } // Work in progress, attack 3 is life glug over time
             } else if (playermonster.Moveslotattack == 4) {
-                healblocktgimerP = healblocktgimerP + 6;
+                healblocktgimerP = healblocktgimerP + 7;
             }else if (playermonster.Moveslotattack == 5) {
                 Damage = (((new Random().nextInt(11) + 25)) * (playermonster.Attack / attackermonster.Defense));
                 Damage = Math.round(Damage);
@@ -3944,26 +3980,37 @@ public class protomon extends AppCompatActivity {
 
         if (Teller != Status){
             if (attackermonster.Health >= MaxHealthAttacker && (attackermonster.Defense < 749 && attackermonster.Speed < 749 && attackermonster.Attack < 749)) {
-                switch (new Random().nextInt(6)) {
 
-                    case 0:
-                        Teller = SpecialAttack;
-                        break;
-                    case 1:
-                        Teller = Status;
-                        break;
-                    case 2:
-                        Teller = Status;
-                        break;
-                    case 3:
-                        Teller = Status;
-                        break;
-                    case 4:
-                        Teller = Turn;
-                        break;
-                    case 5:
-                        Teller = Turn;
-                        break;
+
+                if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                    Teller = SpecialAttack;
+                } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
+                    Teller = SpecialAttack;
+                }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
+                    Teller = Turn;
+                } else {
+                    switch (new Random().nextInt(6)) {
+
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Status;
+                            break;
+                        case 2:
+                            Teller = Status;
+                            break;
+                        case 3:
+                            Teller = Status;
+                            break;
+                        case 4:
+                            Teller = Turn;
+                            break;
+                        case 5:
+                            Teller = Turn;
+                            break;
+
+                    }
 
                 }
             }
@@ -4012,7 +4059,12 @@ public class protomon extends AppCompatActivity {
         }
 
         double ratiohealth = (100*attackermonster.Health/MaxHealthAttacker);
-        if (ratiohealth < 21){
+
+        double testdamage = ((attackermonster.Attack / playermonster.Defense) * 50);
+        double testheal = ((attackermonster.Speed / attackermonster.Defense) * 50);
+
+
+        if (ratiohealth < 37 || ((attackermonster.Health < testdamage && (attackermonster.Health + testheal) > testdamage) && (attackermonster.Moveslotheal != 1 && attackermonster.Moveslotheal != 3 && attackermonster.Moveslotheal != 5 ))){
             if(healblocktgimerA == 0 && elongatedhealwoundpowerA == 0 && delayedhealtimerA == 0){
                 if ((attackermonster.Speed > playermonster.Attack && attackermonster.Speed > attackermonster.Defense) && attackermonster.Moveslotheal != 3) {
                     if (attackermonster.Moveslotheal == 4){
@@ -4070,7 +4122,7 @@ public class protomon extends AppCompatActivity {
 
                 // should probably make something that keeps the monster from using heal over time over and over
 
-                if (elongatedhealtimerA != 0 && attackermonster.Moveslotheal != 2){
+                if (elongatedhealtimerA != 0 && attackermonster.Moveslotheal == 2){ // was != 2, should surely be == 2? because 2 = elongated heal A, And the timer should prevent repetition only in that scenario.
                     switch (new Random().nextInt(3)) {
 
                         case 0:
@@ -4230,12 +4282,305 @@ public class protomon extends AppCompatActivity {
             }
         }
 
+        if (attackermonster.Moveslotheal == 2 && elongatedhealtimerA == 0 && (ratiohealth > 49 && ratiohealth < 99)){
+            Teller = HealButton;
+        }
+
+
+        if (Teller != SpecialAttack && attackermonster.Moveslotattack == 3 && elongatedglugtimerA == 0 && attackermonster.Speed >= playermonster.Defense){
+                Teller = SpecialAttack;
+        }
+
         if (Teller != Turn){
             Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
             if(playermonster.Health <= Damage){
                 Teller = Turn;
             }
         }
+
+
+
+        if (attackermonster.Speed < playermonster.Speed && ( attackermonster.Moveslotspeed == 0 ||   attackermonster.Moveslotspeed == 1 ||   attackermonster.Moveslotspeed == 3 ||   attackermonster.Moveslotspeed == 4 ||   attackermonster.Moveslotspeed == 7 ||   attackermonster.Moveslotspeed == 8 ||  attackermonster.Moveslotspeed == 9 ||   attackermonster.Moveslotspeed == 11 )){
+            switch (attackermonster.Moveslotspeed){
+
+                case 0:
+                    if ((attackermonster.Speed * FrrtTwo) > playermonster.Speed){
+                        Teller = Status;
+                    }else {
+                        switch (new Random().nextInt(3)) {
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                Teller = Turn;
+                                break;
+                            case 2:
+                                Teller = Turn;
+                                break;
+                        }
+                    }
+                case 1:
+                    if ((attackermonster.Speed * CbrtTwo) > playermonster.Speed){
+                        Teller = Status;
+                    }else {
+                        switch (new Random().nextInt(3)) {
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                Teller = Turn;
+                                break;
+                            case 2:
+                                Teller = Turn;
+                                break;
+                        }
+                    }
+                    break;
+                case 2:
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Turn;
+                            break;
+                        case 2:
+                            Teller = Turn;
+                            break;
+                    }
+                    if (Teller != Turn){
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        if(playermonster.Health <= Damage){
+                            Teller = Turn;
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((attackermonster.Speed * CbrtTwo) > playermonster.Speed){
+                        Teller = Status;
+                    }else {
+                        switch (new Random().nextInt(3)) {
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                Teller = Turn;
+                                break;
+                            case 2:
+                                Teller = Turn;
+                                break;
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((attackermonster.Speed * SqrtTwo) > playermonster.Speed){
+                        Teller = Status;
+                    }else {
+                        switch (new Random().nextInt(3)) {
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                Teller = Turn;
+                                break;
+                            case 2:
+                                Teller = Turn;
+                                break;
+                        }
+                    }
+                    break;
+                case 5:
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Turn;
+                            break;
+                        case 2:
+                            Teller = Turn;
+                            break;
+                    }
+                    if (Teller != Turn){
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        if(playermonster.Health <= Damage){
+                            Teller = Turn;
+                        }
+                    }
+                    break;
+                case 6:
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Turn;
+                            break;
+                        case 2:
+                            Teller = Turn;
+                            break;
+                    }
+                    if (Teller != Turn){
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        if(playermonster.Health <= Damage){
+                            Teller = Turn;
+                        }
+                    }
+                    break;
+                case 7:
+                    if (((attackermonster.Speed * CbrtTwo) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
+                        Teller = Status;
+                    }else {
+                        switch (new Random().nextInt(3)) {
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                Teller = Turn;
+                                break;
+                            case 2:
+                                Teller = Turn;
+                                break;
+                        }
+                    }
+                    if (Teller != Turn){
+                    Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                    if(playermonster.Health <= Damage){
+                        Teller = Turn;
+                    }
+                }
+                    break;
+                case 8:
+                    if (((attackermonster.Speed * SqrtTwo) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
+                    Teller = Status;
+                }else {
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Turn;
+                            break;
+                        case 2:
+                            Teller = Turn;
+                            break;
+                    }
+                }
+                    if (Teller != Turn){
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        if(playermonster.Health <= Damage){
+                            Teller = Turn;
+                        }
+                    }
+                    break;
+                case 9:
+                    if (((attackermonster.Speed * SqrtTwo) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
+                        Teller = Status;
+                    }else {
+                        switch (new Random().nextInt(3)) {
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                Teller = Turn;
+                                break;
+                            case 2:
+                                Teller = Turn;
+                                break;
+                        }
+                    }
+                    if (Teller != Turn){
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        if(playermonster.Health <= Damage){
+                            Teller = Turn;
+                        }
+                    }
+                    break;
+                case 10:
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Turn;
+                            break;
+                        case 2:
+                            Teller = Turn;
+                            break;
+                    }
+                    if (Teller != Turn){
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        if(playermonster.Health <= Damage){
+                            Teller = Turn;
+                        }
+                    }
+                    break;
+                case 11:
+                    if (((attackermonster.Speed * 2) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
+                        Teller = Status;
+                    }else {
+                        switch (new Random().nextInt(3)) {
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                Teller = Turn;
+                                break;
+                            case 2:
+                                Teller = Turn;
+                                break;
+                        }
+                    }
+                    if (Teller != Turn){
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        if(playermonster.Health <= Damage){
+                            Teller = Turn;
+                        }
+                    }
+                    break;
+                case 12:
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Turn;
+                            break;
+                        case 2:
+                            Teller = Turn;
+                            break;
+                    }
+                    if (Teller != Turn){
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        if(playermonster.Health <= Damage){
+                            Teller = Turn;
+                        }
+                    }
+                    break;
+                case 13:
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            Teller = SpecialAttack;
+                            break;
+                        case 1:
+                            Teller = Turn;
+                            break;
+                        case 2:
+                            Teller = Turn;
+                            break;
+                    }
+                    if (Teller != Turn){
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        if(playermonster.Health <= Damage){
+                            Teller = Turn;
+                        }
+                    }
+                    break;
+            }
+        }
+
+
+
 
 
         if (Teller == Turn) {
@@ -4469,7 +4814,7 @@ public class protomon extends AppCompatActivity {
                     elongatedglugpowerA = healtester;
                 }
             } else if (attackermonster.Moveslotattack == 4) {
-                healblocktgimerA = healblocktgimerA + 6;
+                healblocktgimerA = healblocktgimerA + 7;
             }else if (attackermonster.Moveslotattack == 5) {
                 Damage = (((new Random().nextInt(11) + 25)) * (attackermonster.Attack / playermonster.Defense));
                 Damage = Math.round(Damage);
@@ -5023,9 +5368,51 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Gytanic);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
 
 
-       // */
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ϫlitch);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nokoyl);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Mantidile);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nentopode);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+
+        // */
 
 
         turncounter = 1;
@@ -5225,7 +5612,7 @@ case 11:
            //            //PlayerDisplay.setImageResource(R.drawable.cyosteroth);
                     break; 
 case 12:
-                       //PlayerDisplay.setImageResource(R.drawable.Nentopode);
+                       PlayerDisplay.setImageResource(R.drawable.nentopode);
                     break; 
 case 13:
                        //PlayerDisplay.setImageResource(R.drawable.centiclak);
@@ -5261,10 +5648,12 @@ case 21:
                        //PlayerDisplay.setImageResource(R.drawable.Genaupresang);
                     break; 
 case 22:
-    if (PlayerMonsterHandle.UniqueID < 50000000) {
+    if (PlayerMonsterHandle.UniqueID < 33000000) {
         PlayerDisplay.setImageResource(R.drawable.daahnida);
-    }else {
+    }else if (PlayerMonsterHandle.UniqueID < 66000000){
         PlayerDisplay.setImageResource(R.drawable.daahnidaa);
+    }else {
+        PlayerDisplay.setImageResource(R.drawable.daahnidab);
     }
                     break; 
 case 23:
@@ -5371,16 +5760,16 @@ case 55:
                       PlayerDisplay.setImageResource(R.drawable.zrachnid);
                     break; 
 case 56:
-                       //PlayerDisplay.setImageResource(R.drawable.Ϫlitch);
+                       PlayerDisplay.setImageResource(R.drawable.xlitch);
                     break; 
 case 57:
                        PlayerDisplay.setImageResource(R.drawable.baa);
                     break; 
 case 58:
-                       //PlayerDisplay.setImageResource(R.drawable.Mantidile);
+                       PlayerDisplay.setImageResource(R.drawable.mantidile);
                     break; 
 case 59:
-                       //PlayerDisplay.setImageResource(R.drawable.Nokoyl);
+                       PlayerDisplay.setImageResource(R.drawable.nokoyl);
                     break; 
 case 60:
                        PlayerDisplay.setImageResource(R.drawable.yallod);
@@ -5415,7 +5804,7 @@ case 67:
                        //PlayerDisplay.setImageResource(R.drawable.Ψkobath);
                     break; 
 case 68:
-                       //PlayerDisplay.setImageResource(R.drawable.Gytanic);
+                     PlayerDisplay.setImageResource(R.drawable.gytanic);
                     break; 
 case 69:
                        PlayerDisplay.setImageResource(R.drawable.beis);
@@ -5539,7 +5928,7 @@ case 11:
            //            //EnemyDisplay.setImageResource(R.drawable.cyosteroth);
                     break; 
 case 12:
-                       //EnemyDisplay.setImageResource(R.drawable.Nentopode);
+                       EnemyDisplay.setImageResource(R.drawable.nentopode);
                     break; 
 case 13:
                        //EnemyDisplay.setImageResource(R.drawable.centiclak);
@@ -5575,10 +5964,12 @@ case 21:
                     break; 
 case 22:
 
-    if (AttackerMonsterHandle.UniqueID < 50000000) {
+    if (AttackerMonsterHandle.UniqueID < 33000000) {
         EnemyDisplay.setImageResource(R.drawable.daahnida);
-    }else {
+    }else if (AttackerMonsterHandle.UniqueID < 66000000){
         EnemyDisplay.setImageResource(R.drawable.daahnidaa);
+    }else {
+        EnemyDisplay.setImageResource(R.drawable.daahnidab);
     }
                     break; 
 case 23:
@@ -5592,7 +5983,7 @@ case 25:
                     break; 
 case 26:
                        EnemyDisplay.setImageResource(R.drawable.vellup);
-                    break; 
+                    break;
 case 27:
                        //EnemyDisplay.setImageResource(R.drawable.bellaja);
                     break; 
@@ -5685,16 +6076,16 @@ case 55:
                        EnemyDisplay.setImageResource(R.drawable.zrachnid);
                     break; 
 case 56:
-                       //EnemyDisplay.setImageResource(R.drawable.Ϫlitch);
+                      EnemyDisplay.setImageResource(R.drawable.xlitch);
                     break; 
 case 57:
                        EnemyDisplay.setImageResource(R.drawable.baa);
                     break; 
 case 58:
-                       //EnemyDisplay.setImageResource(R.drawable.Mantidile);
+                       EnemyDisplay.setImageResource(R.drawable.mantidile);
                     break; 
 case 59:
-                       //EnemyDisplay.setImageResource(R.drawable.Nokoyl);
+                       EnemyDisplay.setImageResource(R.drawable.nokoyl);
                     break; 
 case 60:
                        EnemyDisplay.setImageResource(R.drawable.yallod);
@@ -5729,7 +6120,7 @@ case 67:
                        //EnemyDisplay.setImageResource(R.drawable.Ψkobath);
                     break; 
 case 68:
-                       //EnemyDisplay.setImageResource(R.drawable.Gytanic);
+                       EnemyDisplay.setImageResource(R.drawable.gytanic);
                     break; 
 case 69:
                       EnemyDisplay.setImageResource(R.drawable.beis);
