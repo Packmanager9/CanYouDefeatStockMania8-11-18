@@ -1051,7 +1051,7 @@ public class protomon extends AppCompatActivity {
         DeployButton = (Button) findViewById(R.id.Deploy);
         GoToLabButton = (Button) findViewById(R.id.LabButton);
 
-        Reset.setVisibility(View.INVISIBLE);
+       // Reset.setVisibility(View.INVISIBLE);
         TestButton.setVisibility(View.INVISIBLE);
         TellButton.setVisibility(View.INVISIBLE);
         NewMonsters.setVisibility(View.INVISIBLE);
@@ -1099,12 +1099,12 @@ public class protomon extends AppCompatActivity {
                 }
 
 
-                DelayedStatusMethod();
+                /*  DelayedStatusMethod();
 
 
                 TurnDamageResolution();
 
-                HealthChecker();
+                HealthChecker(); */
 
 
 
@@ -1116,7 +1116,7 @@ public class protomon extends AppCompatActivity {
 /*
                 if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
                     if (whosturnisitanyway == 0) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     } else if (whosturnisitanyway == 1) {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }
@@ -1126,14 +1126,14 @@ public class protomon extends AppCompatActivity {
                 if (!(playermonster.Health > 0 && attackermonster.Health > 0) && ActionNum == 0) {
                     WhatHappenedString = TypesOfMotions(5); ActionNum = 1;
                     if (whosturnisitanyway == 0) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
 
                     } else if (whosturnisitanyway == 1) {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Attacks For "  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
 
                     }
                     if (playermonster.Health <= 0){
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                     }  if (attackermonster.Health <= 0){
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString + "\n");
                     }if (attackermonster.Health <= 0 && playermonster.Health <= 0){
@@ -1751,9 +1751,9 @@ public class protomon extends AppCompatActivity {
                 }
 
 
-                //    CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
+                //    CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + "Enemy " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
 
-                    CombatString = CombatString + String.format( "Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + names(attackermonster.Idnum) + " " +String.format(displaystring, scorekeepera) + "\n") ;
+                    CombatString = CombatString + String.format( "Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + "Enemy " + names(attackermonster.Idnum) + " " +String.format(displaystring, scorekeepera) + "\n") ;
 
 
 
@@ -1869,9 +1869,9 @@ public class protomon extends AppCompatActivity {
 
 
 
-                    CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
+                    CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + "Enemy " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
 
-                 //   CombatString = CombatString + String.format( "Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + names(attackermonster.Idnum) + " " +String.format(displaystring, scorekeepera) + "\n") ;
+                 //   CombatString = CombatString + String.format( "Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + "Enemy " + names(attackermonster.Idnum) + " " +String.format(displaystring, scorekeepera) + "\n") ;
 
 
 
@@ -2009,11 +2009,11 @@ public class protomon extends AppCompatActivity {
                 }
 
 
-                //   CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
+                //   CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + "Enemy " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
 
-                CombatString = CombatString + String.format("Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + names(attackermonster.Idnum) + " " + String.format(displaystring, scorekeepera) + "\n");
+                CombatString = CombatString + String.format("Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + "Enemy " + names(attackermonster.Idnum) + " " + String.format(displaystring, scorekeepera) + "\n");
 
-                String NewString = String.format("Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + names(attackermonster.Idnum) + " " + String.format(displaystring, scorekeepera) + "\n");
+                String NewString = String.format("Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + "Enemy " + names(attackermonster.Idnum) + " " + String.format(displaystring, scorekeepera) + "\n");
 
                 ActionNum = 0;
                 turncounter = 1;
@@ -2173,9 +2173,9 @@ public class protomon extends AppCompatActivity {
                 }
 
 
-                //    CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
+                //    CombatString = String.format( names(playermonster.Idnum) + " " + String.format(displaystring, playwins) + " " + "Enemy " + names(attackermonster.Idnum) + " " +String.format(displaystring, attackwins));
 
-                    CombatString = CombatString + String.format( "Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + names(attackermonster.Idnum) + " " +String.format(displaystring, scorekeepera) + "\n") ;
+                    CombatString = CombatString + String.format( "Everyone else" + " " + String.format(displaystring, scorekeeperp) + " " + "Enemy " + names(attackermonster.Idnum) + " " +String.format(displaystring, scorekeepera) + "\n") ;
 
 
 
@@ -2233,21 +2233,22 @@ public class protomon extends AppCompatActivity {
                     }
                 }
 
+                /*
                 DelayedStatusMethod();
 
 
                 TurnDamageResolution();
 
                HealthChecker();
-
+*/
 
                 String WhatHappenedString = TypesOfMotions(3);
 /*
                 if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
                     if (whosturnisitanyway == 0) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
 
-                        // CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                        // CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                     } else if (whosturnisitanyway == 1) {
 
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs " + StatsMoveNames(playermonster.Moveslotspeed) + "\n");
@@ -2294,12 +2295,12 @@ public class protomon extends AppCompatActivity {
                 }
 
 
-                DelayedStatusMethod();
+                /*  DelayedStatusMethod();
 
 
                 TurnDamageResolution();
 
-                HealthChecker();
+                HealthChecker(); */
 
 
                 String WhatHappenedString = TypesOfMotions(2);
@@ -2310,23 +2311,23 @@ public class protomon extends AppCompatActivity {
                     if (whosturnisitanyway == 0) {
 
                         if  (attackermonster.Moveslotheal == 0)  {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Heals " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Heals " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                         }else if (attackermonster.Moveslotheal == 1) {
                             if (delayedhealpowerA > 0) {
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Prepares Two Turn Delayed Healing of " + String.format(displaystring, (int) Math.round(delayedhealpowerA)) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Prepares Two Turn Delayed Healing of " + String.format(displaystring, (int) Math.round(delayedhealpowerA)) + "\n");
                             }else {
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Fails To Prepare Two Turn Delayed Healing " + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Fails To Prepare Two Turn Delayed Healing " + "\n");
                             }
                         }else if (attackermonster.Moveslotheal == 2) {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerA) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerA)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerA) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerA)) + "\n");
                         }else if (attackermonster.Moveslotheal == 3) {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(playermonster.Idnum) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(playermonster.Idnum) + "\n");
                         }else if  (attackermonster.Moveslotheal == 4) {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                         }else if  (attackermonster.Moveslotheal == 5)  {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
                         }else {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                         }
                     } else if (whosturnisitanyway == 1) {
                         if  (playermonster.Moveslotheal == 0)  {
@@ -2340,7 +2341,7 @@ public class protomon extends AppCompatActivity {
                         }else if (playermonster.Moveslotheal == 2) {
                             CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerP) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerP)) + "\n");
                         }else if (playermonster.Moveslotheal == 3) {
-                            CombatString = String.format(CombatString + names(playermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(attackermonster.Idnum) + "\n");
+                            CombatString = String.format(CombatString + names(playermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + "Enemy " + names(attackermonster.Idnum) + "\n");
                         }else if  (playermonster.Moveslotheal == 4)  {
                             CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                         }else if  (playermonster.Moveslotheal == 5)  {
@@ -2394,12 +2395,12 @@ public class protomon extends AppCompatActivity {
 
 
 
-                DelayedStatusMethod();
+                /*  DelayedStatusMethod();
 
 
                 TurnDamageResolution();
 
-                HealthChecker();
+                HealthChecker(); */
 
 
                 String WhatHappenedString = TypesOfMotions(2);
@@ -2413,32 +2414,32 @@ public class protomon extends AppCompatActivity {
                         switch(attackermonster.Moveslotattack) {
 
                             case 0:
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Wounds For a " + String.format(displaystring, elongatedwoundtimerP)+ " Turn Bleed of " + String.format(displaystring, (int) Math.round(elongatedwoundpowerP)) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Wounds For a " + String.format(displaystring, elongatedwoundtimerP)+ " Turn Bleed of " + String.format(displaystring, (int) Math.round(elongatedwoundpowerP)) + "\n");
                                 break;
                             case 1:
                                 if (delayedblastpowerA > 0) {
-                                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Prepares Delayed Blast of " + String.format(displaystring, (int) Math.round(delayedblastpowerA)) + "\n");
+                                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Prepares Delayed Blast of " + String.format(displaystring, (int) Math.round(delayedblastpowerA)) + "\n");
                                 } else {
-                                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Fails To Prepare Delayed Blast " + "\n");
+                                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Fails To Prepare Delayed Blast " + "\n");
                                 }
                                 break;
                             case 2:
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerP) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerP)) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerP) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerP)) + "\n");
                                 break;
                             case 3:
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerA) +  " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerA)) + " From " + names(playermonster.Idnum) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerA) +  " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerA)) + " From " + names(playermonster.Idnum) + "\n");
                                 break;
                             case 4:
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerA) +  " Turn Heal Block " + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerA) +  " Turn Heal Block " + "\n");
                                 break;
                             case 5:
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Chips Defense for "  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Chips Defense for "  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                                 break;
                             case 6:
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Trips for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Trips for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                                 break;
                             case 7:
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Disciplines for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Disciplines for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                                 break;
                         }
                     } else if (whosturnisitanyway == 1) {
@@ -2459,7 +2460,7 @@ public class protomon extends AppCompatActivity {
                                 CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerA) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerA)) + "\n");
                                 break;
                             case 3:
-                                CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerP) +  " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerP)) + " From " + names(attackermonster.Idnum) + "\n");
+                                CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerP) +  " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerP)) + " From " + "Enemy " + names(attackermonster.Idnum) + "\n");
                                 break;
                             case 4:
                                 CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerP) +  " Turn Heal Block " + "\n");
@@ -2910,7 +2911,7 @@ public class protomon extends AppCompatActivity {
             if (attackermonster.Health <= 0){
 
 
-                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
+                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
 
             }
         }
@@ -3605,7 +3606,7 @@ public class protomon extends AppCompatActivity {
 
             if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 } else if (whosturnisitanyway == 1) {
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 }
@@ -3615,7 +3616,7 @@ public class protomon extends AppCompatActivity {
             if (!(playermonster.Health > 0 && attackermonster.Health > 0) && ActionNum == 0) {
                 WhatHappenedString = TypesOfMotions(5); ActionNum = 1;
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
 
                 } else if (whosturnisitanyway == 1) {
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + " Attacks For "  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
@@ -3665,9 +3666,9 @@ public class protomon extends AppCompatActivity {
 
             if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
 
-                    // CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                    // CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                 } else if (whosturnisitanyway == 1) {
 
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs " + StatsMoveNames(playermonster.Moveslotspeed) + "\n");
@@ -3746,23 +3747,23 @@ public class protomon extends AppCompatActivity {
                 if (whosturnisitanyway == 0) {
 
                     if  (attackermonster.Moveslotheal == 0)  {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Heals " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Heals " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if (attackermonster.Moveslotheal == 1) {
                         if (delayedhealpowerA > 0) {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Prepares Two Turn Delayed Healing of " + String.format(displaystring, (int) Math.round(delayedhealpowerA)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Prepares Two Turn Delayed Healing of " + String.format(displaystring, (int) Math.round(delayedhealpowerA)) + "\n");
                         }else {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Fails To Prepare Two Turn Delayed Healing " + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Fails To Prepare Two Turn Delayed Healing " + "\n");
                         }
                     }else if (attackermonster.Moveslotheal == 2) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerA) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerA)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerA) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerA)) + "\n");
                     }else if (attackermonster.Moveslotheal == 3) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(playermonster.Idnum) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(playermonster.Idnum) + "\n");
                     }else if  (attackermonster.Moveslotheal == 4) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (attackermonster.Moveslotheal == 5)  {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
                     }else {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                     }
                 } else if (whosturnisitanyway == 1) {
                     if  (playermonster.Moveslotheal == 0)  {
@@ -3776,7 +3777,7 @@ public class protomon extends AppCompatActivity {
                     }else if (playermonster.Moveslotheal == 2) {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerP) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerP)) + "\n");
                     }else if (playermonster.Moveslotheal == 3) {
-                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(attackermonster.Idnum) + "\n");
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + "Enemy " + names(attackermonster.Idnum) + "\n");
                     }else if  (playermonster.Moveslotheal == 4)  {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (playermonster.Moveslotheal == 5)  {
@@ -3867,32 +3868,32 @@ public class protomon extends AppCompatActivity {
                     switch (attackermonster.Moveslotattack) {
 
                         case 0:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Wounds For a " + String.format(displaystring, elongatedwoundtimerP) + " Turn Bleed of " + String.format(displaystring, (int) Math.round(elongatedwoundpowerP)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Wounds For a " + String.format(displaystring, elongatedwoundtimerP) + " Turn Bleed of " + String.format(displaystring, (int) Math.round(elongatedwoundpowerP)) + "\n");
                             break;
                         case 1:
                             if (delayedblastpowerA > 0) {
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Prepares Delayed Blast of " + String.format(displaystring, (int) Math.round(delayedblastpowerA)) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Prepares Delayed Blast of " + String.format(displaystring, (int) Math.round(delayedblastpowerA)) + "\n");
                             } else {
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Fails To Prepare Delayed Blast " + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Fails To Prepare Delayed Blast " + "\n");
                             }
                             break;
                         case 2:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerP) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerP)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerP) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerP)) + "\n");
                             break;
                         case 3:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerA) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerA)) + " From " + names(playermonster.Idnum) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerA) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerA)) + " From " + names(playermonster.Idnum) + "\n");
                             break;
                         case 4:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerA) + " Turn Heal Block " + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerA) + " Turn Heal Block " + "\n");
                             break;
                         case 5:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Chips Defense for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Chips Defense for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                             break;
                         case 6:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Trips for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Trips for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                             break;
                         case 7:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Disciplines for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Disciplines for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                             break;
                     }
                 } else if (whosturnisitanyway == 1) {
@@ -3913,7 +3914,7 @@ public class protomon extends AppCompatActivity {
                             CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerA) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerA)) + "\n");
                             break;
                         case 3:
-                            CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerP) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerP)) + " From " + names(attackermonster.Idnum) + "\n");
+                            CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerP) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerP)) + " From " + "Enemy " + names(attackermonster.Idnum) + "\n");
                             break;
                         case 4:
                             CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerP) + " Turn Heal Block " + "\n");
@@ -3943,10 +3944,18 @@ public class protomon extends AppCompatActivity {
         if (attackermonster.Health <= 0){
 
 
-            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
+            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
 
         }
 
+
+        DelayedStatusMethod();
+
+
+        TurnDamageResolution();
+
+        HealthChecker();
+        
         StatAbuseCurb(playermonster);
         StatAbuseCurb(attackermonster);
         /*
@@ -3994,8 +4003,30 @@ public class protomon extends AppCompatActivity {
 
         if(playermonster.Health > 0 && attackermonster.Health > 0) {
             turncounter++;
+            if(turncounter == 0) {
+                FirstTurnMethod();
+            }else if (playermonster.Health > 0 && attackermonster.Health > 0) {
+
+                if(playermonster.Speed <= attackermonster.Speed){
+
+                    if((turncounter%2) == 0){
+                        //   PlayBrainMethod(Turn);
+                    }else {
+                        RoboBrainMethod(Turn);
+                    }
+                }else {
+
+                    if((turncounter%2) == 0){
+                        RoboBrainMethod(Turn);
+                    } else {
+                        //   PlayBrainMethod(Turn);
+                    }
+
+                }
+            }
             ImageChanger();
-            RoboBrainMethod(Turn);
+
+
         }
     }
     public void RoboBrainMethod(Button Teller) {
@@ -4521,7 +4552,7 @@ public class protomon extends AppCompatActivity {
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -4574,7 +4605,7 @@ public class protomon extends AppCompatActivity {
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -4593,7 +4624,7 @@ public class protomon extends AppCompatActivity {
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -4616,7 +4647,7 @@ public class protomon extends AppCompatActivity {
                         }
                     }
                     if (Teller != Turn){
-                    Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                    Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                     if(playermonster.Health <= Damage){
                         Teller = Turn;
                     }
@@ -4639,7 +4670,7 @@ public class protomon extends AppCompatActivity {
                     }
                 }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -4662,7 +4693,7 @@ public class protomon extends AppCompatActivity {
                         }
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -4681,7 +4712,7 @@ public class protomon extends AppCompatActivity {
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -4704,7 +4735,7 @@ public class protomon extends AppCompatActivity {
                         }
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -4723,7 +4754,7 @@ public class protomon extends AppCompatActivity {
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -4742,7 +4773,7 @@ public class protomon extends AppCompatActivity {
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -4771,7 +4802,7 @@ public class protomon extends AppCompatActivity {
 
             if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 } else if (whosturnisitanyway == 1) {
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 }
@@ -4781,7 +4812,7 @@ public class protomon extends AppCompatActivity {
             if (!(playermonster.Health > 0 && attackermonster.Health > 0) && ActionNum == 0) {
                 WhatHappenedString = TypesOfMotions(5); ActionNum = 1;
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
 
                 } else if (whosturnisitanyway == 1) {
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + " Attacks For "  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
@@ -4833,9 +4864,9 @@ public class protomon extends AppCompatActivity {
 
             if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
 
-                    // CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                    // CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                 } else if (whosturnisitanyway == 1) {
 
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs " + StatsMoveNames(playermonster.Moveslotspeed) + "\n");
@@ -4911,23 +4942,23 @@ public class protomon extends AppCompatActivity {
                 if (whosturnisitanyway == 0) {
 
                     if  (attackermonster.Moveslotheal == 0)  {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Heals " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Heals " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if (attackermonster.Moveslotheal == 1) {
                         if (delayedhealpowerA > 0) {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Prepares Two Turn Delayed Healing of " + String.format(displaystring, (int) Math.round(delayedhealpowerA)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Prepares Two Turn Delayed Healing of " + String.format(displaystring, (int) Math.round(delayedhealpowerA)) + "\n");
                         }else {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Fails To Prepare Two Turn Delayed Healing " + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Fails To Prepare Two Turn Delayed Healing " + "\n");
                         }
                     }else if (attackermonster.Moveslotheal == 2) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerA) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerA)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerA) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerA)) + "\n");
                     }else if (attackermonster.Moveslotheal == 3) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(playermonster.Idnum) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(playermonster.Idnum) + "\n");
                     }else if  (attackermonster.Moveslotheal == 4) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (attackermonster.Moveslotheal == 5)  {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
                     }else {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                     }
                 } else if (whosturnisitanyway == 1) {
                     if  (playermonster.Moveslotheal == 0)  {
@@ -4941,7 +4972,7 @@ public class protomon extends AppCompatActivity {
                     }else if (playermonster.Moveslotheal == 2) {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerP) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerP)) + "\n");
                     }else if (playermonster.Moveslotheal == 3) {
-                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(attackermonster.Idnum) + "\n");
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + "Enemy " + names(attackermonster.Idnum) + "\n");
                     }else if  (playermonster.Moveslotheal == 4)  {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (playermonster.Moveslotheal == 5)  {
@@ -5036,32 +5067,32 @@ public class protomon extends AppCompatActivity {
                     switch (attackermonster.Moveslotattack) {
 
                         case 0:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Wounds For a " + String.format(displaystring, elongatedwoundtimerP) + " Turn Bleed of " + String.format(displaystring, (int) Math.round(elongatedwoundpowerP)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Wounds For a " + String.format(displaystring, elongatedwoundtimerP) + " Turn Bleed of " + String.format(displaystring, (int) Math.round(elongatedwoundpowerP)) + "\n");
                             break;
                         case 1:
                             if (delayedblastpowerA > 0) {
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Prepares Delayed Blast of " + String.format(displaystring, (int) Math.round(delayedblastpowerA)) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Prepares Delayed Blast of " + String.format(displaystring, (int) Math.round(delayedblastpowerA)) + "\n");
                             } else {
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Fails To Prepare Delayed Blast " + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Fails To Prepare Delayed Blast " + "\n");
                             }
                             break;
                         case 2:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerP) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerP)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerP) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerP)) + "\n");
                             break;
                         case 3:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerA) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerA)) + " From " + names(playermonster.Idnum) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerA) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerA)) + " From " + names(playermonster.Idnum) + "\n");
                             break;
                         case 4:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerA) + " Turn Heal Block " + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerA) + " Turn Heal Block " + "\n");
                             break;
                         case 5:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Chips Defense for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Chips Defense for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                             break;
                         case 6:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Trips for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Trips for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                             break;
                         case 7:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Disciplines for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Disciplines for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                             break;
                     }
                 } else if (whosturnisitanyway == 1) {
@@ -5082,7 +5113,7 @@ public class protomon extends AppCompatActivity {
                             CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerA) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerA)) + "\n");
                             break;
                         case 3:
-                            CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerP) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerP)) + " From " + names(attackermonster.Idnum) + "\n");
+                            CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerP) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerP)) + " From " + "Enemy " + names(attackermonster.Idnum) + "\n");
                             break;
                         case 4:
                             CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerP) + " Turn Heal Block " + "\n");
@@ -5112,10 +5143,18 @@ public class protomon extends AppCompatActivity {
         if (attackermonster.Health <= 0){
 
 
-            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
+            CombatString = String.format(CombatString + "Enemy " + "Enemy " + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
 
         }
 
+
+        DelayedStatusMethod();
+
+
+        TurnDamageResolution();
+
+        HealthChecker();
+        
         StatAbuseCurb(playermonster);
         StatAbuseCurb(attackermonster);
         /*
@@ -5163,6 +5202,33 @@ public class protomon extends AppCompatActivity {
 
         if(playermonster.Health > 0 && attackermonster.Health > 0) {
             turncounter++;
+            if(playermonster.Health > 0 && attackermonster.Health > 0) {
+                if(turncounter == 0) {
+                    FirstTurnMethod();
+                }else if (playermonster.Health > 0 && attackermonster.Health > 0) {
+
+                    if(playermonster.Speed <= attackermonster.Speed){
+
+                        if((turncounter%2) == 0){
+                            //   PlayBrainMethod(Turn);
+                        }else {
+                            RoboBrainMethod(Turn);
+                        }
+                    }else {
+
+                        if((turncounter%2) == 0){
+                            RoboBrainMethod(Turn);
+                        } else {
+                            //   PlayBrainMethod(Turn);
+                        }
+
+                    }
+                }
+                ImageChanger();
+
+
+            }
+
             ImageChanger();
         }
     }
@@ -5588,7 +5654,14 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Kungulp);
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Elastocark);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nimnamnom);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
@@ -5730,7 +5803,7 @@ public class protomon extends AppCompatActivity {
             WhatHappenedString = TypesOfMotions(5); ActionNum = 1;
 
             if (playermonster.Health <= 0){
-                CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                CombatString = String.format(CombatString + "Enemy " + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
             }  if (attackermonster.Health <= 0){
                 CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString + "\n");
             }if (attackermonster.Health <= 0 && playermonster.Health <= 0){
@@ -5910,7 +5983,7 @@ case 35:
                        //PlayerDisplay.setImageResource(R.drawable.Monopteryx);
                     break; 
 case 36:
-                       //PlayerDisplay.setImageResource(R.drawable.Elastocark);
+                       PlayerDisplay.setImageResource(R.drawable.elastocark);
                     break; 
 case 37:
                        //PlayerDisplay.setImageResource(R.drawable.Toobapath);
@@ -6026,7 +6099,7 @@ case 71:
                        PlayerDisplay.setImageResource(R.drawable.honigkonig);
                     break; 
 case 72:
-                       PlayerDisplay.setImageResource(R.drawable.kungulp);
+                     //  PlayerDisplay.setImageResource(R.drawable.kungulp);
                     break; 
 case 73:
                        PlayerDisplay.setImageResource(R.drawable.satinella);
@@ -6041,7 +6114,7 @@ case 76:
                      PlayerDisplay.setImageResource(R.drawable.obchovy);
                     break; 
 case 77:
-                       //PlayerDisplay.setImageResource(R.drawable.Nimnamnom);
+                       PlayerDisplay.setImageResource(R.drawable.nimnamnom);
                     break; 
 case 78:
                       PlayerDisplay.setImageResource(R.drawable.tutewtoo);
@@ -6226,7 +6299,7 @@ case 35:
                        //EnemyDisplay.setImageResource(R.drawable.Monopteryx);
                     break; 
 case 36:
-                       //EnemyDisplay.setImageResource(R.drawable.Elastocark);
+                       EnemyDisplay.setImageResource(R.drawable.elastocark);
                     break; 
 case 37:
                        //EnemyDisplay.setImageResource(R.drawable.Toobapath);
@@ -6342,7 +6415,7 @@ case 71:
                       EnemyDisplay.setImageResource(R.drawable.honigkonig);
                     break; 
 case 72:
-                       EnemyDisplay.setImageResource(R.drawable.kungulp);
+                     //  EnemyDisplay.setImageResource(R.drawable.kungulp);
                     break; 
 case 73:
                      EnemyDisplay.setImageResource(R.drawable.satinella);
@@ -6357,7 +6430,7 @@ case 76:
                      EnemyDisplay.setImageResource(R.drawable.obchovy);
                     break; 
 case 77:
-                       //EnemyDisplay.setImageResource(R.drawable.Nimnamnom);
+                       EnemyDisplay.setImageResource(R.drawable.nimnamnom);
                     break; 
 case 78:
                        EnemyDisplay.setImageResource(R.drawable.tutewtoo);
@@ -6915,7 +6988,7 @@ case 83:
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -6968,7 +7041,7 @@ case 83:
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -6987,7 +7060,7 @@ case 83:
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -7010,7 +7083,7 @@ case 83:
                         }
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -7033,7 +7106,7 @@ case 83:
                         }
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -7056,7 +7129,7 @@ case 83:
                         }
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -7075,7 +7148,7 @@ case 83:
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -7098,7 +7171,7 @@ case 83:
                         }
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -7117,7 +7190,7 @@ case 83:
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -7136,7 +7209,7 @@ case 83:
                             break;
                     }
                     if (Teller != Turn){
-                        Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+                        Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
                         if(playermonster.Health <= Damage){
                             Teller = Turn;
                         }
@@ -7165,7 +7238,7 @@ case 83:
 
             if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 } else if (whosturnisitanyway == 1) {
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 }
@@ -7175,7 +7248,7 @@ case 83:
             if (!(playermonster.Health > 0 && attackermonster.Health > 0) && ActionNum == 0) {
                 WhatHappenedString = TypesOfMotions(5); ActionNum = 1;
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + "Enemy " + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
 
                 } else if (whosturnisitanyway == 1) {
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + " Attacks For "  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
@@ -7227,9 +7300,9 @@ case 83:
 
             if(turncounter > 0 /*&& (playermonster.Health > 0 && attackermonster.Health > 0)*/) {
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs " + StatsMoveNames(attackermonster.Moveslotspeed) + "\n");
 
-                    // CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                    // CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                 } else if (whosturnisitanyway == 1) {
 
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs " + StatsMoveNames(playermonster.Moveslotspeed) + "\n");
@@ -7305,23 +7378,23 @@ case 83:
                 if (whosturnisitanyway == 0) {
 
                     if  (attackermonster.Moveslotheal == 0)  {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Heals " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Heals " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if (attackermonster.Moveslotheal == 1) {
                         if (delayedhealpowerA > 0) {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Prepares Two Turn Delayed Healing of " + String.format(displaystring, (int) Math.round(delayedhealpowerA)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Prepares Two Turn Delayed Healing of " + String.format(displaystring, (int) Math.round(delayedhealpowerA)) + "\n");
                         }else {
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Fails To Prepare Two Turn Delayed Healing " + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Fails To Prepare Two Turn Delayed Healing " + "\n");
                         }
                     }else if (attackermonster.Moveslotheal == 2) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerA) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerA)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerA) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerA)) + "\n");
                     }else if (attackermonster.Moveslotheal == 3) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(playermonster.Idnum) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(playermonster.Idnum) + "\n");
                     }else if  (attackermonster.Moveslotheal == 4) {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (attackermonster.Moveslotheal == 5)  {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
                     }else {
-                        CombatString = String.format(CombatString + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                     }
                 } else if (whosturnisitanyway == 1) {
                     if  (playermonster.Moveslotheal == 0)  {
@@ -7335,7 +7408,7 @@ case 83:
                     }else if (playermonster.Moveslotheal == 2) {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " +  String.format(displaystring, elongatedhealtimerP) + " Turn Regeneration of " + String.format(displaystring, (int) Math.round(elongatedhealpowerP)) + "\n");
                     }else if (playermonster.Moveslotheal == 3) {
-                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + names(attackermonster.Idnum) + "\n");
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Drains " + String.format(displaystring, (int) Math.round(Damage)) + " From " + "Enemy " + names(attackermonster.Idnum) + "\n");
                     }else if  (playermonster.Moveslotheal == 4)  {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (playermonster.Moveslotheal == 5)  {
@@ -7430,32 +7503,32 @@ case 83:
                     switch (attackermonster.Moveslotattack) {
 
                         case 0:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Wounds For a " + String.format(displaystring, elongatedwoundtimerP) + " Turn Bleed of " + String.format(displaystring, (int) Math.round(elongatedwoundpowerP)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Wounds For a " + String.format(displaystring, elongatedwoundtimerP) + " Turn Bleed of " + String.format(displaystring, (int) Math.round(elongatedwoundpowerP)) + "\n");
                             break;
                         case 1:
                             if (delayedblastpowerA > 0) {
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Prepares Delayed Blast of " + String.format(displaystring, (int) Math.round(delayedblastpowerA)) + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Prepares Delayed Blast of " + String.format(displaystring, (int) Math.round(delayedblastpowerA)) + "\n");
                             } else {
-                                CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Fails To Prepare Delayed Blast " + "\n");
+                                CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Fails To Prepare Delayed Blast " + "\n");
                             }
                             break;
                         case 2:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerP) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerP)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerP) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerP)) + "\n");
                             break;
                         case 3:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerA) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerA)) + " From " + names(playermonster.Idnum) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerA) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerA)) + " From " + names(playermonster.Idnum) + "\n");
                             break;
                         case 4:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerA) + " Turn Heal Block " + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerA) + " Turn Heal Block " + "\n");
                             break;
                         case 5:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Chips Defense for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Chips Defense for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                             break;
                         case 6:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Trips for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Trips for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                             break;
                         case 7:
-                            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " Disciplines for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Disciplines for " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                             break;
                     }
                 } else if (whosturnisitanyway == 1) {
@@ -7476,7 +7549,7 @@ case 83:
                             CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedhealwoundtimerA) + " Turn Grevious Wounds of " + String.format(displaystring, (int) Math.round(elongatedhealwoundpowerA)) + "\n");
                             break;
                         case 3:
-                            CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerP) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerP)) + " From " + names(attackermonster.Idnum) + "\n");
+                            CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, elongatedglugtimerP) + " Turn Slow Drain of " + String.format(displaystring, (int) Math.round(elongatedglugpowerP)) + " From " + "Enemy " + names(attackermonster.Idnum) + "\n");
                             break;
                         case 4:
                             CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " + String.format(displaystring, healblocktgimerP) + " Turn Heal Block " + "\n");
@@ -7506,7 +7579,7 @@ case 83:
         if (attackermonster.Health <= 0){
 
 
-            CombatString = String.format(CombatString + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
+            CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
 
         }
 
