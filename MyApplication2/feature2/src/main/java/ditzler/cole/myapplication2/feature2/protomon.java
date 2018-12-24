@@ -3592,6 +3592,12 @@ public class protomon extends AppCompatActivity {
     }
     public void PlayBrainMethod(Button Teller) {
 
+
+        DelayedStatusMethod();
+
+        StatAbuseCurb(playermonster);
+        StatAbuseCurb(attackermonster);
+
         if (Teller == Turn) {
             whosturnisitanyway = 1;
             Damage = ((playermonster.Attack / attackermonster.Defense) * (new Random().nextInt(21) + 50));
@@ -3814,7 +3820,7 @@ public class protomon extends AppCompatActivity {
 
             } else if (playermonster.Moveslotattack == 3) {
                 elongatedglugtimerP = elongatedglugtimerP + 10;
-                int healtester = (3 * ((int) (((new Random().nextInt(11) + 35)) * (attackermonster.Speed / playermonster.Defense)))) / 12;
+                int healtester = (3 * ((int) (((new Random().nextInt(11) + 35)) * (playermonster.Speed / attackermonster.Defense)))) / 12;
                 healtester = Math.round(healtester);
                 if (healtester > elongatedglugpowerP) {
                     elongatedglugpowerP = healtester;
@@ -3949,7 +3955,7 @@ public class protomon extends AppCompatActivity {
         }
 
 
-        DelayedStatusMethod();
+
 
 
         TurnDamageResolution();
@@ -4030,6 +4036,13 @@ public class protomon extends AppCompatActivity {
         }
     }
     public void RoboBrainMethod(Button Teller) {
+
+
+        DelayedStatusMethod();
+
+        StatAbuseCurb(playermonster);
+        StatAbuseCurb(attackermonster);
+
 
         int BrainNumb = new Random().nextInt(10);
         switch (BrainNumb){
@@ -4499,7 +4512,7 @@ public class protomon extends AppCompatActivity {
         }
 
         if (Teller != Turn){
-            Damage = ((attackermonster.Attack / playermonster.Defense) * 50);
+            Damage = ((attackermonster.Attack / playermonster.Defense) * 51);
             if(playermonster.Health <= Damage){
                 Teller = Turn;
             }
@@ -5151,8 +5164,6 @@ public class protomon extends AppCompatActivity {
 
         }
 
-
-        DelayedStatusMethod();
 
 
         TurnDamageResolution();
