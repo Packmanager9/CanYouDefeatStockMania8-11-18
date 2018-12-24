@@ -4464,6 +4464,10 @@ public class protomon extends AppCompatActivity {
                 Teller = Turn;
             }
 
+        }else if (delayedhealtimerA == 0 && attackermonster.Moveslotattack == 1){
+            if (playermonster.Speed <= (playermonster.Defense * 1.3)) {
+                Teller = SpecialAttack;
+            }
         }
 
         if (attackermonster.Moveslotheal == 1){
@@ -5669,6 +5673,15 @@ public class protomon extends AppCompatActivity {
 
 
 
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Epibazang);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+
         // */
 
 
@@ -5995,7 +6008,7 @@ case 39:
                        PlayerDisplay.setImageResource(R.drawable.ihmpdrap);
                     break; 
 case 40:
-                       //PlayerDisplay.setImageResource(R.drawable.Epibazang);
+                       PlayerDisplay.setImageResource(R.drawable.epibazang);
                     break; 
 case 41:
                        PlayerDisplay.setImageResource(R.drawable.hemtan);
@@ -6311,7 +6324,7 @@ case 39:
                       EnemyDisplay.setImageResource(R.drawable.ihmpdrap);
                     break; 
 case 40:
-                       //EnemyDisplay.setImageResource(R.drawable.Epibazang);
+                       EnemyDisplay.setImageResource(R.drawable.epibazang);
                     break; 
 case 41:
                      EnemyDisplay.setImageResource(R.drawable.hemtan);
