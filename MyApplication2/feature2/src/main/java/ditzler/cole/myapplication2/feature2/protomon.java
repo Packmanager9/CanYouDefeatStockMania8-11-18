@@ -3593,7 +3593,6 @@ public class protomon extends AppCompatActivity {
     public void PlayBrainMethod(Button Teller) {
 
 
-        DelayedStatusMethod();
 
         StatAbuseCurb(playermonster);
         StatAbuseCurb(attackermonster);
@@ -3957,6 +3956,7 @@ public class protomon extends AppCompatActivity {
 
 
 
+        DelayedStatusMethod();
 
         TurnDamageResolution();
 
@@ -4038,7 +4038,6 @@ public class protomon extends AppCompatActivity {
     public void RoboBrainMethod(Button Teller) {
 
 
-        DelayedStatusMethod();
 
         StatAbuseCurb(playermonster);
         StatAbuseCurb(attackermonster);
@@ -5165,6 +5164,7 @@ public class protomon extends AppCompatActivity {
         }
 
 
+        DelayedStatusMethod();
 
         TurnDamageResolution();
 
@@ -5691,6 +5691,13 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ψkobath);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
 
 
         // */
@@ -6108,7 +6115,7 @@ case 66:
                        //PlayerDisplay.setImageResource(R.drawable.Ƕmun);
                     break; 
 case 67:
-                       //PlayerDisplay.setImageResource(R.drawable.Ψkobath);
+                       PlayerDisplay.setImageResource(R.drawable.psychobath);
                     break; 
 case 68:
                      PlayerDisplay.setImageResource(R.drawable.gytanic);
@@ -6424,7 +6431,7 @@ case 66:
                        //EnemyDisplay.setImageResource(R.drawable.Ƕmun);
                     break; 
 case 67:
-                       //EnemyDisplay.setImageResource(R.drawable.Ψkobath);
+                       EnemyDisplay.setImageResource(R.drawable.psychobath);
                     break; 
 case 68:
                        EnemyDisplay.setImageResource(R.drawable.gytanic);
