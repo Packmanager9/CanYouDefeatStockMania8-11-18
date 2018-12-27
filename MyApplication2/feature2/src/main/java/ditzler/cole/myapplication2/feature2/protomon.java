@@ -4408,6 +4408,12 @@ public class protomon extends AppCompatActivity {
             }
 
 
+        if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85)))) /*&& delayedblasttimerP < 2*/ ){
+            if( attackermonster.Health >= (elongatedwoundpowerA + elongatedhealwoundpowerA + elongatedglugpowerP)) {
+                Teller = SpecialAttack;
+            }
+        }
+
 
         if (Teller == Status){
            if (ratiohealth < 50){
@@ -5257,8 +5263,8 @@ public class protomon extends AppCompatActivity {
         playermonster.Moveslotattack = new Random().nextInt(4);
         secondstartingmonster.Moveslotspeed = new Random().nextInt(14);
         secondstartingmonster.Moveslotheal = new Random().nextInt(6);
-        secondstartingmonster.Moveslotattack = new Random().nextInt(4);
-        attackermonster.Moveslotattack = new Random().nextInt(4);
+        secondstartingmonster.Moveslotattack = new Random().nextInt(8);
+        attackermonster.Moveslotattack = new Random().nextInt(8);
         MaxHealthAttacker = attackermonster.Health;
         MaxHealthPlayer = playermonster.Health;
 
@@ -5699,6 +5705,22 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
 
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Blattle);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Deblobbio);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
 
         // */
 
@@ -5944,7 +5966,7 @@ case 17:
                    PlayerDisplay.setImageResource(R.drawable.rongzeed);
                     break; 
 case 18:
-                       //PlayerDisplay.setImageResource(R.drawable.blattle);
+                    PlayerDisplay.setImageResource(R.drawable.blattle);
                     break; 
 case 19:
 
@@ -6157,7 +6179,7 @@ case 80:
                        //PlayerDisplay.setImageResource(R.drawable.Indeo);
                     break; 
 case 81:
-                       //PlayerDisplay.setImageResource(R.drawable.deblobbio);
+                       PlayerDisplay.setImageResource(R.drawable.deblobbio);
                     break; 
 case 82:
      PlayerDisplay.setImageResource(R.drawable.knightstacean);
@@ -6260,7 +6282,7 @@ case 17:
                       EnemyDisplay.setImageResource(R.drawable.rongzeed);
                     break; 
 case 18:
-                       //EnemyDisplay.setImageResource(R.drawable.blattle);
+                     EnemyDisplay.setImageResource(R.drawable.blattle);
                     break; 
 case 19:
 
@@ -6473,7 +6495,7 @@ case 80:
                        //EnemyDisplay.setImageResource(R.drawable.Indeo);
                     break; 
 case 81:
-                       //EnemyDisplay.setImageResource(R.drawable.deblobbio);
+                     EnemyDisplay.setImageResource(R.drawable.deblobbio);
                     break; 
 case 82:
      EnemyDisplay.setImageResource(R.drawable.knightstacean);
@@ -6621,6 +6643,10 @@ case 83:
         double testdamage = ((attackermonster.Attack / playermonster.Defense) * 50);
         double testheal = ((attackermonster.Speed / attackermonster.Defense) * 50);
 
+        double testtakedamage = ((playermonster.Attack / attackermonster.Defense) * 65);
+
+        double cleansevalue = (((new Random().nextInt(11) + 25)) * (attackermonster.Speed / attackermonster.Defense));
+        double glugpower = (25 * (attackermonster.Attack / playermonster.Defense));
 
         if (ratiohealth < 37 || ((attackermonster.Health < testdamage && (attackermonster.Health + testheal) > testdamage) && (attackermonster.Moveslotheal != 1 && attackermonster.Moveslotheal != 3 && attackermonster.Moveslotheal != 5 ))){
             if(healblocktgimerA == 0 && elongatedhealwoundpowerA == 0 && delayedhealtimerA == 0){
@@ -6784,85 +6810,17 @@ case 83:
                     }
                 }
             }
+        }else if (attackermonster.Moveslotheal == 4 && (((attackermonster.Health + cleansevalue) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
+            Teller = HealButton;
+        }else if (attackermonster.Moveslotheal == 5 && grouphealtimerA == 0 && (((attackermonster.Health + grouphealpowerA) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
+            Teller = HealButton;
+        }else if (attackermonster.Moveslotheal == 3 && (((attackermonster.Health + glugpower) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
+            Teller = HealButton;
+        }else if (attackermonster.Moveslotheal == 0 && (((attackermonster.Health + testheal) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
+            Teller = HealButton;
+        }else if (attackermonster.Moveslotheal == 1 && (delayedhealtimerA == 0) && (((attackermonster.Health + (testheal*1.5)) > ((testtakedamage*2) + delayedblastpowerP)) && (attackermonster.Health < ((testtakedamage*2) + delayedblastpowerP)))){
+            Teller = HealButton;
         }
-
-        if (attackermonster.Moveslotheal ==  5){
-            if (new Random().nextInt(100) == 59){
-                Teller = HealButton;
-            }else {
-                switch (new Random().nextInt(9)) {
-
-                    case 0:
-                        Teller = SpecialAttack;
-                        break;
-                    case 1:
-                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                            Teller = SpecialAttack;
-                        } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                            Teller = SpecialAttack;
-                        }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                            Teller = Turn;
-                        }else {
-                            Teller = Turn;
-                        }
-                        break;
-                    case 2:
-                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                            Teller = SpecialAttack;
-                        } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                            Teller = SpecialAttack;
-                        }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                            Teller = Turn;
-                        }else {
-                            Teller = Turn;
-                        }
-                        break;
-                    case 3:
-                        Teller = SpecialAttack;
-                        break;
-                    case 4:
-                        Teller = Turn;
-                        break;
-                    case 5:
-                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                            Teller = SpecialAttack;
-                        } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                            Teller = SpecialAttack;
-                        }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                            Teller = Turn;
-                        }else {
-                            Teller = Turn;
-                        }
-                        break;
-
-                    case 6:
-                        Teller = SpecialAttack;
-                        break;
-                    case 7:
-                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                            Teller = SpecialAttack;
-                        } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                            Teller = SpecialAttack;
-                        }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                            Teller = Turn;
-                        }else {
-                            Teller = Turn;
-                        }
-                        break;
-                    case 8:
-                        if (attackermonster.Health < MaxHealthAttacker) {
-                            Teller = HealButton;
-                        }else {
-                            Teller= Turn;
-                        }
-                        break;
-
-                }
-
-            }
-        }
-
-
 
         if (Teller == Status){
             if (ratiohealth < 50){
