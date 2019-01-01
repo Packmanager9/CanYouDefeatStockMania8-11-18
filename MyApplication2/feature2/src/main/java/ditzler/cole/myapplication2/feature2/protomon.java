@@ -982,7 +982,7 @@ public class protomon extends AppCompatActivity {
 
         }
         attackerid = new Random().nextInt(spawncap)+1;
-        // attackerid = 22;
+         attackerid = 31;
 
 
             try {
@@ -4202,183 +4202,194 @@ public class protomon extends AppCompatActivity {
         double testheal = ((attackermonster.Speed / attackermonster.Defense) * 50);
 
         double testtakedamage = ((playermonster.Attack / attackermonster.Defense) * 65);
+        double maxtesttakedamage = ((playermonster.Attack / attackermonster.Defense) * 70);
 
-        double cleansevalue = (((new Random().nextInt(11) + 25)) * (attackermonster.Speed / attackermonster.Defense));
+        double cleansevalue = 25 * (attackermonster.Speed / attackermonster.Defense);
         double glugpower = (25 * (attackermonster.Attack / playermonster.Defense));
         double grouphealtester = (3 * ((int) (((new Random().nextInt(6) + 15)) * (playermonster.Speed / playermonster.Defense)))) / 7;
 
-        if (ratiohealth < 37 || ((attackermonster.Health < testdamage && (attackermonster.Health + testheal) > testdamage) && (attackermonster.Moveslotheal != 1 && attackermonster.Moveslotheal != 3 && attackermonster.Moveslotheal != 5 ))){
-            if(healblocktgimerA == 0 && elongatedhealwoundpowerA == 0 && delayedhealtimerA == 0){
-                if ((attackermonster.Speed > playermonster.Attack && attackermonster.Speed > attackermonster.Defense) && attackermonster.Moveslotheal != 3) {
-                    if (attackermonster.Moveslotheal == 4){
-                        if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0)  && attackermonster.Moveslotheal == 4){
-                            Teller = HealButton;
-                        }else if(ratiohealth >= 45 && ratiohealth <= 80){
-                            if (attackermonster.Moveslotheal == 1){
-                                if (delayedhealtimerA == 0){
-                                    Teller = HealButton;
-                                }else {
-                                    if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                        Teller = SpecialAttack;
-                                    } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                        Teller = SpecialAttack;
-                                    }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                        Teller = Turn;
-                                    }else {
-                                        switch (new Random().nextInt(6)) {
-                                            case 0:
-                                                Teller = SpecialAttack;
-                                                break;
-                                            case 1:
-                                                Teller = Status;
-                                                break;
-                                            case 2:
-                                                Teller = Status;
-                                                break;
-                                            case 3:
-                                                Teller = Status;
-                                                break;
-                                            case 4:
-                                                Teller = Turn;
-                                                break;
-                                            case 5:
-                                                Teller = Turn;
-                                                break;
 
+        if (attackermonster.Moveslotheal != 5) {
+            if (ratiohealth < 37 || ((attackermonster.Health < testdamage && (attackermonster.Health + testheal) > testdamage) && (attackermonster.Moveslotheal != 1 && attackermonster.Moveslotheal != 3 && attackermonster.Moveslotheal != 5))) {
+                if (healblocktgimerA == 0 && elongatedhealwoundpowerA == 0 && delayedhealtimerA == 0) {
+                    if ((attackermonster.Speed > playermonster.Attack && attackermonster.Speed > attackermonster.Defense) && attackermonster.Moveslotheal != 3) {
+                        if (attackermonster.Moveslotheal == 4) {
+                            if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0) && attackermonster.Moveslotheal == 4) {
+                                Teller = HealButton;
+                            } else if (ratiohealth >= 45 && ratiohealth <= 80) {
+                                if (attackermonster.Moveslotheal == 1) {
+                                    if (delayedhealtimerA == 0) {
+                                        Teller = HealButton;
+                                    } else {
+                                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                            Teller = SpecialAttack;
+                                        } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                            Teller = SpecialAttack;
+                                        } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                            Teller = Turn;
+                                        } else {
+                                            switch (new Random().nextInt(6)) {
+                                                case 0:
+                                                    Teller = SpecialAttack;
+                                                    break;
+                                                case 1:
+                                                    Teller = Status;
+                                                    break;
+                                                case 2:
+                                                    Teller = Status;
+                                                    break;
+                                                case 3:
+                                                    Teller = Status;
+                                                    break;
+                                                case 4:
+                                                    Teller = Turn;
+                                                    break;
+                                                case 5:
+                                                    Teller = Turn;
+                                                    break;
+
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        }else {
-                            switch (new Random().nextInt(3)) {
+                            } else {
+                                switch (new Random().nextInt(3)) {
 
-                                case 0:
-                                    if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                        Teller = SpecialAttack;
-                                    } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                        Teller = SpecialAttack;
-                                    }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                        Teller = Turn;
-                                    }else {
-                                        Teller = Turn;
-                                    }
-                                    break;
-                                case 1:
-                                    if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                        Teller = SpecialAttack;
-                                    } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                        Teller = SpecialAttack;
-                                    }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                        Teller = Turn;
-                                    }else {
-                                        Teller = Turn;
-                                    }
-                                    break;
-                                case 2:
-                                    if (attackermonster.Health < MaxHealthAttacker) {
-                                        Teller = HealButton;
-                                    }else {
+                                    case 0:
                                         if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
                                             Teller = SpecialAttack;
-                                        } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
+                                        } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
                                             Teller = SpecialAttack;
-                                        }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
+                                        } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
                                             Teller = Turn;
-                                        }else {
+                                        } else {
                                             Teller = Turn;
                                         }
-                                    }
-                                    break;
+                                        break;
+                                    case 1:
+                                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                            Teller = SpecialAttack;
+                                        } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                            Teller = SpecialAttack;
+                                        } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                            Teller = Turn;
+                                        } else {
+                                            Teller = Turn;
+                                        }
+                                        break;
+                                    case 2:
+                                        if (attackermonster.Health < MaxHealthAttacker) {
+                                            Teller = HealButton;
+                                        } else {
+                                            if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                                Teller = SpecialAttack;
+                                            } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                                Teller = SpecialAttack;
+                                            } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                                Teller = Turn;
+                                            } else {
+                                                Teller = Turn;
+                                            }
+                                        }
+                                        break;
 
+                                }
                             }
+                        } else {
+                            Teller = HealButton;
                         }
-                    }else {
+                    }
+                    if (attackermonster.Moveslotheal == 3) {
+                        double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Speed / attackermonster.Defense);
+                        if (what > 1.0) {
+                            Teller = HealButton;
+                        }
+                    }
+
+                    // should probably make something that keeps the monster from using heal over time over and over
+
+                    if (elongatedhealtimerA != 0 && attackermonster.Moveslotheal == 2) { // was != 2, should surely be == 2? because 2 = elongated heal A, And the timer should prevent repetition only in that scenario.
+                        switch (new Random().nextInt(3)) {
+
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                Teller = Turn;
+                                break;
+                            case 2:
+                                if (attackermonster.Health < MaxHealthAttacker) {
+                                    Teller = HealButton;
+                                } else {
+                                    Teller = Turn;
+                                }
+                                break;
+
+                        }
+                    }
+
+
+                    if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0) && attackermonster.Moveslotheal == 4) {
                         Teller = HealButton;
                     }
+
+
                 }
-                if(attackermonster.Moveslotheal == 3){
-                    double what = (attackermonster.Attack / playermonster.Defense)/(attackermonster.Speed / attackermonster.Defense);
-                    if (what > 1.0 ){
+
+            } else if (ratiohealth >= 45 && ratiohealth <= 80) {
+                if (attackermonster.Moveslotheal == 1) {
+                    if (delayedhealtimerA == 0) {
                         Teller = HealButton;
+                    } else {
+                        switch (new Random().nextInt(3)) {
+
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                    Teller = SpecialAttack;
+                                } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                    Teller = SpecialAttack;
+                                } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                    Teller = Turn;
+                                } else {
+                                    Teller = Turn;
+                                }
+                                break;
+                            case 2:
+                                if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                    Teller = SpecialAttack;
+                                } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                    Teller = SpecialAttack;
+                                } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                    Teller = Turn;
+                                } else {
+                                    Teller = Turn;
+                                }
+                                break;
+
+                        }
                     }
                 }
-
-                // should probably make something that keeps the monster from using heal over time over and over
-
-                if (elongatedhealtimerA != 0 && attackermonster.Moveslotheal == 2){ // was != 2, should surely be == 2? because 2 = elongated heal A, And the timer should prevent repetition only in that scenario.
-                    switch (new Random().nextInt(3)) {
-
-                        case 0:
-                            Teller = SpecialAttack;
-                            break;
-                        case 1:
-                            Teller = Turn;
-                            break;
-                        case 2:
-                            if (attackermonster.Health < MaxHealthAttacker) {
-                                Teller = HealButton;
-                            }else {
-                                Teller= Turn;
-                            }
-                            break;
-
-                    }
-                }
-
-
-                if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0)  && attackermonster.Moveslotheal == 4){
-                    Teller = HealButton;
-                }
-
-
+            } else if (attackermonster.Moveslotheal == 4 && (((attackermonster.Health + cleansevalue) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0) && attackermonster.Moveslotheal == 4) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 5 && grouphealtimerA == 0 && (((attackermonster.Health + grouphealtester) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 3 && (((attackermonster.Health + glugpower) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 0 && (((attackermonster.Health + testheal) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 1 && (delayedhealtimerA == 0) && (((attackermonster.Health + (testheal * 1.5)) > ((testtakedamage * 2) + delayedblastpowerP)) && (attackermonster.Health < ((testtakedamage * 2) + delayedblastpowerP)))) {
+                Teller = HealButton;
             }
-
-        }else if(ratiohealth >= 45 && ratiohealth <= 80){
-            if (attackermonster.Moveslotheal == 1){
-                if (delayedhealtimerA == 0){
-                    Teller = HealButton;
-                }else {
-                    switch (new Random().nextInt(3)) {
-
-                        case 0:
-                            Teller = SpecialAttack;
-                            break;
-                        case 1:
-                            if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                Teller = SpecialAttack;
-                            } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                Teller = SpecialAttack;
-                            }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                Teller = Turn;
-                            }else {
-                                Teller = Turn;
-                            }
-                            break;
-                        case 2:
-                            if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                Teller = SpecialAttack;
-                            } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                Teller = SpecialAttack;
-                            }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                Teller = Turn;
-                            }else {
-                                Teller = Turn;
-                            }
-                            break;
-
-                    }
-                }
+        }else {
+            Teller = Turn;
+            if (attackermonster.Moveslotheal == 5 && grouphealtimerA == 0 && (((attackermonster.Health + grouphealtester) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
             }
-        }else if (attackermonster.Moveslotheal == 4 && (((attackermonster.Health + cleansevalue) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
-            Teller = HealButton;
-        }else if (attackermonster.Moveslotheal == 5 && grouphealtimerA == 0 && (((attackermonster.Health + grouphealtester) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
-            Teller = HealButton;
-        }else if (attackermonster.Moveslotheal == 3 && (((attackermonster.Health + glugpower) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
-            Teller = HealButton;
-        }else if (attackermonster.Moveslotheal == 0 && (((attackermonster.Health + testheal) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
-            Teller = HealButton;
-        }else if (attackermonster.Moveslotheal == 1 && (delayedhealtimerA == 0) && (((attackermonster.Health + (testheal*1.5)) > ((testtakedamage*2) + delayedblastpowerP)) && (attackermonster.Health < ((testtakedamage*2) + delayedblastpowerP)))){
-            Teller = HealButton;
         }
 
         if (Teller == Status){
@@ -4771,6 +4782,18 @@ public class protomon extends AppCompatActivity {
             if (ratiohealth > 89 && turncounter > 3){
                 Teller = Status;
             }
+        }
+
+        if(attackermonster.Moveslotattack == 1){
+            if(Teller == SpecialAttack){
+                if(delayedblasttimerA != 0){
+                    Teller = Turn;
+                }
+            }
+        }
+
+        if (glugpower >= playermonster.Health && attackermonster.Moveslotheal == 3){
+            Teller = HealButton;
         }
 
 
@@ -5999,11 +6022,11 @@ public class protomon extends AppCompatActivity {
         secondstartingmonster.Moveslotattack = new Random().nextInt(8);
 
 
-        // Test movesets here
+        // Test movesets here Here
 
-       // attackermonster.Moveslotheal = 2;
-       // attackermonster.Moveslotattack = 3;
-       // attackermonster.Moveslotspeed = 0;
+        attackermonster.Moveslotheal = 5;
+        attackermonster.Moveslotattack = 6;
+        attackermonster.Moveslotspeed = 4;
        // attackermonster.Moveslotdefense = 0;
 
 
@@ -6485,6 +6508,22 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
 
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Uggnawb);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Sudakleez);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
 
         // */
 
@@ -6718,7 +6757,7 @@ case 13:
                        //PlayerDisplay.setImageResource(R.drawable.centiclak);
                     break; 
 case 14:
-                       //PlayerDisplay.setImageResource(R.drawable.Uggnawb);
+                       PlayerDisplay.setImageResource(R.drawable.uggnawb);
                     break; 
 case 15:
                    PlayerDisplay.setImageResource(R.drawable.grobhost);
@@ -6845,7 +6884,7 @@ case 50:
                         PlayerDisplay.setImageResource(R.drawable.munegull);
                     break; 
 case 51:
-                       //PlayerDisplay.setImageResource(R.drawable.Sudakleez);
+                       PlayerDisplay.setImageResource(R.drawable.sudakleez);
                     break; 
 case 52:
                      PlayerDisplay.setImageResource(R.drawable.halocordate);
@@ -7034,7 +7073,7 @@ case 13:
                        //EnemyDisplay.setImageResource(R.drawable.centiclak);
                     break; 
 case 14:
-                       //EnemyDisplay.setImageResource(R.drawable.Uggnawb);
+                       EnemyDisplay.setImageResource(R.drawable.uggnawb);
                     break; 
 case 15:
                        EnemyDisplay.setImageResource(R.drawable.grobhost);
@@ -7161,7 +7200,7 @@ case 50:
                        EnemyDisplay.setImageResource(R.drawable.munegull);
                     break; 
 case 51:
-                       //EnemyDisplay.setImageResource(R.drawable.Sudakleez);
+                       EnemyDisplay.setImageResource(R.drawable.sudakleez);
                     break; 
 case 52:
                       EnemyDisplay.setImageResource(R.drawable.halocordate);
@@ -7410,182 +7449,192 @@ case 83:
         double testtakedamage = ((playermonster.Attack / attackermonster.Defense) * 65);
         double maxtesttakedamage = ((playermonster.Attack / attackermonster.Defense) * 70);
 
-        double cleansevalue = (((new Random().nextInt(11) + 25)) * (attackermonster.Speed / attackermonster.Defense));
+        double cleansevalue = 25 * (attackermonster.Speed / attackermonster.Defense);
         double glugpower = (25 * (attackermonster.Attack / playermonster.Defense));
         double grouphealtester = (3 * ((int) (((new Random().nextInt(6) + 15)) * (playermonster.Speed / playermonster.Defense)))) / 7;
 
-        if (ratiohealth < 37 || ((attackermonster.Health < testdamage && (attackermonster.Health + testheal) > testdamage) && (attackermonster.Moveslotheal != 1 && attackermonster.Moveslotheal != 3 && attackermonster.Moveslotheal != 5 ))){
-            if(healblocktgimerA == 0 && elongatedhealwoundpowerA == 0 && delayedhealtimerA == 0){
-                if ((attackermonster.Speed > playermonster.Attack && attackermonster.Speed > attackermonster.Defense) && attackermonster.Moveslotheal != 3) {
-                    if (attackermonster.Moveslotheal == 4){
-                        if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0)  && attackermonster.Moveslotheal == 4){
-                            Teller = HealButton;
-                        }else if(ratiohealth >= 45 && ratiohealth <= 80){
-                            if (attackermonster.Moveslotheal == 1){
-                                if (delayedhealtimerA == 0){
-                                    Teller = HealButton;
-                                }else {
-                                    if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                        Teller = SpecialAttack;
-                                    } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                        Teller = SpecialAttack;
-                                    }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                        Teller = Turn;
-                                    }else {
-                                        switch (new Random().nextInt(6)) {
-                                            case 0:
-                                                Teller = SpecialAttack;
-                                                break;
-                                            case 1:
-                                                Teller = Status;
-                                                break;
-                                            case 2:
-                                                Teller = Status;
-                                                break;
-                                            case 3:
-                                                Teller = Status;
-                                                break;
-                                            case 4:
-                                                Teller = Turn;
-                                                break;
-                                            case 5:
-                                                Teller = Turn;
-                                                break;
 
+        if (attackermonster.Moveslotheal != 5) {
+            if (ratiohealth < 37 || ((attackermonster.Health < testdamage && (attackermonster.Health + testheal) > testdamage) && (attackermonster.Moveslotheal != 1 && attackermonster.Moveslotheal != 3 && attackermonster.Moveslotheal != 5))) {
+                if (healblocktgimerA == 0 && elongatedhealwoundpowerA == 0 && delayedhealtimerA == 0) {
+                    if ((attackermonster.Speed > playermonster.Attack && attackermonster.Speed > attackermonster.Defense) && attackermonster.Moveslotheal != 3) {
+                        if (attackermonster.Moveslotheal == 4) {
+                            if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0) && attackermonster.Moveslotheal == 4) {
+                                Teller = HealButton;
+                            } else if (ratiohealth >= 45 && ratiohealth <= 80) {
+                                if (attackermonster.Moveslotheal == 1) {
+                                    if (delayedhealtimerA == 0) {
+                                        Teller = HealButton;
+                                    } else {
+                                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                            Teller = SpecialAttack;
+                                        } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                            Teller = SpecialAttack;
+                                        } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                            Teller = Turn;
+                                        } else {
+                                            switch (new Random().nextInt(6)) {
+                                                case 0:
+                                                    Teller = SpecialAttack;
+                                                    break;
+                                                case 1:
+                                                    Teller = Status;
+                                                    break;
+                                                case 2:
+                                                    Teller = Status;
+                                                    break;
+                                                case 3:
+                                                    Teller = Status;
+                                                    break;
+                                                case 4:
+                                                    Teller = Turn;
+                                                    break;
+                                                case 5:
+                                                    Teller = Turn;
+                                                    break;
+
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        }else {
-                            switch (new Random().nextInt(3)) {
+                            } else {
+                                switch (new Random().nextInt(3)) {
 
-                                case 0:
-                                    if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                        Teller = SpecialAttack;
-                                    } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                        Teller = SpecialAttack;
-                                    }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                        Teller = Turn;
-                                    }else {
-                                        Teller = Turn;
-                                    }
-                                    break;
-                                case 1:
-                                    if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                        Teller = SpecialAttack;
-                                    } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                        Teller = SpecialAttack;
-                                    }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                        Teller = Turn;
-                                    }else {
-                                        Teller = Turn;
-                                    }
-                                    break;
-                                case 2:
-                                    if (attackermonster.Health < MaxHealthAttacker) {
-                                        Teller = HealButton;
-                                    }else {
+                                    case 0:
                                         if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
                                             Teller = SpecialAttack;
-                                        } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
+                                        } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
                                             Teller = SpecialAttack;
-                                        }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
+                                        } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
                                             Teller = Turn;
-                                        }else {
+                                        } else {
                                             Teller = Turn;
                                         }
-                                    }
-                                    break;
+                                        break;
+                                    case 1:
+                                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                            Teller = SpecialAttack;
+                                        } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                            Teller = SpecialAttack;
+                                        } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                            Teller = Turn;
+                                        } else {
+                                            Teller = Turn;
+                                        }
+                                        break;
+                                    case 2:
+                                        if (attackermonster.Health < MaxHealthAttacker) {
+                                            Teller = HealButton;
+                                        } else {
+                                            if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                                Teller = SpecialAttack;
+                                            } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                                Teller = SpecialAttack;
+                                            } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                                Teller = Turn;
+                                            } else {
+                                                Teller = Turn;
+                                            }
+                                        }
+                                        break;
 
+                                }
                             }
+                        } else {
+                            Teller = Turn;
                         }
-                    }else {
-                        Teller = Turn;
                     }
-                }
-                if(attackermonster.Moveslotheal == 3){
-                    double what = (attackermonster.Attack / playermonster.Defense)/(attackermonster.Speed / attackermonster.Defense);
-                    if (what > 1.0 ){
+                    if (attackermonster.Moveslotheal == 3) {
+                        double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Speed / attackermonster.Defense);
+                        if (what > 1.0) {
+                            Teller = HealButton;
+                        }
+                    }
+
+                    // should probably make something that keeps the monster from using heal over time over and over
+
+                    if (elongatedhealtimerA != 0 && attackermonster.Moveslotheal == 2) { // was != 2, should surely be == 2? because 2 = elongated heal A, And the timer should prevent repetition only in that scenario.
+                        switch (new Random().nextInt(3)) {
+
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                Teller = Turn;
+                                break;
+                            case 2:
+                                if (attackermonster.Health < MaxHealthAttacker) {
+                                    Teller = HealButton;
+                                } else {
+                                    Teller = Turn;
+                                }
+                                break;
+
+                        }
+                    }
+
+
+                    if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0) && attackermonster.Moveslotheal == 4) {
                         Teller = HealButton;
                     }
+
+
                 }
 
-                // should probably make something that keeps the monster from using heal over time over and over
+            } else if (ratiohealth >= 45 && ratiohealth <= 80) {
+                if (attackermonster.Moveslotheal == 1) {
+                    if (delayedhealtimerA == 0) {
+                        Teller = HealButton;
+                    } else {
+                        switch (new Random().nextInt(3)) {
 
-                if (elongatedhealtimerA != 0 && attackermonster.Moveslotheal == 2){ // was != 2, should surely be == 2? because 2 = elongated heal A, And the timer should prevent repetition only in that scenario.
-                    switch (new Random().nextInt(3)) {
+                            case 0:
+                                Teller = SpecialAttack;
+                                break;
+                            case 1:
+                                if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                    Teller = SpecialAttack;
+                                } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                    Teller = SpecialAttack;
+                                } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                    Teller = Turn;
+                                } else {
+                                    Teller = Turn;
+                                }
+                                break;
+                            case 2:
+                                if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                    Teller = SpecialAttack;
+                                } else if (attackermonster.Moveslotattack == 6 && ((attackermonster.Speed < playermonster.Speed) && (attackermonster.Speed > (Math.ceil(playermonster.Speed * .85))))) {
+                                    Teller = SpecialAttack;
+                                } else if (((playermonster.Health / ((attackermonster.Attack / playermonster.Defense) * 60)) <= (((attackermonster.Health / ((playermonster.Attack / attackermonster.Defense) * 60)))))) {
+                                    Teller = Turn;
+                                } else {
+                                    Teller = Turn;
+                                }
+                                break;
 
-                        case 0:
-                            Teller = SpecialAttack;
-                            break;
-                        case 1:
-                            Teller = Turn;
-                            break;
-                        case 2:
-                            if (attackermonster.Health < MaxHealthAttacker) {
-                                Teller = HealButton;
-                            }else {
-                                Teller= Turn;
-                            }
-                            break;
-
+                        }
                     }
                 }
-
-
-                if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0)  && attackermonster.Moveslotheal == 4){
-                    Teller = HealButton;
-                }
-
-
+            } else if (attackermonster.Moveslotheal == 4 && (((attackermonster.Health + cleansevalue) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if ((healblocktgimerA != 0 || elongatedhealwoundpowerA != 0 || elongatedwoundpowerA != 0) && attackermonster.Moveslotheal == 4) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 5 && grouphealtimerA == 0 && (((attackermonster.Health + grouphealtester) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 3 && (((attackermonster.Health + glugpower) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 0 && (((attackermonster.Health + testheal) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 1 && (delayedhealtimerA == 0) && (((attackermonster.Health + (testheal * 1.5)) > ((testtakedamage * 2) + delayedblastpowerP)) && (attackermonster.Health < ((testtakedamage * 2) + delayedblastpowerP)))) {
+                Teller = HealButton;
             }
-
-        }else if(ratiohealth >= 45 && ratiohealth <= 80){
-            if (attackermonster.Moveslotheal == 1){
-                if (delayedhealtimerA == 0){
-                    Teller = HealButton;
-                }else {
-                    switch (new Random().nextInt(3)) {
-
-                        case 0:
-                            Teller = SpecialAttack;
-                            break;
-                        case 1:
-                            if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                Teller = SpecialAttack;
-                            } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                Teller = SpecialAttack;
-                            }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                Teller = Turn;
-                            }else {
-                                Teller = Turn;
-                            }
-                            break;
-                        case 2:
-                            if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
-                                Teller = SpecialAttack;
-                            } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
-                                Teller = SpecialAttack;
-                            }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
-                                Teller = Turn;
-                            }else {
-                                Teller = Turn;
-                            }
-                            break;
-
-                    }
-                }
+        }else {
+          Teller = Turn;
+            if (attackermonster.Moveslotheal == 5 && grouphealtimerA == 0 && (((attackermonster.Health + grouphealtester) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
             }
-        }else if (attackermonster.Moveslotheal == 4 && (((attackermonster.Health + cleansevalue) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
-            Teller = HealButton;
-        }else if (attackermonster.Moveslotheal == 5 && grouphealtimerA == 0 && (((attackermonster.Health + grouphealtester) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))){
-            Teller = HealButton;
-        }else if (attackermonster.Moveslotheal == 3 && (((attackermonster.Health + glugpower) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
-            Teller = HealButton;
-        }else if (attackermonster.Moveslotheal == 0 && (((attackermonster.Health + testheal) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))){
-            Teller = HealButton;
-        }else if (attackermonster.Moveslotheal == 1 && (delayedhealtimerA == 0) && (((attackermonster.Health + (testheal*1.5)) > ((testtakedamage*2) + delayedblastpowerP)) && (attackermonster.Health < ((testtakedamage*2) + delayedblastpowerP)))){
-            Teller = HealButton;
         }
 
         if (Teller == Status){
@@ -7977,6 +8026,17 @@ case 83:
             }
         }
 
+        if(attackermonster.Moveslotattack == 1){
+            if(Teller == SpecialAttack){
+                if(delayedblasttimerA != 0){
+                    Teller = Turn;
+                }
+            }
+        }
+
+        if (glugpower >= playermonster.Health && attackermonster.Moveslotheal == 3){
+            Teller = HealButton;
+        }
 
 
 
