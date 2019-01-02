@@ -3865,7 +3865,7 @@ public class protomon extends AppCompatActivity {
             } else if (playermonster.Moveslotattack == 4) {
                 healblocktgimerP = healblocktgimerP + 7;
             }else if (playermonster.Moveslotattack == 5) {
-                Damage = (((new Random().nextInt(11) + 25)) * (playermonster.Attack / attackermonster.Defense));
+                Damage = (((new Random().nextInt(11) + 25)) * (playermonster.Defense / attackermonster.Defense)); // changed to D/D from A/D
                 Damage = Math.round(Damage);
                 if (attackermonster.Defense >= statMinimum){
                     attackermonster.Defense = Math.round(attackermonster.Defense * .85);
@@ -4119,6 +4119,8 @@ public class protomon extends AppCompatActivity {
         }
 
 
+
+
         if (healblocktgimerA <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 4 && ((playermonster.Speed > playermonster.Defense && playermonster.Moveslotheal != 3) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed)){
             Teller = SpecialAttack;
         }
@@ -4291,8 +4293,9 @@ public class protomon extends AppCompatActivity {
 
         double cleansevalue = 25 * (attackermonster.Speed / attackermonster.Defense);
         double glugpower = (35 * (attackermonster.Attack / playermonster.Defense)); // was 25 now 35
-        double grouphealtester = (3 * ((int) (((new Random().nextInt(6) + 15)) * (playermonster.Speed / playermonster.Defense)))) / 7;
+        double grouphealtester = (3 * ((int) (((new Random().nextInt(6) + 15)) * (attackermonster.Speed / attackermonster.Defense)))) / 7;
         double longhealtester = (3 * ((int) (((new Random().nextInt(21) + 65)) * (attackermonster.Speed / attackermonster.Defense)))) / 7;
+        double chipdamage = (((new Random().nextInt(11) + 25)) * (attackermonster.Defense / playermonster.Defense));
 
 
 
@@ -4977,6 +4980,10 @@ public class protomon extends AppCompatActivity {
 
         if (Teller == HealButton && attackermonster.Moveslotheal == 0 && attackermonster.Health == MaxHealthAttacker){
             Teller = Turn;
+        }
+
+        if (Teller == Turn && chipdamage > testdamage && attackermonster.Moveslotattack == 5){
+            Teller = SpecialAttack;
         }
 
 
@@ -5980,7 +5987,7 @@ public class protomon extends AppCompatActivity {
             } else if (attackermonster.Moveslotattack == 4) {
                 healblocktgimerA = healblocktgimerA + 7;
             }else if (attackermonster.Moveslotattack == 5) {
-                Damage = (((new Random().nextInt(11) + 25)) * (attackermonster.Attack / playermonster.Defense));
+                Damage = (((new Random().nextInt(11) + 25)) * (attackermonster.Defense / playermonster.Defense)); // also changed from A/D to D/D
                 Damage = Math.round(Damage);
                 if (playermonster.Defense >= statMinimum){
                     playermonster.Defense = Math.round(playermonster.Defense * .85);
@@ -7689,8 +7696,9 @@ case 83:
 
         double cleansevalue = 25 * (attackermonster.Speed / attackermonster.Defense);
         double glugpower = (30 * (attackermonster.Attack / playermonster.Defense)); // was 25 now 35
-        double grouphealtester = (3 * ((int) (((new Random().nextInt(6) + 15)) * (playermonster.Speed / playermonster.Defense)))) / 7;
+        double grouphealtester = (3 * ((int) (((new Random().nextInt(6) + 15)) * (attackermonster.Speed / attackermonster.Defense)))) / 7;
         double longhealtester = (3 * ((int) (((new Random().nextInt(21) + 65)) * (attackermonster.Speed / attackermonster.Defense)))) / 7;
+        double chipdamage = (((new Random().nextInt(11) + 25)) * (attackermonster.Defense / playermonster.Defense));
 
 
         if (attackermonster.Moveslotheal != 5 && attackermonster.Moveslotheal != 4) {
@@ -8376,6 +8384,10 @@ case 83:
             Teller = Turn;
         }
 
+
+        if (Teller == Turn && chipdamage > testdamage && attackermonster.Moveslotattack == 5){
+            Teller = SpecialAttack;
+        }
 
 
 
