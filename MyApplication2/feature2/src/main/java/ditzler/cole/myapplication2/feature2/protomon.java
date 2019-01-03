@@ -1163,6 +1163,11 @@ public class protomon extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                double averagehealth = 0;
+                double averagespeed = 0;
+                double averagedefense = 0;
+                double averageattack = 0;
+
                 CombatString = "";
                 GombatString = "";
 
@@ -1187,6 +1192,28 @@ public class protomon extends AppCompatActivity {
                 attackermonster.Moveslotheal = new Random().nextInt(10);
 
                 StringDisplayMethod();
+
+                for (int i = 1; i < 83; i++){
+
+                    averagespeed = averagespeed + stats(monstlist(i).Speed);
+                    averagehealth = averagehealth + stats(monstlist(i).Health);
+                    averageattack = averageattack + stats(monstlist(i).Attack);
+                    averagedefense = averagedefense + stats(monstlist(i).Defense);
+
+
+
+                }
+
+
+                averagespeed = averagespeed / 82;
+                averagehealth = averagehealth / 82;
+                averageattack = averageattack / 82;
+                averagedefense = averagedefense / 82;
+
+
+                String av = "%.0f";
+               // CombatString = String.format(av, averagehealth) + ", " + String.format(av, averagedefense) + ", " + String.format(av, averageattack) + ", " + String.format(av, averagespeed);
+
 
                 LongView.setText(CombatString);
 
@@ -3790,13 +3817,13 @@ public class protomon extends AppCompatActivity {
                 }
             }else if (playermonster.Moveslotheal == 6) {
                 if (healblocktgimerA == 0 && elongatedhealwoundtimerP == 0) {
-                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed / playermonster.Defense));
-                    Damage = Math.round(Damage*.9);
+                    Damage = (((new Random().nextInt(11) + 55)) * (( playermonster.Speed + playermonster.Defense + playermonster.Attack ) / MaxHealthPlayer));
+                    Damage = Math.round(Damage*.381);
                     playermonster.Health = playermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerP != 0 && healblocktgimerA == 0) {
-                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed / playermonster.Defense));
-                    Damage = Math.round(Damage*.9);
+                    Damage = (((new Random().nextInt(11) + 55)) * (( playermonster.Speed + playermonster.Defense + playermonster.Attack ) / MaxHealthPlayer));
+                    Damage = Math.round(Damage*.381);
                     playermonster.Health = playermonster.Health + Math.round(Damage / 2);
                 }
                 playermonster.Attack = Math.round((playermonster.Attack*1.0167));
@@ -3805,36 +3832,36 @@ public class protomon extends AppCompatActivity {
             }else if (playermonster.Moveslotheal == 7) {
                 if (healblocktgimerA == 0 && elongatedhealwoundtimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed / (playermonster.Defense + playermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     playermonster.Health = playermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerP != 0 && healblocktgimerA == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed /(playermonster.Defense + playermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     playermonster.Health = playermonster.Health + Math.round(Damage / 2);
                 }
                 playermonster.Speed = Math.round((playermonster.Speed*1.05));
             }else if (playermonster.Moveslotheal == 8) {
                 if (healblocktgimerA == 0 && elongatedhealwoundtimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Attack / (playermonster.Defense + playermonster.Speed)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     playermonster.Health = playermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerP != 0 && healblocktgimerA == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Attack / (playermonster.Defense + playermonster.Speed)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     playermonster.Health = playermonster.Health + Math.round(Damage / 2);
                 }
                 playermonster.Attack = Math.round((playermonster.Attack*1.05));
             }else if (playermonster.Moveslotheal == 9) {
                 if (healblocktgimerA == 0 && elongatedhealwoundtimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Defense / (playermonster.Speed + playermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     playermonster.Health = playermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerP != 0 && healblocktgimerA == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Defense /(playermonster.Speed + playermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     playermonster.Health = playermonster.Health + Math.round(Damage / 2);
                 }
                 playermonster.Defense = Math.round((playermonster.Defense*1.05));
@@ -4312,9 +4339,9 @@ public class protomon extends AppCompatActivity {
                         break;
                     case 2:
                         if (attackermonster.Health < MaxHealthAttacker) {
-                            Teller = SpecialAttack;
+                            Teller = Turn;
                         }else {
-                            Teller= Turn;
+                            Teller= SpecialAttack;
                         }
                         break;
 
@@ -4349,9 +4376,9 @@ public class protomon extends AppCompatActivity {
                         break;
                     case 2:
                         if (attackermonster.Health < MaxHealthAttacker) {
-                            Teller = SpecialAttack;
+                            Teller = Turn;
                         }else {
-                            Teller= Turn;
+                            Teller= SpecialAttack;
                         }
                         break;
 
@@ -4365,13 +4392,13 @@ public class protomon extends AppCompatActivity {
         double testdamage = ((attackermonster.Attack / playermonster.Defense) * 50);
         double testdamageP = ((playermonster.Attack / attackermonster.Defense) * 50);
         double testheal = ((attackermonster.Speed / attackermonster.Defense) * 50);
-        double testhealnz = ((attackermonster.Speed / attackermonster.Defense) * 50)*.90;
+        double testhealnz = ((((attackermonster.Speed + attackermonster.Defense + attackermonster.Attack ) / MaxHealthAttacker)) * 50)*.3810;
 
-        double momentumcheck = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)))*1.95;
+        double momentumcheck = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)))*1.80;
 
-        double posturetest = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)))*1.95;
+        double posturetest = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)))*1.80;
 
-        double growthtest = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)))*1.95;
+        double growthtest = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)))*1.80;
 
         double testtakedamage = ((playermonster.Attack / attackermonster.Defense) * 65);
         double maxtesttakedamage = ((playermonster.Attack / attackermonster.Defense) * 70);
@@ -4661,7 +4688,7 @@ public class protomon extends AppCompatActivity {
                             if (attackermonster.Moveslotheal == 1){
                                 if (delayedhealtimerA == 0){
                                     Teller = HealButton;
-                                }else {
+                                } /* else {
                                     switch (new Random().nextInt(3)) {
                                         case 0:
                                             Teller = SpecialAttack;
@@ -4689,7 +4716,7 @@ public class protomon extends AppCompatActivity {
                                             }
                                             break;
                                     }
-                                }
+                                } */
                             }
                         }else {
                             if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
@@ -4728,7 +4755,41 @@ public class protomon extends AppCompatActivity {
 
                         switch (new Random().nextInt(3)) {
                             case 0:
-                                Teller = SpecialAttack;
+                                switch (new Random().nextInt(3)) {
+                                    case 0:
+                                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                            Teller = SpecialAttack;
+                                        } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
+                                            Teller = SpecialAttack;
+                                        }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
+                                            Teller = Turn;
+                                        }else {
+
+                                            switch (new Random().nextInt(3)) {
+                                                case 0:
+                                                    Teller = SpecialAttack;
+                                                    break;
+                                                case 1:
+                                                    Teller = Turn;
+                                                    break;
+                                                case 2:
+                                                    Teller = Turn;
+                                                    break;
+                                            }
+                                        }
+                                        break;
+                                    case 1:
+                                        Teller = Turn;
+                                        break;
+                                    case 2:
+                                        if (attackermonster.Health < MaxHealthAttacker) {
+                                            Teller = Turn;
+                                        }else {
+                                            Teller= SpecialAttack;
+                                        }
+                                        break;
+
+                                }
                                 break;
                             case 1:
                                 Teller = Turn;
@@ -5079,6 +5140,9 @@ public class protomon extends AppCompatActivity {
             Teller = SpecialAttack;
         }
 
+        if (Teller == HealButton && healblocktgimerP > 0 && attackermonster.Moveslotheal != 4){
+            Teller = Turn;
+        }
 
 
         /*
@@ -5989,13 +6053,13 @@ public class protomon extends AppCompatActivity {
                 }
             }else if (attackermonster.Moveslotheal == 6) {
                 if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
-                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
-                    Damage = Math.round(Damage*.9);
+                    Damage = (((new Random().nextInt(11) + 55)) * (( attackermonster.Speed + attackermonster.Defense + attackermonster.Attack ) / MaxHealthAttacker));  // ;(attackermonster.Speed / attackermonster.Defense)
+                    Damage = Math.round(Damage*.381);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
-                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
-                    Damage = Math.round(Damage*.9);
+                    Damage = (((new Random().nextInt(11) + 55)) * (( attackermonster.Speed + attackermonster.Defense + attackermonster.Attack ) / MaxHealthAttacker));
+                    Damage = Math.round(Damage*.381);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
                 }
                 attackermonster.Attack = Math.round((attackermonster.Attack*1.0167));
@@ -6004,36 +6068,36 @@ public class protomon extends AppCompatActivity {
             }else if (attackermonster.Moveslotheal == 7) {
                 if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed /(attackermonster.Defense + attackermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
                 }
                 attackermonster.Speed = Math.round((attackermonster.Speed*1.05));
             }else if (attackermonster.Moveslotheal == 8) {
                 if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
                 }
                 attackermonster.Attack = Math.round((attackermonster.Attack*1.05));
             }else if (attackermonster.Moveslotheal == 9) {
                 if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense /(attackermonster.Speed + attackermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
                 }
                 attackermonster.Defense = Math.round((attackermonster.Defense*1.05));
@@ -7809,18 +7873,36 @@ case 83:
         if (Teller == Status){
             if (!(attackermonster.Defense < 749 && attackermonster.Speed < 749 && attackermonster.Attack < 749)) {
                 switch (new Random().nextInt(3)) {
-
                     case 0:
-                        Teller = SpecialAttack;
+                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                            Teller = SpecialAttack;
+                        } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
+                            Teller = SpecialAttack;
+                        }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
+                            Teller = Turn;
+                        }else {
+
+                            switch (new Random().nextInt(3)) {
+                                case 0:
+                                    Teller = SpecialAttack;
+                                    break;
+                                case 1:
+                                    Teller = Turn;
+                                    break;
+                                case 2:
+                                    Teller = Turn;
+                                    break;
+                            }
+                        }
                         break;
                     case 1:
                         Teller = Turn;
                         break;
                     case 2:
                         if (attackermonster.Health < MaxHealthAttacker) {
-                            Teller = SpecialAttack;
+                            Teller = Turn;
                         }else {
-                            Teller= Turn;
+                            Teller= SpecialAttack;
                         }
                         break;
 
@@ -7828,18 +7910,36 @@ case 83:
             }
             if (AttackerStatDelayTimer != -1){
                 switch (new Random().nextInt(3)) {
-
                     case 0:
-                        Teller = SpecialAttack;
+                        if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                            Teller = SpecialAttack;
+                        } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
+                            Teller = SpecialAttack;
+                        }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
+                            Teller = Turn;
+                        }else {
+
+                            switch (new Random().nextInt(3)) {
+                                case 0:
+                                    Teller = SpecialAttack;
+                                    break;
+                                case 1:
+                                    Teller = Turn;
+                                    break;
+                                case 2:
+                                    Teller = Turn;
+                                    break;
+                            }
+                        }
                         break;
                     case 1:
                         Teller = Turn;
                         break;
                     case 2:
                         if (attackermonster.Health < MaxHealthAttacker) {
-                            Teller = SpecialAttack;
+                            Teller = Turn;
                         }else {
-                            Teller= Turn;
+                            Teller= SpecialAttack;
                         }
                         break;
 
@@ -7853,17 +7953,17 @@ case 83:
         double testdamage = ((attackermonster.Attack / playermonster.Defense) * 50);
         double testdamageP = ((playermonster.Attack / attackermonster.Defense) * 50);
         double testheal = ((attackermonster.Speed / attackermonster.Defense) * 50);
-        double testhealnz = ((attackermonster.Speed / attackermonster.Defense) * 50)*.90;
+        double testhealnz = ((((attackermonster.Speed + attackermonster.Defense + attackermonster.Attack ) / MaxHealthAttacker)) * 50)*.3810;
 
         double testtakedamage = ((playermonster.Attack / attackermonster.Defense) * 65);
         double maxtesttakedamage = ((playermonster.Attack / attackermonster.Defense) * 70);
 
 
-        double momentumcheck = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)))*1.95;
+        double momentumcheck = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)))*1.80;
 
-        double posturetest = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)))*1.95;
+        double posturetest = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)))*1.80;
 
-        double growthtest = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)))*1.95;
+        double growthtest = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)))*1.80;
 
 
         double cleansevalue = 25 * (attackermonster.Speed / attackermonster.Defense);
@@ -8004,7 +8104,7 @@ case 83:
                 if (attackermonster.Moveslotheal == 1) {
                     if (delayedhealtimerA == 0) {
                         Teller = HealButton;
-                    } else {
+                    } /* else {
                         switch (new Random().nextInt(3)) {
 
                             case 0:
@@ -8062,7 +8162,7 @@ case 83:
                                 break;
 
                         }
-                    }
+                    }*/
                 }
             } else if (attackermonster.Moveslotheal == 4 && (((attackermonster.Health + cleansevalue) > (testtakedamage + delayedblastpowerP)) && (attackermonster.Health < (testtakedamage + delayedblastpowerP)))) {
                 double cleansefinalcheck = (attackermonster.Speed/attackermonster.Defense)/(playermonster.Attack/attackermonster.Defense) * 100;
@@ -8217,7 +8317,41 @@ case 83:
 
                             switch (new Random().nextInt(3)) {
                                 case 0:
-                                    Teller = SpecialAttack;
+                                    switch (new Random().nextInt(3)) {
+                                        case 0:
+                                            if (attackermonster.Speed > playermonster.Defense && (attackermonster.Moveslotattack == 0 || attackermonster.Moveslotattack == 2 || attackermonster.Moveslotattack == 3)) {
+                                                Teller = SpecialAttack;
+                                            } else if (attackermonster.Moveslotattack == 6  && ((attackermonster.Speed < playermonster.Speed)  &&  (attackermonster.Speed > (Math.ceil(playermonster.Speed*.85))))){
+                                                Teller = SpecialAttack;
+                                            }else if (((playermonster.Health/((attackermonster.Attack/playermonster.Defense)*60)) <= (((attackermonster.Health/((playermonster.Attack/attackermonster.Defense)*60)))))){
+                                                Teller = Turn;
+                                            }else {
+
+                                                switch (new Random().nextInt(3)) {
+                                                    case 0:
+                                                        Teller = SpecialAttack;
+                                                        break;
+                                                    case 1:
+                                                        Teller = Turn;
+                                                        break;
+                                                    case 2:
+                                                        Teller = Turn;
+                                                        break;
+                                                }
+                                            }
+                                            break;
+                                        case 1:
+                                            Teller = Turn;
+                                            break;
+                                        case 2:
+                                            if (attackermonster.Health < MaxHealthAttacker) {
+                                                Teller = Turn;
+                                            }else {
+                                                Teller= SpecialAttack;
+                                            }
+                                            break;
+
+                                    }
                                     break;
                                 case 1:
                                     Teller = Turn;
@@ -8569,6 +8703,10 @@ case 83:
             Teller = SpecialAttack;
         }
 
+        if (Teller == HealButton && healblocktgimerP > 0 && attackermonster.Moveslotheal != 4){
+            Teller = Turn;
+        }
+
 
 
         if (Teller == Turn) {
@@ -8713,13 +8851,13 @@ case 83:
                 }
             }else if (attackermonster.Moveslotheal == 6) {
                 if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
-                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
-                    Damage = Math.round(Damage*.9);
+                    Damage = (((new Random().nextInt(11) + 55)) * (( attackermonster.Speed + attackermonster.Defense + attackermonster.Attack ) / MaxHealthAttacker));
+                    Damage = Math.round(Damage*.381);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
-                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
-                    Damage = Math.round(Damage*.9);
+                    Damage = (((new Random().nextInt(11) + 55)) * (( attackermonster.Speed + attackermonster.Defense + attackermonster.Attack ) / MaxHealthAttacker));
+                    Damage = Math.round(Damage*.381);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
                 }
                 attackermonster.Attack = Math.round((attackermonster.Attack*1.0167));
@@ -8728,36 +8866,36 @@ case 83:
             }else if (attackermonster.Moveslotheal == 7) {
                 if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed /(attackermonster.Defense + attackermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
                 }
                 attackermonster.Speed = Math.round((attackermonster.Speed*1.05));
             }else if (attackermonster.Moveslotheal == 8) {
                 if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
                 }
                 attackermonster.Attack = Math.round((attackermonster.Attack*1.05));
             }else if (attackermonster.Moveslotheal == 9) {
                 if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
                 if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense /(attackermonster.Speed + attackermonster.Attack)));
-                    Damage = Math.round(Damage*1.95);
+                    Damage = Math.round(Damage*1.80);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
                 }
                 attackermonster.Defense = Math.round((attackermonster.Defense*1.05));
