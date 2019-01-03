@@ -1184,7 +1184,7 @@ public class protomon extends AppCompatActivity {
 
                 attackermonster.Moveslotattack = new Random().nextInt(8);
                 attackermonster.Moveslotspeed = new Random().nextInt(14);
-                attackermonster.Moveslotheal = new Random().nextInt(6);
+                attackermonster.Moveslotheal = new Random().nextInt(10);
 
                 StringDisplayMethod();
 
@@ -2959,6 +2959,7 @@ public class protomon extends AppCompatActivity {
     }
 
     public String HealingMoveNames(int move) {
+        //Cases after 6 hypothetical
         switch (move){
             case 0:
                 return "Heal";
@@ -2972,6 +2973,14 @@ public class protomon extends AppCompatActivity {
                 return "Cleansing Heal";
             case 5:
                 return "All Team Heal";
+            case 6:
+                return "Snowballing";  // 90% as strong as regular heal, increases stats by 1%
+            case 7:
+                return "Momentum"; // +5% speed increase and half powered heal
+            case 8:
+                return "Posturing"; // +5% attack and attack/maxhealth based heal
+            case 9:
+                return "Growth";  // +5% defense and half power heal based on defense stat 1
         }
         return "HealError";
     }
@@ -3253,7 +3262,7 @@ public class protomon extends AppCompatActivity {
 
     public int HealMoves(int startingmove){
 
-        startingmove = startingmove + new Random().nextInt(6);
+        startingmove = startingmove + new Random().nextInt(10);
 
         return startingmove;
     }
@@ -3729,16 +3738,19 @@ public class protomon extends AppCompatActivity {
                     Damage = Math.round(Damage);
                     playermonster.Health = playermonster.Health + Damage;
                 }
-                if (elongatedhealwoundtimerP != 0) {
+                if (elongatedhealwoundtimerP != 0 && healblocktgimerA == 0 ) {
                     Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed / playermonster.Defense));
                     Damage = Math.round(Damage);
                     playermonster.Health = playermonster.Health + Math.round(Damage / 2);
                 }
+
+                /*
                 if (elongatedhealwoundtimerA != 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed / playermonster.Defense));
                     Damage = Math.round(Damage);
                     playermonster.Health = playermonster.Health + Math.round(Damage / 2);
                 }
+                */ // what the hell is this doing here cant be confident to delete it though?
             } else if (playermonster.Moveslotheal == 1) {
                 delayedhealpowerP = (int) (((new Random().nextInt(11) + 65)) * (playermonster.Speed / playermonster.Defense));
                 if (delayedhealtimerP == 0) {
@@ -3776,6 +3788,56 @@ public class protomon extends AppCompatActivity {
                 if (healtester > grouphealpowerP) {
                     grouphealpowerP = healtester;
                 }
+            }else if (playermonster.Moveslotheal == 6) {
+                if (healblocktgimerA == 0 && elongatedhealwoundtimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed / playermonster.Defense));
+                    Damage = Math.round(Damage*.9);
+                    playermonster.Health = playermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerP != 0 && healblocktgimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed / playermonster.Defense));
+                    Damage = Math.round(Damage*.9);
+                    playermonster.Health = playermonster.Health + Math.round(Damage / 2);
+                }
+                playermonster.Attack = Math.round((playermonster.Attack*1.0167));
+                playermonster.Defense = Math.round((playermonster.Defense*1.0167));
+                playermonster.Speed = Math.round((playermonster.Speed*1.0167));
+            }else if (playermonster.Moveslotheal == 7) {
+                if (healblocktgimerA == 0 && elongatedhealwoundtimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed / (playermonster.Defense + playermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    playermonster.Health = playermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerP != 0 && healblocktgimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Speed /(playermonster.Defense + playermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    playermonster.Health = playermonster.Health + Math.round(Damage / 2);
+                }
+                playermonster.Speed = Math.round((playermonster.Speed*1.05));
+            }else if (playermonster.Moveslotheal == 8) {
+                if (healblocktgimerA == 0 && elongatedhealwoundtimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Attack / (playermonster.Defense + playermonster.Speed)));
+                    Damage = Math.round(Damage*1.95);
+                    playermonster.Health = playermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerP != 0 && healblocktgimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Attack / (playermonster.Defense + playermonster.Speed)));
+                    Damage = Math.round(Damage*1.95);
+                    playermonster.Health = playermonster.Health + Math.round(Damage / 2);
+                }
+                playermonster.Attack = Math.round((playermonster.Attack*1.05));
+            }else if (playermonster.Moveslotheal == 9) {
+                if (healblocktgimerA == 0 && elongatedhealwoundtimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Defense / (playermonster.Speed + playermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    playermonster.Health = playermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerP != 0 && healblocktgimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (playermonster.Defense /(playermonster.Speed + playermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    playermonster.Health = playermonster.Health + Math.round(Damage / 2);
+                }
+                playermonster.Defense = Math.round((playermonster.Defense*1.05));
             }
             if (playermonster.Health > MaxHealthPlayer) {
                 playermonster.Health = MaxHealthPlayer;
@@ -3805,6 +3867,14 @@ public class protomon extends AppCompatActivity {
                         CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (attackermonster.Moveslotheal == 5)  {
                         CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 6)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Snowballs " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 7)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Gains Momentum " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 8)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Postures itself " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 9)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Grows " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else {
                         CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                     }
@@ -3825,6 +3895,14 @@ public class protomon extends AppCompatActivity {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (playermonster.Moveslotheal == 5)  {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerP) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerP)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 6)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Snowballs " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 7)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Gains Momentum " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 8)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Postures itself " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 9)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Grows " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString + "\n");
                     }
@@ -4287,6 +4365,13 @@ public class protomon extends AppCompatActivity {
         double testdamage = ((attackermonster.Attack / playermonster.Defense) * 50);
         double testdamageP = ((playermonster.Attack / attackermonster.Defense) * 50);
         double testheal = ((attackermonster.Speed / attackermonster.Defense) * 50);
+        double testhealnz = ((attackermonster.Speed / attackermonster.Defense) * 50)*.90;
+
+        double momentumcheck = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)))*1.95;
+
+        double posturetest = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)))*1.95;
+
+        double growthtest = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)))*1.95;
 
         double testtakedamage = ((playermonster.Attack / attackermonster.Defense) * 65);
         double maxtesttakedamage = ((playermonster.Attack / attackermonster.Defense) * 70);
@@ -4508,6 +4593,14 @@ public class protomon extends AppCompatActivity {
                 if (testheal > testdamageP) {
                     Teller = HealButton;
                 }
+            } else if (attackermonster.Moveslotheal == 6 && (((attackermonster.Health + testhealnz) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                    Teller = HealButton;
+            }else if (attackermonster.Moveslotheal == 7 && (((attackermonster.Health + momentumcheck) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 8 && (((attackermonster.Health + posturetest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 9 && (((attackermonster.Health + growthtest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                Teller = HealButton;
             } else if (attackermonster.Moveslotheal == 1 && (delayedhealtimerA == 0) && (((attackermonster.Health + (testheal * 1.5)) > ((testtakedamage * 2) + delayedblastpowerP)) && (attackermonster.Health < ((testtakedamage * 2) + delayedblastpowerP)))) {
                if(attackermonster.Health < MaxHealthAttacker) {
                    Teller = HealButton;
@@ -4978,7 +5071,7 @@ public class protomon extends AppCompatActivity {
             Teller = Turn;
         }
 
-        if (Teller == HealButton && attackermonster.Moveslotheal == 0 && attackermonster.Health == MaxHealthAttacker){
+        if (Teller == HealButton && (attackermonster.Moveslotheal == 0 || attackermonster.Moveslotheal > 5)  && attackermonster.Health == MaxHealthAttacker){
             Teller = Turn;
         }
 
@@ -5853,7 +5946,7 @@ public class protomon extends AppCompatActivity {
                     Damage = Math.round(Damage);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
-                if (elongatedhealwoundtimerA != 0) {
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
                     Damage = Math.round(Damage);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
@@ -5894,6 +5987,56 @@ public class protomon extends AppCompatActivity {
                 if (healtester > grouphealpowerA) {
                     grouphealpowerA = healtester;
                 }
+            }else if (attackermonster.Moveslotheal == 6) {
+                if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
+                    Damage = Math.round(Damage*.9);
+                    attackermonster.Health = attackermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
+                    Damage = Math.round(Damage*.9);
+                    attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
+                }
+                attackermonster.Attack = Math.round((attackermonster.Attack*1.0167));
+                attackermonster.Defense = Math.round((attackermonster.Defense*1.0167));
+                attackermonster.Speed = Math.round((attackermonster.Speed*1.0167));
+            }else if (attackermonster.Moveslotheal == 7) {
+                if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed /(attackermonster.Defense + attackermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
+                }
+                attackermonster.Speed = Math.round((attackermonster.Speed*1.05));
+            }else if (attackermonster.Moveslotheal == 8) {
+                if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
+                }
+                attackermonster.Attack = Math.round((attackermonster.Attack*1.05));
+            }else if (attackermonster.Moveslotheal == 9) {
+                if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense /(attackermonster.Speed + attackermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
+                }
+                attackermonster.Defense = Math.round((attackermonster.Defense*1.05));
             }
             if (attackermonster.Health > MaxHealthAttacker) {
                 attackermonster.Health = MaxHealthAttacker;
@@ -5925,6 +6068,14 @@ public class protomon extends AppCompatActivity {
                         CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (attackermonster.Moveslotheal == 5)  {
                         CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 6)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Snowballs " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 7)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Gains Momentum " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 8)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Postures itself " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 9)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Grows " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else {
                         CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                     }
@@ -5945,8 +6096,16 @@ public class protomon extends AppCompatActivity {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (playermonster.Moveslotheal == 5)  {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerP) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerP)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 6)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Snowballs " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 7)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Gains Momentum " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 8)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Postures itself " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 9)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Grows " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else {
-                        CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString + "\n");
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString + "\n"); // ADF
                     }
 
                 }
@@ -6204,12 +6363,12 @@ public class protomon extends AppCompatActivity {
 //pampegg
         attackermonster.Moveslotattack = new Random().nextInt(8);
         attackermonster.Moveslotspeed = new Random().nextInt(14);
-        attackermonster.Moveslotheal = new Random().nextInt(6);
+        attackermonster.Moveslotheal = new Random().nextInt(10);
         playermonster.Moveslotspeed = new Random().nextInt(14);
-        playermonster.Moveslotheal = new Random().nextInt(6);
+        playermonster.Moveslotheal = new Random().nextInt(10);
         playermonster.Moveslotattack = new Random().nextInt(8);
         secondstartingmonster.Moveslotspeed = new Random().nextInt(14);
-        secondstartingmonster.Moveslotheal = new Random().nextInt(6);
+        secondstartingmonster.Moveslotheal = new Random().nextInt(10);
         secondstartingmonster.Moveslotattack = new Random().nextInt(8);
 
 
@@ -6220,6 +6379,10 @@ public class protomon extends AppCompatActivity {
         // attackermonster.Moveslotspeed = 3;
         //  attackermonster.Moveslotdefense = 0;
 
+       // playermonster.Moveslotheal = 6;
+
+
+      //  attackermonster.Moveslotheal = 6;
 
 
         //
@@ -7690,9 +7853,18 @@ case 83:
         double testdamage = ((attackermonster.Attack / playermonster.Defense) * 50);
         double testdamageP = ((playermonster.Attack / attackermonster.Defense) * 50);
         double testheal = ((attackermonster.Speed / attackermonster.Defense) * 50);
+        double testhealnz = ((attackermonster.Speed / attackermonster.Defense) * 50)*.90;
 
         double testtakedamage = ((playermonster.Attack / attackermonster.Defense) * 65);
         double maxtesttakedamage = ((playermonster.Attack / attackermonster.Defense) * 70);
+
+
+        double momentumcheck = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)))*1.95;
+
+        double posturetest = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)))*1.95;
+
+        double growthtest = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)))*1.95;
+
 
         double cleansevalue = 25 * (attackermonster.Speed / attackermonster.Defense);
         double glugpower = (30 * (attackermonster.Attack / playermonster.Defense)); // was 25 now 35
@@ -7910,6 +8082,14 @@ case 83:
                 if (testheal > testdamageP) {
                     Teller = HealButton;
                 }
+            } else if (attackermonster.Moveslotheal == 6 && (((attackermonster.Health + testhealnz) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                    Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 7 && (((attackermonster.Health + momentumcheck) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                    Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 8 && (((attackermonster.Health + posturetest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                    Teller = HealButton;
+            } else if (attackermonster.Moveslotheal == 9 && (((attackermonster.Health + growthtest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+                    Teller = HealButton;
             } else if (attackermonster.Moveslotheal == 1 && (delayedhealtimerA == 0) && (((attackermonster.Health + (testheal * 1.5)) > ((testtakedamage * 2) + delayedblastpowerP)) && (attackermonster.Health < ((testtakedamage * 2) + delayedblastpowerP)))) {
                 if(attackermonster.Health < MaxHealthAttacker) {
                     Teller = HealButton;
@@ -8380,7 +8560,7 @@ case 83:
             Teller = Turn;
         }
 
-        if (Teller == HealButton && attackermonster.Moveslotheal == 0 && attackermonster.Health == MaxHealthAttacker){
+        if (Teller == HealButton && (attackermonster.Moveslotheal == 0 || attackermonster.Moveslotheal > 5) && attackermonster.Health == MaxHealthAttacker){
             Teller = Turn;
         }
 
@@ -8490,7 +8670,7 @@ case 83:
                     Damage = Math.round(Damage);
                     attackermonster.Health = attackermonster.Health + Damage;
                 }
-                if (elongatedhealwoundtimerA != 0) {
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
                     Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
                     Damage = Math.round(Damage);
                     attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
@@ -8531,6 +8711,56 @@ case 83:
                 if (healtester > grouphealpowerA) {
                     grouphealpowerA = healtester;
                 }
+            }else if (attackermonster.Moveslotheal == 6) {
+                if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
+                    Damage = Math.round(Damage*.9);
+                    attackermonster.Health = attackermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / attackermonster.Defense));
+                    Damage = Math.round(Damage*.9);
+                    attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
+                }
+                attackermonster.Attack = Math.round((attackermonster.Attack*1.0167));
+                attackermonster.Defense = Math.round((attackermonster.Defense*1.0167));
+                attackermonster.Speed = Math.round((attackermonster.Speed*1.0167));
+            }else if (attackermonster.Moveslotheal == 7) {
+                if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed /(attackermonster.Defense + attackermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
+                }
+                attackermonster.Speed = Math.round((attackermonster.Speed*1.05));
+            }else if (attackermonster.Moveslotheal == 8) {
+                if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
+                }
+                attackermonster.Attack = Math.round((attackermonster.Attack*1.05));
+            }else if (attackermonster.Moveslotheal == 9) {
+                if (healblocktgimerP == 0 && elongatedhealwoundtimerA == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense / (attackermonster.Speed + attackermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Damage;
+                }
+                if (elongatedhealwoundtimerA != 0 && healblocktgimerP == 0) {
+                    Damage = (((new Random().nextInt(11) + 55)) * (attackermonster.Defense /(attackermonster.Speed + attackermonster.Attack)));
+                    Damage = Math.round(Damage*1.95);
+                    attackermonster.Health = attackermonster.Health + Math.round(Damage / 2);
+                }
+                attackermonster.Defense = Math.round((attackermonster.Defense*1.05));
             }
             if (attackermonster.Health > MaxHealthAttacker) {
                 attackermonster.Health = MaxHealthAttacker;
@@ -8562,6 +8792,14 @@ case 83:
                         CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (attackermonster.Moveslotheal == 5)  {
                         CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerA) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerA)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 6)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Snowballs " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 7)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Gains Momentum " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 8)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Postures itself " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (attackermonster.Moveslotheal == 9)  {
+                        CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Grows " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else {
                         CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
                     }
@@ -8582,6 +8820,14 @@ case 83:
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Performs Cleansing Heal " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else if  (playermonster.Moveslotheal == 5)  {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + " Begins " +  String.format(displaystring, grouphealtimerP) + " Turn Group Regeneration of " + String.format(displaystring, (int) Math.round(grouphealpowerP)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 6)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Snowballs " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 7)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Gains Momentum " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 8)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Postures itself " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    }else if  (playermonster.Moveslotheal == 9)  {
+                        CombatString = String.format(CombatString + names(playermonster.Idnum) + " Grows " + "For " + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                     }else {
                         CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString + "\n");
                     }
