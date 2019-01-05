@@ -984,11 +984,11 @@ public class protomon extends AppCompatActivity {
 
         }
         attackerid = new Random().nextInt(spawncap)+1;
-       // attackerid = 34;
+        attackerid = 33;
 
 
             try {
-                playermonster = Cloner(monstlist(playerid)); // playerid
+                playermonster = Cloner(monstlist(33)); // playerid
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }playermonster.UniqueID = UniqueIdentifier(0);
@@ -4009,7 +4009,7 @@ public class protomon extends AppCompatActivity {
             String displaystring = "%s";
             String displaystringH = "%s/%s";
 
-            if(turncounter > 0 && ((playermonster.Health > 0 && attackermonster.Health > 0)|| ActionNum != 1)) {
+            if(turncounter > 0 /* && ((playermonster.Health > 0 && attackermonster.Health > 0)|| ActionNum != 1) */ || ActionNum != 1) {
                 if (whosturnisitanyway == 0) {
 
 
@@ -4230,8 +4230,17 @@ public class protomon extends AppCompatActivity {
             Teller = SpecialAttack;
         }
 
-        if (elongatedhealwoundtimerP <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2 && ((playermonster.Speed > playermonster.Defense && playermonster.Moveslotheal != 3) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed)){
-            Teller = SpecialAttack;
+        double stataverage = (playermonster.Attack + playermonster.Defense + playermonster.Speed)/3;
+
+
+        int thisdoctork = (3 * ((int) (((new Random().nextInt(11) + 35)) * (attackermonster.Speed / playermonster.Defense)))) / 14;
+
+        double Go = ((attackermonster.Attack / playermonster.Defense) * 50);
+
+        if (( elongatedhealwoundtimerP <= 1 && thisdoctork >= Go && attackermonster.Moveslotattack == 2) || ( elongatedhealwoundtimerP <= 1 && (thisdoctork*2) >= Go && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2) || (elongatedhealwoundtimerP <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2 && ((playermonster.Speed > playermonster.Defense && playermonster.Moveslotheal != 3 && playermonster.Moveslotheal < 6) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed) || (playermonster.Moveslotattack == 6 && (stataverage*3) > (MaxHealthPlayer*2.625) || (playermonster.Moveslotattack == 7 && playermonster.Speed > (stataverage)) || (playermonster.Moveslotattack == 8 && playermonster.Attack > stataverage) || (playermonster.Moveslotattack == 9 && playermonster.Defense > stataverage)))){
+            if ((thisdoctork*3) > Go) {
+                Teller = SpecialAttack;
+            }
         }
 
         double effectivehits = ((attackermonster.Health/60)*(attackermonster.Defense/60));
@@ -6251,7 +6260,7 @@ public class protomon extends AppCompatActivity {
             String displaystring = "%s";
             String displaystringH = "%s/%s";
 
-            if(turncounter > 0 && ((playermonster.Health > 0 && attackermonster.Health > 0)|| ActionNum != 1)) {
+            if(turncounter > 0 /*&&  ((playermonster.Health > 0 && attackermonster.Health > 0)|| ActionNum != 1) */ || ActionNum != 1) {
                 if (whosturnisitanyway == 0) {
 
 
@@ -6334,7 +6343,7 @@ public class protomon extends AppCompatActivity {
         if (attackermonster.Health <= 0){
 
 
-            CombatString = String.format(CombatString + "Enemy " + "Enemy " + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
+            CombatString = String.format(CombatString + "Enemy "  + names(attackermonster.Idnum) + " is Unable To battle " + "\n");
 
         }
 
@@ -6438,9 +6447,13 @@ public class protomon extends AppCompatActivity {
 
         // Test movesets here Here here!!!
 
-        //  attackermonster.Moveslotheal = 0;
-        // attackermonster.Moveslotattack = 2;
-        // attackermonster.Moveslotspeed = 3;
+         attackermonster.Moveslotheal = 7;
+         attackermonster.Moveslotattack = 2;
+         attackermonster.Moveslotspeed = 4;
+         playermonster.Moveslotheal = 7;
+         playermonster.Moveslotattack = 2;
+         playermonster.Moveslotspeed = 4;
+
         //  attackermonster.Moveslotdefense = 0;
 
        // playermonster.Moveslotheal = 6;
@@ -7085,7 +7098,7 @@ public class protomon extends AppCompatActivity {
             WhatHappenedString = TypesOfMotions(5); ActionNum = 1;
 
             if (playermonster.Health <= 0){
-                CombatString = String.format(CombatString + "Enemy " + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString + "\n");
+                CombatString = String.format(CombatString + "Enemy "  + names(attackermonster.Idnum) + WhatHappenedString + "\n");
             }  if (attackermonster.Health <= 0){
                 CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString + "\n");
             }if (attackermonster.Health <= 0 && playermonster.Health <= 0){
@@ -7791,9 +7804,17 @@ case 83:
             Teller = SpecialAttack;
         }
 
+        double stataverage = (playermonster.Attack + playermonster.Defense + playermonster.Speed)/3;
 
-        if (elongatedhealwoundtimerP <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2 && ((playermonster.Speed > playermonster.Defense && playermonster.Moveslotheal != 3) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed)){
-            Teller = SpecialAttack;
+
+        int thisdoctork = (3 * ((int) (((new Random().nextInt(11) + 35)) * (attackermonster.Speed / playermonster.Defense)))) / 14;
+
+        double Go = ((attackermonster.Attack / playermonster.Defense) * 50);
+
+        if (( elongatedhealwoundtimerP <= 1 && thisdoctork >= Go && attackermonster.Moveslotattack == 2) || ( elongatedhealwoundtimerP <= 1 && (thisdoctork*2) >= Go && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2) || (elongatedhealwoundtimerP <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2 && ((playermonster.Speed > playermonster.Defense && playermonster.Moveslotheal != 3 && playermonster.Moveslotheal < 6) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed) || (playermonster.Moveslotattack == 6 && (stataverage*3) > (MaxHealthPlayer*2.625) || (playermonster.Moveslotattack == 7 && playermonster.Speed > (stataverage)) || (playermonster.Moveslotattack == 8 && playermonster.Attack > stataverage) || (playermonster.Moveslotattack == 9 && playermonster.Defense > stataverage)))){
+            if ((thisdoctork*3) > Go) {
+                Teller = SpecialAttack;
+            }
         }
 
         double effectivehits = ((attackermonster.Health/60)*(attackermonster.Defense/60));
@@ -8725,7 +8746,7 @@ case 83:
 
             if(turncounter > 0 && (playermonster.Health > 0 && attackermonster.Health > 0)) {
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + "Enemy " + "Enemy " + names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    CombatString = String.format(CombatString + "Enemy "+ names(attackermonster.Idnum) + WhatHappenedString +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 } else if (whosturnisitanyway == 1) {
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + WhatHappenedString  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
                 }
@@ -8735,7 +8756,7 @@ case 83:
             if (!(playermonster.Health > 0 && attackermonster.Health > 0) && ActionNum == 0) {
                 WhatHappenedString = TypesOfMotions(5); ActionNum = 1;
                 if (whosturnisitanyway == 0) {
-                    CombatString = String.format(CombatString + "Enemy " + "Enemy " + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
+                    CombatString = String.format(CombatString + "Enemy " + names(attackermonster.Idnum) + " Attacks For " +  String.format(displaystring, (int) Math.round(Damage)) + "\n");
 
                 } else if (whosturnisitanyway == 1) {
                     CombatString = String.format(CombatString + names(playermonster.Idnum) + " Attacks For "  + String.format(displaystring, (int) Math.round(Damage)) + "\n");
@@ -9049,7 +9070,7 @@ case 83:
             String displaystring = "%s";
             String displaystringH = "%s/%s";
 
-            if(turncounter > 0 && ((playermonster.Health > 0 && attackermonster.Health > 0)|| ActionNum != 1)) {
+            if(turncounter > 0 /*&&  ((playermonster.Health > 0 && attackermonster.Health > 0)|| ActionNum != 1) */ || ActionNum != 1) {
                 if (whosturnisitanyway == 0) {
 
 
