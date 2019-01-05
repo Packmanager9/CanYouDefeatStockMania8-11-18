@@ -984,11 +984,11 @@ public class protomon extends AppCompatActivity {
 
         }
         attackerid = new Random().nextInt(spawncap)+1;
-        attackerid = 33;
+       // attackerid = 33;
 
 
             try {
-                playermonster = Cloner(monstlist(33)); // playerid
+                playermonster = Cloner(monstlist(playerid)); // playerid
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }playermonster.UniqueID = UniqueIdentifier(0);
@@ -4233,7 +4233,7 @@ public class protomon extends AppCompatActivity {
         double stataverage = (playermonster.Attack + playermonster.Defense + playermonster.Speed)/3;
 
 
-        int thisdoctork = (3 * ((int) (((new Random().nextInt(11) + 35)) * (attackermonster.Speed / playermonster.Defense)))) / 14;
+        double thisdoctork = (3 * ((int) (((new Random().nextInt(11) + 35)) * (attackermonster.Speed / playermonster.Defense)))) / 14;
 
         double Go = ((attackermonster.Attack / playermonster.Defense) * 50);
 
@@ -4629,13 +4629,13 @@ public class protomon extends AppCompatActivity {
                 if (testheal > testdamageP) {
                     Teller = HealButton;
                 }
-            } else if (attackermonster.Moveslotheal == 6 && (((attackermonster.Health + testhealnz) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+            } else if (attackermonster.Moveslotheal == 6 && (((attackermonster.Health + testhealnz) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP + 10 )))) {
                     Teller = HealButton;
-            }else if (attackermonster.Moveslotheal == 7 && (((attackermonster.Health + momentumcheck) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+            }else if (attackermonster.Moveslotheal == 7 && (((attackermonster.Health + momentumcheck) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP + 10 )))) {
                 Teller = HealButton;
-            } else if (attackermonster.Moveslotheal == 8 && (((attackermonster.Health + posturetest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+            } else if (attackermonster.Moveslotheal == 8 && (((attackermonster.Health + posturetest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP + 10 )))) {
                 Teller = HealButton;
-            } else if (attackermonster.Moveslotheal == 9 && (((attackermonster.Health + growthtest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+            } else if (attackermonster.Moveslotheal == 9 && (((attackermonster.Health + growthtest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP + 10 )))) {
                 Teller = HealButton;
             } else if (attackermonster.Moveslotheal == 1 && (delayedhealtimerA == 0) && (((attackermonster.Health + (testheal * 1.5)) > ((testtakedamage * 2) + delayedblastpowerP)) && (attackermonster.Health < ((testtakedamage * 2) + delayedblastpowerP)))) {
                if(attackermonster.Health < MaxHealthAttacker) {
@@ -4840,34 +4840,10 @@ public class protomon extends AppCompatActivity {
                 case 0:
                     if ((attackermonster.Speed * FrrtTwo) > playermonster.Speed){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                 case 1:
                     if ((attackermonster.Speed * CbrtTwo) > playermonster.Speed){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     break;
                 case 2:
@@ -4892,35 +4868,11 @@ public class protomon extends AppCompatActivity {
                 case 3:
                     if ((attackermonster.Speed * CbrtTwo) > playermonster.Speed){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     break;
                 case 4:
                     if ((attackermonster.Speed * SqrtTwo) > playermonster.Speed){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     break;
                 case 5:
@@ -4964,18 +4916,6 @@ public class protomon extends AppCompatActivity {
                 case 7:
                     if (((attackermonster.Speed * CbrtTwo) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     if (Teller != Turn){
                         Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
@@ -4987,18 +4927,6 @@ public class protomon extends AppCompatActivity {
                 case 8:
                     if (((attackermonster.Speed * SqrtTwo) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     if (Teller != Turn){
                         Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
@@ -5010,18 +4938,6 @@ public class protomon extends AppCompatActivity {
                 case 9:
                     if (((attackermonster.Speed * SqrtTwo) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     if (Teller != Turn){
                         Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
@@ -5052,18 +4968,6 @@ public class protomon extends AppCompatActivity {
                 case 11:
                     if (((attackermonster.Speed * 2) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     if (Teller != Turn){
                         Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
@@ -6447,12 +6351,12 @@ public class protomon extends AppCompatActivity {
 
         // Test movesets here Here here!!!
 
-         attackermonster.Moveslotheal = 7;
-         attackermonster.Moveslotattack = 2;
-         attackermonster.Moveslotspeed = 4;
-         playermonster.Moveslotheal = 7;
-         playermonster.Moveslotattack = 2;
-         playermonster.Moveslotspeed = 4;
+         //attackermonster.Moveslotheal = 7;
+         //attackermonster.Moveslotattack = 2;
+         //attackermonster.Moveslotspeed = 4;
+         //playermonster.Moveslotheal = 7;
+         //playermonster.Moveslotattack = 2;
+         //playermonster.Moveslotspeed = 4;
 
         //  attackermonster.Moveslotdefense = 0;
 
@@ -7807,7 +7711,7 @@ case 83:
         double stataverage = (playermonster.Attack + playermonster.Defense + playermonster.Speed)/3;
 
 
-        int thisdoctork = (3 * ((int) (((new Random().nextInt(11) + 35)) * (attackermonster.Speed / playermonster.Defense)))) / 14;
+        double thisdoctork = (3 * ((int) (((new Random().nextInt(11) + 35)) * (attackermonster.Speed / playermonster.Defense)))) / 14;
 
         double Go = ((attackermonster.Attack / playermonster.Defense) * 50);
 
@@ -8203,13 +8107,13 @@ case 83:
                 if (testheal > testdamageP) {
                     Teller = HealButton;
                 }
-            } else if (attackermonster.Moveslotheal == 6 && (((attackermonster.Health + testhealnz) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+            } else if (attackermonster.Moveslotheal == 6 && (((attackermonster.Health + testhealnz) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP + 10 )))) {
                     Teller = HealButton;
-            } else if (attackermonster.Moveslotheal == 7 && (((attackermonster.Health + momentumcheck) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+            } else if (attackermonster.Moveslotheal == 7 && (((attackermonster.Health + momentumcheck) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP + 10 )))) {
                     Teller = HealButton;
-            } else if (attackermonster.Moveslotheal == 8 && (((attackermonster.Health + posturetest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+            } else if (attackermonster.Moveslotheal == 8 && (((attackermonster.Health + posturetest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP + 10 )))) {
                     Teller = HealButton;
-            } else if (attackermonster.Moveslotheal == 9 && (((attackermonster.Health + growthtest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP)))) {
+            } else if (attackermonster.Moveslotheal == 9 && (((attackermonster.Health + growthtest) > (maxtesttakedamage + delayedblastpowerP)) && (attackermonster.Health < (maxtesttakedamage + delayedblastpowerP + 10 )))) {
                     Teller = HealButton;
             } else if (attackermonster.Moveslotheal == 1 && (delayedhealtimerA == 0) && (((attackermonster.Health + (testheal * 1.5)) > ((testtakedamage * 2) + delayedblastpowerP)) && (attackermonster.Health < ((testtakedamage * 2) + delayedblastpowerP)))) {
                 if(attackermonster.Health < MaxHealthAttacker) {
@@ -8415,34 +8319,10 @@ case 83:
                 case 0:
                     if ((attackermonster.Speed * FrrtTwo) > playermonster.Speed){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                 case 1:
                     if ((attackermonster.Speed * CbrtTwo) > playermonster.Speed){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     break;
                 case 2:
@@ -8467,35 +8347,11 @@ case 83:
                 case 3:
                     if ((attackermonster.Speed * CbrtTwo) > playermonster.Speed){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     break;
                 case 4:
                     if ((attackermonster.Speed * SqrtTwo) > playermonster.Speed){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     break;
                 case 5:
@@ -8539,18 +8395,6 @@ case 83:
                 case 7:
                     if (((attackermonster.Speed * CbrtTwo) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     if (Teller != Turn){
                         Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
@@ -8562,18 +8406,6 @@ case 83:
                 case 8:
                     if (((attackermonster.Speed * SqrtTwo) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     if (Teller != Turn){
                         Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
@@ -8585,18 +8417,6 @@ case 83:
                 case 9:
                     if (((attackermonster.Speed * SqrtTwo) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     if (Teller != Turn){
                         Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
@@ -8627,18 +8447,6 @@ case 83:
                 case 11:
                     if (((attackermonster.Speed * 2) > playermonster.Speed) && (AttackerStatDelayTimer == -1) &&(attackermonster.Health > (((playermonster.Attack/attackermonster.Defense)*71)))){
                         Teller = Status;
-                    }else {
-                        switch (new Random().nextInt(3)) {
-                            case 0:
-                                Teller = SpecialAttack;
-                                break;
-                            case 1:
-                                Teller = Turn;
-                                break;
-                            case 2:
-                                Teller = Turn;
-                                break;
-                        }
                     }
                     if (Teller != Turn){
                         Damage = ((attackermonster.Attack / playermonster.Defense) * 58);
