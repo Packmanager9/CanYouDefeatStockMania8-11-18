@@ -633,8 +633,8 @@ public class StockManiaActivity extends AppCompatActivity {
       //  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
       //  setContentView(LightView);
           setContentView(DarkView);
-        LightsButton = (Button) findViewById(R.id.lights);
-        LightsButton.setVisibility(View.INVISIBLE);
+      //  LightsButton = (Button) findViewById(R.id.lights);
+      //  LightsButton.setVisibility(View.INVISIBLE);
 
 
         NewStockArrowImageView = (ImageView) findViewById(R.id.SineArrow);
@@ -746,13 +746,13 @@ public class StockManiaActivity extends AppCompatActivity {
                                      });
 
 
-        LightsButton.setOnClickListener(new View.OnClickListener() {
+      /*  LightsButton.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
 
                                           //   setContentView(DarkView);
                                          }
-                                     });
+                                     }); */
       Bank.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
@@ -4967,11 +4967,11 @@ if (TurtSwitch == 1) {
             public void onClick(View v) {
                 EditText editTextBox = (EditText) findViewById(R.id.editTextBox);
                 String bant = editTextBox.getText().toString();
-                double BuyAmount = Double.parseDouble(String.valueOf(editTextBox.getText()));
                 if(TextUtils.isEmpty(bant)) {
                     editTextBox.setError("input required");
                     return;
                 }
+                double BuyAmount = Double.parseDouble(String.valueOf(editTextBox.getText()));
 
                 if (Day > 0) {
                     displaySellMethod(BuyAmount, BTC, BitcoinPrice);

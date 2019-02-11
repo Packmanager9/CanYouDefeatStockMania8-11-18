@@ -48,6 +48,22 @@ public class AOC extends AppCompatActivity {
     private Integer imagos[] = {R.drawable.a0, R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4, R.drawable.a5, R.drawable.a6, R.drawable.a7, R.drawable.a8, R.drawable.a9, R.drawable.a10, R.drawable.a11, R.drawable.a12, R.drawable.a13, R.drawable.a14, R.drawable.a15, R.drawable.a16, R.drawable.a17, R.drawable.a18, R.drawable.a19, R.drawable.a20, R.drawable.a21, R.drawable.a22, R.drawable.a23, R.drawable.a24, R.drawable.a25, R.drawable.a26, R.drawable.a27, R.drawable.a28, R.drawable.a29, R.drawable.a30, R.drawable.a31, R.drawable.a32, R.drawable.a33, R.drawable.a34, R.drawable.a35, R.drawable.a36, R.drawable.a37, R.drawable.a38, R.drawable.a39, R.drawable.a40, R.drawable.a41, R.drawable.a42, R.drawable.a43, R.drawable.a44, R.drawable.a45, R.drawable.a46, R.drawable.a47, R.drawable.a48, R.drawable.a49, R.drawable.a50, R.drawable.a51, R.drawable.a52, R.drawable.a53, R.drawable.a54, R.drawable.a55, R.drawable.a56, R.drawable.a57, R.drawable.a58, R.drawable.a59};
     private Integer Emagos[] = {R.drawable.noerrorsmall, R.drawable.errorsmall,};
 
+    int five;
+    int four;
+    int three;
+    int two;
+    int one;
+
+    int sixa;
+    int fivea = 1;
+    int foura;
+    int threea;
+    int twoa;
+    int onea;
+    int count;
+
+
+
 
 
 
@@ -87,6 +103,64 @@ public class AOC extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                for (int i = 0; i < 86400; i++){
+                    onea++;
+                    if (onea == 10) {
+                        twoa++;
+                        onea = 0;
+                        if (twoa == 6) {
+                            threea++;
+                            twoa = 0;
+                            if (threea == 10) {
+                                foura++;
+                                threea = 0;
+                                if (foura == 6) {
+                                    fivea++;
+                                    foura = 0;
+                                    if (fivea == 10) {
+                                        sixa++;
+                                        fivea = 1;
+                                    }
+                                }
+                            }
+                        }
+                    }if(sixa == 1 && fivea == 2){
+                        fivea = 0;
+                        sixa = 0;
+                    }
+                    if (onea == 1 || twoa == 1 || threea == 1 || foura == 1 || fivea == 1 || sixa == 1){
+                        one = 1;
+                    }
+                    if (onea == 2 || twoa == 2 || threea == 2 || foura == 2 || fivea == 2 || sixa == 2){
+                        two = 1;
+                    }
+                    if (onea == 3 || twoa == 3 || threea == 3 || foura == 3 || fivea == 3 || sixa == 3){
+                        three = 1;
+                    }
+                    if (onea == 4 || twoa == 4 || threea == 4 || foura == 4 || fivea == 4 || sixa == 4){
+                        four = 1;
+                    }
+                    if (onea == 5 || twoa == 5 || threea == 5 || foura == 5 || fivea == 5 || sixa == 5){
+                        five = 1;
+                    }
+                    int total = (one+two+three+four+five);
+                    if (total == 5){
+                        count++;
+                    }
+
+                    one = 0;
+                    two = 0;
+                    three = 0;
+                    four = 0;
+                    five = 0;
+                }
+
+
+
+
+
+
+
                 int Output;
                 Output = MathsMethod(Plus);
                 int Crazy;
@@ -96,9 +170,10 @@ public class AOC extends AppCompatActivity {
                 wut =  Plus.applyAsInt(Tester.applyAsInt(Output, Crazy), Tester.applyAsInt(Crazy, Output));
 
 
-                Eggstring = String.format(Eggstring + String.format(Eggstringss, Output));
-                Eggstring = Eggstring + String.format(String.format(Eggstringss, Crazy));
-                Eggstring = Eggstring + String.format(String.format(Eggstringss, wut));
+             //   Eggstring = String.format(Eggstring + String.format(Eggstringss, Output));
+            //    Eggstring = Eggstring + String.format(String.format(Eggstringss, Crazy));
+            //    Eggstring = Eggstring + String.format(String.format(Eggstringss, wut));
+                Eggstring = Eggstring + String.format(String.format(Eggstringss, count));
 
 
                 AView.setText(Eggstring);

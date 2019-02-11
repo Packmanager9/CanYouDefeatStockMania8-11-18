@@ -3,6 +3,7 @@ package ditzler.cole.myapplication2.feature2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -24,6 +25,20 @@ import java.lang.reflect.Type;
 import java.util.Random;
 
 public class protomon extends AppCompatActivity {
+
+    protected void onPause(){
+        super.onPause();
+        if(PlayerSounds != null) {
+            PlayerSounds.pause();
+        }
+        if (AttackerSounds != null) {
+            AttackerSounds.pause();
+        }
+        //  VictoryMusic.pause();
+    }
+
+    MediaPlayer PlayerSounds;
+    MediaPlayer AttackerSounds;
 
     CustomMonsterTopLayer.StringObject NameObjectHolder;
     int CollarNumber = 10;
@@ -98,7 +113,8 @@ public class protomon extends AppCompatActivity {
 
     int rivalNewnessCounter = 0;
 
-    int monsterLoop = new Random().nextInt(spawncap)+1;
+    //int monsterLoop = new Random().nextInt(spawncap)+1;
+    int monsterLoop = 0;
 
     int scorekeepera;
     int scorekeeperp;
@@ -135,12 +151,14 @@ public class protomon extends AppCompatActivity {
     public double kunksp = 60;
     public double kunkde = 120;
     public double kunkhe = 185;
+   // MediaPlayer KunkSong;
 
     public double kohbohid = 2;
     public double kohbohat = 101; //100
     public double kohbohsp = 101; //100
     public double kohbohde = 101; //100
     public double kohbohhe = 101; //100
+   // MediaPlayer KohbohSong;
 
     public double djoperid = 3;
     public double djoperat = 274;
@@ -216,9 +234,15 @@ public class protomon extends AppCompatActivity {
 
     public double uggnawbid = 14;
     public double uggnawbat = 65;
-    public double uggnawbsp = 159;
+    public double uggnawbsp = 159; // Real Uggnawb
     public double uggnawbde = 60;
     public double uggnawbhe = 160;
+
+    /*   public double uggnawbid = 14;
+    public double uggnawbat = 51;
+    public double uggnawbsp = 214; // boosted Uggnawb
+    public double uggnawbde = 51;
+    public double uggnawbhe = 200;*/
 
     public double grobhostid = 15;
     public double grobhostat = 142;
@@ -243,12 +267,12 @@ public class protomon extends AppCompatActivity {
     public double blattlesp = 67;
     public double blattlede = 109;
     public double blattlehe = 92;
-    
+
     public double swogharnlerid = 19;
-    public double swogharnlerat = 113;
+    public double swogharnlerat = 119; // 113
     public double swogharnlersp = 69;
-    public double swogharnlerde = 113;
-    public double swogharnlerhe = 113;
+    public double swogharnlerde = 119; // 113
+    public double swogharnlerhe = 119; // 113
 
     public double adenolishid = 20;
     public double adenolishat = 123;
@@ -279,13 +303,13 @@ public class protomon extends AppCompatActivity {
     public double jiyousp = 66;
     public double jiyoude = 140;  //150
     public double jiyouhe = 141;  //151
-    
+
     public double sparvaeid = 25;
     public double sparvaeat = 162;
     public double sparvaesp = 62;
     public double sparvaede = 110;
     public double sparvaehe = 91;
-    
+
     public double vellupid = 26;
     public double vellupat = 59; // 60
     public double vellupsp = 110;
@@ -444,19 +468,19 @@ public class protomon extends AppCompatActivity {
     public double sapiosuantsp = 101;
     public double sapiosuantde = 70;
     public double sapiosuanthe = 142;
-    
+
     public double munegullid = 50;
     public double munegullat = 130;
     public double munegullsp = 81;
     public double munegullde = 100;
     public double munegullhe = 94;
-    
+
     public double sudakleezid = 51;
     public double sudakleezat = 72;
     public double sudakleezsp = 102;
     public double sudakleezde = 70;
     public double sudakleezhe = 194;
-    
+
     public double halocordateid = 52;
     public double halocordateat = 170;
     public double halocordatesp = 120;
@@ -480,7 +504,7 @@ public class protomon extends AppCompatActivity {
     public double жrachnidsp = 73;
     public double жrachnidde = 80;
     public double жrachnidhe = 81;
-    
+
     public double Ϫlitchid = 56;
     public double Ϫlitchat = 135;
     public double Ϫlitchsp = 74;
@@ -510,19 +534,19 @@ public class protomon extends AppCompatActivity {
     public double яallodsp = 78;
     public double яallodde = 75;
     public double яallodhe = 166;
-    
+
     public double algaetizerid = 61;
     public double algaetizerat = 98;
     public double algaetizersp = 79;
     public double algaetizerde = 104;
     public double algaetizerhe = 124;
-    
+
     public double kachortid = 62;
     public double kachortat = 97; //102
     public double kachortsp = 77;
     public double kachortde = 67;
     public double kachorthe = 184;
-    
+
     public double slamelionid = 63;
     public double slamelionat = 99;
     public double slamelionsp = 84;
@@ -662,8 +686,8 @@ public class protomon extends AppCompatActivity {
     public double qqqsp = 100; //
     public double qqqde = 100; //
     public double qqqhe = 100;  //
-    
-    
+
+
 
 
 
@@ -925,6 +949,9 @@ public class protomon extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.protomon);
+
+
+
         Patk = findViewById(R.id.playerattack);
         Pname = findViewById(R.id.playername);
         Pdef = findViewById(R.id.playerdefense);
@@ -987,7 +1014,7 @@ public class protomon extends AppCompatActivity {
 
         }
         attackerid = new Random().nextInt(spawncap)+1;
-        // attackerid = 6;
+        attackerid = 82;
 
 
             try {
@@ -1244,7 +1271,7 @@ public class protomon extends AppCompatActivity {
                     elongatedglugtimerP = 0;
                     elongatedglugpowerP = 0;
                     healblocktgimerP = 0;
-                    statblocktimerP = 0;
+                    statblocktimerA = 0;
                     ClearStatChanges(attackermonster);
                 }
 
@@ -1493,6 +1520,7 @@ public class protomon extends AppCompatActivity {
 
 
                 if (dummy != playermonster) {
+                    songlist((int)playermonster.Idnum);
                     CombatString = CombatString + names(playermonster.Idnum) + " is now Deployed! \n";
                     if (playermonster != dummy){
                         ResetWounds();
@@ -1537,8 +1565,8 @@ public class protomon extends AppCompatActivity {
                 MonsterImageChangerPlayer(playermonster);
 
             }
-            
-            
+
+
         });
 
         NewMonsters.setOnClickListener(new View.OnClickListener() {
@@ -1643,7 +1671,7 @@ public class protomon extends AppCompatActivity {
 
                 rivalNewnessCounter++;
 
-                if (rivalNewnessCounter < 4){
+                if (rivalNewnessCounter < 0){
 
                 enemylayoutpage.setVisibility(View.VISIBLE);
                 // CombatString = "";
@@ -1694,6 +1722,8 @@ public class protomon extends AppCompatActivity {
                     turncounter = 1;
                     ImageChanger();
                 RivalRevealer();
+                attackersonglist(attackerid);
+
             }
 
 
@@ -3386,6 +3416,10 @@ public class protomon extends AppCompatActivity {
     }
     public void TimerCancelMethod(){
 
+
+        statblocktimerP = 0;
+        statblocktimerA = 0;
+
          AttackerStatDelayTimer = -1;
          PlayerStatDelayTimer = -1;
 
@@ -3419,7 +3453,7 @@ public class protomon extends AppCompatActivity {
 
          slowdrainA = 0;
          slowdrainP = 0;
-        
+
          scorekeepera = 0;
          scorekeeperp = 0;
 
@@ -3724,6 +3758,7 @@ public class protomon extends AppCompatActivity {
 
         StatAbuseCurb(playermonster);
         StatAbuseCurb(attackermonster);
+
     }
     public void PlayBrainMethod(Button Teller) {
 
@@ -3875,6 +3910,7 @@ public class protomon extends AppCompatActivity {
                 elongatedhealwoundtimerP = 0;
                 elongatedwoundtimerP = 0;
                 elongatedglugpowerA = 0;
+                statblocktimerP = 0;
                 Damage = (((new Random().nextInt(11) + 25)) * (playermonster.Speed / playermonster.Defense));
                 Damage = Math.round(Damage);
                 playermonster.Health = playermonster.Health + Damage;
@@ -4050,7 +4086,7 @@ public class protomon extends AppCompatActivity {
                 }
                 attackermonster.Health = attackermonster.Health - Damage;
             }else if (playermonster.Moveslotattack == 6) {
-                Damage = (((new Random().nextInt(11) + 25)) * (playermonster.Attack / attackermonster.Speed));
+                Damage = (((new Random().nextInt(11) + 25)) * (playermonster.Speed / attackermonster.Speed));
                 Damage = Math.round(Damage);
                 if (attackermonster.Speed >= statMinimum){
                     attackermonster.Speed = Math.round(attackermonster.Speed * .85);
@@ -4206,7 +4242,7 @@ public class protomon extends AppCompatActivity {
         TurnDamageResolution();
 
         HealthChecker();
-        
+
         StatAbuseCurb(playermonster);
         StatAbuseCurb(attackermonster);
         /*
@@ -4348,8 +4384,22 @@ public class protomon extends AppCompatActivity {
 
         double Go = ((attackermonster.Attack / playermonster.Defense) * 50);
 
-        if (( elongatedhealwoundtimerP <= 1 && thisdoctork >= Go && attackermonster.Moveslotattack == 2) || ( elongatedhealwoundtimerP <= 1 && (thisdoctork*2) >= Go && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2) || (elongatedhealwoundtimerP <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2 && ((playermonster.Speed > playermonster.Defense && playermonster.Moveslotheal != 3 && playermonster.Moveslotheal < 6) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed) || (playermonster.Moveslotheal == 6 && (stataverage*3) > (MaxHealthPlayer*2.625) || (playermonster.Moveslotheal == 7 && playermonster.Speed > (stataverage)) || (playermonster.Moveslotheal == 8 && playermonster.Attack > stataverage) || (playermonster.Moveslotheal == 9 && playermonster.Defense > stataverage)))){
-            if ((thisdoctork*3) > Go) {
+       /* if (( elongatedhealwoundtimerP <= 1 && thisdoctork >= Go && attackermonster.Moveslotattack == 2) || ( elongatedhealwoundtimerP <= 1 && (thisdoctork*2) >= Go && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2) || (elongatedhealwoundtimerP <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2 && (((playermonster.Speed*1.25) > playermonster.Defense && playermonster.Moveslotheal != 3 && playermonster.Moveslotheal < 6) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed) || (playermonster.Moveslotheal == 6 && (stataverage*3) > (MaxHealthPlayer*2.625) || (playermonster.Moveslotheal == 7 && playermonster.Speed > (stataverage)) || (playermonster.Moveslotheal == 8 && playermonster.Attack > stataverage) || (playermonster.Moveslotheal == 9 && playermonster.Defense > stataverage)))){
+            if ((thisdoctork*5) >= Go) {
+                Teller = SpecialAttack;
+            }
+        } */
+
+        if (( elongatedhealwoundtimerP <= 1 && thisdoctork >= Go && attackermonster.Moveslotattack == 2)){
+            if ((thisdoctork*5) >= Go) {
+                Teller = SpecialAttack;
+            }
+        }else if (( elongatedhealwoundtimerP <= 1 && (thisdoctork*2) >= Go && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2)){
+            if ((thisdoctork*5) >= Go) {
+                Teller = SpecialAttack;
+            }
+        }else if  (elongatedhealwoundtimerP <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2 && (((playermonster.Speed*1.25) > playermonster.Defense && playermonster.Moveslotheal != 3 && playermonster.Moveslotheal < 6) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed) || (playermonster.Moveslotheal == 6 && (stataverage*3) > (MaxHealthPlayer*2.625) || (playermonster.Moveslotheal == 7 && playermonster.Speed > (stataverage)) || (playermonster.Moveslotheal == 8 && playermonster.Attack > stataverage) || (playermonster.Moveslotheal == 9 && playermonster.Defense > stataverage))) {
+            if ((thisdoctork * 5) >= Go) {
                 Teller = SpecialAttack;
             }
         }
@@ -4528,6 +4578,9 @@ public class protomon extends AppCompatActivity {
         double grouphealtester = (3 * ((int) (((new Random().nextInt(6) + 15)) * (attackermonster.Speed / attackermonster.Defense)))) / 7;
         double longhealtester = (3 * ((int) (((new Random().nextInt(21) + 65)) * (attackermonster.Speed / attackermonster.Defense)))) / 7;
         double chipdamage = (((new Random().nextInt(11) + 25)) * (attackermonster.Defense / playermonster.Defense));
+        double tripcheck = (((new Random().nextInt(11) + 25)) * (attackermonster.Speed / playermonster.Speed));
+        double dispdam = (((new Random().nextInt(11) + 25)) * (attackermonster.Attack / playermonster.Attack));
+        double woundtester = (3 * ((int) (((new Random().nextInt(21) + 70)) * (attackermonster.Speed / playermonster.Defense)))) / 17;
 
 
 
@@ -4622,7 +4675,7 @@ public class protomon extends AppCompatActivity {
                         }
                     }
                     if (attackermonster.Moveslotheal == 3) {
-                        double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Speed / attackermonster.Defense);
+                        double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Defense/attackermonster.Speed);
                         if (what > 1.0) {
                             Teller = HealButton;
                         }
@@ -4753,7 +4806,7 @@ public class protomon extends AppCompatActivity {
                    Teller = HealButton;
                }
             } else if (attackermonster.Moveslotheal == 3) {
-                double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Speed / attackermonster.Defense);
+                double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Defense/attackermonster.Speed);
                 if (what > 1.8) {
                     if(attackermonster.Health < MaxHealthAttacker) {
                         Teller = HealButton;
@@ -4939,7 +4992,7 @@ public class protomon extends AppCompatActivity {
         }
 
         if (PlayerStatDelayTimer != -1){
-            if (attackermonster.Moveslotattack == 8 && statblocktimerP > 2){
+            if (attackermonster.Moveslotattack == 8 && statblocktimerP <= 2){
                 Teller = SpecialAttack;
             }
         }
@@ -5156,11 +5209,11 @@ public class protomon extends AppCompatActivity {
         }
 
 
-        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 4 && healblocktgimerA <= 1){
+        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 4 && healblocktgimerA >= 1){
             Teller = Turn;
         }
 
-        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 2 && elongatedhealwoundtimerP <= 1){
+        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 2 && elongatedhealwoundtimerP >= 1){
             Teller = Turn;
         }
 
@@ -5172,13 +5225,57 @@ public class protomon extends AppCompatActivity {
             Teller = SpecialAttack;
         }
 
+        if (Teller == Turn && tripcheck > testdamage && attackermonster.Moveslotattack == 6){
+            Teller = SpecialAttack;
+        }
+
+        if (Teller == Turn && dispdam > testdamage && attackermonster.Moveslotattack == 7){
+            Teller = SpecialAttack;
+        }
+
         if (Teller == HealButton && healblocktgimerP > 0 && attackermonster.Moveslotheal != 4){
+            Teller = Turn;
+        }
+        if (attackermonster.Moveslotattack == 0 && (woundtester*3) > Go){
+            if (elongatedwoundtimerP <= 2){
+                Teller = SpecialAttack;
+            }
+        }
+
+        if (attackermonster.Moveslotattack == 0 && Teller == SpecialAttack){
+            if (elongatedwoundtimerP > 2){
+                Teller = Turn;
+            }
+        }
+        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 8 && statblocktimerP > 2){
             Teller = Turn;
         }
 
         if (Teller == Status){
             if (statblocktimerA != 0){
                 Teller = Turn;
+            }
+        }
+
+
+        if (attackermonster.Moveslotattack > 98){
+            if (Teller == SpecialAttack) {
+                Teller = Turn;
+            }
+        }
+        if (attackermonster.Moveslotheal > 98){
+            if (Teller == HealButton) {
+                Teller = Turn;
+            }
+        }
+        if (attackermonster.Moveslotspeed > 98) {
+            if (Teller == Status) {
+                Teller = Turn;
+            }
+        }
+        if (AttackerStatDelayTimer != -1){
+            if (Teller == Status){
+             Teller = Turn;
             }
         }
 
@@ -6079,6 +6176,7 @@ public class protomon extends AppCompatActivity {
                 elongatedhealwoundtimerA = 0;
                 elongatedwoundtimerA = 0;
                 elongatedglugtimerP = 0;
+                statblocktimerA = 0;
                 Damage = (((new Random().nextInt(11) + 25)) * (attackermonster.Speed / attackermonster.Defense));
                 Damage = Math.round(Damage);
                 attackermonster.Health = attackermonster.Health + Damage;
@@ -6258,7 +6356,7 @@ public class protomon extends AppCompatActivity {
                  }
                 playermonster.Health = playermonster.Health - Damage;
             }else if (attackermonster.Moveslotattack == 6) {
-                Damage = (((new Random().nextInt(11) + 25)) * (attackermonster.Attack / playermonster.Speed));
+                Damage = (((new Random().nextInt(11) + 25)) * (attackermonster.Speed / playermonster.Speed));
                 Damage = Math.round(Damage);
                 if (playermonster.Speed >= statMinimum){
                     playermonster.Speed = Math.round(playermonster.Speed * .85);
@@ -6415,7 +6513,7 @@ public class protomon extends AppCompatActivity {
         TurnDamageResolution();
 
         HealthChecker();
-        
+
         StatAbuseCurb(playermonster);
         StatAbuseCurb(attackermonster);
         /*
@@ -6510,8 +6608,11 @@ public class protomon extends AppCompatActivity {
         // Test movesets here Here here!!!
 
          // attackermonster.Moveslotheal = 1;
-         // attackermonster.Moveslotattack = 3;
-         // attackermonster.Moveslotspeed = 9;
+         // attackermonster.Moveslotattack = 2;
+         // attackermonster.Moveslotspeed = 4;
+         // attackermonster.Moveslotheal = 0;
+         // attackermonster.Moveslotattack = 99;
+         // attackermonster.Moveslotspeed = 4;
          //playermonster.Moveslotheal = 7;
          //playermonster.Moveslotattack = 2;
          //playermonster.Moveslotspeed = 4;
@@ -6545,6 +6646,123 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
         try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Kunk);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Weeliosbop);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Bongu);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ϫlitch);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Swogharnler);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Vellup);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Dicyto);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Sudakleez);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Munegull);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Epibazang);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Illelonab);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Wochem);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Degeissdt);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Mondosplak);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Monopteryx);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
+        MonsterStorageCounter++;
+
+
+        try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Yuggle);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
@@ -6558,7 +6776,6 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Honigkönig);
         } catch (CloneNotSupportedException e) {
@@ -6566,23 +6783,12 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Tutewtoo);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
-
-
-
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Kunk);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Blanqast);
@@ -6597,23 +6803,8 @@ public class protomon extends AppCompatActivity {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
-
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Degeissdt);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Osteoplang);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Bongu);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
@@ -6668,7 +6859,6 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rongzeed);
         } catch (CloneNotSupportedException e) {
@@ -6698,36 +6888,15 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Zaume);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
-        try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Rytegg);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Dicyto);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Algaetizer);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
-
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Wochem);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
@@ -6755,19 +6924,11 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Munegull);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
-        try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Djoper);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
-
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Hemtan);
@@ -6847,27 +7008,11 @@ public class protomon extends AppCompatActivity {
         MonsterStorageCounter++;
 
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Vellup);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
-
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Swogharnler);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
-        try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Sorba);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
-
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Jiyou);
@@ -6876,16 +7021,12 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
-
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Adenolish);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
-
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Toximastica);
@@ -6901,16 +7042,6 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
-
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ϫlitch);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nokoyl);
         } catch (CloneNotSupportedException e) {
@@ -6918,16 +7049,12 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Mantidile);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
-
-
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Nentopode);
@@ -6950,22 +7077,12 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
-
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Epibazang);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Ψkobath);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
-
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Blattle);
@@ -6974,15 +7091,12 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Deblobbio);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
-
-
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Flashmer);
@@ -6991,15 +7105,12 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
-
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Urcuria);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
-
 
         try {
             PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Uggnawb);
@@ -7008,17 +7119,8 @@ public class protomon extends AppCompatActivity {
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
         MonsterStorageCounter++;
 
-
         try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Sudakleez);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
-        MonsterStorageCounter++;
-
-
-        try {
-            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Weeliosbop);
+            PlayerMonsterStorage[MonsterStorageCounter] = Cloner(Hyuntress);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }PlayerMonsterStorage[MonsterStorageCounter].UniqueID = UniqueIdentifier(0);
@@ -7148,6 +7250,7 @@ public class protomon extends AppCompatActivity {
         elongatedglugtimerA = 0;
         elongatedglugpowerA = 0;
         healblocktgimerA = 0;
+        statblocktimerP = 0;
     }
 
 
@@ -7190,25 +7293,25 @@ public class protomon extends AppCompatActivity {
     }
 
     public void MonsterImageChangerPlayer(monst PlayerMonsterHandle){
-        
-        
+
+
         switch((int) PlayerMonsterHandle.Idnum){
-            
+
 case 0:
           PlayerDisplay.setImageResource(R.drawable.errantnope);
-                    break; 
+                    break;
 case 1:
                 PlayerDisplay.setImageResource(R.drawable.kunk);
-                    break; 
+                    break;
 case 2:
        PlayerDisplay.setImageResource(R.drawable.kohboh);
-                    break; 
+                    break;
 case 3:
             PlayerDisplay.setImageResource(R.drawable.djoper);
-                    break; 
+                    break;
 case 4:
               PlayerDisplay.setImageResource(R.drawable.schorp);
-                    break; 
+                    break;
 case 5:
     if (PlayerMonsterHandle.UniqueID < 22000000) {
         PlayerDisplay.setImageResource(R.drawable.zaume);
@@ -7219,7 +7322,7 @@ case 5:
     }else {
         PlayerDisplay.setImageResource(R.drawable.zaumeg);
     }
-                    break; 
+                    break;
 case 6:
 
     if (PlayerMonsterHandle.UniqueID < 50000000) {
@@ -7227,10 +7330,10 @@ case 6:
     }else {
         PlayerDisplay.setImageResource(R.drawable.nhainhaii);
     }
-                    break; 
+                    break;
 case 7:
               PlayerDisplay.setImageResource(R.drawable.degeissdt);
-                    break; 
+                    break;
 case 8:
     if (PlayerMonsterHandle.UniqueID < 22000000) {
         PlayerDisplay.setImageResource(R.drawable.yuggle);
@@ -7241,37 +7344,37 @@ case 8:
     }else {
         PlayerDisplay.setImageResource(R.drawable.yuggler);
     }
-                    break; 
+                    break;
 case 9:
           PlayerDisplay.setImageResource(R.drawable.bongu);
-                    break; 
+                    break;
 case 10:
             //           //PlayerDisplay.setImageResource(R.drawable.giteriglia);
-                    break; 
+                    break;
 case 11:
            //            //PlayerDisplay.setImageResource(R.drawable.cyosteroth);
-                    break; 
+                    break;
 case 12:
                        PlayerDisplay.setImageResource(R.drawable.nentopode);
-                    break; 
+                    break;
 case 13:
                        //PlayerDisplay.setImageResource(R.drawable.centiclak);
-                    break; 
+                    break;
 case 14:
                        PlayerDisplay.setImageResource(R.drawable.uggnawb);
-                    break; 
+                    break;
 case 15:
                    PlayerDisplay.setImageResource(R.drawable.grobhost);
-                    break; 
+                    break;
 case 16:
-                       //PlayerDisplay.setImageResource(R.drawable.Illelonab);
-                    break; 
+                       PlayerDisplay.setImageResource(R.drawable.illelonab);
+                    break;
 case 17:
                    PlayerDisplay.setImageResource(R.drawable.rongzeed);
-                    break; 
+                    break;
 case 18:
                     PlayerDisplay.setImageResource(R.drawable.blattle);
-                    break; 
+                    break;
 case 19:
 
 
@@ -7280,13 +7383,13 @@ case 19:
     }else {
         PlayerDisplay.setImageResource(R.drawable.swogharnler);
     }
-                    break; 
+                    break;
 case 20:
                        PlayerDisplay.setImageResource(R.drawable.adenolish);
-                    break; 
+                    break;
 case 21:
                        //PlayerDisplay.setImageResource(R.drawable.Genaupresang);
-                    break; 
+                    break;
 case 22:
     if (PlayerMonsterHandle.UniqueID < 33000000) {
         PlayerDisplay.setImageResource(R.drawable.daahnida);
@@ -7295,131 +7398,140 @@ case 22:
     }else {
         PlayerDisplay.setImageResource(R.drawable.daahnidab);
     }
-                    break; 
+                    break;
 case 23:
                        PlayerDisplay.setImageResource(R.drawable.sorba);
-                    break; 
+                    break;
 case 24:
                       PlayerDisplay.setImageResource(R.drawable.jiyou);
-                    break; 
+                    break;
 case 25:
                         PlayerDisplay.setImageResource(R.drawable.sparvae);
-                    break; 
+                    break;
 case 26:
                        PlayerDisplay.setImageResource(R.drawable.vellup);
-                    break; 
+                    break;
 case 27:
                        //PlayerDisplay.setImageResource(R.drawable.bellaja);
-                    break; 
+                    break;
 case 28:
                        //PlayerDisplay.setImageResource(R.drawable.Levdzell);
-                    break; 
+                    break;
 case 29:
     if (PlayerMonsterHandle.UniqueID < 50000000) {
         PlayerDisplay.setImageResource(R.drawable.ryteggg);
     }else {
         PlayerDisplay.setImageResource(R.drawable.rytegg);
     }
-                    break; 
+                    break;
 case 30:
                       PlayerDisplay.setImageResource(R.drawable.flashmer);
-                    break; 
+                    break;
 case 31:
                        PlayerDisplay.setImageResource(R.drawable.schmodozer);
-                    break; 
+                    break;
 case 32:
                        //PlayerDisplay.setImageResource(R.drawable.Octgotot);
-                    break; 
+                    break;
 case 33:
                        PlayerDisplay.setImageResource(R.drawable.triaural);
-                    break; 
+                    break;
 case 34:
                        PlayerDisplay.setImageResource(R.drawable.dicyto);
-                    break; 
+                    break;
 case 35:
-                       //PlayerDisplay.setImageResource(R.drawable.Monopteryx);
-                    break; 
+                       PlayerDisplay.setImageResource(R.drawable.monopteryx);
+                    break;
 case 36:
                        PlayerDisplay.setImageResource(R.drawable.elastocark);
-                    break; 
+                    break;
 case 37:
                        //PlayerDisplay.setImageResource(R.drawable.Toobapath);
-                    break; 
+                    break;
 case 38:
                        PlayerDisplay.setImageResource(R.drawable.wheeliosbop);
-                    break; 
+                    break;
 case 39:
                        PlayerDisplay.setImageResource(R.drawable.ihmpdrap);
-                    break; 
+                    break;
 case 40:
                        PlayerDisplay.setImageResource(R.drawable.epibazang);
-                    break; 
+                    break;
 case 41:
                        PlayerDisplay.setImageResource(R.drawable.hemtan);
-                    break; 
+                    break;
 case 42:
                      PlayerDisplay.setImageResource(R.drawable.ogo);
-                    break; 
+                    break;
 case 43:
                        PlayerDisplay.setImageResource(R.drawable.strachid);
-                    break; 
+                    break;
 case 44:
                        PlayerDisplay.setImageResource(R.drawable.toximastica);
-                    break; 
+                    break;
 case 45:
                        PlayerDisplay.setImageResource(R.drawable.urcuria);
-                    break; 
+                    break;
 case 46:
-                       //PlayerDisplay.setImageResource(R.drawable.Hyuntress);
-                    break; 
+
+    if (PlayerMonsterHandle.UniqueID < 22000000) {
+        PlayerDisplay.setImageResource(R.drawable.hyuntress);
+    }else if(PlayerMonsterHandle.UniqueID < 45000000) {
+        PlayerDisplay.setImageResource(R.drawable.hyuntressa);
+    }else if(PlayerMonsterHandle.UniqueID < 70000000) {
+        PlayerDisplay.setImageResource(R.drawable.hyuntressb);
+    }else {
+        PlayerDisplay.setImageResource(R.drawable.hyuntressc);
+    }
+                    break;
 case 47:
-                       //PlayerDisplay.setImageResource(R.drawable.Mondosplak);
-                    break; 
+                       PlayerDisplay.setImageResource(R.drawable.mondosplak);
+                    break;
 case 48:
                        //PlayerDisplay.setImageResource(R.drawable.Kaheksaguge);
-                    break; 
+                    break;
 case 49:
                         PlayerDisplay.setImageResource(R.drawable.sapiosuant);
-                    break; 
+                    break;
 case 50:
                         PlayerDisplay.setImageResource(R.drawable.munegull);
-                    break; 
+                    break;
 case 51:
                        PlayerDisplay.setImageResource(R.drawable.sudakleez);
-                    break; 
+                    break;
 case 52:
                      PlayerDisplay.setImageResource(R.drawable.halocordate);
-                    break; 
+                    break;
 case 53:
                      PlayerDisplay.setImageResource(R.drawable.faedendron);
-                    break; 
+                    break;
 case 54:
                        PlayerDisplay.setImageResource(R.drawable.osteoplang);
-                    break; 
+                    break;
 case 55:
                       PlayerDisplay.setImageResource(R.drawable.zrachnid);
-                    break; 
+                    break;
 case 56:
                        PlayerDisplay.setImageResource(R.drawable.xlitch);
-                    break; 
+                    break;
 case 57:
                        PlayerDisplay.setImageResource(R.drawable.baa);
-                    break; 
+                    break;
 case 58:
                        PlayerDisplay.setImageResource(R.drawable.mantidile);
-                    break; 
+                    break;
 case 59:
                        PlayerDisplay.setImageResource(R.drawable.nokoyl);
-                    break; 
+                    break;
 case 60:
                        PlayerDisplay.setImageResource(R.drawable.yallod);
-                    break; 
+                    break;
 case 61:
                       PlayerDisplay.setImageResource(R.drawable.algaetizer);
-                    break; 
+                    break;
 case 62:
                       PlayerDisplay.setImageResource(R.drawable.kachort);
-                    break; 
+                    break;
 case 63:
     if (PlayerMonsterHandle.UniqueID < 22000000) {
         PlayerDisplay.setImageResource(R.drawable.slamelion);
@@ -7430,61 +7542,61 @@ case 63:
     }else {
         PlayerDisplay.setImageResource(R.drawable.slamelion);
     }
-                    break; 
+                    break;
 case 64:
                        //PlayerDisplay.setImageResource(R.drawable.ayateda);
-                    break; 
+                    break;
 case 65:
                        PlayerDisplay.setImageResource(R.drawable.wochem);
-                    break; 
+                    break;
 case 66:
                        //PlayerDisplay.setImageResource(R.drawable.Ƕmun);
-                    break; 
+                    break;
 case 67:
                        PlayerDisplay.setImageResource(R.drawable.psychobath);
-                    break; 
+                    break;
 case 68:
                      PlayerDisplay.setImageResource(R.drawable.gytanic);
-                    break; 
+                    break;
 case 69:
                        PlayerDisplay.setImageResource(R.drawable.beis);
-                    break; 
+                    break;
 case 70:
                        //PlayerDisplay.setImageResource(R.drawable.gungholio);
-                    break; 
+                    break;
 case 71:
                        PlayerDisplay.setImageResource(R.drawable.honigkonig);
-                    break; 
+                    break;
 case 72:
                      //  PlayerDisplay.setImageResource(R.drawable.kungulp);
-                    break; 
+                    break;
 case 73:
                        PlayerDisplay.setImageResource(R.drawable.satinella);
-                    break; 
+                    break;
 case 74:
                        PlayerDisplay.setImageResource(R.drawable.elocurl);
-                    break; 
+                    break;
 case 75:
                       PlayerDisplay.setImageResource(R.drawable.takobie);
-                    break; 
+                    break;
 case 76:
                      PlayerDisplay.setImageResource(R.drawable.obchovy);
-                    break; 
+                    break;
 case 77:
                        PlayerDisplay.setImageResource(R.drawable.nimnamnom);
-                    break; 
+                    break;
 case 78:
                       PlayerDisplay.setImageResource(R.drawable.tutewtoo);
-                    break; 
+                    break;
 case 79:
                        PlayerDisplay.setImageResource(R.drawable.blanqast);
-                    break; 
+                    break;
 case 80:
                        //PlayerDisplay.setImageResource(R.drawable.Indeo);
-                    break; 
+                    break;
 case 81:
                        PlayerDisplay.setImageResource(R.drawable.deblobbio);
-                    break; 
+                    break;
 case 82:
      PlayerDisplay.setImageResource(R.drawable.knightstacean);
     break;
@@ -7502,29 +7614,29 @@ case 82:
 
 
         }
-        
-        
+
+
     }
 public void MonsterImageChangerAttacker(monst AttackerMonsterHandle){
-        
-        
+
+
         switch((int) AttackerMonsterHandle.Idnum){
-            
+
 case 0:
           EnemyDisplay.setImageResource(R.drawable.errantnope);
-                    break; 
+                    break;
 case 1:
                  EnemyDisplay.setImageResource(R.drawable.kunk);
-                    break; 
+                    break;
 case 2:
        EnemyDisplay.setImageResource(R.drawable.kohboh);
-                    break; 
+                    break;
 case 3:
            EnemyDisplay.setImageResource(R.drawable.djoper);
-                    break; 
+                    break;
 case 4:
             EnemyDisplay.setImageResource(R.drawable.schorp);
-                    break; 
+                    break;
 case 5:
     if (AttackerMonsterHandle.UniqueID < 22000000) {
         EnemyDisplay.setImageResource(R.drawable.zaume);
@@ -7535,17 +7647,17 @@ case 5:
     }else {
         EnemyDisplay.setImageResource(R.drawable.zaumeg);
     }
-                    break; 
+                    break;
 case 6:
     if (AttackerMonsterHandle.UniqueID < 50000000) {
         EnemyDisplay.setImageResource(R.drawable.nhainhai);
     }else {
         EnemyDisplay.setImageResource(R.drawable.nhainhaii);
     }
-                    break; 
+                    break;
 case 7:
               EnemyDisplay.setImageResource(R.drawable.degeissdt);
-                    break; 
+                    break;
 case 8:
 
     if (AttackerMonsterHandle.UniqueID < 22000000) {
@@ -7557,37 +7669,37 @@ case 8:
     }else {
         EnemyDisplay.setImageResource(R.drawable.yuggler);
     }
-                    break; 
+                    break;
 case 9:
             EnemyDisplay.setImageResource(R.drawable.bongu);
-                    break; 
+                    break;
 case 10:
             //           //EnemyDisplay.setImageResource(R.drawable.giteriglia);
-                    break; 
+                    break;
 case 11:
            //            //EnemyDisplay.setImageResource(R.drawable.cyosteroth);
-                    break; 
+                    break;
 case 12:
                        EnemyDisplay.setImageResource(R.drawable.nentopode);
-                    break; 
+                    break;
 case 13:
                        //EnemyDisplay.setImageResource(R.drawable.centiclak);
-                    break; 
+                    break;
 case 14:
                        EnemyDisplay.setImageResource(R.drawable.uggnawb);
-                    break; 
+                    break;
 case 15:
                        EnemyDisplay.setImageResource(R.drawable.grobhost);
-                    break; 
+                    break;
 case 16:
-                       //EnemyDisplay.setImageResource(R.drawable.Illelonab);
-                    break; 
+                     EnemyDisplay.setImageResource(R.drawable.illelonab);
+                    break;
 case 17:
                       EnemyDisplay.setImageResource(R.drawable.rongzeed);
-                    break; 
+                    break;
 case 18:
                      EnemyDisplay.setImageResource(R.drawable.blattle);
-                    break; 
+                    break;
 case 19:
 
     if (AttackerMonsterHandle.UniqueID < 50000000) {
@@ -7595,13 +7707,13 @@ case 19:
     }else {
         EnemyDisplay.setImageResource(R.drawable.swogharnler);
     }
-                    break; 
+                    break;
 case 20:
                       EnemyDisplay.setImageResource(R.drawable.adenolish);
-                    break; 
+                    break;
 case 21:
                        //EnemyDisplay.setImageResource(R.drawable.Genaupresang);
-                    break; 
+                    break;
 case 22:
 
     if (AttackerMonsterHandle.UniqueID < 33000000) {
@@ -7611,131 +7723,139 @@ case 22:
     }else {
         EnemyDisplay.setImageResource(R.drawable.daahnidab);
     }
-                    break; 
+                    break;
 case 23:
                       EnemyDisplay.setImageResource(R.drawable.sorba);
-                    break; 
+                    break;
 case 24:
                        EnemyDisplay.setImageResource(R.drawable.jiyou);
-                    break; 
+                    break;
 case 25:
                        EnemyDisplay.setImageResource(R.drawable.sparvae);
-                    break; 
+                    break;
 case 26:
                        EnemyDisplay.setImageResource(R.drawable.vellup);
                     break;
 case 27:
                        //EnemyDisplay.setImageResource(R.drawable.bellaja);
-                    break; 
+                    break;
 case 28:
                        //EnemyDisplay.setImageResource(R.drawable.Levdzell);
-                    break; 
+                    break;
 case 29:
     if (AttackerMonsterHandle.UniqueID < 50000000) {
         EnemyDisplay.setImageResource(R.drawable.ryteggg);
     }else {
         EnemyDisplay.setImageResource(R.drawable.rytegg);
     }
-                    break; 
+                    break;
 case 30:
                        EnemyDisplay.setImageResource(R.drawable.flashmer);
-                    break; 
+                    break;
 case 31:
                        EnemyDisplay.setImageResource(R.drawable.schmodozer);
-                    break; 
+                    break;
 case 32:
                        //EnemyDisplay.setImageResource(R.drawable.Octgotot);
-                    break; 
+                    break;
 case 33:
                        EnemyDisplay.setImageResource(R.drawable.triaural);
-                    break; 
+                    break;
 case 34:
                      EnemyDisplay.setImageResource(R.drawable.dicyto);
-                    break; 
+                    break;
 case 35:
-                       //EnemyDisplay.setImageResource(R.drawable.Monopteryx);
-                    break; 
+                       EnemyDisplay.setImageResource(R.drawable.monopteryx);
+                    break;
 case 36:
                        EnemyDisplay.setImageResource(R.drawable.elastocark);
-                    break; 
+                    break;
 case 37:
                        //EnemyDisplay.setImageResource(R.drawable.Toobapath);
-                    break; 
+                    break;
 case 38:
                        EnemyDisplay.setImageResource(R.drawable.wheeliosbop);
-                    break; 
+                    break;
 case 39:
                       EnemyDisplay.setImageResource(R.drawable.ihmpdrap);
-                    break; 
+                    break;
 case 40:
                        EnemyDisplay.setImageResource(R.drawable.epibazang);
-                    break; 
+                    break;
 case 41:
                      EnemyDisplay.setImageResource(R.drawable.hemtan);
-                    break; 
+                    break;
 case 42:
                       EnemyDisplay.setImageResource(R.drawable.ogo);
-                    break; 
+                    break;
 case 43:
                        EnemyDisplay.setImageResource(R.drawable.strachid);
-                    break; 
+                    break;
 case 44:
                        EnemyDisplay.setImageResource(R.drawable.toximastica);
-                    break; 
+                    break;
 case 45:
                       EnemyDisplay.setImageResource(R.drawable.urcuria);
-                    break; 
+                    break;
 case 46:
-                       //EnemyDisplay.setImageResource(R.drawable.Hyuntress);
-                    break; 
+    if (AttackerMonsterHandle.UniqueID < 22000000) {
+        EnemyDisplay.setImageResource(R.drawable.hyuntress);
+    }else if(AttackerMonsterHandle.UniqueID < 45000000) {
+        EnemyDisplay.setImageResource(R.drawable.hyuntressa);
+    }else if(AttackerMonsterHandle.UniqueID < 70000000) {
+        EnemyDisplay.setImageResource(R.drawable.hyuntressb);
+    }else {
+        EnemyDisplay.setImageResource(R.drawable.hyuntressc);
+    }
+                    break;
 case 47:
-                       //EnemyDisplay.setImageResource(R.drawable.Mondosplak);
-                    break; 
+                      EnemyDisplay.setImageResource(R.drawable.mondosplak);
+                    break;
 case 48:
                        //EnemyDisplay.setImageResource(R.drawable.Kaheksaguge);
-                    break; 
+                    break;
 case 49:
                         EnemyDisplay.setImageResource(R.drawable.sapiosuant);
-                    break; 
+                    break;
 case 50:
                        EnemyDisplay.setImageResource(R.drawable.munegull);
-                    break; 
+                    break;
 case 51:
                        EnemyDisplay.setImageResource(R.drawable.sudakleez);
-                    break; 
+                    break;
 case 52:
                       EnemyDisplay.setImageResource(R.drawable.halocordate);
-                    break; 
+                    break;
 case 53:
                        EnemyDisplay.setImageResource(R.drawable.faedendron);
-                    break; 
+                    break;
 case 54:
                        EnemyDisplay.setImageResource(R.drawable.osteoplang);
-                    break; 
+                    break;
 case 55:
                        EnemyDisplay.setImageResource(R.drawable.zrachnid);
-                    break; 
+                    break;
 case 56:
                       EnemyDisplay.setImageResource(R.drawable.xlitch);
-                    break; 
+                    break;
 case 57:
                        EnemyDisplay.setImageResource(R.drawable.baa);
-                    break; 
+                    break;
 case 58:
                        EnemyDisplay.setImageResource(R.drawable.mantidile);
-                    break; 
+                    break;
 case 59:
                        EnemyDisplay.setImageResource(R.drawable.nokoyl);
-                    break; 
+                    break;
 case 60:
                        EnemyDisplay.setImageResource(R.drawable.yallod);
-                    break; 
+                    break;
 case 61:
                       EnemyDisplay.setImageResource(R.drawable.algaetizer);
-                    break; 
+                    break;
 case 62:
                        EnemyDisplay.setImageResource(R.drawable.kachort);
-                    break; 
+                    break;
 case 63:
     if (AttackerMonsterHandle.UniqueID < 22000000) {
         EnemyDisplay.setImageResource(R.drawable.slamelion);
@@ -7746,61 +7866,61 @@ case 63:
     }else {
         EnemyDisplay.setImageResource(R.drawable.slamelion);
     }
-                    break; 
+                    break;
 case 64:
                        //EnemyDisplay.setImageResource(R.drawable.ayateda);
-                    break; 
+                    break;
 case 65:
                     EnemyDisplay.setImageResource(R.drawable.wochem);
-                    break; 
+                    break;
 case 66:
                        //EnemyDisplay.setImageResource(R.drawable.Ƕmun);
-                    break; 
+                    break;
 case 67:
                        EnemyDisplay.setImageResource(R.drawable.psychobath);
-                    break; 
+                    break;
 case 68:
                        EnemyDisplay.setImageResource(R.drawable.gytanic);
-                    break; 
+                    break;
 case 69:
                       EnemyDisplay.setImageResource(R.drawable.beis);
-                    break; 
+                    break;
 case 70:
                        //EnemyDisplay.setImageResource(R.drawable.gungholio);
-                    break; 
+                    break;
 case 71:
                       EnemyDisplay.setImageResource(R.drawable.honigkonig);
-                    break; 
+                    break;
 case 72:
                      //  EnemyDisplay.setImageResource(R.drawable.kungulp);
-                    break; 
+                    break;
 case 73:
                      EnemyDisplay.setImageResource(R.drawable.satinella);
-                    break; 
+                    break;
 case 74:
                        EnemyDisplay.setImageResource(R.drawable.elocurl);
-                    break; 
+                    break;
 case 75:
                         EnemyDisplay.setImageResource(R.drawable.takobie);
-                    break; 
+                    break;
 case 76:
                      EnemyDisplay.setImageResource(R.drawable.obchovy);
-                    break; 
+                    break;
 case 77:
                        EnemyDisplay.setImageResource(R.drawable.nimnamnom);
-                    break; 
+                    break;
 case 78:
                        EnemyDisplay.setImageResource(R.drawable.tutewtoo);
-                    break; 
+                    break;
 case 79:
                        EnemyDisplay.setImageResource(R.drawable.blanqast);
-                    break; 
+                    break;
 case 80:
                        //EnemyDisplay.setImageResource(R.drawable.Indeo);
-                    break; 
+                    break;
 case 81:
                      EnemyDisplay.setImageResource(R.drawable.deblobbio);
-                    break; 
+                    break;
 case 82:
      EnemyDisplay.setImageResource(R.drawable.knightstacean);
     break;
@@ -7815,10 +7935,10 @@ case 83:
         EnemyDisplay.setImageResource(R.drawable.firstcustomc);
     }
     break;
-    
+
         }
-        
-        
+
+
     }
 
 
@@ -7885,11 +8005,20 @@ case 83:
 
         double Go = ((attackermonster.Attack / playermonster.Defense) * 50);
 
-        if (( elongatedhealwoundtimerP <= 1 && thisdoctork >= Go && attackermonster.Moveslotattack == 2) || ( elongatedhealwoundtimerP <= 1 && (thisdoctork*2) >= Go && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2) || (elongatedhealwoundtimerP <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2 && ((playermonster.Speed > playermonster.Defense && playermonster.Moveslotheal != 3 && playermonster.Moveslotheal < 6) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed) || (playermonster.Moveslotheal == 6 && (stataverage*3) > (MaxHealthPlayer*2.625) || (playermonster.Moveslotheal == 7 && playermonster.Speed > (stataverage)) || (playermonster.Moveslotheal == 8 && playermonster.Attack > stataverage) || (playermonster.Moveslotheal == 9 && playermonster.Defense > stataverage)))){
-            if ((thisdoctork*3) > Go) {
+        if (( elongatedhealwoundtimerP <= 1 && thisdoctork >= Go && attackermonster.Moveslotattack == 2)){
+            if ((thisdoctork*5) >= Go) {
+                Teller = SpecialAttack;
+            }
+        }else if (( elongatedhealwoundtimerP <= 1 && (thisdoctork*2) >= Go && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2)){
+            if ((thisdoctork*5) >= Go) {
+                Teller = SpecialAttack;
+            }
+        }else if  (elongatedhealwoundtimerP <= 1 && playermonster.Health < MaxHealthPlayer && attackermonster.Moveslotattack == 2 && (((playermonster.Speed*1.25) > playermonster.Defense && playermonster.Moveslotheal != 3 && playermonster.Moveslotheal < 6) || (playermonster.Moveslotheal == 3  && attackermonster.Defense < playermonster.Attack)) || (playermonster.Moveslotattack == 3 && attackermonster.Defense < playermonster.Speed) || (playermonster.Moveslotheal == 6 && (stataverage*3) > (MaxHealthPlayer*2.625) || (playermonster.Moveslotheal == 7 && playermonster.Speed > (stataverage)) || (playermonster.Moveslotheal == 8 && playermonster.Attack > stataverage) || (playermonster.Moveslotheal == 9 && playermonster.Defense > stataverage))) {
+            if ((thisdoctork * 5) >= Go) {
                 Teller = SpecialAttack;
             }
         }
+
 
         double effectivehits = ((attackermonster.Health/60)*(attackermonster.Defense/60));
 
@@ -8054,6 +8183,8 @@ case 83:
         double maxtesttakedamage = ((playermonster.Attack / attackermonster.Defense) * 70);
 
 
+
+
         double momentumcheck = (((new Random().nextInt(11) + 55)) * (attackermonster.Speed / (attackermonster.Defense + attackermonster.Attack)))*1.80;
 
         double posturetest = (((new Random().nextInt(11) + 55)) * (attackermonster.Attack / (attackermonster.Defense + attackermonster.Speed)))*1.80;
@@ -8066,7 +8197,9 @@ case 83:
         double grouphealtester = (3 * ((int) (((new Random().nextInt(6) + 15)) * (attackermonster.Speed / attackermonster.Defense)))) / 7;
         double longhealtester = (3 * ((int) (((new Random().nextInt(21) + 65)) * (attackermonster.Speed / attackermonster.Defense)))) / 7;
         double chipdamage = (((new Random().nextInt(11) + 25)) * (attackermonster.Defense / playermonster.Defense));
-
+        double tripcheck = (((new Random().nextInt(11) + 25)) * (attackermonster.Speed / playermonster.Speed));
+        double dispdam = (((new Random().nextInt(11) + 25)) * (attackermonster.Attack / playermonster.Attack));
+        double woundtester = (3 * ((int) (((new Random().nextInt(21) + 70)) * (attackermonster.Speed / playermonster.Defense)))) / 17;
 
         if (attackermonster.Moveslotheal != 5 && attackermonster.Moveslotheal != 4) {
             if (absolutelyconfusingvariable == -17 && ratiohealth < 37 || ((attackermonster.Health < testdamage && (attackermonster.Health + testheal) > testdamage) && (attackermonster.Moveslotheal != 1 && attackermonster.Moveslotheal != 3 && attackermonster.Moveslotheal != 5))) {
@@ -8159,7 +8292,7 @@ case 83:
                         }
                     }
                     if (attackermonster.Moveslotheal == 3) {
-                        double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Speed / attackermonster.Defense);
+                        double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Defense / attackermonster.Speed);
                         if (what > 1.8) {
                             Teller = HealButton;
                         }
@@ -8290,7 +8423,7 @@ case 83:
                     Teller = HealButton;
                 }
             } else if (attackermonster.Moveslotheal == 3) {
-                double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Speed / attackermonster.Defense);
+                double what = (attackermonster.Attack / playermonster.Defense) / (attackermonster.Defense/attackermonster.Speed);
                 if (what > 1.0) {
                     if (attackermonster.Health < MaxHealthAttacker) {
                         Teller = HealButton;
@@ -8475,7 +8608,7 @@ case 83:
         }
 
         if (PlayerStatDelayTimer != -1){
-            if (attackermonster.Moveslotattack == 8 && statblocktimerP > 2){
+            if (attackermonster.Moveslotattack == 8 && statblocktimerP <= 2){
                 Teller = SpecialAttack;
             }
         }
@@ -8691,11 +8824,11 @@ case 83:
             Teller = HealButton;
         }
 
-        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 4 && healblocktgimerA <= 1){
+        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 4 && healblocktgimerA >= 1){
             Teller = Turn;
         }
 
-        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 2 && elongatedhealwoundtimerP <= 1){
+        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 2 && elongatedhealwoundtimerP >= 1){
             Teller = Turn;
         }
 
@@ -8708,12 +8841,59 @@ case 83:
             Teller = SpecialAttack;
         }
 
+        if (Teller == Turn && tripcheck > testdamage && attackermonster.Moveslotattack == 6){
+            Teller = SpecialAttack;
+        }
+
+        if (Teller == Turn && dispdam > testdamage && attackermonster.Moveslotattack == 7){
+            Teller = SpecialAttack;
+        }
+
         if (Teller == HealButton && healblocktgimerP > 0 && attackermonster.Moveslotheal != 4){
+            Teller = Turn;
+        }
+
+        if (attackermonster.Moveslotattack == 0 && (woundtester*3) > Go){
+            if (elongatedwoundtimerP <= 2){
+                Teller = SpecialAttack;
+            }
+        }
+
+        if (attackermonster.Moveslotattack == 0 && Teller == SpecialAttack){
+            if (elongatedwoundtimerP > 2){
+                Teller = Turn;
+            }
+        }
+
+
+        if (Teller == SpecialAttack && attackermonster.Moveslotattack == 8 && statblocktimerP > 2){
             Teller = Turn;
         }
 
         if (Teller == Status){
             if (statblocktimerA != 0){
+                Teller = Turn;
+            }
+        }
+
+        if (attackermonster.Moveslotattack > 98){
+            if (Teller == SpecialAttack) {
+                Teller = Turn;
+            }
+        }
+        if (attackermonster.Moveslotheal > 98){
+            if (Teller == HealButton) {
+                Teller = Turn;
+            }
+        }
+        if (attackermonster.Moveslotspeed > 98) {
+            if (Teller == Status) {
+                Teller = Turn;
+            }
+        }
+
+        if (AttackerStatDelayTimer != -1){
+            if (Teller == Status){
                 Teller = Turn;
             }
         }
@@ -8850,6 +9030,7 @@ case 83:
                 elongatedhealwoundtimerA = 0;
                 elongatedwoundtimerA = 0;
                 elongatedglugtimerP = 0;
+                statblocktimerA = 0;
                 Damage = (((new Random().nextInt(11) + 25)) * (attackermonster.Speed / attackermonster.Defense));
                 Damage = Math.round(Damage);
                 attackermonster.Health = attackermonster.Health + Damage;
@@ -9029,7 +9210,7 @@ case 83:
                 }
                 playermonster.Health = playermonster.Health - Damage;
             }else if (attackermonster.Moveslotattack == 6) {
-                Damage = (((new Random().nextInt(11) + 25)) * (attackermonster.Attack / playermonster.Speed));
+                Damage = (((new Random().nextInt(11) + 25)) * (attackermonster.Speed / playermonster.Speed));
                 Damage = Math.round(Damage);
                 if (playermonster.Speed >= statMinimum){
                     playermonster.Speed = Math.round(playermonster.Speed * .85);
@@ -9238,6 +9419,947 @@ case 83:
            // turncounter++;
           //  ImageChanger();
       //  }
+    }
+
+
+
+    public void songlist(int idnumber){
+        switch (idnumber){
+
+            case 0:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+PlayerSounds = null;
+                }
+                break;
+            case 1:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.kunksong);
+                break;
+            case 2:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.kohbohsong);
+                break;
+            case 3:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 4:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 5:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.zaumesong);
+                break;
+            case 6:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 7:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.degeissdtsong);
+                break;
+            case 8:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 9:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.bongusong);
+                break;
+            case 10:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 11:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 12:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 13:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 14:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 15:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 16:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.illelonabsong);
+                break;
+            case 17:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 18:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 19:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.swogharnlersong);
+                break;
+            case 20:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 21:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 22:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 23:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 24:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 25:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 26:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.vellupsong);
+                break;
+            case 27:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 28:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 29:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 30:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 31:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 32:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 33:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 34:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.dicytosong);
+                break;
+            case 35:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 36:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 37:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 38:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.wheeliosbopsongxt);
+          break;
+            case 39:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 40:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.epibazangsong);
+                break;
+            case 41:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 42:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 43:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 44:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 45:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 46:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 47:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 48:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 49:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 50:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.munegullsong);
+                break;
+            case 51:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.sudakleezsong);
+                break;
+            case 52:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 53:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 54:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 55:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 56:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+                PlayerSounds = MediaPlayer.create(this, R.raw.xlitchsong);
+                break;
+            case 57:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 58:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 59:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 60:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 61:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 62:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 63:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 64:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 65:
+                if (PlayerSounds != null) {
+                    PlayerSounds.stop();
+                    PlayerSounds = null;
+                }
+
+                PlayerSounds = MediaPlayer.create(this, R.raw.wochemsong);
+                break;
+            case 66:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 67:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 68:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 69:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 70:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 71:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 72:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 73:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 74:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 75:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 76:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 77:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 78:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 79:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 80:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 81:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 82:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+            case 83:
+                if (PlayerSounds != null) {
+        PlayerSounds.stop();
+PlayerSounds = null;
+    }break;
+        }
+        if (idnumber > 100 || idnumber < 0){
+
+
+        }
+        if (PlayerSounds != null) {
+            PlayerSounds.setLooping(true); // boogaloo
+            PlayerSounds.start();
+        }else {
+           // PlayerSounds.setLooping(false); // boogaloo
+           // PlayerSounds.stop();
+        }
+    }
+
+
+    public void attackersonglist(int idnumber){
+        switch (idnumber){
+
+            case 0:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+AttackerSounds = null;
+                }
+                break;
+            case 1:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.kunksong);
+                break;
+            case 2:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.kohbohsong);
+                break;
+            case 3:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 4:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 5:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.zaumesong);
+                break;
+            case 6:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 7:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.degeissdtsong);
+                break;
+            case 8:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 9:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.bongusong);
+                break;
+            case 10:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+    break;
+            case 11:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 12:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 13:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 14:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 15:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 16:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.illelonabsong);
+                break;
+            case 17:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 18:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 19:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.swogharnlersong);
+                break;
+            case 20:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 21:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 22:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 23:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 24:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 25:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 26:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.vellupsong);
+                break;
+            case 27:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 28:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 29:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 30:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 31:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 32:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 33:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 34:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.dicytosong);
+                break;
+            case 35:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 36:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 37:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 38:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.wheeliosbopsongxt);
+          break;
+            case 39:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 40:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.epibazangsong);
+                break;
+            case 41:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 42:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 43:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 44:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 45:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 46:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 47:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 48:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 49:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 50:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.munegullsong);
+                break;
+            case 51:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.sudakleezsong);
+                break;
+            case 52:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 53:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 54:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 55:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 56:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.xlitchsong);
+                break;
+            case 57:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 58:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 59:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 60:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 61:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 62:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 63:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 64:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 65:
+                if (AttackerSounds != null) {
+                    AttackerSounds.stop();
+                    AttackerSounds = null;
+                }
+                AttackerSounds = MediaPlayer.create(this, R.raw.wochemsong);
+                break;
+            case 66:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 67:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 68:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 69:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 70:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 71:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 72:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 73:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 74:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 75:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 76:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 77:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 78:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 79:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 80:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 81:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 82:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+            case 83:
+                if (AttackerSounds != null) {
+        AttackerSounds.stop();
+AttackerSounds = null;
+    }break;
+        }
+        if (idnumber > 100 || idnumber < 0){
+
+
+        }
+        if (AttackerSounds != null) {
+            AttackerSounds.setLooping(true); // boogaloo
+            AttackerSounds.start();
+        }else {
+          //  AttackerSounds.setLooping(false); // boogaloo
+          //  AttackerSounds.stop();
+        }
     }
 
 }

@@ -145,6 +145,7 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        // AOCmethod();
         //StereoscopePendulumOpen();
         //AnimationOpen();
         // NumbersPracticeOpen();
@@ -250,7 +251,12 @@ public class Main2Activity extends AppCompatActivity {
                 }else if(a == b && a > 2310 && b < 2345) {
                     OpenRedHerring();
                 }else if (!(xI == 42 || xI == 9) && a != 1 && a != 389&& a != 390&& a != 391 && a != 392 && a != 393 && a!= 394 && a!= 395 && a!= 396&& a!= 397&& a!= 398&& a!= 399) {
-                    OpenStockMania();
+                    if (b != 123) {
+                        OpenStockMania();
+                    }
+                    if (a == 9 && b == 123){
+                        OpenStockManiaWithTime();
+                    }
                 }else if (XI == 9){
                     OpenStockManiaAutoplayer();
 
@@ -264,9 +270,13 @@ public class Main2Activity extends AppCompatActivity {
                 }else{
                     if(a != 1 && a != 389 && a != 390 && a != 391 && a != 392&& a != 393 && a!= 394 && a!= 395 && a!= 396&& a!= 397&& a!= 398&& a!= 399) {
                         OpenStockManiaWithTime();
+                    }else if (a == 9 && b == 123){
+                        OpenStockManiaWithTime();
                     }
                     }
                 }
+
+
 
         });
         btnImageChanger = (Button) findViewById(R.id.btnImageChanger);

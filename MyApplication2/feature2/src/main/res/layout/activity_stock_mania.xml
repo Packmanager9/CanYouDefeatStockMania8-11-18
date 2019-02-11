@@ -220,6 +220,8 @@
                 android:textStyle="bold" />
 
 
+
+            <!--
             <Button
                 android:id="@+id/lights"
                 android:layout_width="68dp"
@@ -231,7 +233,7 @@
                 android:textStyle="bold"
                 android:backgroundTint="#00000000"
                 />
-
+            -->
 
 
         </LinearLayout>

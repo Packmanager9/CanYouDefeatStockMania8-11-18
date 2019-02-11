@@ -6532,11 +6532,11 @@ double Realdown = 999990000;
             public void onClick(View v) {
                 EditText editTextBox = (EditText) findViewById(R.id.editTextBox);
                 String bant = editTextBox.getText().toString();
-                double BuyAmount = Double.parseDouble(String.valueOf(editTextBox.getText()));
                 if(TextUtils.isEmpty(bant)) {
                     editTextBox.setError("input required");
                     return;
                 }
+                double BuyAmount = Double.parseDouble(String.valueOf(editTextBox.getText()));
 
                 if (Day > 0) {
                     displaySellMethod(BuyAmount, BTC, BitcoinPrice);
